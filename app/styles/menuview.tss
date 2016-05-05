@@ -2,7 +2,7 @@
 	layout: 'vertical',
 	backgroundColor: 'Gray'
 },
-"#menuTopBar":{
+".menuTopBar":{
 	width: Ti.UI.FILL,
 	height: "160dp",
 	backgroundColor: '#2E5486',
@@ -120,7 +120,7 @@
 	backgroundImage:"/media/image21.png"	
 },
 ".icon-Camera":{
-	backgroundImage:"/media/image10.png"
+	backgroundImage:"/media/image10.png",
 },
 ".icon-RedCircle":{
 	backgroundImage:"/media/image55.png",

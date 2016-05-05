@@ -65,5 +65,4 @@ menuView.menuTable.addEventListener('click',function(e){
     // on Android the event is received by the label, so watch out!
     Ti.API.info(e.rowData.id); 
 });
-
 $.index.open();

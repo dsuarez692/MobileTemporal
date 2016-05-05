@@ -1,6 +1,6 @@
 <Alloy>
 	<View id="menuView">
-		<View id="menuTopBar" class="icon-Camera" width="250" left="left"><View id="menuTopBarName"><Label id="rowNombreUsuario" class="menuNombreUsuario">Usuario</Label></View></View>
+		<View id="menuTopBar" width="250" left="left" class="menuTopBar icon-Camera"><View id="menuTopBarName"><Label id="rowNombreUsuario" class="menuNombreUsuario">Usuario</Label></View></View>
 		<View id="menuTopBarLogOut">
 			<Label id="rowLabel" class="rowLabelLogOut">Cerrar sesión</Label><View id="rowLogOut" class="rowIcon icon-LogOut"/>
 		</View>
