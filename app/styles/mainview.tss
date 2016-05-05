@@ -1,0 +1,14 @@
+"#mainView":{
+	layout: 'vertical',
+	backgroundColor: '#EEE'
+},
+"#mainTopBar":{
+	position: "0,0",
+	height: "40dp",
+	backgroundColor: '#E0E0E0',
+	layout: 'horizontal'
+},
+"#menuButton":{
+	width: "40dp",
+	height: "40dp"
+}

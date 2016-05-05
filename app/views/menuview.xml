@@ -1,0 +1,69 @@
+<Alloy>
+	<View id="menuView">
+		<View id="menuTopBar" class="icon-Camera" width="250" left="left"><View id="menuTopBarName"><Label id="rowNombreUsuario" class="menuNombreUsuario">Usuario</Label></View></View>
+		<View id="menuTopBarLogOut">
+			<Label id="rowLabel" class="rowLabelLogOut">Cerrar sesión</Label><View id="rowLogOut" class="rowIcon icon-LogOut"/>
+		</View>
+		<TableView class="menuTable" id="menuTable">
+			<TableViewRow class="tableRowHeader">
+				<View class="rowContainerHeader">
+					<Label id="rowLabel" class="rowLabelHeader">Denuncias</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow">
+				<View class="rowContainer">
+					<View id="rowSkull" class="rowIcon icon-Wise"/><Label id="rowLabel" class="rowLabel">Wise</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow">
+				<View class="rowContainer">
+					<View id="rowFoqual" class="rowIcon icon-Foqual"/><Label id="rowLabel" class="rowLabel">Foqual</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow">
+				<View class="rowContainer">
+					<View id="rowRightWay" class="rowIcon icon-RightWay"/><Label id="rowLabel" class="rowLabel">Right Way</Label>
+				</View>
+			</TableViewRow>
+			
+			
+			<TableViewRow class="tableRowHeader">
+				<View class="rowContainerHeader">
+					<Label id="rowLabel" class="rowLabelHeader">Mis actividades</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow">
+				<View class="rowContainer">
+					<View id="rowToDo" class="rowIcon icon-ToDo"/><Label id="rowLabel" class="rowLabel">To Do</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow">
+				<View class="rowContainer">
+					<View id="rowDenuncias" class="rowIcon icon-Denuncias"/><Label id="rowLabel" class="rowLabel" width="175">Denuncias en curso</Label><View id="rowDenuncias" class="rowIcon icon-RedCircle"><Label id="NumeroDenuncias" class="rowLabel" top="2" left="8">0</Label></View>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow">
+				<View class="rowContainer">
+					<View id="rowConsultas" class="rowIcon icon-Consultas"></View><Label id="rowLabel" class="rowLabel" width="175">Consultas</Label><View id="rowDenuncias" class="rowIcon icon-RedCircle"><Label id="NumeroConsultas" class="rowLabel" top="2" left="8">0</Label></View>
+				</View>
+			</TableViewRow>
+			
+			
+			<TableViewRow class="tableRowHeader">
+				<View class="rowContainerHeader">
+					<Label id="rowLabel" class="rowLabelHeader">Mis datos</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow">
+				<View class="rowContainer">
+					<View id="rowMiCuenta" class="rowIcon icon-MiCuenta"/><Label id="rowLabel" class="rowLabel">Mi Cuenta</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow">
+				<View class="rowContainer">
+					<View id="rowCambioClave" class="rowIcon icon-CambioClave"/><Label id="rowLabel" class="rowLabel">Cambio de clave</Label>
+				</View>
+			</TableViewRow>
+		</TableView>
+	</View>
+</Alloy>

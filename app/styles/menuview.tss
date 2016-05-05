@@ -1,0 +1,135 @@
+"#menuView":{
+	layout: 'vertical',
+	backgroundColor: 'Gray'
+},
+"#menuTopBar":{
+	width: Ti.UI.FILL,
+	height: "160dp",
+	backgroundColor: '#2E5486',
+	layout: 'horizontal',
+},
+
+"#menuTopBarName":{
+	width: Ti.UI.FILL,
+	height: "80dp",
+	backgroundColor: "#88000000",
+	layout: 'horizontal',
+	top:"80dp"
+},
+
+"#menuTopBarLogOut":{
+	width: Ti.UI.FILL,
+	height: "35dp",
+	backgroundColor: '#111C29',
+	layout: 'horizontal'
+},
+".tableRow":{
+	height: '50dp',
+},
+".tableRowHeader":{
+	height: '25dp',
+},
+
+".rowContainer":{
+	height: '30dp',
+	layout:'horizontal'
+},
+".rowContainerHeader":{
+	backgroundColor: '#12131D',
+	layout:'horizontal'
+},
+".rowIcon":{
+	left: 5,
+	top: 7,
+	width: "20dp",
+	height: "20dp"
+},
+".rowLabel":{
+	top: 7,
+	left: 10,
+	height: "20dp",
+	font:{
+		fontSize: "15dp"
+	},
+	color: "#FFF"
+	
+},
+
+".rowLabelHeader":{
+	left: 10,
+	height: "25dp",
+	font:{
+		fontSize: "15dp"
+	},
+	color: "#FFF"
+	
+},
+
+".rowLabelLogOut":{
+	top: 1,
+	height: "40dp",
+	width: "210",
+	font:{
+		fontSize: "20dp"
+	},
+	color: "#FFF",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_RIGHT
+	
+},
+".menuTable":{
+	separatorStyle:0,
+	separatorColor: 'transparent',
+	backgroundColor:'#555'
+},
+
+".menuNombreUsuario":{
+	top: 5,
+	left: 10,
+	height: "30dp",
+	font:{
+		fontSize: "23dp"
+	},
+	color: "#FFF",
+},
+
+".icon-CambioClave":{
+	backgroundImage:"/media/image16.png"	
+},
+".icon-MiCuenta":{
+	backgroundImage:"/media/image15.png"	
+},
+".icon-Consultas":{
+	backgroundImage:"/media/image19.png"	
+},
+".icon-Denuncias":{
+	backgroundImage:"/media/image14.png"	
+},
+".icon-ToDo":{
+	backgroundImage:"/media/image13.png"	
+},
+".icon-RightWay":{
+	backgroundImage:"/media/image12.png"	
+},
+".icon-Foqual":{
+	backgroundImage:"/media/image18.png"	
+},
+".icon-Wise":{
+	backgroundImage:"/media/image11.png"	
+},
+".icon-LogOut":{
+	backgroundImage:"/media/image21.png"	
+},
+".icon-Camera":{
+	backgroundImage:"/media/image10.png"
+},
+".icon-RedCircle":{
+	backgroundImage:"/media/image55.png",
+	left: 5,
+	top: 5,
+	width: "25dp",
+	height: "25dp"	
+},
+
+
+
+
