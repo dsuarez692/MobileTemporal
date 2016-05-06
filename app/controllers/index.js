@@ -16,21 +16,51 @@ mainView.menuButton.addEventListener('click',function(){
 	$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
 }); // method is exposed by widget
 
+mainView.collapsibleButton.add(controls.getCollapseButton({
+	h: '40',
+	w: '40'
+}));
 
-// get config view as objects
-var configView=controls.getConfigView();
+var passChangeView = controls.getPasswordChangeView();
 
 //add menu view to ConfigView exposed by widget
-configView.menuButton.add(controls.getMenuButton({
+passChangeView.menuButton.add(controls.getMenuButton({
                 h: '40',
                 w: '40'
             }));
 
 //Minor changes to click event. Update the menuOpen status;
-configView.menuButton.addEventListener('click',function(){
+passChangeView.menuButton.addEventListener('click',function(){
 	$.drawermenu.showhidemenu();
 	$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
 }); // method is exposed by widget
+
+passChangeView.collapsibleButton.add(controls.getCollapseButton({
+	h: '40',
+	w: '40'
+}));
+
+// get config view as objects
+var accountView=controls.getAccountView();
+
+//add menu view to ConfigView exposed by widget
+accountView.menuButton.add(controls.getMenuButton({
+                h: '40',
+                w: '40'
+            }));
+
+//Minor changes to click event. Update the menuOpen status;
+accountView.menuButton.addEventListener('click',function(){
+	$.drawermenu.showhidemenu();
+	$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
+}); // method is exposed by widget
+
+accountView.collapsibleButton.add(controls.getCollapseButton({
+	h: '40',
+	w: '40'
+}));
+
+var account2View=controls.getAccount2View();
 
 $.drawermenu.init({
     menuview:menuView.getView(),
@@ -46,23 +76,59 @@ var activeView = 1;
 menuView.menuTable.addEventListener('click',function(e){
     $.drawermenu.showhidemenu();
     $.drawermenu.menuOpen = false; //update menuOpen status to prevent inconsistency.
-    if(e.rowData.id==="row1"){
-        if(activeView!=1){
-            $.drawermenu.drawermainview.remove(configView.getView());
-            activeView = 1;
-        } else {
-            activeView = 1;
-        }
-    } 
-    if(e.rowData.id==="row2"){
-        if(activeView!=2){
-            $.drawermenu.drawermainview.add(configView.getView());
-            activeView = 2;
-        } else{
-            activeView = 2;
-        }
-    }
-    // on Android the event is received by the label, so watch out!
-    Ti.API.info(e.rowData.id); 
+    switch(e.rowData.id){
+    	case "home":
+    		switch(activeView){
+    			case 1:
+    				break;
+    			case 2:
+    			    var childrens = $.drawermenu.drawermainview.getChildren();
+    				for(var i=0; i<childrens.length; i++){
+    					childrens[i].fireEvent('resetView');
+    				}
+    				$.drawermenu.drawermainview.remove(accountView.getView());
+    				activeView = 1;
+    				break;
+    			case 3:
+    				$.drawermenu.drawermainview.remove(passChangeView.getView());
+    				activeView = 1;
+    				break;
+    		};
+    		break;
+    	case "account":
+    		switch(activeView){
+    			case 1:
+    				$.drawermenu.drawermainview.add(accountView.getView());
+    				activeView = 2;
+    				break;
+    			case 2:
+    				break;
+    			case 3:
+    				$.drawermenu.drawermainview.remove(passChangeView.getView());
+    				$.drawermenu.drawermainview.add(accountView.getView());
+    				activeView = 2;
+    				break;
+    		};
+    		break;
+    	case "passchange":
+    		switch(activeView){
+    			case 1:
+    				$.drawermenu.drawermainview.add(passChangeView.getView());
+    				activeView = 3;
+    				break;
+    			case 2:
+    				var childrens = $.drawermenu.drawermainview.getChildren();
+    				for(var i=0; i<childrens.length; i++){
+    					childrens[i].fireEvent('resetView');
+    				}
+    				$.drawermenu.drawermainview.remove(accountView.getView());
+    				$.drawermenu.drawermainview.add(passChangeView.getView());
+    				activeView = 3;
+    				break;
+    			case 3:
+    				break;
+    		};
+    		break;
+    };
 });
 $.index.open();

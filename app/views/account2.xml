@@ -1,0 +1,23 @@
+<Alloy>
+	<View id="content">
+    	<View id="subtitleBar">
+    		<Label class="subtitleLabel">Perfil completado al:</Label>
+    		<Label class="subtitleLabel">80%</Label>
+    	</View>
+        <ScrollView id="form">
+        	<Label class="labelField">SELECCIONE EL MODELO DE NEGOCIO AL QUE PERTENECE</Label>
+        	<View class="businessPick">
+        		
+        	</View>
+        	<Label class="labelField">SELECCIONE EL SECTOR AL QUE PERTENECE</Label>
+        	<TextField class="textSimple" id="username" hintText="  Obligatorio"></TextField>
+        	<Label class="labelField">NOMBRE DE PERSONA A LA QUE REPORTA</Label>
+        	<TextField class="textSimple" passwordMask="true" id="password" hintText="  Entre 6 y 20 caracteres"></TextField>
+        	<TextField class="textSimple" passwordMask="true" id="password2" hintText="  Repetir"></TextField>
+        	
+        </ScrollView>
+        <View class="buttonSimple" id="continueBtn" onClick="validateData">
+        	<Label id="btnText">Guardar</Label>
+        </View>
+    </View>
+</Alloy>

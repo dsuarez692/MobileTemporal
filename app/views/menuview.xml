@@ -54,12 +54,12 @@
 					<Label id="rowLabel" class="rowLabelHeader">Mis datos</Label>
 				</View>
 			</TableViewRow>
-			<TableViewRow class="tableRow">
+			<TableViewRow class="tableRow" id="account">
 				<View class="rowContainer">
 					<View id="rowMiCuenta" class="rowIcon icon-MiCuenta"/><Label id="rowLabel" class="rowLabel">Mi Cuenta</Label>
 				</View>
 			</TableViewRow>
-			<TableViewRow class="tableRow">
+			<TableViewRow class="tableRow" id="passchange">
 				<View class="rowContainer">
 					<View id="rowCambioClave" class="rowIcon icon-CambioClave"/><Label id="rowLabel" class="rowLabel">Cambio de clave</Label>
 				</View>

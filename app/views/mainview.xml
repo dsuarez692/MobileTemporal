@@ -2,8 +2,32 @@
 	<View id="mainView">
 		<View id="mainTopBar">
 			<View id="menuButton"/>
+			<View id="appTitle">
+				<Label class="appTitleLabel">Flujo de actividades</Label>
+			</View>
+			<View id="collapsibleButton" />
 		</View>
-		<TableView>
-		</TableView>
+		<ScrollView id="content">
+			<View class="titleBar" id="title">
+				<Label class="homeLabel" left="25dp">Monitor de actividades</Label>
+			</View>
+			
+			<View class="titleBar secondaryTitle" id="secondaryTitle">
+				<ImageView />
+				<Label class="homeLabel">To Do</Label>
+			</View>
+			<View class="titleBar secondaryTitle">
+				<ImageView />
+				<Label class="homeLabel">Denuncias en Curso-</Label>
+			</View>
+			<View class="titleBar secondaryTitle">
+				<ImageView />
+				<Label class="homeLabel">Consultas x denuncias realizadas</Label>
+			</View>
+			<View class="titleBar secondaryTitle">
+				<ImageView />
+				<Label class="homeLabel">Novedades</Label>
+			</View>
+		</ScrollView>
 	</View>
 </Alloy>
