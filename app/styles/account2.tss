@@ -39,6 +39,11 @@
 	right: "10%",
 	height: "10%"
 },
+"#backBtn":{
+	bottom: "0dp",
+	backgroundColor: "white",
+	zIndex: 2
+},
 "#continueBtn":{
 	bottom: "0dp",
 	backgroundColor: '#1f4e79',

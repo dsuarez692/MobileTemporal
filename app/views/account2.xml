@@ -16,6 +16,9 @@
         	<TextField class="textSimple" passwordMask="true" id="password2" hintText="  Repetir"></TextField>
         	
         </ScrollView>
+        <View class="buttonSimple" id="backBtn" onClick="goBack">
+        	<Label id="btnText">Volver</Label>
+        </View>
         <View class="buttonSimple" id="continueBtn" onClick="validateData">
         	<Label id="btnText">Guardar</Label>
         </View>
