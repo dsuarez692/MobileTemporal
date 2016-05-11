@@ -1,33 +1,71 @@
 <Alloy>
 	<View id="mainView">
 		<View id="mainTopBar">
-			<View id="menuButton"/>
 			<View id="appTitle">
+				<View id="menuButton"/>
 				<Label class="appTitleLabel">Flujo de actividades</Label>
+				<View id="collapsibleButton"/>
 			</View>
-			<View id="collapsibleButton" />
 		</View>
-		<ScrollView id="content">
-			<View class="titleBar" id="title">
-				<Label class="homeLabel" left="25dp">Monitor de actividades</Label>
-			</View>
+		<TableView>
+			<TableViewRow class="HomeContainer">
+				<View>
+					<Label class="titleLabel">Monitor de actividades</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="HomeContainer">
+				<View>
+					<View class="rowIcon icon-TodoHome" left="15dp"/>
+					<Label class="titleLabel" left="50dp">To Do</Label>
+				</View>	
+			</TableViewRow>
+			<TableViewRow class="HomeContainer">
+				<View>
+					<View class="rowIcon icon-Cuadradito" left="40dp"/>
+					<Label class="titleLabel" left="70dp">Auditar Remis de empresa</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="HomeContainer">
+				<View>
+					<View class="rowIcon icon-Cuadradito" left="40dp"/>
+					<Label class="titleLabel" left="70dp">Completar formulario de...</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="HomeContainer">
+				<View>
+					<View class="rowIcon icon-Play" left="0dp"/>
+					<Label class="titleLabel" left="50dp">Denuncias en curso</Label>
+				</View>	
+			</TableViewRow>
 			
-			<View class="titleBar secondaryTitle" id="secondaryTitle">
-				<ImageView />
-				<Label class="homeLabel">To Do</Label>
-			</View>
-			<View class="titleBar secondaryTitle">
-				<ImageView />
-				<Label class="homeLabel">Denuncias en Curso-</Label>
-			</View>
-			<View class="titleBar secondaryTitle">
-				<ImageView />
-				<Label class="homeLabel">Consultas x denuncias realizadas</Label>
-			</View>
-			<View class="titleBar secondaryTitle">
-				<ImageView />
-				<Label class="homeLabel">Novedades</Label>
-			</View>
-		</ScrollView>
+			<TableViewRow class="HomeContainer">
+				<View>
+					<View class="rowIcon icon-Chat" left="15dp"/>
+					<Label class="titleLabel" left="50dp">Consultas por denuncias</Label>	
+				</View>	
+			</TableViewRow>
+			
+			<TableViewRow class="HomeContainer">
+				<View>
+					<View class="rowIcon icon-Novedades" left="15dp"/>
+					<Label class="titleLabel" left="50dp">Novedades</Label>
+				</View>	
+			</TableViewRow>
+			
+			
+			<TableViewRow class="HomeContainer">
+				<View>
+					<View class="rowIcon icon-Cuadradito" left="40dp"/>
+					<Label class="titleLabel" left="70dp">Problema en lote de...</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="HomeContainer">
+				<View>
+					<View class="rowIcon icon-Cuadradito" left="40dp"/>
+					<Label class="titleLabel" left="70dp">Advertencia de calidad</Label>
+				</View>
+			</TableViewRow>
+		</TableView>
+		
 	</View>
 </Alloy>

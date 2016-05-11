@@ -12,7 +12,7 @@
 			</TableViewRow>
 			<TableViewRow class="tableRow">
 				<View class="rowContainer">
-					<View id="rowSkull" class="rowIcon icon-Wise"/><Label id="rowLabel" class="rowLabel">Wise</Label>
+					<View id="rowWise" class="rowIcon icon-Wise"/><Label id="rowLabel" class="rowLabel">Wise</Label>
 				</View>
 			</TableViewRow>
 			<TableViewRow class="tableRow">
