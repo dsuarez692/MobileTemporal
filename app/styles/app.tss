@@ -1,6 +1,5 @@
 "window":{
-	windowSoftInputMode:false,
-	backgroundColor: '#fff'	
+	windowSoftInputMode:false
 },
 ".labelField":{
 	color: "#1f4e79",
@@ -23,4 +22,58 @@
 ".buttonSimple":{
 	width:"80%",
 	height: "50dp"
-}
+},
+".icon-CambioClave":{
+	backgroundImage:"/media/image16.png"	
+},
+".icon-MiCuenta":{
+	backgroundImage:"/media/image15.png"	
+},
+".icon-Consultas":{
+	backgroundImage:"/media/image19.png"	
+},
+".icon-Denuncias":{
+	backgroundImage:"/media/image14.png"	
+},
+".icon-ToDo":{
+	backgroundImage:"/media/image13.png"	
+},
+".icon-RightWay":{
+	backgroundImage:"/media/image12.png"	
+},
+".icon-Foqual":{
+	backgroundImage:"/media/image18.png"	
+},
+".icon-Wise":{
+	backgroundImage:"/media/image11.png"	
+},
+".icon-LogOut":{
+	backgroundImage:"/media/image21.png"	
+},
+".icon-Camera":{
+	backgroundImage:"/media/image10.png",
+},
+".icon-RedCircle":{
+	backgroundImage:"/media/image55.png",
+	left: 5,
+	top: 5,
+	width: "25dp",
+	height: "25dp"	
+},
+".icon-TodoHome":{
+	backgroundImage:"/media/image6.png",
+},
+
+".icon-Cuadradito":{
+	backgroundImage:"/media/image7.png",
+},
+".icon-Play":{
+	backgroundImage:"/media/image42.png",
+},
+".icon-Chat":{
+	backgroundImage:"/media/image8.png",
+},
+".icon-Novedades":{
+	backgroundImage:"/media/image9.png",
+},
+

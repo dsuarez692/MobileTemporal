@@ -18,8 +18,9 @@
 "#appTitle":{
 	top: "0dp",
 	left: "0dp",
-	backgroundColor: '#f2f2f2',
-	width: Ti.UI.FILL,
+	backgroundColor: '#E0E0E0',
+	width: Titanium.UI.FILL,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
 	zIndex : 1
 },
 "#collapsibleButton":{
@@ -31,28 +32,35 @@
 },
 ".appTitleLabel":{
 	color:'black',
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER
-},
-".homeLabel":{
-	color: "#909090",
-	height: "30dp",
-	left: "10dp"
-},
-".titleBar":{
-	layout:"horizontal",
-	width: "100%",
-	backgroundColor: '#FFFFFF',
-	textAlign : Ti.UI.TEXT_ALIGNMENT_LEFT,
-	height : "30dp"
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font:{
+		fontSize: "26dp"
+	},
 },
 "#content":{
 	layout: "vertical",
 	top: "0dp",
 	left: "0dp"
 },
-"#title":{
-	top: "0dp",
+".titleLabel":{
+	color: "#000",
+	left: "10dp",
+	top:"5dp",
+	font:{
+		fontSize: "20dp"
+	},
 },
-".secondaryTitle":{
-	top: "10dp"
+".HomeContainer":{
+	backgroundColor: '#FFF',
+	height: '40dp'
+},
+".rowContainer":{
+	height: '40dp',
+	layout:'horizontal'
+},
+".rowIcon":{
+	left: 5,
+	top: 7,
+	width: "25dp",
+	height: "25dp"
 }

@@ -23,14 +23,13 @@ exports.getAccount2View=function(){
 exports.getCollapseButton=function(args){
 	var v=Ti.UI.createView({
 		height: args.h,
-		width: args.w,
-		backgroundColor: '#E0E0E0'
+		width: args.w
 	});
 	
 	var b=Ti.UI.createView({
-		height: "30dp",
-		width: "30dp",
-		backgroundImage: "/media/image5.png",
+		height: "25dp",
+		width: "40dp",
+		backgroundImage: "/media/image3.png",
 		
 	});
 	
@@ -43,13 +42,13 @@ exports.getMenuButton=function(args){
 	var v=Ti.UI.createView({
 		height: args.h,
 		width: args.w,
-		backgroundColor: '#F2F2F2'
+		backgroundColor: '#E0E0E0'
 	});
 	
 	var b=Ti.UI.createView({
-		height: "40dp",
+		height: "25dp",
 		width: "40dp",
-		backgroundImage: "/menubutton.png"
+		backgroundImage: "/media/image2.png"
 	});
 	
 	v.add(b);
