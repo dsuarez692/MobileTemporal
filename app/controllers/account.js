@@ -1,9 +1,9 @@
 var photoManager = require("photo");
 var controls = require("controls");
 
-var durationPhotoMenu = 200;
-
 var account2View = controls.getAccount2View();
+
+var durationPhotoMenu = 200;
 
 $.photoMenuTable.addEventListener('click',function(e){
 	showPhotoMenu(false);
@@ -53,15 +53,18 @@ function showPhotoMenu(open){
 	if (open){
 		moveMenuTo= 0;
 	}else{
-		moveMenuTo= -210;
+		moveMenuTo= -($.photoMenu.size.height);
 	}
 	
-	Ti.API.info(moveMenuTo);
-	
-	$.photoMenu.animate({
-		bottom: moveMenuTo,
-		duration: durationPhotoMenu
-	});
+	if(OS_IOS || OS_ANDROID){
+		$.photoMenu.animate({
+			bottom: moveMenuTo,
+			duration: durationPhotoMenu
+		});
+	}
+	if(OS_WINDOWS){
+		$.photoMenu.setBottom(moveMenuTo);
+	}
 }
 
 function validateData(){
@@ -99,8 +102,8 @@ $.userPhoto.addEventListener('click', function(){
 	showPhotoMenu(true);
 });
 
-$.mainView.addEventListener('resetView', function(){
-	$.content.remove(account2View.getView());
+$.mainView.addEventListener('resetView', function(e){
+	Ti.API.info('Recibi el evento resetView');
 	$.name = "";
 	$.last = "";
 	$.username = "";
@@ -108,6 +111,11 @@ $.mainView.addEventListener('resetView', function(){
 	$.password2 = "";
 	$.userPhoto.removeAllChildren();
 	loadDefaultPhotoImage();
+	var childrens = $.content.getChildren();
+	for(var i=0; i<childrens.length; i++){
+		childrens[i].fireEvent('resetView');
+		$.content.remove(childrens[i]);
+	}
 });
 
 loadDefaultPhotoImage();

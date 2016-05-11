@@ -60,8 +60,6 @@ accountView.collapsibleButton.add(controls.getCollapseButton({
 	w: '40'
 }));
 
-//var account2View=controls.getAccount2View();
-
 $.drawermenu.init({
     menuview:menuView.getView(),
     mainview:mainView.getView(),

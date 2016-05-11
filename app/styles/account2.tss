@@ -1,19 +1,14 @@
-"#mainView":{
-	layout: 'absolute',
-	backgroundColor: '#f2f2f2',
-	height: Ti.UI.FILL
-},
 "#content":{
 	top: "0dp",
 	height: Ti.UI.FILL,
-	width: "100%",
+	width: Ti.UI.FILL,
 	layout:"absolute",
 	backgroundColor: 'white'
 },
 "#form":{
 	top: "60dp",
 	left: "0dp",
-	height: Ti.UI.SIZE,
+	height: Ti.UI.FILL,
 	layout:"vertical",
 	scrollType: 'vertical'
 },

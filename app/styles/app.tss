@@ -4,7 +4,7 @@
 ".labelField":{
 	color: "#1f4e79",
 	font: {
-			fontSize: "10dp"
+			fontSize: "20dp"
 		  },
 	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	width: "90%"
@@ -16,7 +16,7 @@
 	width: "90%",
 	borderColor: '#1f4e79',
 	font: {
-			fontSize: "10dp"
+			fontSize: "20dp"
 	}
 },
 ".buttonSimple":{

@@ -1,26 +1,23 @@
 <Alloy>
-	<View id="content">
-    	<View id="subtitleBar">
-    		<Label class="subtitleLabel">Perfil completado al:</Label>
-    		<Label class="subtitleLabel">80%</Label>
-    	</View>
+    <View id="content">
+        <View id="subtitleBar">
+            <Label class="subtitleLabel">Perfil completado al:</Label>
+            <Label class="subtitleLabel">80%</Label>
+        </View>
         <ScrollView id="form">
-        	<Label class="labelField">SELECCIONE EL MODELO DE NEGOCIO AL QUE PERTENECE</Label>
-        	<View class="businessPick">
-        		
-        	</View>
-        	<Label class="labelField">SELECCIONE EL SECTOR AL QUE PERTENECE</Label>
-        	<TextField class="textSimple" id="username" hintText="  Obligatorio"></TextField>
-        	<Label class="labelField">NOMBRE DE PERSONA A LA QUE REPORTA</Label>
-        	<TextField class="textSimple" passwordMask="true" id="password" hintText="  Entre 6 y 20 caracteres"></TextField>
-        	<TextField class="textSimple" passwordMask="true" id="password2" hintText="  Repetir"></TextField>
-        	
+            <Label class="labelField">SELECCIONE EL MODELO DE NEGOCIO AL QUE PERTENECE</Label>
+            <View class="businessPick"/>
+            <Label class="labelField">SELECCIONE EL SECTOR AL QUE PERTENECE</Label>
+            <TextField class="textSimple" hintText="  Sector" id="sector"/>
+            <Label class="labelField">NOMBRE DE PERSONA A LA QUE REPORTA</Label>
+            <TextField class="textSimple" hintText="  Nombre" id="bossname"/>
+            <TextField class="textSimple" hintText="  Apellido" id="bosslast"/>
         </ScrollView>
         <View class="buttonSimple" id="backBtn" onClick="goBack">
-        	<Label id="btnText">Volver</Label>
+            <Label id="btnText">Volver</Label>
         </View>
         <View class="buttonSimple" id="continueBtn" onClick="validateData">
-        	<Label id="btnText">Guardar</Label>
+            <Label id="btnText">Guardar</Label>
         </View>
     </View>
 </Alloy>
