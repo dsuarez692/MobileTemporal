@@ -5,7 +5,7 @@
 ".menuTopBar":{
 	width: Ti.UI.FILL,
 	height: "160dp",
-	backgroundColor: '#2E5486',
+	//backgroundColor: '#2E5486',
 	layout: 'horizontal',
 },
 

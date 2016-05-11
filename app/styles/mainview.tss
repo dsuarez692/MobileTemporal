@@ -61,6 +61,6 @@
 ".rowIcon":{
 	left: 5,
 	top: 7,
-	width: "25dcp",
+	width: "25dp",
 	height: "25dp"
 }
