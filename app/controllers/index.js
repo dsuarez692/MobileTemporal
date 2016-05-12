@@ -43,6 +43,8 @@ passChangeView.collapsibleButton.add(controls.getCollapseButton({
 // get config view as objects
 var accountView=controls.getAccountView();
 
+var reportView=controls.getReportView();
+
 //add menu view to ConfigView exposed by widget
 accountView.menuButton.add(controls.getMenuButton({
                 h: '40',
@@ -128,6 +130,11 @@ menuView.menuTable.addEventListener('click',function(e){
     			case 3:
     				break;
     		};
+    		break;
+    	case "wise":
+    		mainView.appTitleLabel.text = "WISE";
+    		$.drawermenu.drawermainview.add(reportView.getView());
+    		
     		break;
     };
 });

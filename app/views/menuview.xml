@@ -10,7 +10,7 @@
 					<Label id="rowLabel" class="rowLabelHeader">Denuncias</Label>
 				</View>
 			</TableViewRow>
-			<TableViewRow class="tableRow">
+			<TableViewRow class="tableRow" id="wise">
 				<View class="rowContainer">
 					<View id="rowWise" class="rowIcon icon-Wise"/><Label id="rowLabel" class="rowLabel">Wise</Label>
 				</View>
