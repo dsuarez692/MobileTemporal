@@ -2,9 +2,9 @@
     <View id="mainView">
         <View id="mainTopBar">
             <View id="appTitle">
-            	<View id="menuButton"/>
+                <View id="menuButton"/>
                 <Label class="appTitleLabel">Mi cuenta</Label>
-          		<View id="collapsibleButton"/>
+                <View id="collapsibleButton" class="collapsibleButton"/>
             </View>
         </View>
         <ScrollView id="content">

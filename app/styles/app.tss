@@ -76,4 +76,11 @@
 ".icon-Novedades":{
 	backgroundImage:"/media/image9.png",
 },
-
+".collapsibleMenu":{
+	width: Ti.UI.FILL,
+	zIndex:1000,	
+	top: -400,
+	left: 0,
+	height: 400,
+	layout: 'vertical'
+}

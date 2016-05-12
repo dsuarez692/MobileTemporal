@@ -1,5 +1,7 @@
 var controls=require('controls');
 
+var collapsibleMenuOpen = false;
+
 // get main and menu view as objects
 var menuView=controls.getMenuView();
 var mainView=controls.getMainView();
@@ -80,9 +82,9 @@ menuView.menuTable.addEventListener('click',function(e){
     			case 1:
     				break;
     			case 2:
-    			    var childrens = $.drawermenu.drawermainview.getChildren();
-    				for(var i=0; i<childrens.length; i++){
-    					childrens[i].fireEvent('resetView');
+    			    var children = $.drawermenu.drawermainview.getChildren();
+    				for(var i=0; i<children.length; i++){
+    					children[i].fireEvent('resetView');
     				}
     				$.drawermenu.drawermainview.remove(accountView.getView());
     				activeView = 1;
@@ -126,6 +128,23 @@ menuView.menuTable.addEventListener('click',function(e){
     			case 3:
     				break;
     		};
+    		break;
+    	case 'wise':
+    		mainView.appTitleLabel.text = 'WISE';
+    		mainView.collapsibleMenu.add(controls.getWiseMenu());
+    		Ti.API.info(JSON.stringify(mainView.collapsibleMenu));
+    		Ti.API.info(JSON.stringify(controls.getWiseMenu()));
+    		mainView.collapsibleButton.addEventListener('click', function(e){
+    			if(collapsibleMenuOpen){
+    				moveCollapsibleMenuTo = -mainView.collapsibleMenu.size.height;
+    				collapsibleMenuOpen = false;
+    			}else{
+    				moveCollapsibleMenuTo = 40;
+    				collapsibleMenuOpen = true;
+    			}
+    			Ti.API.info('Entre');
+    			mainView.collapsibleMenu.setTop(moveCollapsibleMenuTo);
+    		});
     		break;
     };
 });
