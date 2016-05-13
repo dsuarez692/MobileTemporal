@@ -39,38 +39,69 @@ exports.getCollapseButton=function(args){
 };
 
 exports.getWiseMenu=function(){
-	var w = Ti.UI.createTableView({
-		height: Ti.UI.FILL,
-		backgroundColor:'#868686',
-		zIndex: 1001,
-		width: Ti.UI.FILL,
-		layout: 'vertical'
-	});
 	
-	var op1 = Ti.UI.createTableViewRow({
-		zIndex: 1002,
-		height: 30,
-		width: Ti.UI.FILL,
-		layout: 'vertical'
-	});
+	
+	var tableData = [];
+	
+	var op1 = Ti.UI.createTableViewRow();
 	var op1View = Ti.UI.createView({
-		zIndex: 1003,
-		height: Ti.UI.FILL,
+		height: 40,
 		width: Ti.UI.FILL,
-		layout: 'vertical'
+		layout: 'vertical',
+		backgroundColor: '#000000',
+		top:0,
+		left:0
 	});
 	var op1Label = Ti.UI.createLabel({
 		color: '#FFFFFF',
-		text: 'Formulario 1',
+		text: 'Auditoría de manejo',
 		font: {
-			fontSize: 30
+			fontSize: 20
 		},
-		zIndex: 1004
+		width:Ti.UI.SIZE,
+		height: Ti.UI.SIZE,
+		textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT
 	});
+	
+	var op2 = Ti.UI.createTableViewRow();
+	var op2View = Ti.UI.createView({
+		height: 40,
+		width: Ti.UI.FILL,
+		layout: 'vertical',
+		backgroundColor: '#000000',
+		top:0,
+		left:0
+	});
+	var op2Label = Ti.UI.createLabel({
+		color: '#FFFFFF',
+		text: 'Chequeo vehicular',
+		font: {
+			fontSize: 20
+		},
+		width:Ti.UI.SIZE,
+		height: Ti.UI.SIZE,
+		textAlign:Ti.UI.TEXT_ALIGNMENT_LEFT
+	});
+	
 	
 	op1View.add(op1Label);
 	op1.add(op1View);
-	w.add(op1);
+	op2View.add(op2Label);
+	op2.add(op2View);
+	tableData.push(op1);
+	tableData.push(op2);
+	
+	var w = Ti.UI.createTableView({
+		objName: 'wiseMenu',
+		height: Ti.UI.SIZE,
+		backgroundColor:'#000000',
+		width: Ti.UI.FILL,
+		layout: 'vertical',
+		top:0,
+		left:0,
+		data: tableData,
+		separatorColor: '#FFFFFF'
+	});
 	
 	return w;
 };

@@ -111,13 +111,13 @@ $.mainView.addEventListener('resetView', function(e){
 	$.password2 = "";
 	$.userPhoto.removeAllChildren();
 	loadDefaultPhotoImage();
-	var children = $.content.getChildren();
+	/*var children = $.content.getChildren();
 	for(var i=0; i< children.length; i++){
 		if(children[i].id == 'content'){
 			children[i].fireEvent('resetView');
 			$.content.remove(children[i]);
 		}
-	}
+	}*/
 });
 
 loadDefaultPhotoImage();
