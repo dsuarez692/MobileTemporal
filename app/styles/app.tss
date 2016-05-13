@@ -1,6 +1,45 @@
 "window":{
 	windowSoftInputMode:false
 },
+".appTitleLabel":{
+	color:'black',
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font:{
+		fontSize: "26dp"
+	},
+},
+"#appTitle":{
+	top: "0dp",
+	left: "0dp",
+	backgroundColor: '#E0E0E0',
+	width: Titanium.UI.FILL,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	zIndex : 1
+},
+"#collapsibleButton":{
+	right: "0dp",
+	top: "0dp",
+	width: "40dp",
+	height: "40dp",
+	zIndex : 2
+},
+"#mainView":{
+	layout: 'vertical',
+	backgroundColor: '#EEE'
+},
+"#mainTopBar":{
+	position: "0,0",
+	height: "40dp",
+	backgroundColor: '#E0E0E0',
+	layout: 'horizontal'
+},
+"#menuButton":{
+	top: "0dp",
+	left: "0dp",
+	width: "40dp",
+	height: "40dp",
+	zIndex : 2
+},
 ".labelField":{
 	color: "#1f4e79",
 	font: {
@@ -20,7 +59,7 @@
 	}
 },
 ".buttonSimple":{
-	width:"80%",
+	width:"40%",
 	height: "50dp"
 },
 ".icon-CambioClave":{
