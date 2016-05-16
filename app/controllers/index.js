@@ -134,10 +134,13 @@ menuView.menuTable.addEventListener('click',function(e){
     		mainView.collapsibleMenu.add(controls.getWiseMenu());
     		mainView.collapsibleButton.addEventListener('click', function(e){
     			if(collapsibleMenuOpen){
-    				moveCollapsibleMenuTo = -mainView.collapsibleMenu.size.height;
+    				moveCollapsibleMenuTo = -600;
     				collapsibleMenuOpen = false;
     			}else{
-    				moveCollapsibleMenuTo = 45;
+    				moveCollapsibleMenuTo = 40;
+    				if(OS_WINDOWS){
+    					moveCollapsibleMenuTo = 45;
+    				}
     				collapsibleMenuOpen = true;
     			}
     			if(OS_IOS || OS_ANDROID){

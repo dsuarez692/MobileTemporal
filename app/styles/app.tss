@@ -1,6 +1,6 @@
 "window":{
 	windowSoftInputMode:false
-},
+}
 ".labelField":{
 	color: "#1f4e79",
 	font: {
