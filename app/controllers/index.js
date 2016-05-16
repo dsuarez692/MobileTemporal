@@ -153,6 +153,9 @@ menuView.menuTable.addEventListener('click',function(e){
     		break;
     	case "wise":
     		mainView.appTitleLabel.text = "WISE";
+    		reportView.reportName.text = "Auditoría de manejo";
+    		reportView.form.add(controls.getWISEPaso1().getView());
+    		
     		$.drawermenu.drawermainview.add(reportView.getView());
     		
     		break;

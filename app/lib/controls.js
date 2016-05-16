@@ -18,6 +18,9 @@ exports.getPasswordChangeView=function(){
 exports.getReportView=function(){
 	return Alloy.createController('report');
 };
+exports.getWISEPaso1=function(){
+	return Alloy.createController('WISEPaso1');;
+};
 
 exports.getAccount2View=function(){
 	return Alloy.createController('account2');
@@ -57,4 +60,29 @@ exports.getMenuButton=function(args){
 	v.add(b);
 	
 	return v;
+};
+
+exports.createCheckbox = function(specs) {
+    if(typeof specs != "object")
+        specs = {};
+    specs.width = specs.width || 25;
+    specs.backgroundColor = specs.unCheckedColor || "white";
+    specs.height = specs.height || 25;
+    specs.border = specs.border || 1;
+    specs.borderColor = specs.borderColor || "silver";
+    var viw = Ti.UI.createView(specs);
+
+    function togglecheck () {
+        if(!viw.checked) {
+            viw.checked = true;
+            viw.backgroundColor = specs.checkedColor || "green";
+        }
+        else {
+            viw.checked = false;
+            viw.backgroundColor = specs.unCheckedColor || "white";
+        }           
+    }
+    viw.addEventListener("click",togglecheck);
+
+    return viw;
 };

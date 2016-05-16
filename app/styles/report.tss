@@ -1,3 +1,7 @@
+"#mainView":{
+	layout: 'vertical',
+	backgroundColor: '#FFF'
+},
 "#reportNameContainer":{
 	top: "0dp",
 	left: "0dp",
@@ -12,7 +16,6 @@
 	font:{
 		fontSize: "25dp"
 	}
-	
 },
 "#content":{
 	top: "40dp",
@@ -22,9 +25,9 @@
 	backgroundColor: 'white'
 },
 "#form":{
-	top: "120dp",
+	top: "5dp",
 	left: "0dp",
-	height: Ti.UI.SIZE,
+	height: Ti.UI.FILL,
 	layout:"vertical",
 	scrollType: 'vertical'
 },
@@ -44,6 +47,11 @@
 	backgroundColor: '#1f4e79',
 	zIndex: 2
 },
-".":{
-	color:"Blue"
-}
+"#lineaDeNegocio":{
+	height: '80dp'
+},
+".rowIcon":{
+	width: "40dp",
+	height: "40dp",
+	textAlign: Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
