@@ -45,11 +45,9 @@ function requestPermissions() {
 	// FIXME: https://jira.appcelerator.org/browse/TIMOB-19851
 	// You will be prompted to grant to permissions. If you deny either one weird things happen
 	Ti.Media.requestCameraPermissions(function(e) {
-		log.args('Ti.Media.requestCameraPermissions', e);
 
 		if (e.success) {
 
-			// Instead, probably call the same method you call if hasCameraPermissions() is true
 			alert('You granted permission.');
 
 		} else if (OS_ANDROID) {
@@ -64,8 +62,10 @@ function requestPermissions() {
 }
 
 exports.tomarFoto = function(callback){
-	if(!Ti.Media.hasCameraPermissions){
-		return requestPermissions();
+	if(OS_IOS || OS_ANDROID){
+		if(!Ti.Media.hasCameraPermissions){
+			return requestPermissions();
+		}
 	}
 	Ti.Media.showCamera({
 		success:function(event) {
@@ -79,17 +79,21 @@ exports.tomarFoto = function(callback){
 		cancel:function() {
 		},
 		error:function(error) {
+			Ti.API.error(error.error);
 		},
-		saveToPhotoGallery:false,
-		allowEditing:true,
+		saveToPhotoGallery:true,
+		allowEditing:false,
+		inPopOver: false,
 		mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO]
 	});
 };
 
 exports.cargarFoto=function(callback){
 
-	if(!Ti.Media.hasCameraPermissions){
-		return requestPermissions();
+	if(OS_IOS || OS_ANDROID){
+		if(!Ti.Media.hasCameraPermissions){
+			return requestPermissions();
+		}
 	}
 	Ti.Media.openPhotoGallery({
 		success:function(event) {
@@ -103,9 +107,10 @@ exports.cargarFoto=function(callback){
 		cancel:function() {
 		},
 		error:function(error) {
+			Ti.API.error(error.error);
 		},
 		saveToPhotoGallery:false,
-		allowEditing:true,
+		allowEditing:false,
 		mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO]
 	});
 };

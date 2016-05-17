@@ -1,7 +1,7 @@
 var photoManager = require("photo");
 var controls = require("controls");
 
-var account2View = controls.getAccount2View();
+var account2View = null;
 
 var durationPhotoMenu = 200;
 
@@ -93,7 +93,7 @@ function validateData(){
 		return;
 	}
 	
-	
+	account2View = controls.getAccount2View();
 	
 	$.content.add(account2View.getView());
 }
