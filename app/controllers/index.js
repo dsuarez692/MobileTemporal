@@ -3,6 +3,27 @@ var controls=require('controls');
 // get main and menu view as objects
 var menuView=controls.getMenuView();
 var mainView=controls.getMainView();
+var reportView=controls.getReportView();
+
+
+
+//add menu view to ConfigView exposed by widget
+reportView.menuButton.add(controls.getMenuButton({
+                h: '40',
+                w: '40'
+            }));
+
+//Minor changes to click event. Update the menuOpen status;
+reportView.menuButton.addEventListener('click',function(){
+	$.drawermenu.showhidemenu();
+	$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
+}); // method is exposed by widget
+
+reportView.collapsibleButton.add(controls.getCollapseButton({
+	h: '40',
+	w: '40'
+}));
+
 
 // attach event listener to menu button
 mainView.menuButton.add(controls.getMenuButton({
@@ -42,6 +63,7 @@ passChangeView.collapsibleButton.add(controls.getCollapseButton({
 
 // get config view as objects
 var accountView=controls.getAccountView();
+
 
 //add menu view to ConfigView exposed by widget
 accountView.menuButton.add(controls.getMenuButton({
@@ -128,6 +150,14 @@ menuView.menuTable.addEventListener('click',function(e){
     			case 3:
     				break;
     		};
+    		break;
+    	case "wise":
+    		mainView.appTitleLabel.text = "WISE";
+    		reportView.reportName.text = "Auditoría de manejo";
+    		reportView.form.add(controls.getWISEPaso1().getView());
+    		
+    		$.drawermenu.drawermainview.add(reportView.getView());
+    		
     		break;
     };
 });

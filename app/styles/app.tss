@@ -1,6 +1,58 @@
 "window":{
 	windowSoftInputMode:false
 },
+".appTitleLabel":{
+	color:'black',
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	font:{
+		fontSize: "26dp"
+	},
+},
+".rowIcon":{
+	left: 5,
+	top: 7,
+	width: "25dp",
+	height: "25dp"
+},
+".titleLabel":{
+	color: "#000",
+	left: "10dp",
+	top:"5dp",
+	font:{
+		fontSize: "20dp"
+	},
+},
+"#appTitle":{
+	left: "0dp",
+	backgroundColor: '#E0E0E0',
+	width: Titanium.UI.FILL,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	zIndex : 1
+},
+"#collapsibleButton":{
+	right: "0dp",
+	top: "0dp",
+	width: "40dp",
+	height: "40dp",
+	zIndex : 2
+},
+"#mainView":{
+	layout: 'vertical',
+	backgroundColor: '#EEE'
+},
+"#mainTopBar":{
+	position: "0,0",
+	height: "40dp",
+	backgroundColor: '#E0E0E0',
+	layout: 'horizontal'
+},
+"#menuButton":{
+	top: "0dp",
+	left: "0dp",
+	width: "40dp",
+	height: "40dp",
+	zIndex : 2
+},
 ".labelField":{
 	color: "#1f4e79",
 	font: {
@@ -20,8 +72,15 @@
 	}
 },
 ".buttonSimple":{
-	width:"80%",
+	width:"40%",
 	height: "50dp"
+},
+".reportTextSelected":{
+	color:"Blue",
+	top:"0dp",
+	font: {
+		fontSize: "15dp"
+	}
 },
 ".icon-CambioClave":{
 	backgroundImage:"/media/image16.png"	
@@ -76,4 +135,8 @@
 ".icon-Novedades":{
 	backgroundImage:"/media/image9.png",
 },
+".icon-Negocio1":{
+	backgroundImage:"/media/image56.png",
+},
+
 

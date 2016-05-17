@@ -3,7 +3,7 @@
 		<View id="mainTopBar">
 			<View id="appTitle">
 				<View id="menuButton"/>
-				<Label class="appTitleLabel">Flujo de actividades</Label>
+				<Label class="appTitleLabel" id="appTitleLabel">Flujo de actividades</Label>
 				<View id="collapsibleButton"/>
 			</View>
 		</View>
@@ -33,7 +33,7 @@
 			</TableViewRow>
 			<TableViewRow class="HomeContainer">
 				<View>
-					<View class="rowIcon icon-Play" left="0dp"/>
+					<View class="rowIcon icon-Play" left="15dp"/>
 					<Label class="titleLabel" left="50dp">Denuncias en curso</Label>
 				</View>	
 			</TableViewRow>
