@@ -29,8 +29,8 @@
                 </View>
             </View>
         </View>
-        <ScrollView id="form"/>
-        <View zIndex="9999">
+        <ScrollView id="form"></ScrollView>
+        <View zIndex="9999" height="50dp">
             <View class="buttonSimple" id="volverBtn" left="5%">
                 <Label id="btnText">Volver</Label>
             </View>

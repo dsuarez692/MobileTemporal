@@ -23,9 +23,9 @@
 	"backgroundColor": "white"
 },
 "#form": {
-	"top": "5dp",
+	"top": "15dp",
 	"left": "0dp",
-	"height": Ti.UI.FILL,
+	"height": "200dp",
 	"layout": "vertical",
 	"scrollType": "vertical",
 },
@@ -33,9 +33,9 @@
 	"bottom": "5dp",
 	"left": "10%",
 	"right": "10%",
-	"height": "12%",
+	"height": "70%",
 	"backgroundColor": "#8EDCFE",
-	"zIndex": "2"
+	"zIndex": 9999
 },
 ".tableRow": {
 	"height": "50dp"
@@ -51,5 +51,5 @@
 ".rowIcon": {
 	"width": "60dp",
 	"height": "60dp",
-	"textAlign": "Titanium.UI.TEXT_ALIGNMENT_CENTER"
+	"textAlign": Titanium.UI.TEXT_ALIGNMENT_CENTER
 }

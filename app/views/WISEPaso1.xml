@@ -3,7 +3,7 @@
         <TableView>
             <TableViewRow class="HomeContainer">
                 <View>
-                    <View id="CheckCinturon"/>
+                    <View id="CheckCinturon" height="30dp" width="30dp"></View>
                     <Label class="reportTextSelected" left="35dp">Usa cinturón de seguridad</Label>
                 </View>
             </TableViewRow>

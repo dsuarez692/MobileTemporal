@@ -1,8 +1,8 @@
 "window": {
-	"windowSoftInputMode": "false"
+	"windowSoftInputMode": false
 },
 ".appTitleLabel": {
-	"color": "black",
+	"color": 'black',
 	"textAlign": Ti.UI.TEXT_ALIGNMENT_CENTER,
 	"font": {fontSize:"26dp"}
 },
@@ -21,20 +21,20 @@
 "#appTitle": {
 	"left": "0dp",
 	"backgroundColor": "#E0E0E0",
-	"width": "Titanium.UI.FILL",
+	"width": Titanium.UI.FILL,
 	"textAlign": Ti.UI.TEXT_ALIGNMENT_CENTER,
-	"zIndex": "1"
+	"zIndex": 1
 },
 "#collapsibleButton": {
 	"right": "0dp",
 	"top": "0dp",
 	"width": "40dp",
 	"height": "40dp",
-	"zIndex": "2"
+	"zIndex": 2
 },
 "#mainView": {
 	"layout": "vertical",
-	"backgroundColor": "#EEE"
+	"backgroundColor": "#FFF"
 },
 "#mainTopBar": {
 	"position": "0,0",
@@ -47,12 +47,12 @@
 	"left": "0dp",
 	"width": "40dp",
 	"height": "40dp",
-	"zIndex": "2"
+	"zIndex": 2
 },
 ".labelField": {
 	"color": "#1f4e79",
 	"font": {fontSize:"10dp"},
-	"textAlign": "Titanium.UI.TEXT_ALIGNMENT_LEFT",
+	"textAlign": Titanium.UI.TEXT_ALIGNMENT_LEFT,
 	"width": "90%"
 },
 ".textSimple": {
