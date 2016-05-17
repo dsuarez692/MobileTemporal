@@ -1,142 +1,138 @@
-"window":{
-	windowSoftInputMode:false
+"window": {
+	"windowSoftInputMode": "false"
 },
-".appTitleLabel":{
-	color:'black',
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-	font:{
-		fontSize: "26dp"
-	},
+".appTitleLabel": {
+	"color": "black",
+	"textAlign": Ti.UI.TEXT_ALIGNMENT_CENTER,
+	"font": {fontSize:"26dp"}
 },
-".rowIcon":{
-	left: 5,
-	top: 7,
-	width: "25dp",
-	height: "25dp"
+".rowIcon": {
+	"left": "5",
+	"top": "7",
+	"width": "25dp",
+	"height": "25dp"
 },
-".titleLabel":{
-	color: "#000",
-	left: "10dp",
-	top:"5dp",
-	font:{
-		fontSize: "20dp"
-	},
+".titleLabel": {
+	"color": "#000",
+	"left": "10dp",
+	"top": "5dp",
+	"font": {fontSize:"20dp"}
 },
-"#appTitle":{
-	left: "0dp",
-	backgroundColor: '#E0E0E0',
-	width: Titanium.UI.FILL,
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
-	zIndex : 1
+"#appTitle": {
+	"left": "0dp",
+	"backgroundColor": "#E0E0E0",
+	"width": "Titanium.UI.FILL",
+	"textAlign": Ti.UI.TEXT_ALIGNMENT_CENTER,
+	"zIndex": "1"
 },
-"#collapsibleButton":{
-	right: "0dp",
-	top: "0dp",
-	width: "40dp",
-	height: "40dp",
-	zIndex : 2
+"#collapsibleButton": {
+	"right": "0dp",
+	"top": "0dp",
+	"width": "40dp",
+	"height": "40dp",
+	"zIndex": "2"
 },
-"#mainView":{
-	layout: 'vertical',
-	backgroundColor: '#EEE'
+"#mainView": {
+	"layout": "vertical",
+	"backgroundColor": "#EEE"
 },
-"#mainTopBar":{
-	position: "0,0",
-	height: "40dp",
-	backgroundColor: '#E0E0E0',
-	layout: 'horizontal'
+"#mainTopBar": {
+	"position": "0,0",
+	"height": "40dp",
+	"backgroundColor": "#E0E0E0",
+	"layout": "horizontal"
 },
-"#menuButton":{
-	top: "0dp",
-	left: "0dp",
-	width: "40dp",
-	height: "40dp",
-	zIndex : 2
+"#menuButton": {
+	"top": "0dp",
+	"left": "0dp",
+	"width": "40dp",
+	"height": "40dp",
+	"zIndex": "2"
 },
-".labelField":{
-	color: "#1f4e79",
-	font: {
-			fontSize: "10dp"
-		  },
-	textAlign: Titanium.UI.TEXT_ALIGNMENT_LEFT,
-	width: "90%"
+".labelField": {
+	"color": "#1f4e79",
+	"font": {fontSize:"10dp"},
+	"textAlign": "Titanium.UI.TEXT_ALIGNMENT_LEFT",
+	"width": "90%"
 },
-".textSimple":{
-	backgroundColor: 'white',
-	hintTextColor: '#cecece',
-	color: 'black',
-	width: "90%",
-	borderColor: '#1f4e79',
-	font: {
-			fontSize: "10dp"
-	}
+".textSimple": {
+	"backgroundColor": "white",
+	"hintTextColor": "#cecece",
+	"color": "black",
+	"width": "90%",
+	"borderColor": "#1f4e79",
+	"font": {fontSize:"10dp"}
 },
-".buttonSimple":{
-	width:"40%",
-	height: "50dp"
+".buttonSimple": {
+	"width": "40%",
+	"height": "50dp"
 },
-".reportTextSelected":{
-	color:"Blue",
-	top:"0dp",
-	font: {
-		fontSize: "15dp"
-	}
+".reportTextSelected": {
+	"color": "Blue",
+	"top": "0dp",
+	"font": {fontSize:"18dp"}
 },
-".icon-CambioClave":{
-	backgroundImage:"/media/image16.png"	
+".icon-CambioClave": {
+	"backgroundImage": "/media/image16.png"
 },
-".icon-MiCuenta":{
-	backgroundImage:"/media/image15.png"	
+".icon-MiCuenta": {
+	"backgroundImage": "/media/image15.png"
 },
-".icon-Consultas":{
-	backgroundImage:"/media/image19.png"	
+".icon-Consultas": {
+	"backgroundImage": "/media/image19.png"
 },
-".icon-Denuncias":{
-	backgroundImage:"/media/image14.png"	
+".icon-Denuncias": {
+	"backgroundImage": "/media/image14.png"
 },
-".icon-ToDo":{
-	backgroundImage:"/media/image13.png"	
+".icon-ToDo": {
+	"backgroundImage": "/media/image13.png"
 },
-".icon-RightWay":{
-	backgroundImage:"/media/image12.png"	
+".icon-RightWay": {
+	"backgroundImage": "/media/image12.png"
 },
-".icon-Foqual":{
-	backgroundImage:"/media/image18.png"	
+".icon-Foqual": {
+	"backgroundImage": "/media/image18.png"
 },
-".icon-Wise":{
-	backgroundImage:"/media/image11.png"	
+".icon-Wise": {
+	"backgroundImage": "/media/image11.png"
 },
-".icon-LogOut":{
-	backgroundImage:"/media/image21.png"	
+".icon-LogOut": {
+	"backgroundImage": "/media/image21.png"
 },
-".icon-Camera":{
-	backgroundImage:"/media/image10.png",
+".icon-Camera": {
+	"backgroundImage": "/media/image10.png"
 },
-".icon-RedCircle":{
-	backgroundImage:"/media/image55.png",
-	left: 5,
-	top: 5,
-	width: "25dp",
-	height: "25dp"	
+".icon-RedCircle": {
+	"backgroundImage": "/media/image55.png",
+	"left": "5",
+	"top": "5",
+	"width": "25dp",
+	"height": "25dp"
 },
-".icon-TodoHome":{
-	backgroundImage:"/media/image6.png",
+".icon-TodoHome": {
+	"backgroundImage": "/media/image6.png"
 },
-
-".icon-Cuadradito":{
-	backgroundImage:"/media/image7.png",
+".icon-Cuadradito": {
+	"backgroundImage": "/media/image7.png"
 },
-".icon-Play":{
-	backgroundImage:"/media/image42.png",
+".icon-Play": {
+	"backgroundImage": "/media/image42.png"
 },
-".icon-Chat":{
-	backgroundImage:"/media/image8.png",
+".icon-Chat": {
+	"backgroundImage": "/media/image8.png"
 },
-".icon-Novedades":{
-	backgroundImage:"/media/image9.png",
+".icon-Novedades": {
+	"backgroundImage": "/media/image9.png"
 },
-".icon-Negocio1":{
-	backgroundImage:"/media/image56.png",
+".icon-Negocio1": {
+	"backgroundImage": "/media/image56.png"
 },
-
-
+".icon-Negocio2": {
+	"backgroundImage": "/media/image57.png"
+},
+".icon-Negocio3": {
+	"backgroundImage": "/media/image58.png"
+},
+".icon-Negocio4": {
+	"backgroundImage": "/media/image59.png"
+}
