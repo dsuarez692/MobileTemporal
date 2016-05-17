@@ -1,0 +1,35 @@
+<Alloy>
+    <View id="mainView">
+        <View id="mainTopBar">
+        	<View id="appTitle">
+				<View id="menuButton"/>
+				<Label class="appTitleLabel" id="appTitleLabel">WISE</Label>
+				<View id="collapsibleButton"/>
+			</View>
+        </View>
+        <View id="reportNameContainer"><Label id="reportName"></Label></View>
+        <View id="lineaDeNegocio">
+        	<View top="3dp"><Label class="reportTextSelected">SELECCIONE LÍNEA DE NEGOCIO A AUDITAR</Label></View>
+        	<View top="30dp">
+        		<View width="25%" left="5%"><View class="rowIcon icon-Negocio1"/></View>
+				<View width="25%" left="30%"><View class="rowIcon icon-TodoHome"/></View>
+				<View width="25%" left="55%"><View class="rowIcon icon-TodoHome"/></View>
+				<View width="25%" left="80%"><View class="rowIcon icon-TodoHome"/></View>
+        	</View>
+		</View>
+		
+        <ScrollView id="form">
+        	
+        </ScrollView>
+    
+        <View>
+	        <View class="buttonSimple" id="volverBtn" left="5%"> 
+	        	<Label id="btnText">Volver</Label>
+	        </View>
+	        
+	        <View class="buttonSimple" id="siguienteBtn" left="55%">
+	        	<Label id="btnText">Siguiente</Label>
+        	</View>
+        </View>
+    </View>
+</Alloy>

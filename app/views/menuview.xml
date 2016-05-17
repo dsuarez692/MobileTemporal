@@ -1,84 +1,69 @@
 <Alloy>
-    <View id="menuView">
-        <View class="menuTopBar icon-Camera" id="menuTopBar" left="left" width="250">
-            <View id="menuTopBarName">
-                <Label class="menuNombreUsuario" id="rowNombreUsuario">Usuario</Label>
-            </View>
-        </View>
-        <View id="menuTopBarLogOut">
-            <Label class="rowLabelLogOut" id="rowLabel">Cerrar sesión</Label>
-            <View class="rowIcon icon-LogOut" id="rowLogOut"/>
-        </View>
-        <TableView class="menuTable" id="menuTable">
-            <TableViewRow class="tableRowHeader">
-                <View class="rowContainerHeader">
-                    <Label class="rowLabelHeader" id="rowLabel">Denuncias</Label>
-                </View>
-            </TableViewRow>
-            <TableViewRow class="tableRow" id="wise">
-                <View class="rowContainer">
-                    <View class="rowIcon icon-Wise" id="rowWise"/>
-                    <Label class="rowLabel" id="rowLabel">Wise</Label>
-                </View>
-            </TableViewRow>
-            <TableViewRow class="tableRow">
-                <View class="rowContainer">
-                    <View class="rowIcon icon-Foqual" id="rowFoqual"/>
-                    <Label class="rowLabel" id="rowLabel">Foqual</Label>
-                </View>
-            </TableViewRow>
-            <TableViewRow class="tableRow">
-                <View class="rowContainer">
-                    <View class="rowIcon icon-RightWay" id="rowRightWay"/>
-                    <Label class="rowLabel" id="rowLabel">Right Way</Label>
-                </View>
-            </TableViewRow>
-            <TableViewRow class="tableRowHeader">
-                <View class="rowContainerHeader">
-                    <Label class="rowLabelHeader" id="rowLabel">Mis actividades</Label>
-                </View>
-            </TableViewRow>
-            <TableViewRow class="tableRow">
-                <View class="rowContainer">
-                    <View class="rowIcon icon-ToDo" id="rowToDo"/>
-                    <Label class="rowLabel" id="rowLabel">To Do</Label>
-                </View>
-            </TableViewRow>
-            <TableViewRow class="tableRow">
-                <View class="rowContainer">
-                    <View class="rowIcon icon-Denuncias" id="rowDenuncias"/>
-                    <Label class="rowLabel" id="rowLabel" width="175">Denuncias en curso</Label>
-                    <View class="rowIcon icon-RedCircle" id="rowDenuncias">
-                        <Label class="rowLabel" id="NumeroDenuncias" left="8" top="2">0</Label>
-                    </View>
-                </View>
-            </TableViewRow>
-            <TableViewRow class="tableRow">
-                <View class="rowContainer">
-                    <View class="rowIcon icon-Consultas" id="rowConsultas"/>
-                    <Label class="rowLabel" id="rowLabel" width="175">Consultas</Label>
-                    <View class="rowIcon icon-RedCircle" id="rowDenuncias">
-                        <Label class="rowLabel" id="NumeroConsultas" left="8" top="2">0</Label>
-                    </View>
-                </View>
-            </TableViewRow>
-            <TableViewRow class="tableRowHeader">
-                <View class="rowContainerHeader">
-                    <Label class="rowLabelHeader" id="rowLabel">Mis datos</Label>
-                </View>
-            </TableViewRow>
-            <TableViewRow class="tableRow" id="account">
-                <View class="rowContainer">
-                    <View class="rowIcon icon-MiCuenta" id="rowMiCuenta"/>
-                    <Label class="rowLabel" id="rowLabel">Mi Cuenta</Label>
-                </View>
-            </TableViewRow>
-            <TableViewRow class="tableRow" id="passchange">
-                <View class="rowContainer">
-                    <View class="rowIcon icon-CambioClave" id="rowCambioClave"/>
-                    <Label class="rowLabel" id="rowLabel">Cambio de clave</Label>
-                </View>
-            </TableViewRow>
-        </TableView>
-    </View>
+	<View id="menuView">
+		<View id="menuTopBar" width="250" left="left" class="menuTopBar icon-Camera"><View id="menuTopBarName"><Label id="rowNombreUsuario" class="menuNombreUsuario">Usuario</Label></View></View>
+		<View id="menuTopBarLogOut">
+			<Label id="rowLabel" class="rowLabelLogOut">Cerrar sesión</Label><View id="rowLogOut" class="rowIcon icon-LogOut"/>
+		</View>
+		<TableView class="menuTable" id="menuTable">
+			<TableViewRow class="tableRowHeader">
+				<View class="rowContainerHeader">
+					<Label id="rowLabel" class="rowLabelHeader">Denuncias</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow" id="wise">
+				<View class="rowContainer">
+					<View id="rowWise" class="rowIcon icon-Wise"/><Label id="rowLabel" class="rowLabel">Wise</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow">
+				<View class="rowContainer">
+					<View id="rowFoqual" class="rowIcon icon-Foqual"/><Label id="rowLabel" class="rowLabel">Foqual</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow">
+				<View class="rowContainer">
+					<View id="rowRightWay" class="rowIcon icon-RightWay"/><Label id="rowLabel" class="rowLabel">Right Way</Label>
+				</View>
+			</TableViewRow>
+			
+			
+			<TableViewRow class="tableRowHeader">
+				<View class="rowContainerHeader">
+					<Label id="rowLabel" class="rowLabelHeader">Mis actividades</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow">
+				<View class="rowContainer">
+					<View id="rowToDo" class="rowIcon icon-ToDo"/><Label id="rowLabel" class="rowLabel">To Do</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow">
+				<View class="rowContainer">
+					<View id="rowDenuncias" class="rowIcon icon-Denuncias"/><Label id="rowLabel" class="rowLabel" width="175">Denuncias en curso</Label><View id="rowDenuncias" class="rowIcon icon-RedCircle"><Label id="NumeroDenuncias" class="rowLabel" top="2" left="8">0</Label></View>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow">
+				<View class="rowContainer">
+					<View id="rowConsultas" class="rowIcon icon-Consultas"></View><Label id="rowLabel" class="rowLabel" width="175">Consultas</Label><View id="rowDenuncias" class="rowIcon icon-RedCircle"><Label id="NumeroConsultas" class="rowLabel" top="2" left="8">0</Label></View>
+				</View>
+			</TableViewRow>
+			
+			
+			<TableViewRow class="tableRowHeader">
+				<View class="rowContainerHeader">
+					<Label id="rowLabel" class="rowLabelHeader">Mis datos</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow" id="account">
+				<View class="rowContainer">
+					<View id="rowMiCuenta" class="rowIcon icon-MiCuenta"/><Label id="rowLabel" class="rowLabel">Mi Cuenta</Label>
+				</View>
+			</TableViewRow>
+			<TableViewRow class="tableRow" id="passchange">
+				<View class="rowContainer">
+					<View id="rowCambioClave" class="rowIcon icon-CambioClave"/><Label id="rowLabel" class="rowLabel">Cambio de clave</Label>
+				</View>
+			</TableViewRow>
+		</TableView>
+	</View>
 </Alloy>
