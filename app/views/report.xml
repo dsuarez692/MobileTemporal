@@ -15,7 +15,7 @@
                 <Label class="reportTextSelected">SELECCIONE LÍNEA DE NEGOCIO A AUDITAR</Label>
             </View>
             <View top="36dp">
-                <View left="7%" width="25%">
+                <View left="5%" width="25%">
                     <View class="rowIcon icon-Negocio1"/>
                 </View>
                 <View left="30%" width="25%">
@@ -24,13 +24,14 @@
                 <View left="55%" width="25%">
                     <View class="rowIcon icon-Negocio3"/>
                 </View>
-                <View left="80%" width="25%">
+                <View left="75%" width="25%">
                     <View class="rowIcon icon-Negocio4"/>
                 </View>
             </View>
         </View>
         <ScrollView id="form"></ScrollView>
-        <View zIndex="9999" height="50dp">
+        <ProgressBar height="10dp" value="33" message="33%"></ProgressBar>
+        <View height="50dp">
             <View class="buttonSimple" id="volverBtn" left="5%">
                 <Label id="btnText">Volver</Label>
             </View>

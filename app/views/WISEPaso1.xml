@@ -1,22 +1,22 @@
 <Alloy>
     <View>
         <TableView>
-            <TableViewRow class="HomeContainer">
+            <TableViewRow class="HomeContainer" id="CheckCinturon">
                 <View>
-                    <View id="CheckCinturon" height="30dp" width="30dp"></View>
-                    <Label class="reportTextSelected" left="35dp">Usa cinturón de seguridad</Label>
+                    <View class="icon-Check" id="iconCinturon" left="5dp" top="5dp" width="30dp" height="30dp"></View>
+                    <Label class="reportTextSelected" id="lblCinturon" left="45dp">Usa cinturón de seguridad</Label>
                 </View>
             </TableViewRow>
-            <TableViewRow class="HomeContainer">
+            <TableViewRow class="HomeContainer" id="CheckLuces">
                 <View>
-                    <View id="CheckCinturon"/>
-                    <Label class="reportTextSelected" left="35dp">Lleva luces bajas encendidas</Label>
+                    <View class="icon-Check" id="iconLuces" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                    <Label class="reportTextSelected" id="lblLuces" left="45dp">Lleva luces bajas encendidas</Label>
                 </View>
             </TableViewRow>
-            <TableViewRow class="HomeContainer">
+            <TableViewRow class="HomeContainer" id="CheckFreno">
                 <View>
-                    <View id="CheckCinturon"/>
-                    <Label class="reportTextSelected" left="35dp">Utiliza freno de mano</Label>
+                    <View class="icon-Check" id="iconFreno" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                    <Label class="reportTextSelected" id="lblFreno" left="45dp">Utiliza freno de mano</Label>
                 </View>
             </TableViewRow>
         </TableView>

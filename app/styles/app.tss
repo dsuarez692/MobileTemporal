@@ -68,9 +68,9 @@
 	"height": "50dp"
 },
 ".reportTextSelected": {
-	"color": "Blue",
-	"top": "0dp",
-	"font": {fontSize:"18dp"}
+	"color": "#057699",
+	"top": "6dp",
+	"font": {fontSize:"20dp"}
 },
 ".icon-CambioClave": {
 	"backgroundImage": "/media/image16.png"
@@ -135,4 +135,13 @@
 },
 ".icon-Negocio4": {
 	"backgroundImage": "/media/image59.png"
-}
+},
+".icon-NoCheck": {
+	"backgroundImage": "/media/image37.png"
+},
+".icon-Check": {
+	"backgroundImage": "/media/image36.png"
+},
+
+
+

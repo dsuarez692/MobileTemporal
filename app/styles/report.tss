@@ -25,7 +25,7 @@
 "#form": {
 	"top": "15dp",
 	"left": "0dp",
-	"height": "200dp",
+	"height": "195dp",
 	"layout": "vertical",
 	"scrollType": "vertical",
 },
@@ -38,7 +38,7 @@
 	"zIndex": 9999
 },
 ".tableRow": {
-	"height": "50dp"
+	"height": "40dp"
 },
 "#continueBtn": {
 	"bottom": "0dp",
@@ -52,4 +52,8 @@
 	"width": "60dp",
 	"height": "60dp",
 	"textAlign": Titanium.UI.TEXT_ALIGNMENT_CENTER
-}
+},
+"ProgressBar":{
+	width: Titanium.UI.FILL,
+	color: "#057699"
+},

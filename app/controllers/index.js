@@ -12,6 +12,7 @@ reportView.menuButton.add(controls.getMenuButton({
                 h: '40',
                 w: '40'
             }));
+             
 
 //Minor changes to click event. Update the menuOpen status;
 reportView.menuButton.addEventListener('click',function(){

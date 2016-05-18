@@ -62,27 +62,49 @@ exports.getMenuButton=function(args){
 	return v;
 };
 
-exports.createCheckbox = function(specs) {
-    if(typeof specs != "object")
-        specs = {};
-    specs.width = specs.width || 25;
-    specs.backgroundColor = specs.unCheckedColor || "white";
-    specs.height = specs.height || 25;
-    specs.border = specs.border || 1;
-    specs.borderColor = specs.borderColor || "silver";
-    var viw = Ti.UI.createView(specs);
+exports.createCheckbox = function(specs,checkboxspecs) {
+
+    if(typeof checkboxspecs != "object")
+        checkboxspecs = {};
+    checkboxspecs.width = checkboxspecs.width || 25;
+    checkboxspecs.height = checkboxspecs.height || 25;
+    checkboxspecs.border = checkboxspecs.border || 1;
+    checkboxspecs.borderColor = checkboxspecs.borderColor || "Gray";
+    var imageView = Ti.UI.createView({
+        backgroundImage: "/media/image37.jpg",
+        height:checkboxspecs.height * 1.5,
+        bottom:3 + checkboxspecs.height * 0.5,
+        left:3 + checkboxspecs.width * 0.5,
+        opacity:0
+    }); 
+
+    var viw = Ti.UI.createView(checkboxspecs);
+    specs.width =  checkboxspecs.width * 1.5;
+    specs.height = checkboxspecs.height * 1.5;
+
+    var outerview = Ti.UI.createView({
+        width: specs.width * 1.5,
+        height: specs.height * 1.5,
+    });
+    var clickview = Ti.UI.createView({
+        width:checkboxspecs.width,
+        height:checkboxspecs.height
+    });
+    outerview.add(viw);
+    outerview.add(imageView);
+    outerview.add(clickview);
 
     function togglecheck () {
         if(!viw.checked) {
             viw.checked = true;
-            viw.backgroundColor = specs.checkedColor || "green";
+            imageView.backgroundImage = "/media/image36.png";
+
         }
         else {
             viw.checked = false;
-            viw.backgroundColor = specs.unCheckedColor || "white";
+            imageView.backgroundImage= "/media/image37.png";
         }           
     }
-    viw.addEventListener("click",togglecheck);
-
-    return viw;
+    clickview.addEventListener("click",togglecheck);
+    return outerview;
 };
