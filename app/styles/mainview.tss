@@ -6,8 +6,7 @@
 	position: "0,0",
 	height: "40dp",
 	backgroundColor: '#E0E0E0',
-	layout: 'horizontal',
-	zIndex: 1000
+	layout: 'horizontal'
 },
 "#menuButton":{
 	top: "0dp",

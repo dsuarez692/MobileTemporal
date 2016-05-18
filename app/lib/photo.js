@@ -109,7 +109,7 @@ exports.cargarFoto=function(callback){
 		error:function(error) {
 			Ti.API.error(error.error);
 		},
-		saveToPhotoGallery:false,
+		saveToPhotoGallery:true,
 		allowEditing:false,
 		mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO]
 	});

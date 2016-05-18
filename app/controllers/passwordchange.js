@@ -2,6 +2,12 @@ function validateData(){
 	
 }
 
+exports.resetView = function(){
+	Ti.API.info('Reseteo passchange');
+	$.appTitleLabel.text = 'Mi cuenta';
+	$.collapsibleMenu.removeAllChildren();
+};
+
 function changeColor(e){
 	if(e.type == 'touchstart'){
 		if(e.source.id=='continueBtn'){

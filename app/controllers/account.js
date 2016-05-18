@@ -1,8 +1,6 @@
 var photoManager = require("photo");
 var controls = require("controls");
 
-var account2View = null;
-
 var durationPhotoMenu = 200;
 
 $.photoMenuTable.addEventListener('click',function(e){
@@ -15,7 +13,7 @@ $.photoMenuTable.addEventListener('click',function(e){
 			photoManager.cargarFoto(addFoto);
 			break;
 		case "deletePhoto":
-			$.userPhoto.removeAllchildren();
+			$.userPhoto.removeAllChildren();
 			loadDefaultPhotoImage();
 			break;
 	};
@@ -67,57 +65,49 @@ function showPhotoMenu(open){
 	}
 }
 
-function validateData(){
+exports.validateData = function(){
 	if($.name.value == ''){
 		alert('Debe ingresar un nombre.');
-		return;
+		return false;
 	}
 	if($.last.value == ''){
 		alert('Debe ingresar un apellido.');
-		return;
+		return false;
 	}
 	if($.username.value == ''){
 		alert('Debe ingresar un nombre de usuario.');
-		return;
+		return false;
 	}
 	if($.password.value == ''){
 		alert('Debe ingresar una contraseña.');
-		return;
+		return false;
 	}
 	if($.password2.value == ''){
 		alert('Debe repetir la contraseña.');
-		return;
+		return false;
 	}
 	if($.password.value != $.password2.value){
 		alert('Las contraseñas no coinciden.');
-		return;
+		return false;
 	}
-	
-	account2View = controls.getAccount2View();
-	
-	$.content.add(account2View.getView());
-}
+	return true;
+};
 
 $.userPhoto.addEventListener('click', function(){
 	showPhotoMenu(true);
 });
 
-$.mainView.addEventListener('resetView', function(e){
-	Ti.API.info('Recibi el evento resetView');
-	$.name = "";
-	$.last = "";
-	$.username = "";
-	$.password = "";
-	$.password2 = "";
+exports.resetView = function(){
+	$.name.value = "";
+	$.last.value = "";
+	$.username.value = "";
+	$.password.value = "";
+	$.password2.value = "";
+	$.appTitleLabel.text = 'Mi cuenta';
+	$.collapsibleMenu = Ti.UI.createView();;
 	$.userPhoto.removeAllChildren();
 	loadDefaultPhotoImage();
-	/*var children = $.content.getChildren();
-	for(var i=0; i< children.length; i++){
-		if(children[i].id == 'content'){
-			children[i].fireEvent('resetView');
-			$.content.remove(children[i]);
-		}
-	}*/
-});
+	Ti.API.info('Reseteo account');
+};
 
 loadDefaultPhotoImage();
