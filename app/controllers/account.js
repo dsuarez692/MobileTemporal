@@ -13,7 +13,7 @@ $.photoMenuTable.addEventListener('click',function(e){
 			photoManager.cargarFoto(addFoto);
 			break;
 		case "deletePhoto":
-			$.userPhoto.removeAllChildren();
+			controls.removeAllViews($.userPhoto);
 			loadDefaultPhotoImage();
 			break;
 	};
@@ -28,8 +28,8 @@ function loadDefaultPhotoImage(){
 }
 
 function addFoto(event){
+	controls.removeAllViews($.userPhoto);
 	var image = event.media;
-	
 	Ti.API.info("EVENTO: "+JSON.stringify(event));
 	
 	fileName = 'userphoto.jpg';
@@ -41,7 +41,7 @@ function addFoto(event){
 		height:"auto",
 		//image:event.media.file.nativePath,
 		image:event.media,
-		id:1
+		id: 'imagenPerfil'
 	});
 	$.userPhoto.add(imageView);
 }
@@ -104,8 +104,11 @@ exports.resetView = function(){
 	$.password.value = "";
 	$.password2.value = "";
 	$.appTitleLabel.text = 'Mi cuenta';
-	$.collapsibleMenu = Ti.UI.createView();;
-	$.userPhoto.removeAllChildren();
+	$.collapsibleMenu.top = -600;
+	controls.removeAllViews($.collapsibleMenu);
+	controls.removeAllViews($.userPhoto);
+	var funcVacia = function(){};
+	$.collapsibleMenu.removeEventListener('click', funcVacia);
 	loadDefaultPhotoImage();
 	Ti.API.info('Reseteo account');
 };

@@ -7,8 +7,6 @@ var menuView=controls.getMenuView();
 var mainView=controls.getMainView();
 var reportView=controls.getReportView();
 
-var wiseMenu = null;
-
 
 //add menu view to ConfigView exposed by widget
 reportView.menuButton.add(controls.getMenuButton({
@@ -173,7 +171,7 @@ menuView.menuTable.addEventListener('click',function(e){
     			case 1:
     				if(mainView.appTitleLabel.text != 'WISE'){
 	    				mainView.appTitleLabel.text = 'WISE';
-			    		mainView.collapsibleMenu.add(controls.getWiseMenu());
+			    		mainView.collapsibleMenu.add(controls.getWiseMenu().getView());
 			    		mainView.collapsibleButton.addEventListener('click', function(e){
 			    			showHideCollapsibleMenu(mainView);
 			    		});
@@ -182,7 +180,7 @@ menuView.menuTable.addEventListener('click',function(e){
     			case 2:
     				if(accountView.appTitleLabel.text != 'WISE'){
 	    				accountView.appTitleLabel.text = 'WISE';
-			    		accountView.collapsibleMenu.add(controls.getWiseMenu());
+			    		accountView.collapsibleMenu.add(controls.getWiseMenu().getView());
 			    		accountView.collapsibleButton.addEventListener('click', function(e){
 			    			showHideCollapsibleMenu(accountView);
 			    		});
@@ -193,7 +191,7 @@ menuView.menuTable.addEventListener('click',function(e){
     			case 3:
     				if(passChangeView.appTitleLabel.text != 'WISE'){
 	    				passChangeView.appTitleLabel.text = 'WISE';
-			    		passChangeView.collapsibleMenu.add(controls.getWiseMenu());
+			    		passChangeView.collapsibleMenu.add(controls.getWiseMenu().getView());
 			    		passChangeView.collapsibleButton.addEventListener('click', function(e){
 			    			showHideCollapsibleMenu(passChangeView);
 			    		});
