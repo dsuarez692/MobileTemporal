@@ -1,13 +1,25 @@
 // Arguments passed into this controller can be accessed via the `$.args` object directly or:
 var args = $.args;
+var controls=require('controls');
+var model = {};
 
-var model = {
-	Cinturon : true,
-	Luces : true,
-	Frenos : true
+exports.LoadFromModel = function(modelo){
+	model = modelo;
+	if(model.Cinturon == undefined){
+		model = {
+			Cinturon : true,
+			Luces : true,
+			Frenos : true
+		};
+	}
+	changeTextColor("Cinturon",model.Cinturon);	
+	changeTextColor("Luces",model.Luces);	
+	changeTextColor("Frenos",model.Frenos);	
 };
 
-function changeTextColor(model,value){
+
+
+function changeTextColor(campo,value){
 	var color = "#057699";
 	var image = "/media/image36.png";
 	
@@ -16,9 +28,11 @@ function changeTextColor(model,value){
 		image = "/media/image37.png";
 	}
 
-	switch(model){
+	switch(campo){
 		case "Cinturon":{
+			alert($.lblCinturon.color);
 			$.lblCinturon.color = color;
+			alert($.lblCinturon.color);
 			$.iconCinturon.backgroundImage = image;
 			break;
 		}
@@ -31,8 +45,19 @@ function changeTextColor(model,value){
 			$.lblFreno.color = color;
 			$.iconFreno.backgroundImage = image;
 			break;
-		}	
+		}
+		case "All":{
+			$.lblFreno.color = color;
+			$.iconFreno.backgroundImage = image;
+			$.lblLuces.color = color;
+			$.iconLuces.backgroundImage = image;
+			$.lblCinturon.color = color;
+			$.iconCinturon.backgroundImage = image;
+			alert($.lblFreno.color);
+			break;
+		}		
 	};
+	
 	
 	
 }

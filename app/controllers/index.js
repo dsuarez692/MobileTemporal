@@ -1,4 +1,5 @@
 var controls=require('controls');
+var models=require('models');
 
 // get main and menu view as objects
 var menuView=controls.getMenuView();
@@ -95,10 +96,24 @@ $.drawermenu.init({
 //variable to controler de open/close slide
 var activeView = 1;
 
+function removeAllViews(view){
+	var removeData = [];
+    for (i = view.children.length; i > 0; i--){
+        removeData.push(view.children[i - 1]);  
+    };
+
+    // Remove childrens
+    for (i = 0; i < removeData.length; i++){
+        view.remove(removeData[i]);
+    }
+    removeData = null;
+}
+
 // add event listener in this context
 menuView.menuTable.addEventListener('click',function(e){
     $.drawermenu.showhidemenu();
     $.drawermenu.menuOpen = false; //update menuOpen status to prevent inconsistency.
+    removeAllViews($.drawermenu.drawermainview);
     switch(e.rowData.id){
     	case "home":
     		switch(activeView){
@@ -154,9 +169,13 @@ menuView.menuTable.addEventListener('click',function(e){
     		break;
     	case "wise":
     		mainView.appTitleLabel.text = "WISE";
+    		models.resetWISEModel();
+    		
+    		
     		reportView.reportName.text = "Auditoría de manejo";
     		reportView.form.add(controls.getWISEPaso1().getView());
     		
+    		controls.getWISEPaso1().getView().LoadFromModel(models.getWISEModel());
     		$.drawermenu.drawermainview.add(reportView.getView());
     		
     		break;

@@ -55,5 +55,6 @@
 },
 "ProgressBar":{
 	width: Titanium.UI.FILL,
+	height:"20dp",
 	color: "#057699"
 },
