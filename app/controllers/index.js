@@ -50,6 +50,8 @@ var accountView=null;
 
 var account2View = null;
 
+var wiseMenuView = null;
+
 $.drawermenu.init({
     menuview:menuView.getView(),
     mainview:mainView.getView(),
@@ -68,7 +70,6 @@ menuView.menuTable.addEventListener('click',function(e){
     	showHideCollapsibleMenu(mainView);
     	collapsibleMenuOpen = false;
     }
-    Ti.API.info(activeView);
     switch(e.rowData.id){
     	case "home":
     		switch(activeView){
@@ -111,8 +112,8 @@ menuView.menuTable.addEventListener('click',function(e){
 							});
 						}
 						
-						$.drawermenu.drawermainview.remove(accountView.getView());
 						$.drawermenu.drawermainview.add(account2View.getView());
+						$.drawermenu.drawermainview.remove(accountView.getView());
 						activeView = 2.1; 
 					}
 				});
@@ -167,11 +168,18 @@ menuView.menuTable.addEventListener('click',function(e){
     		};
     		break;
     	case 'wise':
+    		if(wiseMenuView == null){
+    			wiseMenuView = controls.getWiseMenu();
+    			
+    			wiseMenuView.wiseMenu.addEventListener('click', function(e){
+    				Ti.API.info(e.source.id);
+    			});
+    		}
     		switch(activeView){
     			case 1:
     				if(mainView.appTitleLabel.text != 'WISE'){
 	    				mainView.appTitleLabel.text = 'WISE';
-			    		mainView.collapsibleMenu.add(controls.getWiseMenu().getView());
+			    		mainView.collapsibleMenu.add(wiseMenuView.getView());
 			    		mainView.collapsibleButton.addEventListener('click', function(e){
 			    			showHideCollapsibleMenu(mainView);
 			    		});
@@ -180,18 +188,25 @@ menuView.menuTable.addEventListener('click',function(e){
     			case 2:
     				if(accountView.appTitleLabel.text != 'WISE'){
 	    				accountView.appTitleLabel.text = 'WISE';
-			    		accountView.collapsibleMenu.add(controls.getWiseMenu().getView());
+			    		accountView.collapsibleMenu.add(wiseMenuView.getView());
 			    		accountView.collapsibleButton.addEventListener('click', function(e){
 			    			showHideCollapsibleMenu(accountView);
 			    		});
 		    		}
     				break;
     			case 2.1:
+    				if(account2View.appTitleLabel.text != 'WISE'){
+	    				account2View.appTitleLabel.text = 'WISE';
+			    		account2View.collapsibleMenu.add(wiseMenuView.getView());
+			    		account2View.collapsibleButton.addEventListener('click', function(e){
+			    			showHideCollapsibleMenu(accountView);
+			    		});
+		    		}
     				break;
     			case 3:
     				if(passChangeView.appTitleLabel.text != 'WISE'){
 	    				passChangeView.appTitleLabel.text = 'WISE';
-			    		passChangeView.collapsibleMenu.add(controls.getWiseMenu().getView());
+			    		passChangeView.collapsibleMenu.add(wiseMenuView.getView());
 			    		passChangeView.collapsibleButton.addEventListener('click', function(e){
 			    			showHideCollapsibleMenu(passChangeView);
 			    		});

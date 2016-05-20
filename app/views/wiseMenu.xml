@@ -1,34 +1,34 @@
 <Alloy>
     <TableView id="wiseMenu">
-    	<TableViewRow id="auditoria_manejo" class="wiseMenuRow">
-    		<View class="wiseMenuRowView">
-    			<ImageView class="wiseMenuIcon" image="/media/image31.png" />
-    			<Label class="wiseMenuLabel">Auditoría de manejo</Label>
-    		</View>
-    	</TableViewRow>
-    	<TableViewRow id="chequeo_vehicular" class="wiseMenuRow">
-    		<View class="wiseMenuRowView">
-    			<ImageView class="wiseMenuIcon" image="/media/image28.png" />
-    			<Label class="wiseMenuLabel">Chequeo vehicular</Label>
-    		</View>
-    	</TableViewRow>
-    	<TableViewRow id="aviso_riesgo" class="wiseMenuRow">
-    		<View class="wiseMenuRowView">
-    			<ImageView class="wiseMenuIcon" image="/media/image32.png" />
-    			<Label class="wiseMenuLabel">Aviso de riesgo</Label>
-    		</View>
-    	</TableViewRow>
-    	<TableViewRow id="acci_inci" class="wiseMenuRow">
-    		<View class="wiseMenuRowView">
-    			<ImageView class="wiseMenuIcon" image="/media/image29.png" />
-    			<Label>Accidente o incidente</Label>
-    		</View>
-    	</TableViewRow>
-    	<TableViewRow id="chequeo_vehicular2" class="wiseMenuRow">
-    		<View class="wiseMenuRowView">
-    			<ImageView class="wiseMenuIcon" image="/media/image30.png" />
-    			<Label class="wiseMenuLabel">Chequeo vehicular</Label>
-    		</View>
-    	</TableViewRow>
-   	</TableView>
+        <TableViewRow class="wiseMenuRow" id="auditoria_manejo">
+            <View class="wiseMenuRowView">
+                <ImageView class="wiseMenuIcon" image="/media/image31.png"/>
+                <Label class="wiseMenuLabel">Auditoría de manejo</Label>
+            </View>
+        </TableViewRow>
+        <TableViewRow class="wiseMenuRow" id="chequeo_vehicular">
+            <View class="wiseMenuRowView">
+                <ImageView class="wiseMenuIcon" image="/media/image28.png"/>
+                <Label class="wiseMenuLabel">Chequeo vehicular</Label>
+            </View>
+        </TableViewRow>
+        <TableViewRow class="wiseMenuRow" id="aviso_riesgo">
+            <View class="wiseMenuRowView">
+                <ImageView class="wiseMenuIcon" image="/media/image32.png"/>
+                <Label class="wiseMenuLabel">Aviso de riesgo</Label>
+            </View>
+        </TableViewRow>
+        <TableViewRow class="wiseMenuRow" id="acci_inci">
+            <View class="wiseMenuRowView">
+                <ImageView class="wiseMenuIcon" image="/media/image29.png"/>
+                <Label>Accidente o incidente</Label>
+            </View>
+        </TableViewRow>
+        <TableViewRow class="wiseMenuRow" id="chequeo_vehicular2">
+            <View class="wiseMenuRowView">
+                <ImageView class="wiseMenuIcon" image="/media/image30.png"/>
+                <Label class="wiseMenuLabel">Chequeo vehicular</Label>
+            </View>
+        </TableViewRow>
+    </TableView>
 </Alloy>
