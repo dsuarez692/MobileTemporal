@@ -5,6 +5,7 @@ var models=require('models');
 var menuView=controls.getMenuView();
 var mainView=controls.getMainView();
 var reportView=controls.getReportView();
+var wise = controls.getWISEPaso1();
 
 
 
@@ -97,16 +98,18 @@ $.drawermenu.init({
 var activeView = 1;
 
 function removeAllViews(view){
-	var removeData = [];
-    for (i = view.children.length; i > 0; i--){
-        removeData.push(view.children[i - 1]);  
-    };
-
-    // Remove childrens
-    for (i = 0; i < removeData.length; i++){
-        view.remove(removeData[i]);
-    }
-    removeData = null;
+	if(view.children.length > 0){
+		var removeData = [];
+	    for (i = view.children.length; i > 0; i--){
+	        removeData.push(view.children[i - 1]);  
+	    };
+	    // Remove childrens
+	    for (i = 0; i < removeData.length; i++){
+	        view.remove(removeData[i]);
+	    }
+	    removeData = null;
+	}
+    
 }
 
 // add event listener in this context
@@ -168,14 +171,16 @@ menuView.menuTable.addEventListener('click',function(e){
     		};
     		break;
     	case "wise":
+    		
     		mainView.appTitleLabel.text = "WISE";
     		models.resetWISEModel();
     		
-    		
+    		removeAllViews(reportView.form);
     		reportView.reportName.text = "Auditoría de manejo";
-    		reportView.form.add(controls.getWISEPaso1().getView());
     		
-    		controls.getWISEPaso1().getView().LoadFromModel(models.getWISEModel());
+    		reportView.form.add(wise.getView());
+    		
+    		wise.LoadFromModel(models.getWISEModel());
     		$.drawermenu.drawermainview.add(reportView.getView());
     		
     		break;

@@ -19,7 +19,7 @@ exports.getReportView=function(){
 	return Alloy.createController('report');
 };
 exports.getWISEPaso1=function(){
-	return Alloy.createController('WISEPaso1');;
+	return Alloy.createController('WISEPaso1');
 };
 
 exports.getAccount2View=function(){

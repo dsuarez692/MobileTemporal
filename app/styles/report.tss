@@ -25,7 +25,7 @@
 "#form": {
 	"top": "15dp",
 	"left": "0dp",
-	"height": "195dp",
+	"height": "205dp",
 	"layout": "vertical",
 	"scrollType": "vertical",
 },

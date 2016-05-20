@@ -29,7 +29,7 @@
                 </View>
             </View>
         </View>
-        <ScrollView id="form"></ScrollView>
+        <View id="form"></View>
         <ProgressBar height="10dp" value="33" message="33%"></ProgressBar>
         <View height="50dp">
             <View class="buttonSimple" id="volverBtn" left="5%">

@@ -3,7 +3,7 @@ var args = $.args;
 var controls=require('controls');
 var model = {};
 
-exports.LoadFromModel = function(modelo){
+exports.LoadFromModel = function(modelo,view){
 	model = modelo;
 	if(model.Cinturon == undefined){
 		model = {
@@ -12,15 +12,15 @@ exports.LoadFromModel = function(modelo){
 			Frenos : true
 		};
 	}
-	changeTextColor("Cinturon",model.Cinturon);	
-	changeTextColor("Luces",model.Luces);	
-	changeTextColor("Frenos",model.Frenos);	
+	changeTextColor("Cinturon",model.Cinturon);
+	changeTextColor("Luces",model.Luces);
+	changeTextColor("Frenos",model.Frenos);
+	$.CheckEstacionamiento.height=0;
+	
 };
 
-
-
 function changeTextColor(campo,value){
-	var color = "#057699";
+	var color = "#057699"; //Celeste
 	var image = "/media/image36.png";
 	
 	if(!value){
@@ -30,9 +30,7 @@ function changeTextColor(campo,value){
 
 	switch(campo){
 		case "Cinturon":{
-			alert($.lblCinturon.color);
 			$.lblCinturon.color = color;
-			alert($.lblCinturon.color);
 			$.iconCinturon.backgroundImage = image;
 			break;
 		}
@@ -46,20 +44,7 @@ function changeTextColor(campo,value){
 			$.iconFreno.backgroundImage = image;
 			break;
 		}
-		case "All":{
-			$.lblFreno.color = color;
-			$.iconFreno.backgroundImage = image;
-			$.lblLuces.color = color;
-			$.iconLuces.backgroundImage = image;
-			$.lblCinturon.color = color;
-			$.iconCinturon.backgroundImage = image;
-			alert($.lblFreno.color);
-			break;
-		}		
 	};
-	
-	
-	
 }
 
 $.CheckCinturon.addEventListener("click",function(){changeTextColor("Cinturon",!model.Cinturon); model.Cinturon = !model.Cinturon;});

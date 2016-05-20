@@ -70,7 +70,7 @@
 ".reportTextSelected": {
 	"color": "#057699",
 	"top": "6dp",
-	"font": {fontSize:"20dp"}
+	"font": {fontSize:"16dp"}
 },
 ".icon-CambioClave": {
 	"backgroundImage": "/media/image16.png"
