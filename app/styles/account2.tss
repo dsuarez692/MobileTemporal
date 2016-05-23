@@ -1,53 +1,52 @@
-"#content":{
-	top: "0dp",
-	height: Ti.UI.FILL,
-	width: Ti.UI.FILL,
-	layout:"absolute",
-	backgroundColor: 'white'
+"#content": {
+	"top": "0dp",
+	"height": Ti.UI.FILL,
+	"width": Ti.UI.FILL,
+	"layout": "absolute",
+	"backgroundColor": "white"
 },
-"#form":{
-	top: "60dp",
-	left: "0dp",
-	height: Ti.UI.FILL,
-	layout:"vertical",
-	scrollType: 'vertical'
+"#form": {
+	"top": "60dp",
+	"left": "0dp",
+	"height": Ti.UI.FILL,
+	"layout": "vertical",
+	"scrollType": "vertical"
 },
-"#subtitleBar":{
-	top: "0dp",
-	left: "0dp",
-	width: "100%",
-	height: "60dp",
-	backgroundColor: "#1f4e79",
-	layout: 'vertical'
+"#subtitleBar": {
+	"top": "0dp",
+	"left": "0dp",
+	"width": "100%",
+	"height": "60dp",
+	"backgroundColor": "#1f4e79",
+	"layout": "vertical"
 },
-".subtitleLabel":{
-	color: 'white',
-	font: {
-		fontSize: '14dp'
-	},
-	left: '20dp',
-	top: '5dp'
-}
-".buttonSimple":{
-	bottom: '0dp',
-	left: "10%",
-	right: "10%",
-	height: "10%"
+".subtitleLabel": {
+	"color": "white",
+	"font": {fontSize:'16dp'},
+	"left": "20dp",
+	"top": "5dp",
+	"width": Ti.UI.SIZE
 },
-"#backBtn":{
-	bottom: "0dp",
-	backgroundColor: "white",
-	zIndex: 2
+".buttonSimple": {
+	"bottom": "0dp",
+	"left": "10%",
+	"right": "10%",
+	"height": "10%"
 },
-"#continueBtn":{
-	bottom: "0dp",
-	backgroundColor: '#1f4e79',
-	zIndex: 2
+"#backBtn": {
+	"bottom": "0dp",
+	"backgroundColor": "white",
+	"zIndex": "2"
 },
-".businessPick":{
-	top: "0dp",
-	left: "0dp",
-	height: "60dp",
-	width: Ti.UI.FILL,
-	layout: 'horizontal'
+"#continueBtn": {
+	"bottom": "0dp",
+	"backgroundColor": "#1f4e79",
+	"zIndex": "2"
+},
+".businessPick": {
+	"top": "0dp",
+	"left": "0dp",
+	"height": "60dp",
+	"width": Ti.UI.FILL,
+	"layout": "horizontal"
 }
