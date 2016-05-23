@@ -21,3 +21,12 @@ exports.resetView = function(){
 	var funcVacia = function(){};
 	$.collapsibleMenu.removeEventListener('click', funcVacia);
 };
+
+function loadDefaultValues(){
+	if($.args.name != undefined){
+		$.sector = $.args.sector;
+		$.bossname = $.args.bossname;
+		$.bosslast = $.args.bosslast;
+	}
+}
+loadDefaultValues();

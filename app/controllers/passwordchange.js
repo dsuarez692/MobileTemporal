@@ -31,3 +31,11 @@ function changeColor(e){
 		}
 	}
 }
+
+function loadDefaultValues(){
+	if($.args.name != undefined){
+		$.userName.text = $.args.username;
+	}
+}
+
+loadDefaultValues();

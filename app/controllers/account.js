@@ -1,6 +1,8 @@
 var photoManager = require("photo");
 var controls = require("controls");
 
+var profileLoaded = false;
+
 var durationPhotoMenu = 200;
 
 $.photoMenuTable.addEventListener('click',function(e){
@@ -14,6 +16,7 @@ $.photoMenuTable.addEventListener('click',function(e){
 			break;
 		case "deletePhoto":
 			controls.removeAllViews($.userPhoto);
+			profileLoaded = false;
 			loadDefaultPhotoImage();
 			break;
 	};
@@ -44,6 +47,7 @@ function addFoto(event){
 		id: 'imagenPerfil'
 	});
 	$.userPhoto.add(imageView);
+	profileLoaded = true;
 }
 
 
@@ -82,12 +86,21 @@ exports.validateData = function(){
 		alert('Debe ingresar una contraseña.');
 		return false;
 	}
+	if($.password.value.length < 6 || $.password.value.length > 20){
+		alert('La contraseña debe contener entre 6 y 20 caracteres');
+		return false;
+	}
 	if($.password2.value == ''){
 		alert('Debe repetir la contraseña.');
 		return false;
 	}
 	if($.password.value != $.password2.value){
 		alert('Las contraseñas no coinciden.');
+		return false;
+	}
+	
+	if(!profileLoaded){
+		alert('Debe seleccionar una imagen de usuario');
 		return false;
 	}
 	return true;
@@ -113,4 +126,12 @@ exports.resetView = function(){
 	Ti.API.info('Reseteo account');
 };
 
+function loadDefaultValues(){
+	if($.args.name != undefined){
+		$.name.value = $.args.name;
+		$.last.value = $.args.last;
+		$.username.value = $.args.username;
+	}
+}
+loadDefaultValues();
 loadDefaultPhotoImage();

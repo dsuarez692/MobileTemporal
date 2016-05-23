@@ -1,5 +1,7 @@
 var controls=require('controls');
 
+var persistence = require('persistence');
+
 var collapsibleMenuOpen = false;
 
 // get main and menu view as objects
@@ -94,14 +96,14 @@ menuView.menuTable.addEventListener('click',function(e){
     		break;
     	case "account":
     		if(accountView == null){
-    			accountView = controls.getAccountView();
+    			accountView = controls.getAccountView(persistence.getUserData());
 
 				addMenuIcons(accountView);
 				
 				accountView.continueBtn.addEventListener('click', function(){
 					if(accountView.validateData()){
 						if(account2View == null){
-							account2View = controls.getAccount2View();
+							account2View = controls.getAccount2View(persistence.getUserData());
 							
 							addMenuIcons(account2View);
 							
@@ -109,6 +111,25 @@ menuView.menuTable.addEventListener('click',function(e){
 								account2View.resetView();
 								$.drawermenu.drawermainview.add(accountView.getView());
 								$.drawermenu.drawermainview.remove(account2View.getView());
+							});
+							
+							account2View.continueBtn.addEventListener('click', function(){
+								if(account2View.validateData()){
+									persistence.saveUserData({
+										"name" : accountView.name.value,
+										"last" : accountView.last.value,
+										"username" : accountView.username.value,
+										"password" : Ti.Utils.sha1(accountView.password.value),
+										"sector" : account2View.sector.value,
+										"bossname" : account2View.bossname.value,
+										"bosslast" : account2View.bosslast.value
+									});
+									Ti.API.info(JSON.stringify(persistence.getUserData()));
+									$.drawermenu.drawermainview.remove(account2View.getView());
+									$.drawermenu.drawermainview.remove(accountView.getView());
+									
+									loadSession();
+								}
 							});
 						}
 						
@@ -141,7 +162,7 @@ menuView.menuTable.addEventListener('click',function(e){
     		break;
     	case "passchange":
     		if(passChangeView == null){
-    			passChangeView = controls.getPasswordChangeView();
+    			passChangeView = controls.getPasswordChangeView(persistence.getUserData());
 
 				addMenuIcons(passChangeView);
     		}
@@ -257,4 +278,13 @@ function showHideCollapsibleMenu(view){
 	}
 }
 
+function loadSession(user){
+	if(user != null){
+		menuView.rowNombreUsuario.text = user.username;
+		menuView.menuTopBar.backgroundImage = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'userphoto.jpg').read();
+	}
+}
+
+
+loadSession(persistence.getUserData());
 $.index.open();
