@@ -1,8 +1,9 @@
 var controls=require('controls');
-
 var persistence = require('persistence');
 
 var collapsibleMenuOpen = false;
+
+var loggedIn = false;
 
 // get main and menu view as objects
 var menuView=controls.getMenuView();
@@ -27,23 +28,7 @@ reportView.collapsibleButton.add(controls.getCollapseButton({
 	w: '40'
 }));
 
-
-// attach event listener to menu button
-mainView.menuButton.add(controls.getMenuButton({
-	h: '40',
-	w: '40'
-}));
-
-//Minor changes to click event. Update the menuOpen status;
-mainView.menuButton.addEventListener('click',function(){
-	$.drawermenu.showhidemenu();
-	$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
-}); // method is exposed by widget
-
-mainView.collapsibleButton.add(controls.getCollapseButton({
-	h: '40',
-	w: '40'
-}));
+addMenuIcons(mainView);
 
 var passChangeView = null;
 
@@ -112,23 +97,21 @@ menuView.menuTable.addEventListener('click',function(e){
 								$.drawermenu.drawermainview.add(accountView.getView());
 								$.drawermenu.drawermainview.remove(account2View.getView());
 							});
-							
-							account2View.continueBtn.addEventListener('click', function(){
+							account2View.continueBtn.addEventListener('click',function(){
 								if(account2View.validateData()){
 									persistence.saveUserData({
 										"name" : accountView.name.value,
 										"last" : accountView.last.value,
 										"username" : accountView.username.value,
-										"password" : Ti.Utils.sha1(accountView.password.value),
+										"password" : Ti.Utils.sha256(accountView.password.value),
 										"sector" : account2View.sector.value,
 										"bossname" : account2View.bossname.value,
 										"bosslast" : account2View.bosslast.value
 									});
 									Ti.API.info(JSON.stringify(persistence.getUserData()));
 									$.drawermenu.drawermainview.remove(account2View.getView());
-									$.drawermenu.drawermainview.remove(accountView.getView());
-									
-									loadSession();
+									loadDefaultValues();
+									activeView = 1;
 								}
 							});
 						}
@@ -278,13 +261,30 @@ function showHideCollapsibleMenu(view){
 	}
 }
 
-function loadSession(user){
-	if(user != null){
+function checkSession(){
+	Ti.API.info('Checkeo de sesion');
+	setTimeout(checkSession, 10000);
+}
+
+setTimeout(checkSession, 10000);
+
+function loadDefaultValues(){
+	var user = persistence.getUserData();
+	if(user != null && user.name != undefined){
+		loggedIn = true;
 		menuView.rowNombreUsuario.text = user.username;
-		menuView.menuTopBar.backgroundImage = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'userphoto.jpg').read();
+		menuView.menuTopBar.backgroundImage = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'userphoto.jpg').read();	
+		menuView.rowLabel.addEventListener('click', function(){
+			persistence.logOut();
+			loggedIn = false;
+			Ti.API.info('Aca debo abrir el login');
+		});
+	}else{
+		Ti.API.info('Aca debo abrir el login');
+		//Mostrar login
 	}
 }
 
+loadDefaultValues();
 
-loadSession(persistence.getUserData());
 $.index.open();

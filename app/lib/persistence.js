@@ -1,6 +1,6 @@
 var userData = null;
 
-var colaReportes = null;
+var colaReportes = [];
 
 exports.saveUserData = function(tosave){
 	userData = tosave;
@@ -15,5 +15,10 @@ exports.getUserData = function(){
 };
 
 exports.addReport = function(report){
-	
-}
+	colaReportes.push(report);
+};
+
+exports.logOut = function(){
+	Ti.App.Properties.removeProperty('userData');
+	userData = {};
+};

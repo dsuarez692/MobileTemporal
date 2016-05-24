@@ -6,7 +6,7 @@ exports.validateData = function (){
 		return false;
 	}
 	if($.bosslast.value == ""){
-		alert('Debe ingresar el aellido de la persona a la que reporta');
+		alert('Debe ingresar el apellido de la persona a la que reporta');
 		return false;
 	}
 	return true;
@@ -20,13 +20,14 @@ exports.resetView = function(){
 	controls.removeAllViews($.collapsibleMenu);
 	var funcVacia = function(){};
 	$.collapsibleMenu.removeEventListener('click', funcVacia);
+	loadDefaultValues();
 };
 
 function loadDefaultValues(){
 	if($.args.name != undefined){
-		$.sector = $.args.sector;
-		$.bossname = $.args.bossname;
-		$.bosslast = $.args.bosslast;
+		$.sector.value = $.args.sector;
+		$.bossname.value = $.args.bossname;
+		$.bosslast.value = $.args.bosslast;
 	}
 }
 loadDefaultValues();

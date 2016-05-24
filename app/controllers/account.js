@@ -69,7 +69,7 @@ function showPhotoMenu(open){
 	}
 }
 
-exports.validateData = function(){
+function validateData(){
 	if($.name.value == ''){
 		alert('Debe ingresar un nombre.');
 		return false;
@@ -106,6 +106,8 @@ exports.validateData = function(){
 	return true;
 };
 
+exports.validateData = validateData;
+
 $.userPhoto.addEventListener('click', function(){
 	showPhotoMenu(true);
 });
@@ -123,6 +125,7 @@ exports.resetView = function(){
 	var funcVacia = function(){};
 	$.collapsibleMenu.removeEventListener('click', funcVacia);
 	loadDefaultPhotoImage();
+	loadDefaultValues();
 	Ti.API.info('Reseteo account');
 };
 
@@ -133,5 +136,8 @@ function loadDefaultValues(){
 		$.username.value = $.args.username;
 	}
 }
+
+
+
 loadDefaultValues();
 loadDefaultPhotoImage();
