@@ -1,3 +1,8 @@
 "TableViewRow": {
 	"height": "50dp"
 },
+"Label": {
+	"color": "#057699",
+	"top": "6dp",
+	"font": {fontSize:"16dp"}
+}

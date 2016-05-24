@@ -180,6 +180,9 @@ menuView.menuTable.addEventListener('click',function(e){
     		
     		reportView.form.add(wise.getView());
     		
+    		reportView.volverBtn.addEventListener("click",function(){alert(models.getWISEModel()._Page); if(models.getWISEModel()._Page > 1){models.getWISEModel()._Page = models.getWISEModel()._Page - 1; wise.changePage(models.getWISEModel()._Page);}});
+    		reportView.siguienteBtn.addEventListener("click",function(){alert(models.getWISEModel()._Page); if(models.getWISEModel()._Page < 3){models.getWISEModel()._Page = models.getWISEModel()._Page + 1; wise.changePage(models.getWISEModel()._Page);}}); //Despues veo como sacar la pagina final del reporte
+    		
     		wise.LoadFromModel(models.getWISEModel());
     		$.drawermenu.drawermainview.add(reportView.getView());
     		

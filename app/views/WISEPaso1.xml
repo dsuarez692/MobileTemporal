@@ -4,26 +4,68 @@
             <TableViewRow id="CheckCinturon">
                 <View>
                     <View class="icon-Check" id="iconCinturon" left="5dp" top="5dp" width="30dp" height="30dp"></View>
-                    <Label class="reportTextSelected" id="lblCinturon" left="45dp">Usa cinturón de seguridad</Label>
+                    <Label id="lblCinturon" left="45dp">Usa cinturón de seguridad</Label>
                 </View>
             </TableViewRow>
             <TableViewRow id="CheckLuces">
                 <View>
                     <View class="icon-Check" id="iconLuces" left="5dp" top="5dp" width="30dp" height="30dp"/>
-                    <Label class="reportTextSelected" id="lblLuces" left="45dp">Lleva luces bajas encendidas</Label>
+                    <Label id="lblLuces" left="45dp">Lleva luces bajas encendidas</Label>
                 </View>
             </TableViewRow>
             <TableViewRow id="CheckFreno">
                 <View>
                     <View class="icon-Check" id="iconFreno" left="5dp" top="5dp" width="30dp" height="30dp"/>
-                    <Label class="reportTextSelected" id="lblFreno" left="45dp">Utiliza freno de mano</Label>
+                    <Label id="lblFreno" left="45dp">Utiliza freno de mano</Label>
                 </View>
             </TableViewRow>
             
             <TableViewRow id="CheckEstacionamiento">
                 <View>
                     <View class="icon-Check" id="iconEstacionamiento" left="5dp" top="5dp" width="30dp" height="30dp"/>
-                    <Label class="reportTextSelected" id="lblEstacionamiento" left="45dp">Estacionamiento marcha atrás</Label>
+                    <Label id="lblEstacionamiento" left="45dp">Estacionamiento marcha atrás</Label>
+                </View>
+            </TableViewRow>
+            
+            <TableViewRow id="CheckVelocidades">
+                <View>
+                    <View class="icon-Check" id="iconVelocidades" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                    <Label id="lblVelocidades" left="45dp">Respeta velocidades máximas</Label>
+                </View>
+            </TableViewRow>
+            
+             <TableViewRow id="CheckGuiño">
+                <View>
+                    <View class="icon-Check" id="iconGuiño" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                    <Label id="lblGuiño" left="45dp">Utiliza guiño en maniobras</Label>
+                </View>
+            </TableViewRow>
+            
+            <TableViewRow id="CheckDistancia">
+                <View>
+                    <View class="icon-Check" id="iconDistancia" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                    <Label id="lblDistancia" left="45dp">Respeta distancia en frenado</Label>
+                </View>
+            </TableViewRow>
+            
+             <TableViewRow id="CheckDistanciaCirc">
+                <View>
+                    <View class="icon-Check" id="iconDistanciaCirc" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                    <Label id="lblDistanciaCirc" left="45dp">Respeta distancia de circulación</Label>
+                </View>
+            </TableViewRow>
+            
+            <TableViewRow id="CheckNormas">
+                <View>
+                    <View class="icon-Check" id="iconNormas" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                    <Label id="lblNormas" left="45dp">Respeta normas de tránsito</Label>
+                </View>
+            </TableViewRow>
+            
+            <TableViewRow id="CheckCelular">
+                <View>
+                    <View class="icon-Check" id="iconCelular" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                    <Label id="lblCelular" left="45dp">Utiliza celular</Label>
                 </View>
             </TableViewRow>
         </TableView>
