@@ -1,5 +1,6 @@
 var controls=require('controls');
 var persistence = require('persistence');
+var models=require('models');
 
 var collapsibleMenuOpen = false;
 
@@ -9,6 +10,7 @@ var loggedIn = false;
 var menuView=controls.getMenuView();
 var mainView=controls.getMainView();
 var reportView=controls.getReportView();
+var wise = controls.getWISEPaso1();
 
 
 //add menu view to ConfigView exposed by widget
@@ -16,6 +18,7 @@ reportView.menuButton.add(controls.getMenuButton({
                 h: '40',
                 w: '40'
             }));
+             
 
 //Minor changes to click event. Update the menuOpen status;
 reportView.menuButton.addEventListener('click',function(){
@@ -48,6 +51,21 @@ $.drawermenu.init({
 
 //variable to controler de open/close slide
 var activeView = 1;
+
+function removeAllViews(view){
+	if(view.children.length > 0){
+		var removeData = [];
+	    for (i = view.children.length; i > 0; i--){
+	        removeData.push(view.children[i - 1]);  
+	    };
+	    // Remove childrens
+	    for (i = 0; i < removeData.length; i++){
+	        view.remove(removeData[i]);
+	    }
+	    removeData = null;
+	}
+    
+}
 
 // add event listener in this context
 menuView.menuTable.addEventListener('click',function(e){
