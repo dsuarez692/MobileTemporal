@@ -1,5 +1,7 @@
 var Alloy=require('alloy');
 
+var collapsibleMenuOpen = false;
+
 exports.getMainView=function(){
 	return Alloy.createController('mainview');;
 };
@@ -26,7 +28,7 @@ exports.getAccount2View=function(args){
 	return Alloy.createController('account2', args);
 };
 
-exports.getCollapseButton=function(args){
+function getCollapseButton(args){
 	var v=Ti.UI.createView({
 		height: args.h,
 		width: args.w
@@ -48,7 +50,7 @@ exports.getWiseMenu=function(){
 	return Alloy.createController("wiseMenu");
 };
 
-exports.getMenuButton=function(args){
+function getMenuButton(args){
 	var v=Ti.UI.createView({
 		height: args.h,
 		width: args.w,
@@ -102,4 +104,60 @@ exports.removeAllViews = function(view){
         view.remove(removeData[i]);
     }
     removeData = null;
+};
+
+//Funcion que le agrega a la vista que se le pasa, los iconos de side menu y menu collapsable
+exports.addMenuIcons = function (view){
+	view.menuButton.add(getMenuButton({
+				                h: '40',
+				                w: '40'
+				            }));
+				
+	//Minor changes to click event. Update the menuOpen status;
+	view.menuButton.addEventListener('click',function(){
+		$.drawermenu.showhidemenu();
+		$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
+	}); // method is exposed by widget
+	
+	view.collapsibleButton.add(getCollapseButton({
+		h: '40',
+		w: '40'
+	}));
+};
+
+
+function showHideCollapsibleMenu(view){
+	if(collapsibleMenuOpen){
+		moveCollapsibleMenuTo = -600;
+		collapsibleMenuOpen = false;
+	}else{
+		moveCollapsibleMenuTo = 40;
+		if(OS_WINDOWS){
+			moveCollapsibleMenuTo = 45;
+		}
+		collapsibleMenuOpen = true;
+	}
+	if(OS_IOS || OS_ANDROID){
+		view.collapsibleMenu.animate({
+			top: moveCollapsibleMenuTo,
+			duration: 200
+		});
+	}
+	if(OS_WINDOWS){
+		view.collapsibleMenu.setTop(moveCollapsibleMenuTo);
+	}
+}
+
+//Funcion que despliega el menu collapsable (Revisar porque en android pasa por encima de la mainTopBar)
+exports.showHideCollapsibleMenu= showHideCollapsibleMenu;
+
+exports.initWise = function(view){
+	if(view.appTitleLabel.text != 'WISE'){
+		view.appTitleLabel.text = 'WISE';
+		controls.removeAllViews(view.collapsibleMenu);
+		view.collapsibleMenu.add(view.getView());
+		view.collapsibleButton.addEventListener('click', function(e){
+			showHideCollapsibleMenu(view);
+		});
+	}
 };
