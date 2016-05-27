@@ -93,7 +93,7 @@ exports.createCheckbox = function(specs) {
     return viw;
 };
 
-exports.removeAllViews = function(view){
+function removeAllViews(view){
 	var removeData = [];
     for (i = view.children.length; i > 0; i--){
         removeData.push(view.children[i - 1]);  
@@ -106,18 +106,17 @@ exports.removeAllViews = function(view){
     removeData = null;
 };
 
+exports.removeAllViews = removeAllViews;
+
 //Funcion que le agrega a la vista que se le pasa, los iconos de side menu y menu collapsable
-exports.addMenuIcons = function (view){
+exports.addMenuIcons = function (view, listener){
 	view.menuButton.add(getMenuButton({
 				                h: '40',
 				                w: '40'
 				            }));
 				
 	//Minor changes to click event. Update the menuOpen status;
-	view.menuButton.addEventListener('click',function(){
-		$.drawermenu.showhidemenu();
-		$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
-	}); // method is exposed by widget
+	view.menuButton.addEventListener('click',listener); // method is exposed by widget
 	
 	view.collapsibleButton.add(getCollapseButton({
 		h: '40',
@@ -125,6 +124,13 @@ exports.addMenuIcons = function (view){
 	}));
 };
 
+exports.setCollapsibleMenuOpen = function(value){
+	collapsibleMenuOpen = value;
+};
+
+exports.isCollapsibleMenuOpen = function(){ 
+	return collapsibleMenuOpen == true? true : false;
+};
 
 function showHideCollapsibleMenu(view){
 	if(collapsibleMenuOpen){
@@ -151,11 +157,11 @@ function showHideCollapsibleMenu(view){
 //Funcion que despliega el menu collapsable (Revisar porque en android pasa por encima de la mainTopBar)
 exports.showHideCollapsibleMenu= showHideCollapsibleMenu;
 
-exports.initWise = function(view){
+exports.initWise = function(view, wiseMenuView){
 	if(view.appTitleLabel.text != 'WISE'){
 		view.appTitleLabel.text = 'WISE';
-		controls.removeAllViews(view.collapsibleMenu);
-		view.collapsibleMenu.add(view.getView());
+		removeAllViews(view.collapsibleMenu);
+		view.collapsibleMenu.add(wiseMenuView.getView());
 		view.collapsibleButton.addEventListener('click', function(e){
 			showHideCollapsibleMenu(view);
 		});

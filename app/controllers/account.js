@@ -1,5 +1,6 @@
 var photoManager = require("photo");
 var controls = require("controls");
+var persistence = require("persistence");
 
 var profileLoaded = false;
 
@@ -24,21 +25,30 @@ $.photoMenuTable.addEventListener('click',function(e){
 });
 
 function loadDefaultPhotoImage(){
-	
-	$.userPhoto.add(Ti.UI.createImageView({
-		image: "/camera.png"
-	}));
+	if(user != null && user.name != undefined){
+		var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'userphoto.jpg');
+		$.userPhoto.add(Ti.UI.createImageView({
+			width:"100%",
+			height:"auto",
+			image:f.read(),
+			id: 'imagenPerfil'
+		}));
+		f = null;
+	}else{
+		$.userPhoto.add(Ti.UI.createImageView({
+			image: "/camera.png"
+		}));
+	}
 }
 
 function addFoto(event){
 	controls.removeAllViews($.userPhoto);
-	var image = event.media;
+	var image = event.media.imageAsResized(640, 480);
 	Ti.API.info("EVENTO: "+JSON.stringify(event));
 	
 	fileName = 'userphoto.jpg';
 	var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,fileName);
 	f.write(image);
-
 	var imageView = Ti.UI.createImageView({
 		width:"100%",
 		height:"auto",
@@ -48,6 +58,7 @@ function addFoto(event){
 	});
 	$.userPhoto.add(imageView);
 	profileLoaded = true;
+	f = null;
 }
 
 
@@ -130,14 +141,14 @@ exports.resetView = function(){
 };
 
 function loadDefaultValues(){
-	if($.args.name != undefined){
-		$.name.value = $.args.name;
-		$.last.value = $.args.last;
-		$.username.value = $.args.username;
+	if(user != null && user.name != undefined){
+		$.name.value = user.name;
+		$.last.value = user.last;
+		$.username.value = user.username;
 	}
 }
 
-
+var user = persistence.getUserData();
 
 loadDefaultValues();
 loadDefaultPhotoImage();

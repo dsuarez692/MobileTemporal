@@ -1,5 +1,7 @@
 var controls = require('controls');
+var persistence = require('persistence');
 
+var user = persistence.getUserData();
 
 function validateData(){
 	
@@ -16,8 +18,8 @@ exports.resetView = function(){
 };
 
 function loadDefaultValues(){
-	if($.args.name != undefined){
-		$.userName.text = $.args.username;
+	if(user != null && user.name != undefined){
+		$.userName.text = user.username;
 	}
 }
 

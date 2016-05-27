@@ -1,4 +1,7 @@
 var controls = require('controls');
+var persistence = require('persistence');
+
+var user = persistence.getUserData();
 
 exports.validateData = function (){
 	if($.bossname.value == ""){
@@ -24,10 +27,11 @@ exports.resetView = function(){
 };
 
 function loadDefaultValues(){
-	if($.args.name != undefined){
-		$.sector.value = $.args.sector;
-		$.bossname.value = $.args.bossname;
-		$.bosslast.value = $.args.bosslast;
+	if(user != null && user.name != undefined){
+		$.sector.value = user.sector;
+		$.bossname.value = user.bossname;
+		$.bosslast.value = user.bosslast;
 	}
 }
+
 loadDefaultValues();

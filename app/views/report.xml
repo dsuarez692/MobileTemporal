@@ -29,8 +29,8 @@
                 </View>
             </View>
         </View>
-        <View id="form"></View>
-        <ProgressBar height="10dp" value="33" message="33%"></ProgressBar>
+        <View id="form"/>
+        <ProgressBar height="10dp" message="33%" value="33"/>
         <View height="50dp">
             <View class="buttonSimple" id="volverBtn" left="5%">
                 <Label id="btnText">Volver</Label>

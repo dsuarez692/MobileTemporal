@@ -7,10 +7,15 @@ var models=require('models');
 
 var loggedIn = false;
 
+function hideSideMenu(){
+	$.drawermenu.showhidemenu();
+	$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
+}
+
 var menuView=controls.getMenuView();
 var mainView=controls.getMainView();
 
-controls.addMenuIcons(mainView);
+controls.addMenuIcons(mainView,hideSideMenu);
 
 
 //view 2
@@ -42,23 +47,23 @@ var activeView = 1;
 menuView.menuTable.addEventListener('click',function(e){
     $.drawermenu.showhidemenu();
     $.drawermenu.menuOpen = false; //update menuOpen status to prevent inconsistency.
-    if(collapsibleMenuOpen){
-    	showHideCollapsibleMenu(mainView);
-    	collapsibleMenuOpen = false;
+    if(controls.isCollapsibleMenuOpen){
+    	controls.showHideCollapsibleMenu(mainView);
+    	controls.setCollapsibleMenuOpen(false);
     }
     switch(e.rowData.id){
     	case "account":
     		if(accountView == null){
-    			accountView = controls.getAccountView(persistence.getUserData());
+    			accountView = controls.getAccountView();
 
-				addMenuIcons(accountView);
+				controls.addMenuIcons(accountView,hideSideMenu);
 				
 				accountView.continueBtn.addEventListener('click', function(){
 					if(accountView.validateData()){
 						if(account2View == null){
-							account2View = controls.getAccount2View(persistence.getUserData());
+							account2View = controls.getAccount2View();
 							
-							addMenuIcons(account2View);
+							controls.addMenuIcons(account2View, hideSideMenu);
 							
 							account2View.backBtn.addEventListener('click', function(){
 								account2View.resetView();
@@ -96,9 +101,9 @@ menuView.menuTable.addEventListener('click',function(e){
     		break;
     	case "passchange":
     		if(passChangeView == null){
-    			passChangeView = controls.getPasswordChangeView(persistence.getUserData());
+    			passChangeView = controls.getPasswordChangeView();
 
-				addMenuIcons(passChangeView);
+				controls.addMenuIcons(passChangeView, hideSideMenu);
     		}
     		removeCurrentOpenedView();
     		$.drawermenu.drawermainview.add(passChangeView.getView());
@@ -109,17 +114,18 @@ menuView.menuTable.addEventListener('click',function(e){
     			wiseMenuView = controls.getWiseMenu();
     			
     			wiseMenuView.wiseMenu.addEventListener('click', function(e){
-    				Ti.API.info(e.source.id);
-    				switch(e.source.id){
+    				Ti.API.info(e.rowData.id);
+    				switch(e.rowData.id){
     					case 'auditoria_manejo':
     						if(reportView == null){
     							reportView = controls.getReportView();
-    							addMenuIcons(reportView);
+    							controls.addMenuIcons(reportView);
     						}
-    						if(wise == null){
-    							wise = controls.getWISEPaso1();
+    						if(wiseReport1 == null){
+    							wiseReport1 = controls.getWISEPaso1();
     						}
     						removeCurrentOpenedView();
+    						reportView.Form.add(wiseReport1.getView());
     						$.drawermenu.drawermainview.add(reportView.getView());
     						activeView = 4;
     						break;
@@ -128,16 +134,16 @@ menuView.menuTable.addEventListener('click',function(e){
     		}
     		switch(activeView){
     			case 1:
-    				controls.initWise(mainView);
+    				controls.initWise(mainView, wiseMenuView);
     				break;
     			case 2:
-    				controls.initWise(accountView);
+    				controls.initWise(accountView, wiseMenuView);
     				break;
     			case 2.1:
-    				controls.initWise(account2View);
+    				controls.initWise(account2View, wiseMenuView);
     				break;
     			case 3:
-    				controls.initWise(passChangeView);
+    				controls.initWise(passChangeView, wiseMenuView);
     				break;
     		}
     		break;
@@ -159,7 +165,7 @@ function loadDefaultValues(){
 	if(user != null && user.name != undefined){
 		loggedIn = true;
 		menuView.rowNombreUsuario.text = user.username;
-		menuView.menuTopBar.backgroundImage = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'userphoto.jpg').read();	
+		menuView.menuTopBar.backgroundImage = Titanium.Filesystem.applicationDataDirectory + 'userphoto.jpg';
 		menuView.rowLabel.addEventListener('click', function(){
 			persistence.logOut();
 			loggedIn = false;
