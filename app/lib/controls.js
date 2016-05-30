@@ -10,12 +10,12 @@ exports.getMenuView=function(){
 	return Alloy.createController('menuview');	
 };
 
-exports.getAccountView=function(args){
-    return Alloy.createController('account', args);
+exports.getAccountView=function(){
+    return Alloy.createController('account');
 };
 
-exports.getPasswordChangeView=function(args){
-	return Alloy.createController('passwordchange', args);
+exports.getPasswordChangeView=function(){
+	return Alloy.createController('passwordchange');
 };
 exports.getReportView=function(){
 	return Alloy.createController('report');
@@ -24,8 +24,8 @@ exports.getWISEPaso1=function(){
 	return Alloy.createController('WISEPaso1');;
 };
 
-exports.getAccount2View=function(args){
-	return Alloy.createController('account2', args);
+exports.getAccount2View=function(){
+	return Alloy.createController('account2');
 };
 
 function getCollapseButton(args){

@@ -180,6 +180,9 @@ function loadDefaultValues(){
 //Funcion que saca la vista actual del mainview
 function removeCurrentOpenedView(){
 	switch(activeView){
+		case 1:
+			controls.removeAllViews(mainView.collapsibleMenu);
+			break;
 		case 2:
 			$.drawermenu.drawermainview.remove(accountView.getView());
 			accountView.resetView();
@@ -197,7 +200,6 @@ function removeCurrentOpenedView(){
 			$.drawermenu.drawermainview.remove(reportView.getView());
 			break;
 	};
-	activeView = 1;
 }
 
 loadDefaultValues();

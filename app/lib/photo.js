@@ -66,9 +66,9 @@ exports.tomarFoto = function(callback){
 		error:function(error) {
 			Ti.API.error(error.error);
 		},
-		saveToPhotoGallery:true,
+		saveToPhotoGallery:false,
 		allowEditing:false,
-		inPopOver: false,
+		showControls:true,
 		mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO]
 	});
 };
@@ -82,7 +82,8 @@ exports.cargarFoto=function(callback){
 	}
 	Ti.Media.openPhotoGallery({
 		success:function(event) {
-			Ti.API.debug('Our type was: '+event.mediaType);
+			Ti.API.info("Entro");
+			Ti.API.info(JSON.stringify(event.mediaType));
 	 		if(event.mediaType == Ti.Media.MEDIA_TYPE_PHOTO) {
 	 			callback(event);
 			} else {
@@ -90,12 +91,15 @@ exports.cargarFoto=function(callback){
 			}
 		},
 		cancel:function() {
+			Ti.API.info("Se cancelo");
 		},
 		error:function(error) {
+			Ti.API.error("Error");
 			Ti.API.error(error.error);
 		},
-		saveToPhotoGallery:true,
+		saveToPhotoGallery:false,
 		allowEditing:false,
+		showControls:true,
 		mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO]
 	});
 };
