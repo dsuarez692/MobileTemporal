@@ -28,7 +28,8 @@ var passChangeView = null;
 //Encabezado de los reportes
 var reportView=null;
 //Wise
-var wise1 = null;
+var auditoria = controls.getWISEPaso1();
+
 
 //Menu collapsable wise
 var wiseMenuView = null;
@@ -117,16 +118,13 @@ menuView.menuTable.addEventListener('click',function(e){
     				Ti.API.info(e.rowData.id);
     				switch(e.rowData.id){
     					case 'auditoria_manejo':
-    						if(reportView == null){
-    							reportView = controls.getReportView();
-    							controls.addMenuIcons(reportView);
-    						}
-    						if(wiseReport1 == null){
-    							wiseReport1 = controls.getWISEPaso1();
-    						}
     						removeCurrentOpenedView();
-    						reportView.Form.add(wiseReport1.getView());
-    						$.drawermenu.drawermainview.add(reportView.getView());
+				    		models.resetWISEModel();
+				    		GenerateReport(auditoria);
+				    		reportView.reportName.text = "Auditoría de manejo";
+				    		reportView.form.add(auditoria.Page1);
+				    		auditoria.LoadFromModel(models.getWISEModel());
+				    		$.drawermenu.drawermainview.add(reportView.getView());
     						activeView = 4;
     						break;
     				};
@@ -149,6 +147,30 @@ menuView.menuTable.addEventListener('click',function(e){
     		break;
     };
 });
+
+function GenerateReport(view){
+	if(reportView != null){
+		removeAllViews(reportView.form);		
+	}
+	reportView = controls.getReportView({ Page: view });
+	controls.addMenuIcons(reportView, hideSideMenu);
+	removeAllViews(reportView.form);	
+}
+
+function removeAllViews(view){
+	if(view.children.length > 0){
+		var removeData = [];
+	    for (i = view.children.length; i > 0; i--){
+	        removeData.push(view.children[i - 1]);  
+	    };
+	    // Remove childrens
+	    for (i = 0; i < removeData.length; i++){
+	        view.remove(removeData[i]);
+	    }
+	    removeData = null;
+	}
+    
+}
 
 //Funcion que realiza el chequeo de sesion
 function checkSession(){
