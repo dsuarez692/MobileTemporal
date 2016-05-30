@@ -185,7 +185,8 @@ function removeCurrentOpenedView(){
 			accountView.resetView();
 			break;
 		case 2.1:
-			$.drawermenu.drawermainview.remove(accountView2.getView());
+			$.drawermenu.drawermainview.remove(account2View.getView());
+			$.drawermenu.drawermainview.remove(accountView.getView());
 			account2View.resetView();
 			break;
 		case 3:
