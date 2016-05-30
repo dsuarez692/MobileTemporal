@@ -25,36 +25,15 @@
 "#form": {
 	"top": "15dp",
 	"left": "0dp",
-	"height": "205dp",
+	"height": "330dp",
 	"layout": "vertical",
 	"scrollType": "vertical",
 },
 ".buttonSimple": {
-	"bottom": "5dp",
-	"left": "10%",
-	"right": "10%",
 	"height": "70%",
+	"width":"40%",
 	"backgroundColor": "#8EDCFE",
-	"zIndex": 9999
 },
 ".tableRow": {
 	"height": "40dp"
-},
-"#continueBtn": {
-	"bottom": "0dp",
-	"backgroundColor": "#1f4e79",
-	"zIndex": "2"
-},
-"#lineaDeNegocio": {
-	"height": "120dp"
-},
-".rowIcon": {
-	"width": "60dp",
-	"height": "60dp",
-	"textAlign": Titanium.UI.TEXT_ALIGNMENT_CENTER
-},
-"ProgressBar":{
-	width: Titanium.UI.FILL,
-	height:"20dp",
-	color: "#057699"
-},
+}

@@ -80,6 +80,13 @@ function removeAllViews(view){
     
 }
 
+function GenerateReport(view){
+	removeAllViews(reportView.form);	
+	reportView = controls.getReportView({ Page: view });
+	addMenuIcons(reportView);
+	removeAllViews(reportView.form);	
+}
+
 // add event listener in this context
 menuView.menuTable.addEventListener('click',function(e){
     $.drawermenu.showhidemenu();
@@ -186,7 +193,7 @@ menuView.menuTable.addEventListener('click',function(e){
     		};
     		break;
     	case 'wise':
-    		if(wiseMenuView == null){
+    		/*if(wiseMenuView == null){
     			wiseMenuView = controls.getWiseMenu();
     			
     			wiseMenuView.wiseMenu.addEventListener('click', function(e){
@@ -231,7 +238,17 @@ menuView.menuTable.addEventListener('click',function(e){
 		    		}
     				break;
     		}
-    		break;
+    		break;*/
+    		
+    		removeAllViews($.drawermenu.drawermainview);
+    		mainView.appTitleLabel.text = "WISE";
+    		models.resetWISEModel();
+    		
+    		GenerateReport(wise);
+    		reportView.reportName.text = "Auditoría de manejo";
+    		reportView.form.add(wise.Page1);
+    		wise.LoadFromModel(models.getWISEModel());
+    		$.drawermenu.drawermainview.add(reportView.getView());
     };
 });
 

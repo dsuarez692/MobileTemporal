@@ -5,4 +5,17 @@
 	"color": "#057699",
 	"top": "6dp",
 	"font": {fontSize:"16dp"}
-}
+},
+"#lineaDeNegocio": {
+	"height": "100dp"
+},
+".rowIcon": {
+	"width": "60dp",
+	"height": "60dp",
+	"textAlign": Titanium.UI.TEXT_ALIGNMENT_CENTER
+},
+"ProgressBar":{
+	width: Titanium.UI.FILL,
+	height:"20dp",
+	color: "#057699"
+},

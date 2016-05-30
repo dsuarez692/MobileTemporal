@@ -15,8 +15,8 @@ exports.getAccountView=function(){
 exports.getPasswordChangeView=function(){
 	return Alloy.createController('passwordchange');
 };
-exports.getReportView=function(){
-	return Alloy.createController('report');
+exports.getReportView=function(parms){
+	return Alloy.createController('report', parms);
 };
 exports.getWISEPaso1=function(){
 	return Alloy.createController('WISEPaso1');;

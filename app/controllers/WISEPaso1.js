@@ -32,54 +32,6 @@ exports.LoadFromModel = function(modelo,view,Page){
 	changeTextColor("DistanciaCirc",model.Frenos);
 	changeTextColor("Normas",model.Frenos);
 	changeTextColor("Celular",model.Frenos);
-	ProcessPage(model._Page);
-};
-
-function ResetPage(){
-	$.CheckCinturon.hide();
-	$.CheckLuces.hide();
-	$.CheckFreno.hide();
-	$.CheckEstacionamiento.hide();
-	$.CheckVelocidades.hide();
-	$.CheckGuiño.hide();
-	$.CheckDistancia.hide();
-	$.CheckDistanciaCirc.hide();
-	$.CheckNormas.hide();
-	$.CheckCelular.hide();		
-}
-
-
-
-function ProcessPage(newPage){
-	ResetPage();
-	models.getWISEModel()._Page	= newPage;
-	switch(newPage)
-	{
-		case 1:{
-			$.CheckCinturon.show();
-			$.CheckLuces.show();
-			$.CheckFreno.show();
-			break;
-		}	
-		case 2:{
-			$.CheckEstacionamiento.show();
-			$.CheckVelocidades.show();
-			$.CheckGuiño.show();
-			$.CheckDistancia.show();
-			break;
-		}	
-		case 3:{
-			$.CheckDistanciaCirc.show();
-			$.CheckNormas.show();
-			$.CheckCelular.show();	
-			break;
-		}	
-	}
-};
-
-exports.changePage = function(Page){
-		
-	ProcessPage(Page);		
 };
 
 function changeTextColor(campo,value){

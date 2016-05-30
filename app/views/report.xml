@@ -10,27 +10,7 @@
         <View id="reportNameContainer">
             <Label id="reportName"/>
         </View>
-        <View id="lineaDeNegocio">
-            <View top="3dp">
-                <Label class="reportTextSelected">SELECCIONE LÍNEA DE NEGOCIO A AUDITAR</Label>
-            </View>
-            <View top="36dp">
-                <View left="5%" width="25%">
-                    <View class="rowIcon icon-Negocio1"/>
-                </View>
-                <View left="30%" width="25%">
-                    <View class="rowIcon icon-Negocio2"/>
-                </View>
-                <View left="55%" width="25%">
-                    <View class="rowIcon icon-Negocio3"/>
-                </View>
-                <View left="75%" width="25%">
-                    <View class="rowIcon icon-Negocio4"/>
-                </View>
-            </View>
-        </View>
         <View id="form"></View>
-        <ProgressBar height="10dp" value="33" message="33%"></ProgressBar>
         <View height="50dp">
             <View class="buttonSimple" id="volverBtn" left="5%">
                 <Label id="btnText">Volver</Label>

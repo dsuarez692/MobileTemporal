@@ -77,10 +77,17 @@
 	height: "50dp"
 },
 ".reportTextSelected":{
-	color:"Blue",
+	color:"#1f4e79",
 	top:"0dp",
 	font: {
 		fontSize: "15dp"
+	}
+},
+".reportTextSelectedHigh":{
+	color:"#1f4e79",
+	top:"0dp",
+	font: {
+		fontSize: "25dp"
 	}
 },
 ".icon-CambioClave":{
@@ -136,8 +143,23 @@
 ".icon-Novedades":{
 	backgroundImage:"/media/image9.png",
 },
-".icon-Negocio1":{
-	backgroundImage:"/media/image56.png",
+".icon-Negocio1": {
+	"backgroundImage": "/media/image56.png"
+},
+".icon-Negocio2": {
+	"backgroundImage": "/media/image57.png"
+},
+".icon-Negocio3": {
+	"backgroundImage": "/media/image58.png"
+},
+".icon-Negocio4": {
+	"backgroundImage": "/media/image59.png"
+},
+".icon-NoCheck": {
+	"backgroundImage": "/media/image37.png"
+},
+".icon-Check": {
+	"backgroundImage": "/media/image36.png"
 },
 ".collapsibleMenu":{
 	width: Ti.UI.FILL,	

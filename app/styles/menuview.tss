@@ -6,6 +6,7 @@
 	width: Ti.UI.FILL,
 	height: "160dp",
 	layout: 'horizontal',
+	//backgroundColor: "#1f4e79"
 },
 
 "#menuTopBarName":{
