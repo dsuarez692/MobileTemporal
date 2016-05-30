@@ -1,20 +1,5 @@
 var dialogs = require('alloy/dialogs');
 
-function editPermissions(e) {
-
-	if (OS_IOS) {
-		Ti.Platform.openURL(Ti.App.iOS.applicationOpenSettingsURL);
-	}
-
-	if (OS_ANDROID) {
-		var intent = Ti.Android.createIntent({
-			action: 'android.settings.APPLICATION_SETTINGS',
-		});
-		intent.addFlags(Ti.Android.FLAG_ACTIVITY_NEW_TASK);
-		Ti.Android.currentActivity.startActivity(intent);
-	}
-}
-
 function requestPermissions() {
 
 	// This iOS-only property is available since Ti 4.0

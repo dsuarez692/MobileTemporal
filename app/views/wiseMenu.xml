@@ -21,7 +21,7 @@
         <TableViewRow class="wiseMenuRow" id="acci_inci">
             <View class="wiseMenuRowView">
                 <ImageView class="wiseMenuIcon" image="/media/image29.png"/>
-                <Label>Accidente o incidente</Label>
+                <Label class="wiseMenuLabel">Accidente o incidente</Label>
             </View>
         </TableViewRow>
         <TableViewRow class="wiseMenuRow" id="chequeo_vehicular2">

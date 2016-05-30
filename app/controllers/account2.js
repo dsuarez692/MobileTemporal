@@ -1,4 +1,7 @@
 var controls = require('controls');
+var persistence = require('persistence');
+
+var user = persistence.getUserData();
 
 exports.validateData = function (){
 	if($.bossname.value == ""){
@@ -6,7 +9,7 @@ exports.validateData = function (){
 		return false;
 	}
 	if($.bosslast.value == ""){
-		alert('Debe ingresar el aellido de la persona a la que reporta');
+		alert('Debe ingresar el apellido de la persona a la que reporta');
 		return false;
 	}
 	return true;
@@ -20,4 +23,15 @@ exports.resetView = function(){
 	controls.removeAllViews($.collapsibleMenu);
 	var funcVacia = function(){};
 	$.collapsibleMenu.removeEventListener('click', funcVacia);
+	loadDefaultValues();
 };
+
+function loadDefaultValues(){
+	if(user != null && user.name != undefined){
+		$.sector.value = user.sector;
+		$.bossname.value = user.bossname;
+		$.bosslast.value = user.bosslast;
+	}
+}
+
+loadDefaultValues();

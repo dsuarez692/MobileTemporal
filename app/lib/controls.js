@@ -1,5 +1,7 @@
 var Alloy=require('alloy');
 
+var collapsibleMenuOpen = false;
+
 exports.getMainView=function(){
 	return Alloy.createController('mainview');;
 };
@@ -8,12 +10,12 @@ exports.getMenuView=function(){
 	return Alloy.createController('menuview');	
 };
 
-exports.getAccountView=function(){
-    return Alloy.createController('account');
+exports.getAccountView=function(args){
+    return Alloy.createController('account', args);
 };
 
-exports.getPasswordChangeView=function(){
-	return Alloy.createController('passwordchange');
+exports.getPasswordChangeView=function(args){
+	return Alloy.createController('passwordchange', args);
 };
 exports.getReportView=function(parms){
 	return Alloy.createController('report', parms);
@@ -22,11 +24,11 @@ exports.getWISEPaso1=function(){
 	return Alloy.createController('WISEPaso1');;
 };
 
-exports.getAccount2View=function(){
-	return Alloy.createController('account2');
+exports.getAccount2View=function(args){
+	return Alloy.createController('account2', args);
 };
 
-exports.getCollapseButton=function(args){
+function getCollapseButton(args){
 	var v=Ti.UI.createView({
 		height: args.h,
 		width: args.w
@@ -48,7 +50,7 @@ exports.getWiseMenu=function(){
 	return Alloy.createController("wiseMenu");
 };
 
-exports.getMenuButton=function(args){
+function getMenuButton(args){
 	var v=Ti.UI.createView({
 		height: args.h,
 		width: args.w,
@@ -91,7 +93,7 @@ exports.createCheckbox = function(specs) {
     return viw;
 };
 
-exports.removeAllViews = function(view){
+function removeAllViews(view){
 	var removeData = [];
     for (i = view.children.length; i > 0; i--){
         removeData.push(view.children[i - 1]);  
@@ -102,4 +104,66 @@ exports.removeAllViews = function(view){
         view.remove(removeData[i]);
     }
     removeData = null;
+};
+
+exports.removeAllViews = removeAllViews;
+
+//Funcion que le agrega a la vista que se le pasa, los iconos de side menu y menu collapsable
+exports.addMenuIcons = function (view, listener){
+	view.menuButton.add(getMenuButton({
+				                h: '40',
+				                w: '40'
+				            }));
+				
+	//Minor changes to click event. Update the menuOpen status;
+	view.menuButton.addEventListener('click',listener); // method is exposed by widget
+	
+	view.collapsibleButton.add(getCollapseButton({
+		h: '40',
+		w: '40'
+	}));
+};
+
+exports.setCollapsibleMenuOpen = function(value){
+	collapsibleMenuOpen = value;
+};
+
+exports.isCollapsibleMenuOpen = function(){ 
+	return collapsibleMenuOpen == true? true : false;
+};
+
+function showHideCollapsibleMenu(view){
+	if(collapsibleMenuOpen){
+		moveCollapsibleMenuTo = -600;
+		collapsibleMenuOpen = false;
+	}else{
+		moveCollapsibleMenuTo = 40;
+		if(OS_WINDOWS){
+			moveCollapsibleMenuTo = 45;
+		}
+		collapsibleMenuOpen = true;
+	}
+	if(OS_IOS || OS_ANDROID){
+		view.collapsibleMenu.animate({
+			top: moveCollapsibleMenuTo,
+			duration: 200
+		});
+	}
+	if(OS_WINDOWS){
+		view.collapsibleMenu.setTop(moveCollapsibleMenuTo);
+	}
+}
+
+//Funcion que despliega el menu collapsable (Revisar porque en android pasa por encima de la mainTopBar)
+exports.showHideCollapsibleMenu= showHideCollapsibleMenu;
+
+exports.initWise = function(view, wiseMenuView){
+	if(view.appTitleLabel.text != 'WISE'){
+		view.appTitleLabel.text = 'WISE';
+		removeAllViews(view.collapsibleMenu);
+		view.collapsibleMenu.add(wiseMenuView.getView());
+		view.collapsibleButton.addEventListener('click', function(e){
+			showHideCollapsibleMenu(view);
+		});
+	}
 };

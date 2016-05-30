@@ -1,4 +1,7 @@
 var controls = require('controls');
+var persistence = require('persistence');
+
+var user = persistence.getUserData();
 
 function validateData(){
 	
@@ -11,23 +14,13 @@ exports.resetView = function(){
 	controls.removeAllViews($.collapsibleMenu);
 	var funcVacia = function(){};
 	$.collapsibleMenu.removeEventListener('click', funcVacia);
+	loadDefaultValues();
 };
 
-function changeColor(e){
-	if(e.type == 'touchstart'){
-		if(e.source.id=='continueBtn'){
-			e.source.backgroundColor = '#3f8fac';
-		}
-		if(e.source.id=='cancelBtn'){
-			e.source.backgroundColor = '#cecece';
-		}
-	}
-	if(e.type == 'touchend'){
-		if(e.source.id=='continueBtn'){
-			e.source.backgroundColor = '#1f4e79';
-		}
-		if(e.source.id=='cancelBtn'){
-			e.source.backgroundColor = '#FFFFFF';
-		}
+function loadDefaultValues(){
+	if(user != null && user.name != undefined){
+		$.userName.text = user.username;
 	}
 }
+
+loadDefaultValues();

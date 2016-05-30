@@ -1,58 +1,36 @@
+//Modulo de controles, tiene funciones relacionadas con manejo de views y menus
 var controls=require('controls');
+//Modulo de persistencia
+var persistence = require('persistence');
+//Modulo de modelos
 var models=require('models');
 
-var collapsibleMenuOpen = false;
+var loggedIn = false;
 
-// get main and menu view as objects
+function hideSideMenu(){
+	$.drawermenu.showhidemenu();
+	$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
+}
+
 var menuView=controls.getMenuView();
 var mainView=controls.getMainView();
-var reportView=controls.getReportView();
-var wise = controls.getWISEPaso1();
+
+controls.addMenuIcons(mainView,hideSideMenu);
 
 
-//add menu view to ConfigView exposed by widget
-reportView.menuButton.add(controls.getMenuButton({
-                h: '40',
-                w: '40'
-            }));
-             
-
-//Minor changes to click event. Update the menuOpen status;
-reportView.menuButton.addEventListener('click',function(){
-	$.drawermenu.showhidemenu();
-	$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
-}); // method is exposed by widget
-
-reportView.collapsibleButton.add(controls.getCollapseButton({
-	h: '40',
-	w: '40'
-}));
-
-
-// attach event listener to menu button
-mainView.menuButton.add(controls.getMenuButton({
-	h: '40',
-	w: '40'
-}));
-
-//Minor changes to click event. Update the menuOpen status;
-mainView.menuButton.addEventListener('click',function(){
-	$.drawermenu.showhidemenu();
-	$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
-}); // method is exposed by widget
-
-mainView.collapsibleButton.add(controls.getCollapseButton({
-	h: '40',
-	w: '40'
-}));
-
+//view 2
+var accountView=null;
+//view 2.1
+var account2View = null;
+//view 3
 var passChangeView = null;
 
-// get config view as objects
-var accountView=null;
+//Encabezado de los reportes
+var reportView=null;
+//Wise
+var wise1 = null;
 
-var account2View = null;
-
+//Menu collapsable wise
 var wiseMenuView = null;
 
 $.drawermenu.init({
@@ -65,75 +43,49 @@ $.drawermenu.init({
 //variable to controler de open/close slide
 var activeView = 1;
 
-function removeAllViews(view){
-	if(view.children.length > 0){
-		var removeData = [];
-	    for (i = view.children.length; i > 0; i--){
-	        removeData.push(view.children[i - 1]);  
-	    };
-	    // Remove childrens
-	    for (i = 0; i < removeData.length; i++){
-	        view.remove(removeData[i]);
-	    }
-	    removeData = null;
-	}
-    
-}
-
-function GenerateReport(view){
-	removeAllViews(reportView.form);	
-	reportView = controls.getReportView({ Page: view });
-	addMenuIcons(reportView);
-	removeAllViews(reportView.form);	
-}
-
 // add event listener in this context
 menuView.menuTable.addEventListener('click',function(e){
     $.drawermenu.showhidemenu();
     $.drawermenu.menuOpen = false; //update menuOpen status to prevent inconsistency.
-    if(collapsibleMenuOpen){
-    	showHideCollapsibleMenu(mainView);
-    	collapsibleMenuOpen = false;
+    if(controls.isCollapsibleMenuOpen){
+    	controls.showHideCollapsibleMenu(mainView);
+    	controls.setCollapsibleMenuOpen(false);
     }
     switch(e.rowData.id){
-    	case "home":
-    		switch(activeView){
-    			case 1:
-    				break;
-    			case 2:
-    				accountView.resetView();
-    				$.drawermenu.drawermainview.remove(accountView.getView());
-    				activeView = 1;
-    				break;
-    			case 2.1:
-    				account2View.resetView();
-    				accountView.resetView();
-    				$.drawermenu.drawermainview.remove(account2View.getView());
-    				activeView = 1;
-    			case 3:
-    				passChangeView.resetView();
-    				$.drawermenu.drawermainview.remove(passChangeView.getView());
-    				activeView = 1;
-    				break;
-    		};
-    		break;
     	case "account":
     		if(accountView == null){
     			accountView = controls.getAccountView();
 
-				addMenuIcons(accountView);
+				controls.addMenuIcons(accountView,hideSideMenu);
 				
 				accountView.continueBtn.addEventListener('click', function(){
 					if(accountView.validateData()){
 						if(account2View == null){
 							account2View = controls.getAccount2View();
 							
-							addMenuIcons(account2View);
+							controls.addMenuIcons(account2View, hideSideMenu);
 							
 							account2View.backBtn.addEventListener('click', function(){
 								account2View.resetView();
 								$.drawermenu.drawermainview.add(accountView.getView());
 								$.drawermenu.drawermainview.remove(account2View.getView());
+							});
+							account2View.continueBtn.addEventListener('click',function(){
+								if(account2View.validateData()){
+									persistence.saveUserData({
+										"name" : accountView.name.value,
+										"last" : accountView.last.value,
+										"username" : accountView.username.value,
+										"password" : Ti.Utils.sha256(accountView.password.value),
+										"sector" : account2View.sector.value,
+										"bossname" : account2View.bossname.value,
+										"bosslast" : account2View.bosslast.value
+									});
+									Ti.API.info(JSON.stringify(persistence.getUserData()));
+									$.drawermenu.drawermainview.remove(account2View.getView());
+									loadDefaultValues();
+									activeView = 1;
+								}
 							});
 						}
 						
@@ -143,153 +95,110 @@ menuView.menuTable.addEventListener('click',function(e){
 					}
 				});
     		}
-    		switch(activeView){
-    			case 1:
-    				$.drawermenu.drawermainview.add(accountView.getView());
-    				activeView = 2;
-    				break;
-    			case 2:
-    				break;
-    			case 2.1:
-    				account2View.resetView();
-    				$.drawermenu.drawermainview.add(accountView.getView());
-    				$.drawermenu.drawermainview.remove(account2View.getView());
-    				activeView = 2;
-    				break;
-    			case 3:
-    				passChangeView.resetView();
-    				$.drawermenu.drawermainview.remove(passChangeView.getView());
-    				$.drawermenu.drawermainview.add(accountView.getView());
-    				activeView = 2;
-    				break;
-    		};
+    		removeCurrentOpenedView();
+    		$.drawermenu.drawermainview.add(accountView.getView());
+    		activeView = 2;
     		break;
     	case "passchange":
     		if(passChangeView == null){
     			passChangeView = controls.getPasswordChangeView();
 
-				addMenuIcons(passChangeView);
+				controls.addMenuIcons(passChangeView, hideSideMenu);
     		}
-    		switch(activeView){
-    			case 1:
-    				$.drawermenu.drawermainview.add(passChangeView.getView());
-    				activeView = 3;
-    				break;
-    			case 2:
-    				accountView.resetView();
-    				$.drawermenu.drawermainview.add(passChangeView.getView());
-    				$.drawermenu.drawermainview.remove(accountView.getView());
-    				activeView = 3;
-    				break;
-    			case 2.1:
-    				account2View.resetView();
-    				accountView.resetView();
-    				$.drawermenu.drawermainview.add(passChangeView.getView());
-    				$.drawermenu.drawermainview.remove(account2View.getView());
-    				activeView = 3;
-    				break;
-    			case 3:
-    				break;
-    		};
+    		removeCurrentOpenedView();
+    		$.drawermenu.drawermainview.add(passChangeView.getView());
+    		activeView = 3;
     		break;
     	case 'wise':
-    		/*if(wiseMenuView == null){
+    		if(wiseMenuView == null){
     			wiseMenuView = controls.getWiseMenu();
     			
     			wiseMenuView.wiseMenu.addEventListener('click', function(e){
-    				Ti.API.info(e.source.id);
+    				Ti.API.info(e.rowData.id);
+    				switch(e.rowData.id){
+    					case 'auditoria_manejo':
+    						if(reportView == null){
+    							reportView = controls.getReportView();
+    							controls.addMenuIcons(reportView);
+    						}
+    						if(wiseReport1 == null){
+    							wiseReport1 = controls.getWISEPaso1();
+    						}
+    						removeCurrentOpenedView();
+    						reportView.Form.add(wiseReport1.getView());
+    						$.drawermenu.drawermainview.add(reportView.getView());
+    						activeView = 4;
+    						break;
+    				};
     			});
     		}
     		switch(activeView){
     			case 1:
-    				if(mainView.appTitleLabel.text != 'WISE'){
-	    				mainView.appTitleLabel.text = 'WISE';
-			    		mainView.collapsibleMenu.add(wiseMenuView.getView());
-			    		mainView.collapsibleButton.addEventListener('click', function(e){
-			    			showHideCollapsibleMenu(mainView);
-			    		});
-		    		}
+    				controls.initWise(mainView, wiseMenuView);
     				break;
     			case 2:
-    				if(accountView.appTitleLabel.text != 'WISE'){
-	    				accountView.appTitleLabel.text = 'WISE';
-			    		accountView.collapsibleMenu.add(wiseMenuView.getView());
-			    		accountView.collapsibleButton.addEventListener('click', function(e){
-			    			showHideCollapsibleMenu(accountView);
-			    		});
-		    		}
+    				controls.initWise(accountView, wiseMenuView);
     				break;
     			case 2.1:
-    				if(account2View.appTitleLabel.text != 'WISE'){
-	    				account2View.appTitleLabel.text = 'WISE';
-			    		account2View.collapsibleMenu.add(wiseMenuView.getView());
-			    		account2View.collapsibleButton.addEventListener('click', function(e){
-			    			showHideCollapsibleMenu(accountView);
-			    		});
-		    		}
+    				controls.initWise(account2View, wiseMenuView);
     				break;
     			case 3:
-    				if(passChangeView.appTitleLabel.text != 'WISE'){
-	    				passChangeView.appTitleLabel.text = 'WISE';
-			    		passChangeView.collapsibleMenu.add(wiseMenuView.getView());
-			    		passChangeView.collapsibleButton.addEventListener('click', function(e){
-			    			showHideCollapsibleMenu(passChangeView);
-			    		});
-		    		}
+    				controls.initWise(passChangeView, wiseMenuView);
     				break;
     		}
-    		break;*/
-    		
-    		removeAllViews($.drawermenu.drawermainview);
-    		mainView.appTitleLabel.text = "WISE";
-    		models.resetWISEModel();
-    		
-    		GenerateReport(wise);
-    		reportView.reportName.text = "Auditoría de manejo";
-    		reportView.form.add(wise.Page1);
-    		wise.LoadFromModel(models.getWISEModel());
-    		$.drawermenu.drawermainview.add(reportView.getView());
+    		break;
     };
 });
 
-function addMenuIcons(view){
-	view.menuButton.add(controls.getMenuButton({
-				                h: '40',
-				                w: '40'
-				            }));
-				
-	//Minor changes to click event. Update the menuOpen status;
-	view.menuButton.addEventListener('click',function(){
-		$.drawermenu.showhidemenu();
-		$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
-	}); // method is exposed by widget
-	
-	view.collapsibleButton.add(controls.getCollapseButton({
-		h: '40',
-		w: '40'
-	}));
+//Funcion que realiza el chequeo de sesion
+function checkSession(){
+	Ti.API.info('Checkeo de sesion');
+	Ti.API.info(loggedIn);
+	setTimeout(checkSession, 10000);
 }
 
-function showHideCollapsibleMenu(view){
-	if(collapsibleMenuOpen){
-		moveCollapsibleMenuTo = -600;
-		collapsibleMenuOpen = false;
-	}else{
-		moveCollapsibleMenuTo = 40;
-		if(OS_WINDOWS){
-			moveCollapsibleMenuTo = 45;
-		}
-		collapsibleMenuOpen = true;
-	}
-	if(OS_IOS || OS_ANDROID){
-		view.collapsibleMenu.animate({
-			top: moveCollapsibleMenuTo,
-			duration: 200
+setTimeout(checkSession, 10000);
+
+//Funcion que se ejecuta al cargar la pantalla, que setea todos los textos relacionados con datos del usuario al momento de cargar la aplicacion
+function loadDefaultValues(){
+	var user = persistence.getUserData();
+	if(user != null && user.name != undefined){
+		loggedIn = true;
+		menuView.rowNombreUsuario.text = user.username;
+		menuView.menuTopBar.backgroundImage = Titanium.Filesystem.applicationDataDirectory + 'userphoto.jpg';
+		menuView.rowLabel.addEventListener('click', function(){
+			persistence.logOut();
+			loggedIn = false;
+			Ti.API.info('Aca debo abrir el login');
 		});
-	}
-	if(OS_WINDOWS){
-		view.collapsibleMenu.setTop(moveCollapsibleMenuTo);
+	}else{
+		Ti.API.info('Aca debo abrir el login');
+		//Mostrar login
 	}
 }
+
+//Funcion que saca la vista actual del mainview
+function removeCurrentOpenedView(){
+	switch(activeView){
+		case 2:
+			$.drawermenu.drawermainview.remove(accountView.getView());
+			accountView.resetView();
+			break;
+		case 2.1:
+			$.drawermenu.drawermainview.remove(accountView2.getView());
+			account2View.resetView();
+			break;
+		case 3:
+			$.drawermenu.drawermainview.remove(passChangeView.getView());
+			passChangeView.resetView();
+			break;
+		case 4:
+			$.drawermenu.drawermainview.remove(reportView.getView());
+			break;
+	};
+	activeView = 1;
+}
+
+loadDefaultValues();
 
 $.index.open();

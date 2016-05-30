@@ -1,5 +1,8 @@
 var photoManager = require("photo");
 var controls = require("controls");
+var persistence = require("persistence");
+
+var profileLoaded = false;
 
 var durationPhotoMenu = 200;
 
@@ -14,6 +17,7 @@ $.photoMenuTable.addEventListener('click',function(e){
 			break;
 		case "deletePhoto":
 			controls.removeAllViews($.userPhoto);
+			profileLoaded = false;
 			loadDefaultPhotoImage();
 			break;
 	};
@@ -21,21 +25,30 @@ $.photoMenuTable.addEventListener('click',function(e){
 });
 
 function loadDefaultPhotoImage(){
-	
-	$.userPhoto.add(Ti.UI.createImageView({
-		image: "/camera.png"
-	}));
+	if(user != null && user.name != undefined){
+		var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'userphoto.jpg');
+		$.userPhoto.add(Ti.UI.createImageView({
+			width:"100%",
+			height:"auto",
+			image:f.read(),
+			id: 'imagenPerfil'
+		}));
+		f = null;
+	}else{
+		$.userPhoto.add(Ti.UI.createImageView({
+			image: "/camera.png"
+		}));
+	}
 }
 
 function addFoto(event){
 	controls.removeAllViews($.userPhoto);
-	var image = event.media;
+	var image = event.media.imageAsResized(640, 480);
 	Ti.API.info("EVENTO: "+JSON.stringify(event));
 	
 	fileName = 'userphoto.jpg';
 	var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,fileName);
 	f.write(image);
-
 	var imageView = Ti.UI.createImageView({
 		width:"100%",
 		height:"auto",
@@ -44,6 +57,8 @@ function addFoto(event){
 		id: 'imagenPerfil'
 	});
 	$.userPhoto.add(imageView);
+	profileLoaded = true;
+	f = null;
 }
 
 
@@ -65,7 +80,7 @@ function showPhotoMenu(open){
 	}
 }
 
-exports.validateData = function(){
+function validateData(){
 	if($.name.value == ''){
 		alert('Debe ingresar un nombre.');
 		return false;
@@ -82,6 +97,10 @@ exports.validateData = function(){
 		alert('Debe ingresar una contraseña.');
 		return false;
 	}
+	if($.password.value.length < 6 || $.password.value.length > 20){
+		alert('La contraseña debe contener entre 6 y 20 caracteres');
+		return false;
+	}
 	if($.password2.value == ''){
 		alert('Debe repetir la contraseña.');
 		return false;
@@ -90,8 +109,15 @@ exports.validateData = function(){
 		alert('Las contraseñas no coinciden.');
 		return false;
 	}
+	
+	if(!profileLoaded){
+		alert('Debe seleccionar una imagen de usuario');
+		return false;
+	}
 	return true;
 };
+
+exports.validateData = validateData;
 
 $.userPhoto.addEventListener('click', function(){
 	showPhotoMenu(true);
@@ -110,7 +136,19 @@ exports.resetView = function(){
 	var funcVacia = function(){};
 	$.collapsibleMenu.removeEventListener('click', funcVacia);
 	loadDefaultPhotoImage();
+	loadDefaultValues();
 	Ti.API.info('Reseteo account');
 };
 
+function loadDefaultValues(){
+	if(user != null && user.name != undefined){
+		$.name.value = user.name;
+		$.last.value = user.last;
+		$.username.value = user.username;
+	}
+}
+
+var user = persistence.getUserData();
+
+loadDefaultValues();
 loadDefaultPhotoImage();
