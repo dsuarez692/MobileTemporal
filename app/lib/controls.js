@@ -28,6 +28,10 @@ exports.getAccount2View=function(){
 	return Alloy.createController('account2');
 };
 
+exports.getLoginView=function(){
+	return Alloy.createController('loginview');
+};
+
 function getCollapseButton(args){
 	var v=Ti.UI.createView({
 		height: args.h,

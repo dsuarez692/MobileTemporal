@@ -42,6 +42,7 @@
 "#continueBtn":{
 	bottom: "0dp",
 	backgroundColor: '#1f4e79',
+	backgroundSelectedColor: '#3f8fac',
 	zIndex: 2
 },
 ".businessPick":{

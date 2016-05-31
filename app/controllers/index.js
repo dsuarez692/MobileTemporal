@@ -12,6 +12,7 @@ function hideSideMenu(){
 	$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
 }
 
+var loginView = null;
 var menuView=controls.getMenuView();
 var mainView=controls.getMainView();
 
@@ -169,11 +170,16 @@ function loadDefaultValues(){
 		menuView.rowLabel.addEventListener('click', function(){
 			persistence.logOut();
 			loggedIn = false;
-			Ti.API.info('Aca debo abrir el login');
+			if(loginView == null){
+				loginView = controls.getLoginView();
+			}
+			$.drawermenu.drawermainview.add(loginView.getView());
 		});
 	}else{
-		Ti.API.info('Aca debo abrir el login');
-		//Mostrar login
+		if(loginView == null){
+			loginView = controls.getLoginView();
+		}
+		$.drawermenu.drawermainview.add(loginView.getView());
 	}
 }
 

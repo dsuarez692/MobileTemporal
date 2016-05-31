@@ -1,0 +1,59 @@
+"#mainView":{
+	layout: 'vertical',
+	backgroundColor: '#EEE',
+	height: "100%",
+	width: "100%"
+},
+"#mainTopBar":{
+	width: Ti.UI.FILL,
+	height: "40dp",
+	backgroundColor: '#E0E0E0',
+	layout: 'horizontal',
+	top: "0dp"
+},
+"#content":{
+	top: 0,
+	height: Ti.UI.FILL,
+	width: "100%",
+	layout:"vertical",
+	backgroundColor: 'white'
+},
+"#form":{
+	top: "0dp",
+	left: "0dp",
+	height: "70%",
+	layout:"vertical",
+	scrollType: 'vertical'
+},
+".buttonSimple":{
+	bottom: '0dp',
+	left: "10%",
+	right: "10%",
+	height: "10%"
+},
+"#registerBtn":{
+	color: '#000',
+	backgroundColor: '#FFFFFF',
+	backgroundSelectedColor: '#cecece',
+	borderColor: '#1f4e79'
+},
+"#loginBtn":{
+	backgroundColor: '#1f4e79',
+	backgroundSelectedColor: '#3f8fac'
+},
+"#subtitleBar":{
+	top: "0dp",
+	left: "0dp",
+	width: "100%",
+	height: "60dp",
+	backgroundColor: "#1f4e79",
+	layout: 'vertical'
+},
+".subtitleLabel":{
+	color: 'white',
+	font: {
+		fontSize: '20dp'
+	},
+	left: '20dp',
+	top: '5dp'
+}
