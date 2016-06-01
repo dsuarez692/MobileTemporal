@@ -44,7 +44,6 @@ function loadDefaultPhotoImage(){
 function addFoto(event){
 	controls.removeAllViews($.userPhoto);
 	var image = event.media.imageAsResized(640, 480);
-	Ti.API.info("EVENTO: "+JSON.stringify(event));
 	
 	fileName = 'userphoto.jpg';
 	var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,fileName);
@@ -53,7 +52,7 @@ function addFoto(event){
 		width:"100%",
 		height:"auto",
 		//image:event.media.file.nativePath,
-		image:event.media,
+		image:image,
 		id: 'imagenPerfil'
 	});
 	$.userPhoto.add(imageView);

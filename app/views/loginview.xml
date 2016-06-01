@@ -1,0 +1,26 @@
+<Alloy>
+    <View id="mainView">
+        <View id="mainTopBar">
+            <View id="appTitle">
+            	<Label class="appTitleLabel" id="appTitleLabel">Identificarse</Label>
+            </View>
+        </View>
+        <View id="content">
+            <View id="subtitleBar">
+                <Label class="subtitleLabel">Identificarse en el sistema</Label>
+            </View>
+            <ScrollView id="form">
+            	<Label class="labelField">USUARIO</Label>
+                <TextField class="textSimple" hintText="  Usuario" id="username"/>
+                <Label class="labelField">CONTRASEÑA</Label>
+                <TextField class="textSimple" hintText="  Contraseña" passwordMask="true" id="password"/>
+            </ScrollView>
+            <View class="buttonSimple" id="loginBtn">
+                <Label id="btnText">Ingresar</Label>
+            </View>
+            <View class="buttonSimple" id="registerBtn">
+                <Label id="btnText">Registrarse</Label>
+            </View>
+        </View>
+    </View>
+</Alloy>

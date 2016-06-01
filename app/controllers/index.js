@@ -12,6 +12,7 @@ function hideSideMenu(){
 	$.drawermenu.menuOpen=!$.drawermenu.menuOpen;
 }
 
+var loginView = null;
 var menuView=controls.getMenuView();
 var mainView=controls.getMainView();
 
@@ -169,23 +170,33 @@ function loadDefaultValues(){
 		menuView.rowLabel.addEventListener('click', function(){
 			persistence.logOut();
 			loggedIn = false;
-			Ti.API.info('Aca debo abrir el login');
+			/*if(loginView == null){
+				loginView = controls.getLoginView();
+			}
+			$.drawermenu.drawermainview.add(loginView.getView());*/
 		});
 	}else{
-		Ti.API.info('Aca debo abrir el login');
-		//Mostrar login
+		/*if(loginView == null){
+			loginView = controls.getLoginView();
+		}
+		$.drawermenu.drawermainview.add(loginView.getView());*/
 	}
 }
 
 //Funcion que saca la vista actual del mainview
 function removeCurrentOpenedView(){
 	switch(activeView){
+		case 1:
+			mainView.appTitleLabel.text = 'Flujo de actividades';
+			controls.removeAllViews(mainView.collapsibleMenu);
+			break;
 		case 2:
 			$.drawermenu.drawermainview.remove(accountView.getView());
 			accountView.resetView();
 			break;
 		case 2.1:
-			$.drawermenu.drawermainview.remove(accountView2.getView());
+			$.drawermenu.drawermainview.remove(account2View.getView());
+			$.drawermenu.drawermainview.remove(accountView.getView());
 			account2View.resetView();
 			break;
 		case 3:
@@ -196,7 +207,6 @@ function removeCurrentOpenedView(){
 			$.drawermenu.drawermainview.remove(reportView.getView());
 			break;
 	};
-	activeView = 1;
 }
 
 loadDefaultValues();
