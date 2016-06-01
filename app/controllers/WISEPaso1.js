@@ -34,6 +34,22 @@ exports.LoadFromModel = function(modelo,view,Page){
 	changeTextColor("Celular",model.Frenos);
 };
 
+exports.GetPrimeraPagina = function(pageNumber){
+	return $.Page1;		
+};
+exports.GetSegundaPagina = function(pageNumber){
+	return $.Page2;		
+};
+exports.GetTerceraPagina = function(pageNumber){
+	return $.Page3;		
+};
+exports.GetCuartaPagina = function(pageNumber){
+	return $.Page4;		
+};
+exports.GetPageCount = function(pageNumber){
+	return 4;		
+};
+
 function changeTextColor(campo,value){
 	var color = "#057699"; //Celeste
 	var image = "/media/image36.png";

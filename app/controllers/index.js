@@ -125,6 +125,7 @@ menuView.menuTable.addEventListener('click',function(e){
 				    		reportView.form.add(auditoria.Page1);
 				    		auditoria.LoadFromModel(models.getWISEModel());
 				    		$.drawermenu.drawermainview.add(reportView.getView());
+				    		reportView.volverBtn.visible = false;
     						activeView = 4;
     						break;
     				};
@@ -154,7 +155,28 @@ function GenerateReport(view){
 	}
 	reportView = controls.getReportView({ Page: view });
 	controls.addMenuIcons(reportView, hideSideMenu);
-	removeAllViews(reportView.form);	
+	removeAllViews(reportView.form);
+	
+	reportView.enviarBtn.addEventListener("click",
+		function(){
+			JSON.stringify(Ti.API.warn(models.getWISEModel()));
+			
+			//Aca iria la persistencia
+			$.drawermenu.drawermainview.remove(reportView.getView());
+			loadDefaultValues();
+			activeView = 1;
+			
+			var dialog = Ti.UI.createAlertDialog({
+			    message: 'El reporte sera procesado a la brevedad.',
+			    ok: 'Okay',
+			    title: 'Muchas Gracias'
+			  });
+		    dialog.show();
+		    if(controls.isCollapsibleMenuOpen){
+		    	controls.showHideCollapsibleMenu(mainView);
+		    	controls.setCollapsibleMenuOpen(false);
+		    }
+		}); 	
 }
 
 function removeAllViews(view){
@@ -202,6 +224,10 @@ function loadDefaultValues(){
 //Funcion que saca la vista actual del mainview
 function removeCurrentOpenedView(){
 	switch(activeView){
+		 case 1:
+		   mainView.appTitleLabel.text = 'Flujo de actividades';
+		   controls.removeAllViews(mainView.collapsibleMenu);
+		   break;
 		case 2:
 			$.drawermenu.drawermainview.remove(accountView.getView());
 			accountView.resetView();
@@ -220,6 +246,7 @@ function removeCurrentOpenedView(){
 	};
 	activeView = 1;
 }
+
 
 loadDefaultValues();
 

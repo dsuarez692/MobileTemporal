@@ -18,6 +18,42 @@
             <View class="buttonSimple" id="siguienteBtn" left="55%">
                 <Label id="btnText">Siguiente</Label>
             </View>
+            <View class="buttonSimple" id="enviarBtn" left="55%" visible="false">
+                <Label id="btnText">Enviar !</Label>
+            </View>
+            <View class="buttonSimple" id="okBtn" left="55%" visible="false">
+                <Label id="btnText">Ok</Label>
+            </View>
         </View>
     </View>
+    
+    <View id="viewObservaciones">
+    	<TextArea id="txtObservaciones" hintText="Escriba aquí" cols="100" horizontalWrap="true"></TextArea>
+    </View>
+    
+    <View id="photoMenu">
+		    <TableView id="photoMenuTable">
+		        <TableViewRow class="tableRow" id="takePhoto">
+		            <View>
+		                <Label>Tomar foto</Label>
+		            </View>
+		        </TableViewRow>
+		        <TableViewRow class="tableRow" id="selectPhoto">
+		            <View>
+		                <Label>Seleccionar foto existente</Label>
+		            </View>
+		        </TableViewRow>
+		        <TableViewRow class="tableRow" id="deletePhoto">
+		            <View>
+		                <Label>Eliminar imagen de perfil</Label>
+		            </View>
+		        </TableViewRow>
+		        <TableViewRow class="tableRow" id="cancelPhoto">
+		            <View>
+		                <Label>Cancelar</Label>
+		            </View>
+		        </TableViewRow>
+		    </TableView>
+		</View>
+
 </Alloy>

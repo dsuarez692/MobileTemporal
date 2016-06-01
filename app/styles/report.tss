@@ -36,4 +36,14 @@
 },
 ".tableRow": {
 	"height": "40dp"
+},
+"#photoMenu":{
+	top : '-330dp',
+	height : '210dp',
+	backgroundColor: '#1f4e79'
+}
+"TextArea":{
+	"top":"10dp",
+	"width": "300dp",
+	"height": Titanium.UI.FILL
 }
