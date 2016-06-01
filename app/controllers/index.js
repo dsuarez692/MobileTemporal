@@ -170,16 +170,16 @@ function loadDefaultValues(){
 		menuView.rowLabel.addEventListener('click', function(){
 			persistence.logOut();
 			loggedIn = false;
-			if(loginView == null){
+			/*if(loginView == null){
 				loginView = controls.getLoginView();
 			}
-			$.drawermenu.drawermainview.add(loginView.getView());
+			$.drawermenu.drawermainview.add(loginView.getView());*/
 		});
 	}else{
-		if(loginView == null){
+		/*if(loginView == null){
 			loginView = controls.getLoginView();
 		}
-		$.drawermenu.drawermainview.add(loginView.getView());
+		$.drawermenu.drawermainview.add(loginView.getView());*/
 	}
 }
 
@@ -187,6 +187,7 @@ function loadDefaultValues(){
 function removeCurrentOpenedView(){
 	switch(activeView){
 		case 1:
+			mainView.appTitleLabel.text = 'Flujo de actividades';
 			controls.removeAllViews(mainView.collapsibleMenu);
 			break;
 		case 2:
