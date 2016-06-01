@@ -1,38 +1,35 @@
 <Alloy>
-    <View>
-        <View id="mainView">
-            <View id="mainTopBar">
-                <View id="appTitle">
-                    <View id="menuButton"/>
-                    <Label class="appTitleLabel" id="appTitleLabel">Mi cuenta</Label>
-                    <View class="collapsibleButton" id="collapsibleButton"/>
-                </View>
-            </View>
-            <View id="content">
-                <View id="subtitleBar">
-                    <Label class="subtitleLabel">Perfil completado al:</Label>
-                    <View width="Ti.UI.FILL" layout="horizontal">
-                    	<Label class="subtitleLabel">80%</Label>
-                    	<ProgressBar value="80" min="0" max="100" color="white" message="                           " width="70%" />
-                    </View>
-                </View>
-                <ScrollView id="form">
-                    <Label class="labelField">SELECCIONE EL MODELO DE NEGOCIO AL QUE PERTENECE</Label>
-                    <View class="businessPick"/>
-                    <Label class="labelField">SELECCIONE EL SECTOR AL QUE PERTENECE</Label>
-                    <TextField class="textSimple" hintText="  Sector" id="sector"/>
-                    <Label class="labelField">NOMBRE DE PERSONA A LA QUE REPORTA</Label>
-                    <TextField class="textSimple" hintText="  Nombre" id="bossname"/>
-                    <TextField class="textSimple" hintText="  Apellido" id="bosslast"/>
-                </ScrollView>
-                <View class="buttonSimple" id="backBtn">
-                    <Label id="btnText">Volver</Label>
-                </View>
-                <View class="buttonSimple" id="continueBtn">
-                    <Label id="btnText">Guardar</Label>
-                </View>
-            </View>
-        </View>
+	<View>
+		<View id="mainView">
+			<View id="mainTopBar">
+		        <View id="appTitle">
+		            <View id="menuButton"/>
+		            <Label class="appTitleLabel" id="appTitleLabel">Mi cuenta</Label>
+		            <View class="collapsibleButton" id="collapsibleButton"/>
+		        </View>
+		    </View>
+		    <View id="content">
+		        <View id="subtitleBar">
+		            <Label class="subtitleLabel">Perfil completado al:</Label>
+		            <Label class="subtitleLabel">80%</Label>
+		        </View>
+		        <ScrollView id="form">
+		            <Label class="labelField">SELECCIONE EL MODELO DE NEGOCIO AL QUE PERTENECE</Label>
+		            <View class="businessPick"/>
+		            <Label class="labelField">SELECCIONE EL SECTOR AL QUE PERTENECE</Label>
+		            <TextField class="textSimple" hintText="  Sector" id="sector"/>
+		            <Label class="labelField">NOMBRE DE PERSONA A LA QUE REPORTA</Label>
+		            <TextField class="textSimple" hintText="  Nombre" id="bossname"/>
+		            <TextField class="textSimple" hintText="  Apellido" id="bosslast"/>
+		        </ScrollView>
+		        <View class="buttonSimple" id="backBtn">
+		            <Label id="btnText">Volver</Label>
+		        </View>
+		        <View class="buttonSimple" id="continueBtn">
+		            <Label id="btnText">Guardar</Label>
+		        </View>
+		    </View>
+		</View>
         <View class="collapsibleMenu" id="collapsibleMenu"/>
-    </View>
+	</View>
 </Alloy>
