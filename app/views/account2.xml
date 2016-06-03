@@ -5,7 +5,7 @@
                 <View id="appTitle">
                     <View id="menuButton"/>
                     <Label class="appTitleLabel" id="appTitleLabel">Mi cuenta</Label>
-                    <View class="collapsibleButton" id="collapsibleButton"/>
+                    <View id="collapsibleButton"/>
                 </View>
             </View>
             <View id="content">

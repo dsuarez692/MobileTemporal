@@ -120,6 +120,7 @@ menuView.menuTable.addEventListener('click',function(e){
     					case 'auditoria_manejo':
     						removeCurrentOpenedView();
 				    		models.resetWISEModel();
+				    		models.getWISEModel().Type = e.rowData.id;
 				    		GenerateReport(auditoria);
 				    		reportView.reportName.text = "Auditoría de manejo";
 				    		reportView.form.add(auditoria.Page1);
@@ -159,23 +160,24 @@ function GenerateReport(view){
 	
 	reportView.enviarBtn.addEventListener("click",
 		function(){
-			JSON.stringify(Ti.API.warn(models.getWISEModel()));
-			
-			//Aca iria la persistencia
-			$.drawermenu.drawermainview.remove(reportView.getView());
-			loadDefaultValues();
-			activeView = 1;
-			
-			var dialog = Ti.UI.createAlertDialog({
-			    message: 'El reporte sera procesado a la brevedad.',
-			    ok: 'Okay',
-			    title: 'Muchas Gracias'
-			  });
-		    dialog.show();
-		    if(controls.isCollapsibleMenuOpen){
-		    	controls.showHideCollapsibleMenu(mainView);
-		    	controls.setCollapsibleMenuOpen(false);
-		    }
+			if(view.ValidateData()){
+				persistence.addReport(models.getWISEModel());
+				//Aca iria la persistencia
+				$.drawermenu.drawermainview.remove(reportView.getView());
+				loadDefaultValues();
+				activeView = 1;
+				
+				var dialog = Ti.UI.createAlertDialog({
+				    message: 'El reporte sera procesado a la brevedad.',
+				    ok: 'Okay',
+				    title: 'Muchas Gracias'
+				  });
+			    dialog.show();
+			    if(controls.isCollapsibleMenuOpen){
+			    	controls.showHideCollapsibleMenu(mainView);
+			    	controls.setCollapsibleMenuOpen(false);
+			    }	
+			}
 		}); 	
 }
 

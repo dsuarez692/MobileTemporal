@@ -29,21 +29,41 @@ function requestPermissions() {
 
 	// FIXME: https://jira.appcelerator.org/browse/TIMOB-19851
 	// You will be prompted to grant to permissions. If you deny either one weird things happen
-	Ti.Media.requestCameraPermissions(function(e) {
+	if(OS_IOS || OS_ANDROID){
+		Ti.Media.requestCameraPermissions(function(e) {
 
-		if (e.success) {
+			if (e.success) {
+	
+				alert('You granted permission.');
+	
+			} else if (OS_ANDROID) {
+				alert('You don\'t have the required uses-permissions in tiapp.xml or you denied permission for now, forever or the dialog did not show at all because you denied forever before.');
+	
+			} else {
+	
+				// We already check AUTHORIZATION_DENIED earlier so we can be sure it was denied now and not before
+				alert('You denied permission.');
+			}
+		});	
+	}
+	else{
+		Ti.Media.requestAuthorization(function(e) {
 
-			alert('You granted permission.');
-
-		} else if (OS_ANDROID) {
-			alert('You don\'t have the required uses-permissions in tiapp.xml or you denied permission for now, forever or the dialog did not show at all because you denied forever before.');
-
-		} else {
-
-			// We already check AUTHORIZATION_DENIED earlier so we can be sure it was denied now and not before
-			alert('You denied permission.');
-		}
-	});
+			if (e.success) {
+	
+				alert('You granted permission.');
+	
+			} else if (OS_ANDROID) {
+				alert('You don\'t have the required uses-permissions in tiapp.xml or you denied permission for now, forever or the dialog did not show at all because you denied forever before.');
+	
+			} else {
+	
+				// We already check AUTHORIZATION_DENIED earlier so we can be sure it was denied now and not before
+				alert('You denied permission.');
+			}
+		});		
+	}
+	
 }
 
 exports.tomarFoto = function(callback){
@@ -52,6 +72,7 @@ exports.tomarFoto = function(callback){
 			return requestPermissions();
 		}
 	}
+	
 	Ti.Media.showCamera({
 		success:function(event) {
 			Ti.API.debug('Our type was: '+event.mediaType);
@@ -69,6 +90,7 @@ exports.tomarFoto = function(callback){
 		saveToPhotoGallery:true,
 		allowEditing:false,
 		inPopOver: false,
+		
 		mediaTypes:[Ti.Media.MEDIA_TYPE_PHOTO]
 	});
 };

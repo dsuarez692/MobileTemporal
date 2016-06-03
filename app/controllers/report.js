@@ -11,24 +11,35 @@ function MostraOcultarBotones(siguiente,volver,enviar, ok){
 	$.okBtn.visible = ok;
 }
 
-function changePage(page){
-	controls.removeAllViews($.form);
-	MostraOcultarBotones(true,true,false,false);
+function getPage(page){
 	switch(page){
 		case 1 : 
-			$.form.add(report.GetPrimeraPagina());
-			MostraOcultarBotones(true,false,false,false);
+			return report.GetPrimeraPagina();
 			break;
 		case 2 : 
-			$.form.add(report.GetSegundaPagina());
+			return report.GetSegundaPagina();
 			break;
 		case 3 : 
-			$.form.add(report.GetTerceraPagina());
+			return report.GetTerceraPagina();
 			break;
 		case 4 : 
-			$.form.add(report.GetCuartaPagina());
-			break;
+			return report.GetCuartaPagina();
+			break;	
 	}
+}
+
+function changePage(page){
+	if(OS_ANDROID){
+		Titanium.UI.Android.hideSoftKeyboard();
+	}
+	controls.removeAllViews($.form);
+	MostraOcultarBotones(true,true,false,false);
+	
+	if(page == 1){
+		MostraOcultarBotones(true,false,false,false);	
+	}
+	$.form.add(getPage(page));
+	
 	if(page == report.GetPageCount()){
 		MostraOcultarBotones(false,true,true,false);	
 	}	
@@ -62,6 +73,15 @@ $.reportNameContainer.addEventListener('click', function(){
 	showPhotoMenu(true);
 });  
 
+
+$.okCameraBtn.addEventListener('click', function(){
+	$.okCameraBtn.visible = false;
+	changePage(models.getWISEModel()._Page);
+	$.reportNameContainer.addEventListener('click', function(){
+		showPhotoMenu(true);
+	});  
+});  
+
 $.photoMenuTable.addEventListener('click',function(e){
 	showPhotoMenu(false);
 	switch(e.rowData.id){
@@ -71,30 +91,51 @@ $.photoMenuTable.addEventListener('click',function(e){
 		case "selectPhoto":
 			photoManager.cargarFoto(addFoto);
 			break;
-		case "deletePhoto":
-			//controls.removeAllViews($.userPhoto);
-			profileLoaded = false;
-			//loadDefaultPhotoImage();
+		case "photoList":
+			controls.removeAllViews($.form);
+			MostraOcultarBotones(false,false,false,false);
+			$.form.add($.viewAdjuntos);
+			$.reportNameContainer.removeEventListener('click', function(){
+				showPhotoMenu(true);
+			});  
+			$.okCameraBtn.visible = true;
 			break;
 	};
 	Ti.API.info("Se presiono " + e.rowData.id);
 });
    
- function showPhotoMenu(open){
+function showPhotoMenu(open){
 	if (open){
-		moveMenuTo= $.reportNameContainer.size.height;
+		moveMenuTo= 0;
 	}else{
 		moveMenuTo= -($.photoMenu.size.height);
 	}
 	
 	if(OS_IOS || OS_ANDROID){
 		$.photoMenu.animate({
-			top: moveMenuTo,
+			bottom: moveMenuTo,
 			duration: durationPhotoMenu
 		});
 	}
 	if(OS_WINDOWS){
-		$.photoMenu.setTop(moveMenuTo);
+		$.photoMenu.setBottom(moveMenuTo);
 	}
+}
+
+function addFoto(event){
+	if(models.getWISEModel()._photoCount == undefined){
+		models.getWISEModel()._photoCount = 1;	
+	}
+	//controls.removeAllViews($.userPhoto);
+	var image = event.media.imageAsResized(640, 480);
+	
+	fileName = 'report' + models.getWISEModel()._photoCount + '.jpg';
+	var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,fileName);
+	f.write(image);
+	if(models.getWISEModel().Image == undefined){
+		models.getWISEModel().Image = [];	
+	}
+	models.getWISEModel().Image.push(event.media);
+	f = null;
 }
     		

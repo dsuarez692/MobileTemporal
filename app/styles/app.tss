@@ -1,6 +1,8 @@
 "window":{
-	windowSoftInputMode:false
+	windowSoftInputMode:false,
+	windowSoftInputMode: Ti.UI.Android.SOFT_INPUT_ADJUST_PAN
 },
+
 ".appTitleLabel":{
 	color:'black',
 	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
@@ -154,9 +156,6 @@
 },
 ".icon-Negocio4": {
 	"backgroundImage": "/media/image59.png"
-},
-".icon-NoCheck": {
-	"backgroundImage": "/media/image37.png"
 },
 ".icon-Check": {
 	"backgroundImage": "/media/image36.png"

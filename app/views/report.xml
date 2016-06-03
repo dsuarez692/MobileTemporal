@@ -11,7 +11,7 @@
             <Label id="reportName"/>
         </View>
         <View id="form"></View>
-        <View height="50dp">
+        <View id="btnPanel">
             <View class="buttonSimple" id="volverBtn" left="5%">
                 <Label id="btnText">Volver</Label>
             </View>
@@ -24,14 +24,11 @@
             <View class="buttonSimple" id="okBtn" left="55%" visible="false">
                 <Label id="btnText">Ok</Label>
             </View>
+            <View class="buttonSimple" id="okCameraBtn" left="30%" visible="false">
+                <Label id="btnText">Ok</Label>
+            </View>
         </View>
-    </View>
-    
-    <View id="viewObservaciones">
-    	<TextArea id="txtObservaciones" hintText="Escriba aquí" cols="100" horizontalWrap="true"></TextArea>
-    </View>
-    
-    <View id="photoMenu">
+        <View id="photoMenu">
 		    <TableView id="photoMenuTable">
 		        <TableViewRow class="tableRow" id="takePhoto">
 		            <View>
@@ -43,9 +40,9 @@
 		                <Label>Seleccionar foto existente</Label>
 		            </View>
 		        </TableViewRow>
-		        <TableViewRow class="tableRow" id="deletePhoto">
+		        <TableViewRow class="tableRow" id="photoList">
 		            <View>
-		                <Label>Eliminar imagen de perfil</Label>
+		                <Label>Ver fotos adjuntas</Label>
 		            </View>
 		        </TableViewRow>
 		        <TableViewRow class="tableRow" id="cancelPhoto">
@@ -55,5 +52,16 @@
 		        </TableViewRow>
 		    </TableView>
 		</View>
+    </View>
+    
+    <View id="viewObservaciones">
+    	<TextArea id="txtObservaciones" hintText="Escriba aquí" cols="100" horizontalWrap="true"></TextArea>
+    </View>
+    
+    <View id="viewAdjuntos">
+    	<View top="2dp" height="20dp">
+    		<Label class="reportTextSelected">IMAGENES ADJUNTAS</Label>
+		</View>
+    </View>
 
 </Alloy>

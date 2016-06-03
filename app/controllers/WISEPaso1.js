@@ -18,20 +18,28 @@ exports.LoadFromModel = function(modelo,view,Page){
 			DistanciaCirc : true,
 			Normas : true,
 			Celular : true,
-			_Page : 1
+			_Page : 1,
+			Observaciones:'',
+			NombreChofer:'',
+			ApellidoChofer:'',
+			Patente: ''
 		};
 		models.setWISEModel(model);
 	}
 	changeTextColor("Cinturon",model.Cinturon);
 	changeTextColor("Luces",model.Luces);
 	changeTextColor("Frenos",model.Frenos);
-	changeTextColor("Estacionamiento",model.Frenos);
-	changeTextColor("Velocidades",model.Frenos);
-	changeTextColor("Guiño",model.Frenos);
-	changeTextColor("Distancia",model.Frenos);
-	changeTextColor("DistanciaCirc",model.Frenos);
-	changeTextColor("Normas",model.Frenos);
-	changeTextColor("Celular",model.Frenos);
+	changeTextColor("Estacionamiento",model.Estacionamiento);
+	changeTextColor("Velocidades",model.Velocidades);
+	changeTextColor("Guiño",model.Guiño);
+	changeTextColor("Distancia",model.Distancia);
+	changeTextColor("DistanciaCirc",model.DistanciaCirc);
+	changeTextColor("Normas",model.Normas);
+	changeTextColor("Celular",model.Celular);
+	
+	$.name.value = model.NombreChofer;
+	$.last.value = model.ApellidoChofer;
+	$.patente.value = model.Patente;
 };
 
 exports.GetPrimeraPagina = function(pageNumber){
@@ -48,6 +56,27 @@ exports.GetCuartaPagina = function(pageNumber){
 };
 exports.GetPageCount = function(pageNumber){
 	return 4;		
+};
+
+exports.ValidateData = function(){
+	var valid = true;
+	if(model.NombreChofer == ""){
+		alert('El campo Nombre del chofer es requerido');
+		valid = false;	
+	}
+	else{
+		if(model.ApellidoChofer == ""){
+			alert('El campo Apellido del chofer es requerido');
+			valid = false;	
+		}
+		else{
+			if(model.Patente == ""){
+				alert('El campo Apellido del chofer es requerido');
+				valid = false;	
+			}	
+		}	
+	}
+	return valid;		
 };
 
 function changeTextColor(campo,value){
@@ -113,6 +142,9 @@ function changeTextColor(campo,value){
 	};
 }
 
+$.name.addEventListener("blur",function(){model.NombreChofer = $.name.value;});
+$.last.addEventListener("blur",function(){model.ApellidoChofer = $.last.value;});
+$.patente.addEventListener("blur",function(){model.Patente = $.patente.value;});
 $.CheckCinturon.addEventListener("click",function(){changeTextColor("Cinturon",!model.Cinturon); model.Cinturon = !model.Cinturon;});
 $.CheckLuces.addEventListener("click",function(){changeTextColor("Luces",!model.Luces); model.Luces = !model.Luces;});
 $.CheckFreno.addEventListener("click",function(){changeTextColor("Frenos",!model.Frenos); model.Frenos = !model.Frenos;});
