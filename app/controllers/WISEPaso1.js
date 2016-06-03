@@ -2,10 +2,15 @@
 var args = $.args;
 var controls=require('controls');
 var models=require('models');
+var persistence = require("persistence");
+
 var model = {};
+var user = {};
+
 
 exports.LoadFromModel = function(modelo,view,Page){
 	model = modelo;
+	user = persistence.getUserData();
 	if(model.Cinturon == undefined){
 		model = {
 			Cinturon : true,
@@ -40,6 +45,20 @@ exports.LoadFromModel = function(modelo,view,Page){
 	$.name.value = model.NombreChofer;
 	$.last.value = model.ApellidoChofer;
 	$.patente.value = model.Patente;
+	
+	if(user != undefined && user != null){ //En teoria esta linea no va a ser necesaria
+		if(user.Comercial != undefined){
+			models.getWISEModel().Comercial = user.Comercial;
+			ChangeProductLine(user.Comercial);		
+		}
+		else{
+			ResetProductLine();	
+		}	
+	}
+	else{
+		ResetProductLine();
+	}
+	
 };
 
 exports.GetPrimeraPagina = function(pageNumber){
@@ -142,9 +161,46 @@ function changeTextColor(campo,value){
 	};
 }
 
+function ResetProductLine(){
+	$.lineDanone.backgroundImage = "/media/image56.png";
+	$.lineFontVella.backgroundImage = "/media/image57.png";
+	$.lineLanjaron.backgroundImage = "/media/image58.png";
+	$.lineLU.backgroundImage = "/media/image59.png";
+}
+
+
+function ChangeProductLine(value){
+	ResetProductLine();
+	models.getWISEModel().Comercial = value;
+	switch(value){
+		case "lineDanone":{
+			$.lineDanone.backgroundImage = "/media/image57.png";
+			break;	
+		}
+		case "lineFontVella":{
+			$.lineFontVella.backgroundImage = "/media/image57.png";
+			break;	
+		}
+		case "lineLanjaron":{
+			$.lineLanjaron.backgroundImage = "/media/image57.png";
+			break;	
+		}
+		case "lineLU":{
+			$.lineLU.backgroundImage = "/media/image57.png";
+			break;	
+		}
+	}
+}
+
+$.lineDanone.addEventListener("click",function(e){ ChangeProductLine("lineDanone"); });
+$.lineFontVella.addEventListener("click",function(e){ ChangeProductLine("lineFontVella"); });
+$.lineLanjaron.addEventListener("click",function(e){ ChangeProductLine("lineLanjaron"); });
+$.lineLU.addEventListener("click",function(e){ ChangeProductLine("lineLU"); });	
+
 $.name.addEventListener("blur",function(){model.NombreChofer = $.name.value;});
 $.last.addEventListener("blur",function(){model.ApellidoChofer = $.last.value;});
 $.patente.addEventListener("blur",function(){model.Patente = $.patente.value;});
+
 $.CheckCinturon.addEventListener("click",function(){changeTextColor("Cinturon",!model.Cinturon); model.Cinturon = !model.Cinturon;});
 $.CheckLuces.addEventListener("click",function(){changeTextColor("Luces",!model.Luces); model.Luces = !model.Luces;});
 $.CheckFreno.addEventListener("click",function(){changeTextColor("Frenos",!model.Frenos); model.Frenos = !model.Frenos;});

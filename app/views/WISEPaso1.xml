@@ -4,18 +4,18 @@
 	        <View top="2dp">
 	            <Label class="reportTextSelected">SELECCIONE LÍNEA DE NEGOCIO A AUDITAR</Label>
 	        </View>
-	        <View top="20dp">
+	        <View top="20dp" id="lines">
 	            <View left="5%" width="25%">
-	                <View class="rowIcon icon-Negocio1"/>
+	                <View class="rowIcon" id="lineDanone"/>
 	            </View>
 	            <View left="30%" width="25%">
-	                <View class="rowIcon icon-Negocio2"/>
+	                <View class="rowIcon" id="lineFontVella"/>
 	            </View>
 	            <View left="55%" width="25%">
-	                <View class="rowIcon icon-Negocio3"/>
+	                <View class="rowIcon" id="lineLanjaron"/>
 	            </View>
 	            <View left="75%" width="25%">
-	                <View class="rowIcon icon-Negocio4"/>
+	                <View class="rowIcon" id="lineLU"/>
 	            </View>
 	        </View>
     	</View>
