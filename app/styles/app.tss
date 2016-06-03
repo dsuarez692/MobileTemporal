@@ -1,5 +1,8 @@
 "window":{
-	windowSoftInputMode:false
+	"windowSoftInputMode": Ti.UI.Android.SOFT_INPUT_ADJUST_PAN,
+	"orientationModes": [
+		Ti.UI.PORTRAIT
+	]
 },
 ".appTitleLabel":{
 	color:'black',
@@ -20,7 +23,7 @@
 	top:"5dp",
 	font:{
 		fontSize: "20dp"
-	},
+	}
 },
 "#appTitle":{
 	left: "0dp",

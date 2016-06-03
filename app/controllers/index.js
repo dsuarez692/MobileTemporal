@@ -170,17 +170,55 @@ function loadDefaultValues(){
 		menuView.rowLabel.addEventListener('click', function(){
 			persistence.logOut();
 			loggedIn = false;
-			/*if(loginView == null){
-				loginView = controls.getLoginView();
-			}
-			$.drawermenu.drawermainview.add(loginView.getView());*/
+			openLogin();
 		});
 	}else{
-		/*if(loginView == null){
-			loginView = controls.getLoginView();
-		}
-		$.drawermenu.drawermainview.add(loginView.getView());*/
+		openLogin();
 	}
+}
+
+function openLogin(){
+	if(loginView == null){
+		loginView = controls.getLoginView();
+		loginView.loginBtn.addEventListener('click', function(){
+			
+		});
+		loginView.registerBtn.addEventListener('click', function(){
+			if(accountView == null){
+				accountView = controls.getAccountView();
+				
+				accountView.continueBtn.addEventListener('click', function(){
+					if(accountView.validateData()){
+						if(account2View == null){
+							account2View = controls.getAccount2View();
+							
+							account2View.backBtn.addEventListener('click', function(){
+								account2View.resetView();
+								$.drawermenu.drawermainview.add(accountView.getView());
+								$.drawermenu.drawermainview.remove(account2View.getView());
+							});
+							account2View.continueBtn.addEventListener('click',function(){
+								if(account2View.validateData()){
+									persistence.saveUserData({
+										"name" : accountView.name.value,
+										"last" : accountView.last.value,
+										"username" : accountView.username.value,
+										"password" : Ti.Utils.sha256(accountView.password.value),
+										"sector" : account2View.sector.value,
+										"bossname" : account2View.bossname.value,
+										"bosslast" : account2View.bosslast.value
+									});
+									Ti.API.info(JSON.stringify(persistence.getUserData()));
+									$.drawermenu.drawermainview.remove(account2View.getView());
+									loadDefaultValues();
+									activeView = 1;
+								}
+							});
+						}
+			}
+		});
+	}
+	$.drawermenu.drawermainview.add(loginView.getView());
 }
 
 //Funcion que saca la vista actual del mainview

@@ -10,16 +10,18 @@
                 <Label class="subtitleLabel">Identificarse en el sistema</Label>
             </View>
             <ScrollView id="form">
-            	<Label class="labelField">USUARIO</Label>
+            	<Label class="labelField" top="10">USUARIO</Label>
                 <TextField class="textSimple" hintText="  Usuario" id="username"/>
                 <Label class="labelField">CONTRASEÑA</Label>
                 <TextField class="textSimple" hintText="  Contraseña" passwordMask="true" id="password"/>
             </ScrollView>
-            <View class="buttonSimple" id="loginBtn">
-                <Label id="btnText">Ingresar</Label>
-            </View>
-            <View class="buttonSimple" id="registerBtn">
-                <Label id="btnText">Registrarse</Label>
+            <View class="buttons">
+	            <View class="halfButton" id="loginBtn">
+	                <Label id="btnText">Ingresar</Label>
+	            </View>
+	            <View class="halfButton" id="registerBtn">
+	                <Label id="btnText" color="black">Registrarse</Label>
+	            </View>
             </View>
         </View>
     </View>
