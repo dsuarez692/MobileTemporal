@@ -23,7 +23,9 @@ var showhidemenu=function(){
 	}else{
 		moveTo="250dp";
 		menuOpen=true;
-		Titanium.UI.Android.hideSoftKeyboard();
+		if(OS_ANDROID){
+			Titanium.UI.Android.hideSoftKeyboard();
+		}
 		handlers.open();
 	}
 	

@@ -65,6 +65,9 @@ function showPhotoMenu(open){
 	if (open){
 		moveMenuTo= 0;
 	}else{
+		if(OS_ANDROID){
+			Titanium.UI.Android.hideSoftKeyboard();
+		}
 		moveMenuTo= -($.photoMenu.size.height);
 	}
 	

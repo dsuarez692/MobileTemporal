@@ -5,6 +5,8 @@ var persistence = require('persistence');
 //Modulo de modelos
 var models=require('models');
 
+var sessionControl;
+
 var loggedIn = false;
 
 function hideSideMenu(){
@@ -60,6 +62,9 @@ menuView.menuTable.addEventListener('click',function(e){
 				controls.addMenuIcons(accountView,hideSideMenu);
 				
 				accountView.continueBtn.addEventListener('click', function(){
+					if(OS_ANDROID){
+						Titanium.UI.Android.hideSoftKeyboard();
+					}
 					if(accountView.validateData()){
 						if(account2View == null){
 							account2View = controls.getAccount2View();
@@ -86,6 +91,8 @@ menuView.menuTable.addEventListener('click',function(e){
 									$.drawermenu.drawermainview.remove(account2View.getView());
 									loadDefaultValues();
 									activeView = 1;
+									accountView = null;
+									account2View = null;
 								}
 							});
 						}
@@ -154,11 +161,8 @@ menuView.menuTable.addEventListener('click',function(e){
 //Funcion que realiza el chequeo de sesion
 function checkSession(){
 	Ti.API.info('Checkeo de sesion');
-	Ti.API.info(loggedIn);
-	setTimeout(checkSession, 10000);
+	sessionControl = setTimeout(checkSession, 10000);
 }
-
-setTimeout(checkSession, 10000);
 
 //Funcion que se ejecuta al cargar la pantalla, que setea todos los textos relacionados con datos del usuario al momento de cargar la aplicacion
 function loadDefaultValues(){
@@ -168,10 +172,12 @@ function loadDefaultValues(){
 		menuView.rowNombreUsuario.text = user.username;
 		menuView.menuTopBar.backgroundImage = Titanium.Filesystem.applicationDataDirectory + 'userphoto.jpg';
 		menuView.rowLabel.addEventListener('click', function(){
+			Ti.API.info('Cerrar sesion');
 			persistence.logOut();
 			loggedIn = false;
 			openLogin();
 		});
+		sessionControl = setTimeout(checkSession, 10000);
 	}else{
 		openLogin();
 	}
@@ -212,13 +218,29 @@ function openLogin(){
 									$.drawermenu.drawermainview.remove(account2View.getView());
 									loadDefaultValues();
 									activeView = 1;
+									
+									//Hacer control de sesion web
+									
+									funcVacia = function(){};
+									accountView.continueBtn.removeEventListener('click', funcVacia);
+									account2View.continueBtn.removeEventListener('click', funcVacia);
+									accountView = null;
+									account2View = null;
+									$.drawermenu.drawermainview.remove(loginView.getView());
+									sessionControl = setTimeout(checkSession, 10000);
 								}
 							});
 						}
+						
+						$.drawermenu.drawermainview.remove(accountView.getView());
+						$.drawermenu.drawermainview.add(account2View.getView());
+					}
+				});
 			}
+			$.drawermenu.drawermainview.add(accountView.getView());
 		});
-	}
 	$.drawermenu.drawermainview.add(loginView.getView());
+	}
 }
 
 //Funcion que saca la vista actual del mainview
@@ -231,15 +253,18 @@ function removeCurrentOpenedView(){
 		case 2:
 			$.drawermenu.drawermainview.remove(accountView.getView());
 			accountView.resetView();
+			accountView = null;
 			break;
 		case 2.1:
 			$.drawermenu.drawermainview.remove(account2View.getView());
 			$.drawermenu.drawermainview.remove(accountView.getView());
 			account2View.resetView();
+			account2View = null;
 			break;
 		case 3:
 			$.drawermenu.drawermainview.remove(passChangeView.getView());
 			passChangeView.resetView();
+			passChangeView = null;
 			break;
 		case 4:
 			$.drawermenu.drawermainview.remove(reportView.getView());
