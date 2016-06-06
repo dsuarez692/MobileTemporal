@@ -6,16 +6,16 @@
 	        </View>
 	        <View top="20dp" id="lines">
 	            <View left="5%" width="25%">
-	                <View class="rowIcon" id="lineDanone"/>
+	                <View class="rowIcon" id="lineFreshDairy"/>
 	            </View>
 	            <View left="30%" width="25%">
-	                <View class="rowIcon" id="lineFontVella"/>
+	                <View class="rowIcon" id="lineEarlyLife"/>
 	            </View>
 	            <View left="55%" width="25%">
-	                <View class="rowIcon" id="lineLanjaron"/>
+	                <View class="rowIcon" id="lineWaters"/>
 	            </View>
 	            <View left="75%" width="25%">
-	                <View class="rowIcon" id="lineLU"/>
+	                <View class="rowIcon" id="lineMedical"/>
 	            </View>
 	        </View>
     	</View>
@@ -120,7 +120,7 @@
     <View top="225dp" height="20dp" id="linkObservaciones">
     	<Label class="reportTextSelected">Toque aqui para agregar observaciones !</Label>
 	</View>
-	<View top="255dp" height="50dp">
+	<View top="251dp" height="50dp">
     	<Label class="reportTextSelectedHigh">Su auditoria a finalizado, muchas gracias !</Label>
 	</View>
   </View>

@@ -120,13 +120,15 @@ menuView.menuTable.addEventListener('click',function(e){
     					case 'auditoria_manejo':
     						removeCurrentOpenedView();
 				    		models.resetWISEModel();
-				    		models.getWISEModel().Type = e.rowData.id;
 				    		GenerateReport(auditoria);
+				    		reportView.volverBtn.visible = false;
+			    			models.getWISEModel().Type = e.rowData.id;
+				    		models.getWISEModel().ImageMax = 1;
+				    		models.getWISEModel().RequiredPic = true;
 				    		reportView.reportName.text = "Auditoría de manejo";
 				    		reportView.form.add(auditoria.Page1);
 				    		auditoria.LoadFromModel(models.getWISEModel());
 				    		$.drawermenu.drawermainview.add(reportView.getView());
-				    		reportView.volverBtn.visible = false;
     						activeView = 4;
     						break;
     				};

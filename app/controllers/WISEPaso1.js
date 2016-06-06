@@ -12,23 +12,22 @@ exports.LoadFromModel = function(modelo,view,Page){
 	model = modelo;
 	user = persistence.getUserData();
 	if(model.Cinturon == undefined){
-		model = {
-			Cinturon : true,
-			Luces : true,
-			Frenos : true,
-			Estacionamiento : true,
-			Velocidades : true,
-			Guiño : true,
-			Distancia : true,
-			DistanciaCirc : true,
-			Normas : true,
-			Celular : true,
-			_Page : 1,
-			Observaciones:'',
-			NombreChofer:'',
-			ApellidoChofer:'',
-			Patente: ''
-		};
+		model.Cinturon = true;
+		model.Luces = true;
+		model.Frenos = true;
+		model.Estacionamiento = true;
+		model.Velocidades = true;
+		model.Guiño = true;
+		model.Distancia = true;
+		model.DistanciaCirc = true;
+		model.Normas = true;
+		model.Celular = true;
+		model._Page = 1;
+		model.Observaciones = '';
+		model.NombreChofer = '';
+		model.ApellidoChofer = '';
+		model.Patente = '';
+
 		models.setWISEModel(model);
 	}
 	changeTextColor("Cinturon",model.Cinturon);
@@ -71,6 +70,8 @@ exports.GetTerceraPagina = function(pageNumber){
 	return $.Page3;		
 };
 exports.GetCuartaPagina = function(pageNumber){
+	alert(model.Cinturon);
+	alert(models.getWISEModel().Cinturon);
 	return $.Page4;		
 };
 exports.GetPageCount = function(pageNumber){
@@ -79,21 +80,31 @@ exports.GetPageCount = function(pageNumber){
 
 exports.ValidateData = function(){
 	var valid = true;
-	if(model.NombreChofer == ""){
-		alert('El campo Nombre del chofer es requerido');
-		valid = false;	
-	}
-	else{
-		if(model.ApellidoChofer == ""){
-			alert('El campo Apellido del chofer es requerido');
+	var dialog = Ti.UI.createAlertDialog({
+	    message: 'El campo Nombre del chofer es requerido.',
+	    ok: 'Okay',
+	    title: 'Error de Validación'
+	  });
+    
+	switch(true){
+		case model.NombreChofer == "":
+			valid = false;
+			break;
+		case model.ApellidoChofer == "":
+			dialog.message = 'El campo Apellido del Chofer es requerido.';
 			valid = false;	
-		}
-		else{
-			if(model.Patente == ""){
-				alert('El campo Apellido del chofer es requerido');
-				valid = false;	
-			}	
-		}	
+			break;
+		case model.Patente == "":
+			dialog.message = 'El campo Patente del Vehículo es requerido.';
+			valid = false;	
+			break;	
+		case (model.RequiredPic && (!model.Image || model.Image.length == 0)):
+			dialog.message = 'Se debe adjuntar al menos una imagen.';
+			valid = false;	
+			break;
+	};
+	if(!valid){
+		dialog.show();	
 	}
 	return valid;		
 };
@@ -162,10 +173,10 @@ function changeTextColor(campo,value){
 }
 
 function ResetProductLine(){
-	$.lineDanone.backgroundImage = "/media/image56.png";
-	$.lineFontVella.backgroundImage = "/media/image57.png";
-	$.lineLanjaron.backgroundImage = "/media/image58.png";
-	$.lineLU.backgroundImage = "/media/image59.png";
+	$.lineFreshDairy.backgroundImage = "/media/image56.png";
+	$.lineEarlyLife.backgroundImage = "/media/image57.png";
+	$.lineWaters.backgroundImage = "/media/image58.png";
+	$.lineMedical.backgroundImage = "/media/image59.png";
 }
 
 
@@ -173,33 +184,33 @@ function ChangeProductLine(value){
 	ResetProductLine();
 	models.getWISEModel().Comercial = value;
 	switch(value){
-		case "lineDanone":{
-			$.lineDanone.backgroundImage = "/media/image57.png";
+		case "lineFreshDairy":{
+			$.lineFreshDairy.backgroundImage = "/media/image57.png";
 			break;	
 		}
-		case "lineFontVella":{
-			$.lineFontVella.backgroundImage = "/media/image57.png";
+		case "lineEarlyLife":{
+			$.lineEarlyLife.backgroundImage = "/media/image57.png";
 			break;	
 		}
-		case "lineLanjaron":{
-			$.lineLanjaron.backgroundImage = "/media/image57.png";
+		case "lineWaters":{
+			$.lineWaters.backgroundImage = "/media/image57.png";
 			break;	
 		}
-		case "lineLU":{
-			$.lineLU.backgroundImage = "/media/image57.png";
+		case "lineMedical":{
+			$.lineMedical.backgroundImage = "/media/image57.png";
 			break;	
 		}
 	}
 }
 
-$.lineDanone.addEventListener("click",function(e){ ChangeProductLine("lineDanone"); });
-$.lineFontVella.addEventListener("click",function(e){ ChangeProductLine("lineFontVella"); });
-$.lineLanjaron.addEventListener("click",function(e){ ChangeProductLine("lineLanjaron"); });
-$.lineLU.addEventListener("click",function(e){ ChangeProductLine("lineLU"); });	
+$.lineFreshDairy.addEventListener("click",function(e){ ChangeProductLine("lineFreshDairy"); });
+$.lineEarlyLife.addEventListener("click",function(e){ ChangeProductLine("lineEarlyLife"); });
+$.lineWaters.addEventListener("click",function(e){ ChangeProductLine("lineWaters"); });
+$.lineMedical.addEventListener("click",function(e){ ChangeProductLine("lineMedical"); });	
 
-$.name.addEventListener("blur",function(){model.NombreChofer = $.name.value;});
-$.last.addEventListener("blur",function(){model.ApellidoChofer = $.last.value;});
-$.patente.addEventListener("blur",function(){model.Patente = $.patente.value;});
+$.name.addEventListener("change",function(){model.NombreChofer = $.name.value;});
+$.last.addEventListener("change",function(){model.ApellidoChofer = $.last.value;});
+$.patente.addEventListener("change",function(){model.Patente = $.patente.value;});
 
 $.CheckCinturon.addEventListener("click",function(){changeTextColor("Cinturon",!model.Cinturon); model.Cinturon = !model.Cinturon;});
 $.CheckLuces.addEventListener("click",function(){changeTextColor("Luces",!model.Luces); model.Luces = !model.Luces;});

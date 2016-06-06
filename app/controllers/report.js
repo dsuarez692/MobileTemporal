@@ -2,6 +2,8 @@ var models=require('models');
 var photoManager = require("photo");
 var controls = require("controls");
 var report = $.args.Page;
+var verAdjuntas = false;
+var durationPhotoMenu = 200;
 
 
 function MostraOcultarBotones(siguiente,volver,enviar, ok){
@@ -70,34 +72,54 @@ $.okBtn.addEventListener("click",
 	}); 
 	
 $.reportNameContainer.addEventListener('click', function(){
-	showPhotoMenu(true);
+	if(!verAdjuntas){
+		showPhotoMenu(true);	
+	}
 });  
 
 
 $.okCameraBtn.addEventListener('click', function(){
 	$.okCameraBtn.visible = false;
 	changePage(models.getWISEModel()._Page);
-	$.reportNameContainer.addEventListener('click', function(){
-		showPhotoMenu(true);
-	});  
+	verAdjuntas = false;
 });  
+
+function validarFotos(){
+	var dialog = Ti.UI.createAlertDialog({
+	    message: 'Se cargó el maximo número de fotos para este reporte.',
+	    ok: 'Okay',
+	    title: 'Alerta'
+	  });
+			    
+	if(models.getWISEModel().Image == undefined){
+		models.getWISEModel().Image = [];	
+	}
+	if(models.getWISEModel().Image.length == models.getWISEModel().ImageMax){
+		dialog.show();
+		return false;	
+	}
+	return true;			
+}
+
 
 $.photoMenuTable.addEventListener('click',function(e){
 	showPhotoMenu(false);
 	switch(e.rowData.id){
 		case "takePhoto":
-			photoManager.tomarFoto(addFoto);
+			if(validarFotos()){
+				photoManager.tomarFoto(addFoto);	
+			}
 			break;
 		case "selectPhoto":
-			photoManager.cargarFoto(addFoto);
+			if(validarFotos()){
+				photoManager.cargarFoto(addFoto);
+			}
 			break;
 		case "photoList":
 			controls.removeAllViews($.form);
 			MostraOcultarBotones(false,false,false,false);
 			$.form.add($.viewAdjuntos);
-			$.reportNameContainer.removeEventListener('click', function(){
-				showPhotoMenu(true);
-			});  
+			verAdjuntas = true;
 			$.okCameraBtn.visible = true;
 			break;
 	};
@@ -129,13 +151,52 @@ function addFoto(event){
 	//controls.removeAllViews($.userPhoto);
 	var image = event.media.imageAsResized(640, 480);
 	
-	fileName = 'report' + models.getWISEModel()._photoCount + '.jpg';
+	fileName = 'report-' + new Date().getTime() + '.jpg';
 	var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,fileName);
 	f.write(image);
 	if(models.getWISEModel().Image == undefined){
 		models.getWISEModel().Image = [];	
 	}
-	models.getWISEModel().Image.push(event.media);
+	models.getWISEModel().Image.push(fileName);
+	
+	var view = Ti.UI.createView({
+		height:"200dp",
+		width:"100%",
+		id:	fileName
+	});
+	
+	var imageView = Ti.UI.createImageView({
+		left: "10%",
+		top: "10dp",
+		width:"50%",
+		height:"200dp",
+		image:image,
+	});
+	
+	var imageDelete = Ti.UI.createImageView({
+		top: "50%",
+		left: "70%",
+		height:"50dp",
+		width:"16%",
+		backgroundImage: "/media/deleteDisabled.png"
+	});
+	
+	imageDelete.addEventListener('click',function(){
+		$.imageContainer.remove(view);
+		var index = models.getWISEModel().Image.indexOf(view.id);
+		models.getWISEModel().Image.splice(index, 1);
+		
+		var file = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,view.id);
+
+		if (file.exists()) {
+			var success = file.deleteFile();
+ 			Ti.API.info((success==true) ? 'success' : 'fail'); // outputs 'success'
+		}
+	});
+	
+	view.add(imageView);
+	view.add(imageDelete);
+	$.imageContainer.add(view);
 	f = null;
 }
     		

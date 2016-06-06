@@ -89,7 +89,7 @@
 	color:"#1f4e79",
 	top:"0dp",
 	font: {
-		fontSize: "25dp"
+		fontSize: "21dp"
 	}
 },
 ".icon-CambioClave":{

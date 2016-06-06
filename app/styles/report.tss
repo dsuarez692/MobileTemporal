@@ -33,7 +33,7 @@
 "#form": {
 	"top": "135dp",
 	"left": "0dp",
-	"height": "330dp",
+	"height": "345dp",
 	"layout": "vertical",
 	"scrollType": "vertical",
 },
@@ -57,5 +57,5 @@
 },
 "#btnPanel":{
 	"height":"50dp",
-	"top":"465dp"
+	"top":"480dp"
 },
