@@ -70,8 +70,6 @@ exports.GetTerceraPagina = function(pageNumber){
 	return $.Page3;		
 };
 exports.GetCuartaPagina = function(pageNumber){
-	alert(model.Cinturon);
-	alert(models.getWISEModel().Cinturon);
 	return $.Page4;		
 };
 exports.GetPageCount = function(pageNumber){

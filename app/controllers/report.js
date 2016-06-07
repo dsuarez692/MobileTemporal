@@ -55,9 +55,7 @@ if(report.linkObservaciones != undefined){
 	report.linkObservaciones.addEventListener("click",
 	function(){
 		controls.removeAllViews($.form);
-		//alert($.txtObservaciones.value);
 		$.txtObservaciones.value = models.getWISEModel().Observaciones;
-		//alert($.txtObservaciones.value);
 		$.form.add($.viewObservaciones);
 		MostraOcultarBotones(false,true,false,true);
 		models.getWISEModel()._Page = models.getWISEModel()._Page + 1;
