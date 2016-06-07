@@ -171,10 +171,11 @@ function loadDefaultValues(){
 		loggedIn = true;
 		menuView.rowNombreUsuario.text = user.username;
 		menuView.menuTopBar.backgroundImage = Titanium.Filesystem.applicationDataDirectory + 'userphoto.jpg';
-		menuView.rowLabel.addEventListener('click', function(){
+		menuView.menuTopBarLogOut.addEventListener('click', function(){
 			Ti.API.info('Cerrar sesion');
 			persistence.logOut();
 			loggedIn = false;
+			
 			openLogin();
 		});
 		sessionControl = setTimeout(checkSession, 10000);
@@ -187,7 +188,18 @@ function openLogin(){
 	if(loginView == null){
 		loginView = controls.getLoginView();
 		loginView.loginBtn.addEventListener('click', function(){
-			
+			persistence.saveUserData({
+				"name" : "",
+				"last" : "",
+				"username" : loginView.username.value,
+				"password" : Ti.Utils.sha256(loginView.password.value),
+				"sector" : "",
+				"bossname" : "",
+				"bosslast" : ""
+			});
+			activeView = 1;
+			$.drawermenu.drawermainview.remove(loginView.getView());
+			sessionControl = setTimeout(checkSession, 10000);
 		});
 		loginView.registerBtn.addEventListener('click', function(){
 			if(accountView == null){
