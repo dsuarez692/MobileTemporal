@@ -29,7 +29,8 @@ var passChangeView = null;
 //Encabezado de los reportes
 var reportView=null;
 //Wise
-var wise1 = null;
+var auditoria = controls.getWISEPaso1();
+
 
 //Menu collapsable wise
 var wiseMenuView = null;
@@ -118,16 +119,17 @@ menuView.menuTable.addEventListener('click',function(e){
     				Ti.API.info(e.rowData.id);
     				switch(e.rowData.id){
     					case 'auditoria_manejo':
-    						if(reportView == null){
-    							reportView = controls.getReportView();
-    							controls.addMenuIcons(reportView);
-    						}
-    						if(wiseReport1 == null){
-    							wiseReport1 = controls.getWISEPaso1();
-    						}
     						removeCurrentOpenedView();
-    						reportView.Form.add(wiseReport1.getView());
-    						$.drawermenu.drawermainview.add(reportView.getView());
+				    		models.resetWISEModel();
+				    		GenerateReport(auditoria);
+				    		reportView.volverBtn.visible = false;
+			    			models.getWISEModel().Type = e.rowData.id;
+				    		models.getWISEModel().ImageMax = 1;
+				    		models.getWISEModel().RequiredPic = true;
+				    		reportView.reportName.text = "Auditoría de manejo";
+				    		reportView.form.add(auditoria.Page1);
+				    		auditoria.LoadFromModel(models.getWISEModel());
+				    		$.drawermenu.drawermainview.add(reportView.getView());
     						activeView = 4;
     						break;
     				};
@@ -150,6 +152,37 @@ menuView.menuTable.addEventListener('click',function(e){
     		break;
     };
 });
+
+function GenerateReport(view){
+	if(reportView != null){
+		controls.removeAllViews(reportView.form);		
+	}
+	reportView = controls.getReportView({ Page: view });
+	controls.addMenuIcons(reportView, hideSideMenu);
+	controls.removeAllViews(reportView.form);
+	
+	reportView.enviarBtn.addEventListener("click",
+		function(){
+			if(view.ValidateData()){
+				persistence.addReport(models.getWISEModel());
+				//Aca iria la persistencia
+				$.drawermenu.drawermainview.remove(reportView.getView());
+				loadDefaultValues();
+				activeView = 1;
+				
+				var dialog = Ti.UI.createAlertDialog({
+				    message: 'El reporte sera procesado a la brevedad.',
+				    ok: 'Okay',
+				    title: 'Muchas Gracias'
+				  });
+			    dialog.show();
+			    if(controls.isCollapsibleMenuOpen){
+			    	controls.showHideCollapsibleMenu(mainView);
+			    	controls.setCollapsibleMenuOpen(false);
+			    }	
+			}
+		}); 	
+}
 
 //Funcion que realiza el chequeo de sesion
 function checkSession(){
@@ -208,6 +241,7 @@ function removeCurrentOpenedView(){
 			break;
 	};
 }
+
 
 loadDefaultValues();
 

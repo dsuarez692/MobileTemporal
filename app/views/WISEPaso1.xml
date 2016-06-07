@@ -4,18 +4,18 @@
 	        <View top="2dp">
 	            <Label class="reportTextSelected">SELECCIONE LÍNEA DE NEGOCIO A AUDITAR</Label>
 	        </View>
-	        <View top="20dp">
+	        <View top="20dp" id="lines">
 	            <View left="5%" width="25%">
-	                <View class="rowIcon icon-Negocio1"/>
+	                <View class="rowIcon" id="lineFreshDairy"/>
 	            </View>
 	            <View left="30%" width="25%">
-	                <View class="rowIcon icon-Negocio2"/>
+	                <View class="rowIcon" id="lineEarlyLife"/>
 	            </View>
 	            <View left="55%" width="25%">
-	                <View class="rowIcon icon-Negocio3"/>
+	                <View class="rowIcon" id="lineWaters"/>
 	            </View>
 	            <View left="75%" width="25%">
-	                <View class="rowIcon icon-Negocio4"/>
+	                <View class="rowIcon" id="lineMedical"/>
 	            </View>
 	        </View>
     	</View>
@@ -105,22 +105,22 @@
             </View>
         </TableViewRow>
 	</TableView>
-	<View top="240dp" height="20dp">
+	<View top="240dp" height="30dp">
     	<Label class="reportTextSelectedHigh">Solo falta un paso más !</Label>
 	</View>
   </View>
   
   
   <View id="Page4">
-	<Label class="labelField">NOMBRE COMPLETO DEL CHOFER</Label>
-    <TextField class="textSimple" hintText="  Nombre" id="name"/>
-    <TextField class="textSimple" hintText="  Apellido" id="last"/>
-    <Label class="labelField">PATENTE DEL TRANSPORTE</Label>
-    <TextField class="textSimple" hintText="  Obligatorio" id="patente"/>
-    <View top="245dp" height="20dp">
+	<Label class="reportTextSelected" top="2dp" left="2dp" left="15dp">NOMBRE COMPLETO DEL CHOFER</Label>
+    <TextField class="textSimple" hintText="  Nombre" id="name" top="20dp"/>
+    <TextField class="textSimple" hintText="  Apellido" id="last" top="65dp"/>
+    <Label class="reportTextSelected" top="125dp" left="20dp">PATENTE DEL TRANSPORTE</Label>
+    <TextField class="textSimple" hintText="  Obligatorio" id="patente" top="155dp"/>
+    <View top="225dp" height="20dp" id="linkObservaciones">
     	<Label class="reportTextSelected">Toque aqui para agregar observaciones !</Label>
 	</View>
-	<View top="265dp" height="45dp">
+	<View top="251dp" height="50dp">
     	<Label class="reportTextSelectedHigh">Su auditoria a finalizado, muchas gracias !</Label>
 	</View>
   </View>
