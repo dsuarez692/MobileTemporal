@@ -22,3 +22,7 @@ exports.logOut = function(){
 	Ti.App.Properties.removeProperty('userData');
 	userData = {};
 };
+
+exports.getUserPhotoPath = function(){
+	return Titanium.Filesystem.applicationDataDirectory + 'userphoto.jpg';
+};

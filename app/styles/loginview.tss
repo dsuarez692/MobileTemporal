@@ -35,8 +35,7 @@
 	"color": '#000000',
 	"backgroundColor": '#FFFFFF',
 	"backgroundSelectedColor": '#cecece',
-	"borderColor": '#1f4e79',
-	"borderWidth": 'black'
+	"borderColor": '#1f4e79'
 },
 "#loginBtn":{
 	"backgroundColor": '#1f4e79',

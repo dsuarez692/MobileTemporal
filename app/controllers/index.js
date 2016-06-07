@@ -203,12 +203,36 @@ function loadDefaultValues(){
 	if(user != null && user.name != undefined){
 		loggedIn = true;
 		menuView.rowNombreUsuario.text = user.username;
-		menuView.menuTopBar.backgroundImage = Titanium.Filesystem.applicationDataDirectory + 'userphoto.jpg';
+		var f = Ti.Filesystem.getFile(persistence.getUserPhotoPath());
+		if(f.exists() === true){
+			menuView.menuTopBar.backgroundImage = persistence.getUserPhotoPath();
+		}
 		menuView.menuTopBarLogOut.addEventListener('click', function(){
+			//Si presionan logout
+			
+			//Cierro sidemenu
+			hideSideMenu();
+			
 			Ti.API.info('Cerrar sesion');
+			//Elimino datos de sesion
 			persistence.logOut();
 			loggedIn = false;
 			
+			//Elimino imagen de perfil
+			var f = Ti.Filesystem.getFile(persistence.getUserPhotoPath());
+			if(f.exists() === true){
+				f.deleteFile();
+			}
+			
+			//Seteo imagen default de perfil
+			menuView.menuTopBar.backgroundImage = "/media/image10.png";
+			
+			//Seteo a null todos los controllers
+			accountView = null;
+			account2View = null;
+			passChangeView = null;
+			
+			//Abro login
 			openLogin();
 		});
 		sessionControl = setTimeout(checkSession, 10000);
@@ -233,6 +257,8 @@ function openLogin(){
 			activeView = 1;
 			$.drawermenu.drawermainview.remove(loginView.getView());
 			sessionControl = setTimeout(checkSession, 10000);
+			loadDefaultValues();
+			loginView = null;
 		});
 		loginView.registerBtn.addEventListener('click', function(){
 			if(accountView == null){
@@ -273,6 +299,7 @@ function openLogin(){
 									account2View = null;
 									$.drawermenu.drawermainview.remove(loginView.getView());
 									sessionControl = setTimeout(checkSession, 10000);
+									loginView = null;
 								}
 							});
 						}
