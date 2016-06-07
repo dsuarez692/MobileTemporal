@@ -30,7 +30,7 @@ var passChangeView = null;
 var reportView=null;
 //Wise
 var auditoria = controls.getWISEPaso1();
-
+var chequeoVehicular = controls.getChequeoVehicular();
 
 //Menu collapsable wise
 var wiseMenuView = null;
@@ -132,6 +132,22 @@ menuView.menuTable.addEventListener('click',function(e){
 				    		$.drawermenu.drawermainview.add(reportView.getView());
     						activeView = 4;
     						break;
+    					case 'chequeo_vehicular':
+    						removeCurrentOpenedView();
+				    		models.resetWISEModel();
+				    		GenerateReport(chequeoVehicular);
+				    		reportView.volverBtn.visible = false;
+			    			models.getWISEModel().Type = e.rowData.id;
+				    		models.getWISEModel().ImageMax = 1;
+				    		models.getWISEModel().RequiredPic = true;
+				    		reportView.reportName.text = "Chequeo vehicular";
+				    		reportView.form.add(chequeoVehicular.Page1);
+				    		chequeoVehicular.LoadFromModel(models.getWISEModel());
+				    		$.drawermenu.drawermainview.add(reportView.getView());
+    						activeView = 4;
+    						break;
+    					
+    					
     				};
     			});
     		}

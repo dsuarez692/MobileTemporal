@@ -1,0 +1,138 @@
+<Alloy>
+	<View id="Page1">
+		<View id="lineaDeNegocio" top="0dp">
+	        <View top="2dp">
+	            <Label class="reportTextSelected">SELECCIONE LÍNEA DE NEGOCIO A AUDITAR</Label>
+	        </View>
+	        <View top="20dp" id="lines">
+	            <View left="5%" width="25%">
+	                <View class="rowIcon" id="lineFreshDairy"/>
+	            </View>
+	            <View left="30%" width="25%">
+	                <View class="rowIcon" id="lineEarlyLife"/>
+	            </View>
+	            <View left="55%" width="25%">
+	                <View class="rowIcon" id="lineWaters"/>
+	            </View>
+	            <View left="75%" width="25%">
+	                <View class="rowIcon" id="lineMedical"/>
+	            </View>
+	        </View>
+    	</View>
+    	<View top="113dp" height="15dp">
+        	<Label class="reportTextSelected">PULSE EN CASILLA O TEXTO PARA RESPONDER </Label>
+ 		</View>
+ 		
+ 		<!--<View top="118dp" height="15dp">
+        	<Label class="reportTextSelected">Kit de emergencia - Obligatorio </Label>
+ </View>-->
+ 		
+        <TableView top="143dp">
+            <TableViewRow id="CheckBalizas">
+                <View>
+                    <View class="icon-Check" id="iconBalizas" left="5dp" top="5dp" width="30dp" height="30dp"></View>
+                    <Label id="lblBalizas" left="45dp">Balizas</Label>
+                </View>
+            </TableViewRow>
+            <TableViewRow id="CheckPrimerosAuxilios">
+                <View>
+                    <View class="icon-Check" id="iconPrimerosAuxilios" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                    <Label id="lblPrimerosAuxilios" left="45dp">Botiquín de Primeros Auxilios</Label>
+                </View>
+            </TableViewRow>
+            <TableViewRow id="CheckMatafuegos">
+                <View>
+                    <View class="icon-Check" id="iconMatafuegos" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                    <Label id="lblFreno" left="45dp">Matafuegos (carga verificada)</Label>
+                </View>
+             </TableViewRow> 
+            <TableViewRow>
+                <View>
+            		<Label class="reportTextSelected" top="2dp" left="2dp" left="15dp">FECHA VENCIMIENTO DE LA CARGA</Label>
+			        <Picker  id="VencimientoMatafuego"
+			          top="20dp"
+			          type="Ti.UI.PICKER_TYPE_DATE"
+			          minDate="2014,4,1"
+			          maxDate="May 1, 2014 12:00:00"
+			          value="2014-04-15T12:00:00">
+			        </Picker> <!-- onChange="report" -->
+    	 		</View>
+    	 	</TableViewRow> 
+		</TableView>
+  </View>
+  <View id="Page2">
+  	<View top="2dp" height="20dp">
+    	<Label class="reportTextSelected">PULSE EN CASILLA O TEXTO PARA RESPONDER</Label>
+	</View>
+	<TableView top="50dp">	
+		<TableViewRow id="CheckChaleco">
+            <View>
+                <View class="icon-Check" id="iconChaleco" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                <Label id="lblChaleco" left="45dp">Chaleco Refractario</Label>
+            </View>
+        </TableViewRow>
+        
+        <TableViewRow id="CheckGuantes">
+            <View>
+                <View class="icon-Check" id="iconGuantes" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                <Label id="lblGuantes" left="45dp">Guantes de trabajo</Label>
+            </View>
+        </TableViewRow>
+        
+         <TableViewRow>
+            <View>
+               <TextArea id="txtObsEmergencia" hintText="Observaciones del kit de emergencia" cols="100" horizontalWrap="true"></TextArea>
+            </View>
+        </TableViewRow>
+        
+       
+	</TableView>
+  </View>
+  
+   <View id="Page3">
+  	<View top="2dp" height="20dp">
+    	<Label class="reportTextSelected">PULSE EN CASILLA O TEXTO PARA RESPONDER</Label>
+	</View>
+	<TableView top="50dp">	
+		<TableViewRow id="CheckDistanciaCirc">
+            <View>
+                <View class="icon-Check" id="iconDistanciaCirc" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                <Label id="lblDistanciaCirc" left="45dp">Respeta distancia de circulación</Label>
+            </View>
+        </TableViewRow>
+        
+        <TableViewRow id="CheckNormas">
+            <View>
+                <View class="icon-Check" id="iconNormas" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                <Label id="lblNormas" left="45dp">Respeta normas de tránsito</Label>
+            </View>
+        </TableViewRow>
+        
+        <TableViewRow id="CheckCelular">
+            <View>
+                <View class="icon-Check" id="iconCelular" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                <Label id="lblCelular" left="45dp">Utiliza celular</Label>
+            </View>
+        </TableViewRow>
+	</TableView>
+	<View top="240dp" height="30dp">
+    	<Label class="reportTextSelectedHigh">Solo falta un paso más !</Label>
+	</View>
+  </View>
+  
+  
+  <View id="Page4">
+	<Label class="reportTextSelected" top="2dp" left="2dp" left="15dp">NOMBRE COMPLETO DEL CHOFER</Label>
+    <TextField class="textSimple" hintText="  Nombre" id="name" top="20dp"/>
+    <TextField class="textSimple" hintText="  Apellido" id="last" top="65dp"/>
+    <Label class="reportTextSelected" top="125dp" left="20dp">PATENTE DEL TRANSPORTE</Label>
+    <TextField class="textSimple" hintText="  Obligatorio" id="patente" top="155dp"/>
+    <View top="225dp" height="20dp" id="linkObservaciones">
+    	<Label class="reportTextSelected">Toque aqui para agregar observaciones !</Label>
+	</View>
+	<View top="251dp" height="50dp">
+    	<Label class="reportTextSelectedHigh">Su auditoria a finalizado, muchas gracias !</Label>
+	</View>
+  </View>
+</Alloy>
+

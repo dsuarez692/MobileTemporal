@@ -23,6 +23,9 @@ exports.getReportView=function(parms){
 exports.getWISEPaso1=function(){
 	return Alloy.createController('WISEPaso1');;
 };
+exports.getChequeoVehicular=function(){
+	return Alloy.createController('ChequeoVehicular');;
+};
 
 exports.getAccount2View=function(){
 	return Alloy.createController('account2');
