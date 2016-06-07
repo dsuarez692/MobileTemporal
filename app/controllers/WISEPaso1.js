@@ -2,36 +2,109 @@
 var args = $.args;
 var controls=require('controls');
 var models=require('models');
+var persistence = require("persistence");
+
 var model = {};
+var user = {};
+
 
 exports.LoadFromModel = function(modelo,view,Page){
 	model = modelo;
+	user = persistence.getUserData();
 	if(model.Cinturon == undefined){
-		model = {
-			Cinturon : true,
-			Luces : true,
-			Frenos : true,
-			Estacionamiento : true,
-			Velocidades : true,
-			Guiño : true,
-			Distancia : true,
-			DistanciaCirc : true,
-			Normas : true,
-			Celular : true,
-			_Page : 1
-		};
+		model.Cinturon = true;
+		model.Luces = true;
+		model.Frenos = true;
+		model.Estacionamiento = true;
+		model.Velocidades = true;
+		model.Guiño = true;
+		model.Distancia = true;
+		model.DistanciaCirc = true;
+		model.Normas = true;
+		model.Celular = true;
+		model._Page = 1;
+		model.Observaciones = '';
+		model.NombreChofer = '';
+		model.ApellidoChofer = '';
+		model.Patente = '';
+
 		models.setWISEModel(model);
 	}
 	changeTextColor("Cinturon",model.Cinturon);
 	changeTextColor("Luces",model.Luces);
 	changeTextColor("Frenos",model.Frenos);
-	changeTextColor("Estacionamiento",model.Frenos);
-	changeTextColor("Velocidades",model.Frenos);
-	changeTextColor("Guiño",model.Frenos);
-	changeTextColor("Distancia",model.Frenos);
-	changeTextColor("DistanciaCirc",model.Frenos);
-	changeTextColor("Normas",model.Frenos);
-	changeTextColor("Celular",model.Frenos);
+	changeTextColor("Estacionamiento",model.Estacionamiento);
+	changeTextColor("Velocidades",model.Velocidades);
+	changeTextColor("Guiño",model.Guiño);
+	changeTextColor("Distancia",model.Distancia);
+	changeTextColor("DistanciaCirc",model.DistanciaCirc);
+	changeTextColor("Normas",model.Normas);
+	changeTextColor("Celular",model.Celular);
+	
+	$.name.value = model.NombreChofer;
+	$.last.value = model.ApellidoChofer;
+	$.patente.value = model.Patente;
+	
+	if(user != undefined && user != null){ //En teoria esta linea no va a ser necesaria
+		if(user.Comercial != undefined){
+			models.getWISEModel().Comercial = user.Comercial;
+			ChangeProductLine(user.Comercial);		
+		}
+		else{
+			ResetProductLine();	
+		}	
+	}
+	else{
+		ResetProductLine();
+	}
+	
+};
+
+exports.GetPrimeraPagina = function(pageNumber){
+	return $.Page1;		
+};
+exports.GetSegundaPagina = function(pageNumber){
+	return $.Page2;		
+};
+exports.GetTerceraPagina = function(pageNumber){
+	return $.Page3;		
+};
+exports.GetCuartaPagina = function(pageNumber){
+	return $.Page4;		
+};
+exports.GetPageCount = function(pageNumber){
+	return 4;		
+};
+
+exports.ValidateData = function(){
+	var valid = true;
+	var dialog = Ti.UI.createAlertDialog({
+	    message: 'El campo Nombre del chofer es requerido.',
+	    ok: 'Okay',
+	    title: 'Error de Validación'
+	  });
+    
+	switch(true){
+		case model.NombreChofer == "":
+			valid = false;
+			break;
+		case model.ApellidoChofer == "":
+			dialog.message = 'El campo Apellido del Chofer es requerido.';
+			valid = false;	
+			break;
+		case model.Patente == "":
+			dialog.message = 'El campo Patente del Vehículo es requerido.';
+			valid = false;	
+			break;	
+		case (model.RequiredPic && (!model.Image || model.Image.length == 0)):
+			dialog.message = 'Se debe adjuntar al menos una imagen.';
+			valid = false;	
+			break;
+	};
+	if(!valid){
+		dialog.show();	
+	}
+	return valid;		
 };
 
 function changeTextColor(campo,value){
@@ -96,6 +169,46 @@ function changeTextColor(campo,value){
 		}
 	};
 }
+
+function ResetProductLine(){
+	$.lineFreshDairy.backgroundImage = "/media/image56.png";
+	$.lineEarlyLife.backgroundImage = "/media/image57.png";
+	$.lineWaters.backgroundImage = "/media/image58.png";
+	$.lineMedical.backgroundImage = "/media/image59.png";
+}
+
+
+function ChangeProductLine(value){
+	ResetProductLine();
+	models.getWISEModel().Comercial = value;
+	switch(value){
+		case "lineFreshDairy":{
+			$.lineFreshDairy.backgroundImage = "/media/image57.png";
+			break;	
+		}
+		case "lineEarlyLife":{
+			$.lineEarlyLife.backgroundImage = "/media/image57.png";
+			break;	
+		}
+		case "lineWaters":{
+			$.lineWaters.backgroundImage = "/media/image57.png";
+			break;	
+		}
+		case "lineMedical":{
+			$.lineMedical.backgroundImage = "/media/image57.png";
+			break;	
+		}
+	}
+}
+
+$.lineFreshDairy.addEventListener("click",function(e){ ChangeProductLine("lineFreshDairy"); });
+$.lineEarlyLife.addEventListener("click",function(e){ ChangeProductLine("lineEarlyLife"); });
+$.lineWaters.addEventListener("click",function(e){ ChangeProductLine("lineWaters"); });
+$.lineMedical.addEventListener("click",function(e){ ChangeProductLine("lineMedical"); });	
+
+$.name.addEventListener("change",function(){model.NombreChofer = $.name.value;});
+$.last.addEventListener("change",function(){model.ApellidoChofer = $.last.value;});
+$.patente.addEventListener("change",function(){model.Patente = $.patente.value;});
 
 $.CheckCinturon.addEventListener("click",function(){changeTextColor("Cinturon",!model.Cinturon); model.Cinturon = !model.Cinturon;});
 $.CheckLuces.addEventListener("click",function(){changeTextColor("Luces",!model.Luces); model.Luces = !model.Luces;});

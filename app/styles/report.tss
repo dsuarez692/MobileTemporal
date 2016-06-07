@@ -1,9 +1,17 @@
 "#mainView": {
-	"layout": "vertical",
-	"backgroundColor": "#FFF"
+	"layout": "absolute",
+	"backgroundColor": "#FFF",
+	"height": Ti.UI.FILL
+},
+"#mainTopBar":{
+	top:0,
+	left: 0,
+	height: "40dp",
+	backgroundColor: '#E0E0E0',
+	layout: 'horizontal'
 },
 "#reportNameContainer": {
-	"top": "0dp",
+	"top": "40dp",
 	"left": "0dp",
 	"width": "100%",
 	"height": "80dp",
@@ -23,9 +31,9 @@
 	"backgroundColor": "white"
 },
 "#form": {
-	"top": "15dp",
+	"top": "135dp",
 	"left": "0dp",
-	"height": "330dp",
+	"height": "345dp",
 	"layout": "vertical",
 	"scrollType": "vertical",
 },
@@ -36,4 +44,18 @@
 },
 ".tableRow": {
 	"height": "40dp"
+},
+"#photoMenu":{
+	bottom : '-180dp',
+	height : '180dp',
+	backgroundColor: '#1f4e79'
 }
+"TextArea":{
+	"top":"10dp",
+	"width": "300dp",
+	"height": Titanium.UI.FILL
+},
+"#btnPanel":{
+	"height":"50dp",
+	"top":"480dp"
+},
