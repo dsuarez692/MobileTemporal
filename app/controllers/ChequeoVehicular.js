@@ -106,10 +106,10 @@ function changeTextColor(campo,value){
 }
 
 function ResetProductLine(){
-	$.lineFreshDairy.backgroundImage = "/media/image56.png";
-	$.lineEarlyLife.backgroundImage = "/media/image57.png";
-	$.lineWaters.backgroundImage = "/media/image58.png";
-	$.lineMedical.backgroundImage = "/media/image59.png";
+	$.lineFreshDairy.backgroundImage = "/media/danone-08.png";
+	$.lineEarlyLife.backgroundImage = "/media/danone-07.png";
+	$.lineWaters.backgroundImage = "/media/danone-06.png";
+	$.lineMedical.backgroundImage = "/media/danone-05.png";
 }
 
 
@@ -118,19 +118,19 @@ function ChangeProductLine(value){
 	models.getWISEModel().Comercial = value;
 	switch(value){
 		case "lineFreshDairy":{
-			$.lineFreshDairy.backgroundImage = "/media/image57.png";
+			$.lineFreshDairy.backgroundImage = "/media/danone-01.png";
 			break;	
 		}
 		case "lineEarlyLife":{
-			$.lineEarlyLife.backgroundImage = "/media/image57.png";
+			$.lineEarlyLife.backgroundImage = "/media/danone-02.png";
 			break;	
 		}
 		case "lineWaters":{
-			$.lineWaters.backgroundImage = "/media/image57.png";
+			$.lineWaters.backgroundImage = "/media/danone-03.png";
 			break;	
 		}
 		case "lineMedical":{
-			$.lineMedical.backgroundImage = "/media/image57.png";
+			$.lineMedical.backgroundImage = "/media/danone-04.png";
 			break;	
 		}
 	}

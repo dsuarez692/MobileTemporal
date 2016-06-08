@@ -43,18 +43,19 @@
             <TableViewRow id="CheckMatafuegos">
                 <View>
                     <View class="icon-Check" id="iconMatafuegos" left="5dp" top="5dp" width="30dp" height="30dp"/>
-                    <Label id="lblFreno" left="45dp">Matafuegos (carga verificada)</Label>
+                    <Label id="lblMatafuegos" left="45dp">Matafuegos (carga verificada)</Label>
                 </View>
              </TableViewRow> 
             <TableViewRow>
                 <View>
-            		<Label class="reportTextSelected" top="2dp" left="2dp" left="15dp">FECHA VENCIMIENTO DE LA CARGA</Label>
+            		<Label class="reportTextSelected" top="2dp" left="2dp" left="15dp" width="45%">FECHA VENCIMIENTO DE LA CARGA</Label>
 			        <Picker  id="VencimientoMatafuego"
-			          top="20dp"
+			          top="2dp"
 			          type="Ti.UI.PICKER_TYPE_DATE"
-			          minDate="2014,4,1"
-			          maxDate="May 1, 2014 12:00:00"
-			          value="2014-04-15T12:00:00">
+			          backgroundColor="#8EDCFE"
+			          value="2016-01-01T12:00:00"
+			          width="auto"
+			          >
 			        </Picker> <!-- onChange="report" -->
     	 		</View>
     	 	</TableViewRow> 

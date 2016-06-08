@@ -102,6 +102,7 @@ exports.createCheckbox = function(specs) {
 
 function removeAllViews(view){
 	var removeData = [];
+	
     for (i = view.children.length; i > 0; i--){
         removeData.push(view.children[i - 1]);  
     };
@@ -165,12 +166,16 @@ function showHideCollapsibleMenu(view){
 exports.showHideCollapsibleMenu= showHideCollapsibleMenu;
 
 exports.initWise = function(view, wiseMenuView){
-	if(view.appTitleLabel.text != 'WISE'){
-		view.appTitleLabel.text = 'WISE';
-		removeAllViews(view.collapsibleMenu);
-		view.collapsibleMenu.add(wiseMenuView.getView());
-		view.collapsibleButton.addEventListener('click', function(e){
-			showHideCollapsibleMenu(view);
-		});
-	}
+	view.appTitleLabel.text = 'WISE';
+	removeAllViews(view.collapsibleMenu);
+	/*
+	var funcVacia = function(){};
+	view.collapsibleButton.removeEventListener('click', funcVacia);
+	*/
+	view.collapsibleMenu.add(wiseMenuView.getView());
+	view.collapsibleButton.addEventListener('click', function(e){
+		Ti.API.info('wep');
+		if(view.appTitleLabel.text == 'WISE')
+		showHideCollapsibleMenu(view);
+	});
 };

@@ -177,6 +177,8 @@ function GenerateReport(view){
 	controls.addMenuIcons(reportView, hideSideMenu);
 	controls.removeAllViews(reportView.form);
 	
+	controls.initWise(reportView, wiseMenuView);
+	
 	reportView.enviarBtn.addEventListener("click",
 		function(){
 			if(view.ValidateData()){
@@ -254,10 +256,14 @@ function removeCurrentOpenedView(){
 			break;
 		case 4:
 			$.drawermenu.drawermainview.remove(reportView.getView());
+			controls.removeAllViews(reportView.collapsibleMenu);
 			break;
 	};
 }
 
+$.getView().addEventListener('windows:back',function(e){
+	alert('asdasda');
+});
 
 loadDefaultValues();
 
