@@ -86,7 +86,8 @@ menuView.menuTable.addEventListener('click',function(e){
 										"password" : Ti.Utils.sha256(accountView.password.value),
 										"sector" : account2View.sector.value,
 										"bossname" : account2View.bossname.value,
-										"bosslast" : account2View.bosslast.value
+										"bosslast" : account2View.bosslast.value,
+										"lineaNegocio" : ""
 									});
 									Ti.API.info(JSON.stringify(persistence.getUserData()));
 									$.drawermenu.drawermainview.remove(account2View.getView());
@@ -218,12 +219,6 @@ function loadDefaultValues(){
 			persistence.logOut();
 			loggedIn = false;
 			
-			//Elimino imagen de perfil
-			var f = Ti.Filesystem.getFile(persistence.getUserPhotoPath());
-			if(f.exists() === true){
-				f.deleteFile();
-			}
-			
 			//Seteo imagen default de perfil
 			menuView.menuTopBar.backgroundImage = "/media/image10.png";
 			
@@ -245,20 +240,13 @@ function openLogin(){
 	if(loginView == null){
 		loginView = controls.getLoginView();
 		loginView.loginBtn.addEventListener('click', function(){
-			persistence.saveUserData({
-				"name" : "",
-				"last" : "",
-				"username" : loginView.username.value,
-				"password" : Ti.Utils.sha256(loginView.password.value),
-				"sector" : "",
-				"bossname" : "",
-				"bosslast" : ""
-			});
-			activeView = 1;
-			$.drawermenu.drawermainview.remove(loginView.getView());
-			sessionControl = setTimeout(checkSession, 10000);
-			loadDefaultValues();
-			loginView = null;
+			if(persistence.logIn()){
+				activeView = 1;
+				$.drawermenu.drawermainview.remove(loginView.getView());
+				sessionControl = setTimeout(checkSession, 10000);
+				loadDefaultValues();
+				loginView = null;
+			}
 		});
 		loginView.registerBtn.addEventListener('click', function(){
 			if(accountView == null){
@@ -283,7 +271,8 @@ function openLogin(){
 										"password" : Ti.Utils.sha256(accountView.password.value),
 										"sector" : account2View.sector.value,
 										"bossname" : account2View.bossname.value,
-										"bosslast" : account2View.bosslast.value
+										"bosslast" : account2View.bosslast.value,
+										"lineaNegocio" : ""
 									});
 									Ti.API.info(JSON.stringify(persistence.getUserData()));
 									$.drawermenu.drawermainview.remove(account2View.getView());
