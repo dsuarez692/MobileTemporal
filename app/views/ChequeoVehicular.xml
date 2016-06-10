@@ -48,13 +48,14 @@
              </TableViewRow> 
             <TableViewRow>
                 <View>
-            		<Label class="reportTextSelected" top="2dp" left="2dp" left="15dp" width="45%">FECHA VENCIMIENTO DE LA CARGA</Label>
+            		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="70%">FECHA VENCIMIENTO DE LA CARGA</Label>
 			        <Picker  id="VencimientoMatafuego"
 			          top="2dp"
+			          right="15dp"
 			          type="Ti.UI.PICKER_TYPE_DATE"
 			          backgroundColor="#8EDCFE"
-			          value="2016-01-01T12:00:00"
-			          width="auto"
+			          value="2016-01-01"
+			          width="90dp"
 			          >
 			        </Picker> <!-- onChange="report" -->
     	 		</View>
@@ -76,18 +77,13 @@
         <TableViewRow id="CheckGuantes">
             <View>
                 <View class="icon-Check" id="iconGuantes" left="5dp" top="5dp" width="30dp" height="30dp"/>
-                <Label id="lblGuantes" left="45dp">Guantes de trabajo</Label>
+                <Label id="lblGuantes" left="45dp">Guantes de Trabajo</Label>
             </View>
         </TableViewRow>
-        
-         <TableViewRow>
-            <View>
-               <TextArea id="txtObsEmergencia" hintText="Observaciones del kit de emergencia" cols="100" horizontalWrap="true"></TextArea>
-            </View>
-        </TableViewRow>
-        
-       
 	</TableView>
+	<View height="200dp" top="110dp">
+	    <TextArea id="txtObsEmergencia" hintText="Observaciones del kit de emergencia" cols="100" horizontalWrap="true" top="30dp" left="15dp" height="190dp"></TextArea>
+	</View>
   </View>
   
    <View id="Page3">
@@ -95,44 +91,43 @@
     	<Label class="reportTextSelected">PULSE EN CASILLA O TEXTO PARA RESPONDER</Label>
 	</View>
 	<TableView top="50dp">	
-		<TableViewRow id="CheckDistanciaCirc">
+		<TableViewRow id="CheckNeumaticoDI">
             <View>
-                <View class="icon-Check" id="iconDistanciaCirc" left="5dp" top="5dp" width="30dp" height="30dp"/>
-                <Label id="lblDistanciaCirc" left="45dp">Respeta distancia de circulación</Label>
+                <View class="icon-Check" id="iconNeumaticoDI" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                <Label id="lblNeumaticoDI" left="45dp">Neumático Delantero Izquierdo con Buen Dibujo</Label>
             </View>
         </TableViewRow>
         
-        <TableViewRow id="CheckNormas">
+        <TableViewRow id="CheckNeumaticoDD">
             <View>
-                <View class="icon-Check" id="iconNormas" left="5dp" top="5dp" width="30dp" height="30dp"/>
-                <Label id="lblNormas" left="45dp">Respeta normas de tránsito</Label>
+                <View class="icon-Check" id="iconNeumaticoDD" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                <Label id="lblNeumaticoDD" left="45dp">Neumático Delantero Derecho con Buen Dibujo</Label>
             </View>
         </TableViewRow>
         
-        <TableViewRow id="CheckCelular">
+		<TableViewRow id="CheckNeumaticoTI">
             <View>
-                <View class="icon-Check" id="iconCelular" left="5dp" top="5dp" width="30dp" height="30dp"/>
-                <Label id="lblCelular" left="45dp">Utiliza celular</Label>
+                <View class="icon-Check" id="iconNeumaticoTI" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                <Label id="lblNeumaticoTI" left="45dp">Neumático Trasero Izquierdo con Buen Dibujo</Label>
+            </View>
+        </TableViewRow>
+        
+        <TableViewRow id="CheckNeumaticoTD">
+            <View>
+                <View class="icon-Check" id="iconNeumaticoTD" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                <Label id="lblNeumaticoTD" left="45dp">Neumático Trasero Derecho con Buen Dibujo</Label>
             </View>
         </TableViewRow>
 	</TableView>
-	<View top="240dp" height="30dp">
-    	<Label class="reportTextSelectedHigh">Solo falta un paso más !</Label>
-	</View>
   </View>
   
   
   <View id="Page4">
-	<Label class="reportTextSelected" top="2dp" left="2dp" left="15dp">NOMBRE COMPLETO DEL CHOFER</Label>
-    <TextField class="textSimple" hintText="  Nombre" id="name" top="20dp"/>
-    <TextField class="textSimple" hintText="  Apellido" id="last" top="65dp"/>
-    <Label class="reportTextSelected" top="125dp" left="20dp">PATENTE DEL TRANSPORTE</Label>
-    <TextField class="textSimple" hintText="  Obligatorio" id="patente" top="155dp"/>
-    <View top="225dp" height="20dp" id="linkObservaciones">
-    	<Label class="reportTextSelected">Toque aqui para agregar observaciones !</Label>
+	<View height="Titanium.UI.FILL" top="2dp">
+	    <TextArea id="txtObsEstado" hintText="Observaciones del estado del vehículo" cols="100" horizontalWrap="true" top="30dp" left="15dp" height="190dp"></TextArea>
 	</View>
-	<View top="251dp" height="50dp">
-    	<Label class="reportTextSelectedHigh">Su auditoria a finalizado, muchas gracias !</Label>
+	<View top="240dp" height="30dp">
+    	<Label class="reportTextSelectedHigh">Solo falta un paso más !</Label>
 	</View>
   </View>
 </Alloy>

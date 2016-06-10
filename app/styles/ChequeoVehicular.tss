@@ -14,8 +14,6 @@
 	"height": "60dp",
 	"textAlign": Titanium.UI.TEXT_ALIGNMENT_CENTER
 },
-"ProgressBar":{
-	width: Titanium.UI.FILL,
-	height:"20dp",
-	color: "#057699"
-},
+".rowObservaciones":{
+	"height":"200dp"	
+}

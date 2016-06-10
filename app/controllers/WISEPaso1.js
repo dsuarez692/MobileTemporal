@@ -100,6 +100,10 @@ exports.ValidateData = function(){
 			dialog.message = 'Se debe adjuntar al menos una imagen.';
 			valid = false;	
 			break;
+		case (!model.Comercial || model.Comercial == ""):
+			dialog.message = 'Se debe indicar la linea de negocio.';
+			valid = false;	
+			break;
 	};
 	if(!valid){
 		dialog.show();	

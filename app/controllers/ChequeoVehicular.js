@@ -19,6 +19,11 @@ exports.LoadFromModel = function(modelo,view,Page){
 		model.Chaleco = true;
 		model.Guantes = true;
 		model.ObsEmergencia = '';
+		model._Page = 1;
+		model.NeumaticoDI = true;
+		model.NeumaticoDD = true;
+		model.NeumaticoTI = true;
+		model.NeumaticoTD = true;
 		
 		models.setWISEModel(model);
 	}
@@ -27,6 +32,11 @@ exports.LoadFromModel = function(modelo,view,Page){
 	changeTextColor("Matafuegos",model.Matafuegos);
 	changeTextColor("Chaleco",model.Chaleco);
 	changeTextColor("Guantes",model.Guantes);
+	
+	changeTextColor("NeumaticoDI",model.NeumaticoDI);
+	changeTextColor("NeumaticoDD",model.NeumaticoDD);
+	changeTextColor("NeumaticoTI",model.NeumaticoTI);
+	changeTextColor("NeumaticoTD",model.NeumaticoTD);
 	
 	$.VencimientoMatafuego.value = model.VencimientoMatafuego;
 	$.txtObsEmergencia.value = model.ObsEmergencia;
@@ -59,11 +69,20 @@ exports.GetTerceraPagina = function(pageNumber){
 exports.GetCuartaPagina = function(pageNumber){
 	return $.Page4;		
 };
+exports.GetQuintaPagina = function(pageNumber){
+	return $.Page5;		
+};
 exports.GetPageCount = function(pageNumber){
-	return 4;		
+	return 5;		
 };
 
 exports.ValidateData = function(){
+	switch(true){
+		case (!model.Comercial || model.Comercial == ""):
+			dialog.message = 'Se debe indicar la linea de negocio.';
+			valid = false;	
+			break;
+	}
 	return true;		
 };
 
@@ -100,6 +119,26 @@ function changeTextColor(campo,value){
 		case "Guantes":{
 			$.lblGuantes.color = color;
 			$.iconGuantes.backgroundImage = image;
+			break;
+		}
+		case "NeumaticoDI":{
+			$.lblNeumaticoDI.color = color;
+			$.iconNeumaticoDI.backgroundImage = image;
+			break;
+		}
+		case "NeumaticoDD":{
+			$.lblNeumaticoDD.color = color;
+			$.iconNeumaticoDD.backgroundImage = image;
+			break;
+		}
+		case "NeumaticoTI":{
+			$.lblNeumaticoTI.color = color;
+			$.iconNeumaticoTI.backgroundImage = image;
+			break;
+		}
+		case "NeumaticoTD":{
+			$.lblNeumaticoTD.color = color;
+			$.iconNeumaticoTD.backgroundImage = image;
 			break;
 		}
 	};
@@ -149,3 +188,8 @@ $.CheckPrimerosAuxilios.addEventListener("click",function(){changeTextColor("Pri
 $.CheckMatafuegos.addEventListener("click",function(){changeTextColor("Matafuegos",!model.Matafuegos); model.Matafuegos = !model.Matafuegos;});
 $.CheckChaleco.addEventListener("click",function(){changeTextColor("Chaleco",!model.Chaleco); model.Chaleco = !model.Chaleco;});
 $.CheckGuantes.addEventListener("click",function(){changeTextColor("Guantes",!model.Guantes); model.Guantes = !model.Guantes;});
+
+$.CheckNeumaticoDI.addEventListener("click",function(){changeTextColor("NeumaticoDI",!model.NeumaticoDI); model.NeumaticoDI = !model.NeumaticoDI;});
+$.CheckNeumaticoDD.addEventListener("click",function(){changeTextColor("NeumaticoDD",!model.NeumaticoDD); model.NeumaticoDD = !model.NeumaticoDD;});
+$.CheckNeumaticoTI.addEventListener("click",function(){changeTextColor("NeumaticoTI",!model.NeumaticoTI); model.NeumaticoTI = !model.NeumaticoTI;});
+$.CheckNeumaticoTD.addEventListener("click",function(){changeTextColor("NeumaticoTD",!model.NeumaticoTD); model.NeumaticoTD = !model.NeumaticoTD;});

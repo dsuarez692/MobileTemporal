@@ -125,7 +125,7 @@ menuView.menuTable.addEventListener('click',function(e){
 				    		reportView.volverBtn.visible = false;
 			    			models.getWISEModel().Type = e.rowData.id;
 				    		models.getWISEModel().ImageMax = 1;
-				    		models.getWISEModel().RequiredPic = true;
+				    		models.getWISEModel().RequiredPic = false;
 				    		reportView.reportName.text = "Auditoría de manejo";
 				    		reportView.form.add(auditoria.Page1);
 				    		auditoria.LoadFromModel(models.getWISEModel());
@@ -197,7 +197,8 @@ function GenerateReport(view){
 			    if(controls.isCollapsibleMenuOpen){
 			    	controls.showHideCollapsibleMenu(mainView);
 			    	controls.setCollapsibleMenuOpen(false);
-			    }	
+			    }
+			    controls.removeAllViews(reportView.collapsibleMenu);
 			}
 		}); 	
 }
