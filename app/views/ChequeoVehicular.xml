@@ -176,11 +176,13 @@
 			<TextField class="textSimple" hintText="" id="DNI" top="20dp" />
 		</TableViewRow>	
 		
-		<TableViewRow></TableViewRow>
-			
 		<TableViewRow id="linkObservaciones" top="10dp">
     	 	<Label class="reportTextSelected">Toque aqui para agregar observaciones !</Label>
     	</TableViewRow>	
+    	
+    	<TableViewRow>
+    		<Label class="reportTextSelectedHigh">Su auditoria a finalizado, muchas gracias !</Label>
+		</TableViewRow>	
 	</TableView>
   </View>
 </Alloy>

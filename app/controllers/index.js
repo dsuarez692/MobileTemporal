@@ -31,6 +31,7 @@ var reportView=null;
 //Wise
 var auditoria = controls.getWISEPaso1();
 var chequeoVehicular = controls.getChequeoVehicular();
+var avisoDeRiesgo = controls.getAvisoDeRiesgo();
 
 //Menu collapsable wise
 var wiseMenuView = null;
@@ -146,8 +147,20 @@ menuView.menuTable.addEventListener('click',function(e){
 				    		$.drawermenu.drawermainview.add(reportView.getView());
     						activeView = 4;
     						break;
-    					
-    					
+    					case 'aviso_riesgo':
+    						removeCurrentOpenedView();
+				    		models.resetWISEModel();
+				    		GenerateReport(avisoDeRiesgo);
+				    		reportView.volverBtn.visible = false;
+			    			models.getWISEModel().Type = e.rowData.id;
+				    		models.getWISEModel().ImageMax = 1;
+				    		models.getWISEModel().RequiredPic = true;
+				    		reportView.reportName.text = "Aviso de Riesgo";
+				    		reportView.form.add(avisoDeRiesgo.Page1);
+				    		avisoDeRiesgo.LoadFromModel(models.getWISEModel());
+				    		$.drawermenu.drawermainview.add(reportView.getView());
+    						activeView = 4;
+    						break;
     				};
     			});
     		}

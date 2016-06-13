@@ -1,0 +1,83 @@
+<Alloy>
+	<View id="Page1">
+		<View id="lineaDeNegocio" top="0dp">
+	        <View top="2dp">
+	            <Label class="reportTextSelected">SELECCIONE LÍNEA DE NEGOCIO A AUDITAR</Label>
+	        </View>
+	        <View top="20dp" id="lines">
+	            <View left="5%" width="25%">
+	                <View class="rowIcon" id="lineFreshDairy"/>
+	            </View>
+	            <View left="30%" width="25%">
+	                <View class="rowIcon" id="lineEarlyLife"/>
+	            </View>
+	            <View left="55%" width="25%">
+	                <View class="rowIcon" id="lineWaters"/>
+	            </View>
+	            <View left="75%" width="25%">
+	                <View class="rowIcon" id="lineMedical"/>
+	            </View>
+	        </View>
+    	</View>
+    	<View top="113dp" height="15dp">
+        	<Label class="reportTextSelected">SELECCIONE LA OPCIÓN CORRESPONDIENTE </Label>
+ 		</View>
+ 		<TableView top="143dp">
+		   <TableViewRow> 
+            <Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="100%">¿Qué factor de Seguridad, Higiene o Calidad está involucrado?</Label>
+	        <Picker  id="TipoInformacion"
+	          top="55dp"
+	          left="10dp"
+	          height="25dp"
+	          backgroundColor="#8EDCFE">
+	            <PickerColumn>
+	                <PickerRow title="Seleccione"></PickerRow>
+	                <PickerRow title="Riesgo ambiental (Derrames, etc)" ></PickerRow>
+                	<PickerRow title="Riesgos químicos (Gases, líquidos, etc.)" />
+                	<PickerRow title="Riesgos eléctricos (Puesta a tierra, cables, etc.)" />
+                	<PickerRow title="Riesgos locativos (Pisos, techos, almacenamiento, etc.)" />
+                	<PickerRow title="Riesgos potenciales (Caída de altura, pérdidas en cañerías,etc.)" />
+                	<PickerRow title="Riesgo de incendio (Elementos combustibles cerca de tableros, etc.)" />
+                	<PickerRow title="Riesgo de tránsito (Volcamientos, obstáculos, etc.)" />
+	            </PickerColumn>
+	            <!-- Picker shorthand notation -->
+	        </Picker>
+        </TableViewRow>
+                
+       <TableViewRow>
+            <View>
+                 <Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="100%">¿Qué tipo de información vinculada a la Seguridad e Higiene desea comunicar?</Label>
+		        <Picker  id="TipoInformacion"
+		          top="55dp"
+		          left="10dp"
+		          height="25dp"
+		          backgroundColor="#8EDCFE">
+		          <PickerColumn>
+		          	<PickerRow title="Seleccione"></PickerRow>
+                	<PickerRow title="Riesgo a las personas" id="RiesgoPersonas"></PickerRow>
+                	<PickerRow title="Riesgo al medio ambiente" id="RiesgoMA"/>
+                	<PickerRow title="Riesgo a los elementos de trabajo" id="RiesgoETrabajo"/>
+            	  </PickerColumn>
+		        </Picker>
+            </View>
+        </TableViewRow>
+        <TableViewRow>
+            <View>
+                 <Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="100%">¿Cómo considerás el riesgo?</Label>
+		        <Picker  id="Riesgo"
+		          top="55dp"
+		          left="10dp"
+		          height="25dp"
+		          backgroundColor="#8EDCFE">
+		          <PickerColumn>
+		          	<PickerRow title="Seleccione"></PickerRow>
+                	<PickerRow title="Grave" id="Grave"></PickerRow>
+                	<PickerRow title="Medio" id="Medio"/>
+                	<PickerRow title="Bajo" id="Bajo"/>
+            	  </PickerColumn>
+		        </Picker>
+            </View>
+         </TableViewRow> 
+	</TableView> 
+	</View>
+</Alloy>

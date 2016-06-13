@@ -42,17 +42,17 @@
     <android xmlns:android="http://schemas.android.com/apk/res/android">
         <manifest>
             <application android:screenOrientation="portrait" android:theme="@style/Theme.NoActionBar"/>
-            <uses-permission android:name="android.permission.CAMERA" />
-    		<uses-feature android:name="android.hardware.camera"/>
+            <uses-permission android:name="android.permission.CAMERA"/>
+            <uses-feature android:name="android.hardware.camera"/>
         </manifest>
     </android>
     <windows>
-    	<manifest>
-	    	<Capabilities>
-		        <Capability Name="picturesLibrary" />
-	    		<DeviceCapability Name="webcam" />
-		    </Capabilities>
-	    </manifest>
+        <manifest>
+            <Capabilities>
+                <Capability Name="picturesLibrary"/>
+                <DeviceCapability Name="webcam"/>
+            </Capabilities>
+        </manifest>
     </windows>
     <mobileweb>
         <precache/>
@@ -72,7 +72,7 @@
         <target device="mobileweb">false</target>
         <target device="windows">true</target>
     </deployment-targets>
-    <sdk-version>5.3.0.v20160503133640</sdk-version>
+    <sdk-version>5.3.0.GA</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>

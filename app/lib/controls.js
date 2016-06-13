@@ -21,11 +21,15 @@ exports.getReportView=function(parms){
 	return Alloy.createController('report', parms);
 };
 exports.getWISEPaso1=function(){
-	return Alloy.createController('WISEPaso1');;
+	return Alloy.createController('WISEPaso1');
 };
 exports.getChequeoVehicular=function(){
-	return Alloy.createController('ChequeoVehicular');;
+	return Alloy.createController('ChequeoVehicular');
 };
+exports.getAvisoDeRiesgo=function(){
+	return Alloy.createController('AvisoDeRiesgo');
+};
+
 
 exports.getAccount2View=function(){
 	return Alloy.createController('account2');
