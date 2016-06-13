@@ -125,9 +125,9 @@
   <View id="Page4">
   	<Label class="reportTextSelected" height="20dp" top="0">Observaciones del estado del vehículo</Label>
 	<View top="2dp">
-	    <TextArea id="txtObsEstado" top="22dp" hintText="Escriba aquí" cols="100" horizontalWrap="true" left="15dp" width="Titanium.UI.SIZE" height="200dp" width="200dp" ></TextArea>
+	    <TextArea id="txtObsEstado" top="22dp" hintText="Escriba aquí" cols="100" horizontalWrap="true" left="15dp" width="Titanium.UI.SIZE" height="200dp" width="260dp" ></TextArea>
 	</View>
-	<View top="240dp" height="50dp">
+	<View top="275dp" height="40dp">
     	<Label class="reportTextSelectedHigh">Solo falta un paso más !</Label>
 	</View>
   </View>
@@ -171,12 +171,16 @@
 			<TextField class="textSimple" hintText="" id="KM" top="20dp" />
 		</TableViewRow>
 		
-		<TableViewRow></TableViewRow>
-		
 		<TableViewRow>
 			<Label class="reportTextSelected" top="2dp" left="2dp" left="15dp">DNI o PASAPORTE</Label>
 			<TextField class="textSimple" hintText="" id="DNI" top="20dp" />
 		</TableViewRow>	
+		
+		<TableViewRow></TableViewRow>
+			
+		<TableViewRow id="linkObservaciones" top="10dp">
+    	 	<Label class="reportTextSelected">Toque aqui para agregar observaciones !</Label>
+    	</TableViewRow>	
 	</TableView>
   </View>
 </Alloy>

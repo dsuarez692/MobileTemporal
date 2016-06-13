@@ -20,6 +20,7 @@ exports.LoadFromModel = function(modelo,view,Page){
 		model.FechaVTV = null;
 		model.Chaleco = true;
 		model.Guantes = true;
+		model.Observaciones = '';
 		model.ObsEmergencia = '';
 		model.ObsEstadoVehiculo = '';
 		model._Page = 1;
@@ -45,8 +46,12 @@ exports.LoadFromModel = function(modelo,view,Page){
 	
 	$.VencimientoMatafuego.value = model.VencimientoMatafuego;
 	$.txtObsEmergencia.value = model.ObsEmergencia;
+	$.txtObsEstado.value = model.ObsEstadoVehiculo;
+	$.UltimaRevisionTecnica.value = model.UltimaRevisionTecnica;
+	$.FechaVTV.value = model.FechaVTV;
+	$.KM.value = model.KM;
+	$.DNI.value = model.DNI;
 
-	
 	if(user != undefined && user != null){ //En teoria esta linea no va a ser necesaria
 		if(user.Comercial != undefined){
 			models.getWISEModel().Comercial = user.Comercial;
@@ -93,14 +98,27 @@ exports.ValidateData = function(){
 		case (!model.Comercial || model.Comercial == ""):
 			valid = false;	
 			break;
-		
+		case (model.Matafuegos == true):
+			if(model.VencimientoMatafuego == null){
+				dialog.message = 'La fecha de vencimiento de la carga del matafuegos es obligatoria';
+				valid = false;	
+				break;
+			}
+		case (!model.KM || model.KM == ""):
+			dialog.message = 'El Kilometraje es requerido';
+			valid = false;	
+			break;
+		case (!model.DNI || model.DNI == ""):
+			dialog.message = 'El DNI es requerido';
+			valid = false;	
+			break;
 	}
 	
 	if(!valid){
 		dialog.show();	
 	}
 	
-	return true;		
+	return valid;		
 };
 
 function changeTextColor(campo,value){
