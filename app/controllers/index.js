@@ -240,12 +240,17 @@ function openLogin(){
 	if(loginView == null){
 		loginView = controls.getLoginView();
 		loginView.loginBtn.addEventListener('click', function(){
-			if(persistence.logIn()){
-				activeView = 1;
-				$.drawermenu.drawermainview.remove(loginView.getView());
-				sessionControl = setTimeout(checkSession, 10000);
-				loadDefaultValues();
-				loginView = null;
+			if(loginView.validateData()){
+				if(persistence.logIn({
+						"username" : loginView.username.value,
+						"password" : Ti.Utils.sha256(loginView.password.value),
+					})){
+					activeView = 1;
+					$.drawermenu.drawermainview.remove(loginView.getView());
+					sessionControl = setTimeout(checkSession, 10000);
+					loadDefaultValues();
+					loginView = null;
+				}
 			}
 		});
 		loginView.registerBtn.addEventListener('click', function(){

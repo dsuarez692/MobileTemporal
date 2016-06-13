@@ -2,22 +2,29 @@ var photoManager = require("photo");
 var controls = require("controls");
 var persistence = require("persistence");
 
-var profileLoaded = false;
-
 var durationPhotoMenu = 200;
 
 $.photoMenuTable.addEventListener('click',function(e){
 	showPhotoMenu(false);
+	Titanium.UI.Android.hideSoftKeyboard();
 	switch(e.rowData.id){
 		case "takePhoto":
-			photoManager.tomarFoto(addFoto);
+			if($.username.value != ''){
+				photoManager.tomarFoto(addFoto);
+			}else{
+				alert('Debe ingresar primero un nombre de usuario.');
+			}
 			break;
 		case "selectPhoto":
-			photoManager.cargarFoto(addFoto);
+			if($.username.value != ''){
+				photoManager.cargarFoto(addFoto);
+			}else{
+				alert('Debe ingresar primero un nombre de usuario.');
+			}
 			break;
 		case "deletePhoto":
 			controls.removeAllViews($.userPhoto);
-			profileLoaded = false;
+			persistence.deleteUserPhoto();
 			loadDefaultPhotoImage();
 			break;
 	};
@@ -26,26 +33,30 @@ $.photoMenuTable.addEventListener('click',function(e){
 
 function loadDefaultPhotoImage(){
 	if(user != null && user.name != undefined){
-		var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'userphoto.jpg');
-		$.userPhoto.add(Ti.UI.createImageView({
-			width:"100%",
-			height:"auto",
-			image:f.read(),
-			id: 'imagenPerfil'
-		}));
-		f = null;
-	}else{
-		$.userPhoto.add(Ti.UI.createImageView({
-			image: "/camera.png"
-		}));
+		var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,user.username + '.jpg');
+		if(f.exists()){
+			$.userPhoto.add(Ti.UI.createImageView({
+				width:"100%",
+				height:"auto",
+				image:f.read(),
+				id: 'imagenPerfil'
+			}));
+			f = null;
+			return;
+		}
 	}
+		
+	$.userPhoto.add(Ti.UI.createImageView({
+		image: "/camera.png"
+	}));
+	
 }
 
 function addFoto(event){
 	controls.removeAllViews($.userPhoto);
 	var image = event.media.imageAsResized(640, 480);
 	
-	fileName = 'userphoto.jpg';
+	fileName = $.username.value + '.jpg';
 	var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,fileName);
 	f.write(image);
 	var imageView = Ti.UI.createImageView({
@@ -56,7 +67,6 @@ function addFoto(event){
 		id: 'imagenPerfil'
 	});
 	$.userPhoto.add(imageView);
-	profileLoaded = true;
 	f = null;
 }
 
@@ -100,7 +110,7 @@ function validateData(){
 		return false;
 	}
 	if($.password.value.length < 6 || $.password.value.length > 20){
-		alert('La contraseña debe contener entre 6 y 20 caracteres');
+		alert('La contraseña debe contener entre 6 y 20 caracteres.');
 		return false;
 	}
 	if($.password2.value == ''){
@@ -109,11 +119,6 @@ function validateData(){
 	}
 	if($.password.value != $.password2.value){
 		alert('Las contraseñas no coinciden.');
-		return false;
-	}
-	
-	if(!profileLoaded){
-		alert('Debe seleccionar una imagen de usuario');
 		return false;
 	}
 	return true;
