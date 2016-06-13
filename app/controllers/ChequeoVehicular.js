@@ -16,14 +16,19 @@ exports.LoadFromModel = function(modelo,view,Page){
 		model.PrimerosAuxilios = true;
 		model.Matafuegos = true;
 		model.VencimientoMatafuego = null;
+		model.UltimaRevisionTecnica = null;
+		model.FechaVTV = null;
 		model.Chaleco = true;
 		model.Guantes = true;
 		model.ObsEmergencia = '';
+		model.ObsEstadoVehiculo = '';
 		model._Page = 1;
 		model.NeumaticoDI = true;
 		model.NeumaticoDD = true;
 		model.NeumaticoTI = true;
 		model.NeumaticoTD = true;
+		model.KM = '';
+		model.DNI = '';
 		
 		models.setWISEModel(model);
 	}
@@ -77,12 +82,24 @@ exports.GetPageCount = function(pageNumber){
 };
 
 exports.ValidateData = function(){
+	var valid = true;
+	var dialog = Ti.UI.createAlertDialog({
+	    message: 'Se debe indicar la linea de negocio.',
+	    ok: 'Okay',
+	    title: 'Error de Validación'
+	  });
+	  
 	switch(true){
 		case (!model.Comercial || model.Comercial == ""):
-			dialog.message = 'Se debe indicar la linea de negocio.';
 			valid = false;	
 			break;
+		
 	}
+	
+	if(!valid){
+		dialog.show();	
+	}
+	
 	return true;		
 };
 
@@ -182,6 +199,20 @@ $.lineMedical.addEventListener("click",function(e){ ChangeProductLine("lineMedic
 
 $.txtObsEmergencia.addEventListener("change",function(){model.ObsEmergencia = $.txtObsEmergencia.value;});
 $.VencimientoMatafuego.addEventListener("change",function(){model.VencimientoMatafuego = $.VencimientoMatafuego.value;});
+$.txtObsEstado.addEventListener("change",function(){model.ObsEstadoVehiculo = $.txtObsEstado.value;});
+$.UltimaRevisionTecnica.addEventListener("change",function(){model.UltimaRevisionTecnica = $.UltimaRevisionTecnica.value;});
+$.FechaVTV.addEventListener("change",function(){model.FechaVTV = $.FechaVTV.value;});
+
+$.KM.addEventListener('change', function(e) {
+      e.source.value = e.source.value.replace(/[^0-9]+/,""); 
+      model.KM = $.KM.value;
+});
+
+$.DNI.addEventListener('change', function(e) {
+      e.source.value = e.source.value.replace(/[^0-9]+/,""); 
+      model.DNI = $.DNI.value;
+});
+    
 
 $.CheckBalizas.addEventListener("click",function(){changeTextColor("Balizas",!model.Balizas); model.Balizas = !model.Balizas;});
 $.CheckPrimerosAuxilios.addEventListener("click",function(){changeTextColor("PrimerosAuxilios",!model.PrimerosAuxilios); model.PrimerosAuxilios = !model.PrimerosAuxilios;});

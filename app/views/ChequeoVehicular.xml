@@ -123,12 +123,61 @@
   
   
   <View id="Page4">
-	<View height="Titanium.UI.FILL" top="2dp">
-	    <TextArea id="txtObsEstado" hintText="Observaciones del estado del vehículo" cols="100" horizontalWrap="true" top="30dp" left="15dp" height="190dp"></TextArea>
+  	<Label class="reportTextSelected" height="20dp" top="0">Observaciones del estado del vehículo</Label>
+	<View top="2dp">
+	    <TextArea id="txtObsEstado" top="22dp" hintText="Escriba aquí" cols="100" horizontalWrap="true" left="15dp" width="Titanium.UI.SIZE" height="200dp" width="200dp" ></TextArea>
 	</View>
-	<View top="240dp" height="30dp">
+	<View top="240dp" height="50dp">
     	<Label class="reportTextSelectedHigh">Solo falta un paso más !</Label>
 	</View>
+  </View>
+  
+  <View id="Page5">
+	<TableView top="2dp">
+        <TableViewRow>
+            <View>
+        		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="70%">ÚLTIMA REVISIÓN TÉCNICA</Label>
+		        <Picker  id="UltimaRevisionTecnica"
+		          top="2dp"
+		          right="15dp"
+		          type="Ti.UI.PICKER_TYPE_DATE"
+		          backgroundColor="#8EDCFE"
+		          value="2016-01-01"
+		          width="90dp"
+		          >
+		        </Picker> <!-- onChange="report" -->
+	 		</View>
+	 	</TableViewRow> 
+	 	
+	 	<TableViewRow>
+            <View>
+        		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="70%">ÚLTIMA V.T.V. (VERIFICACIÓN TÉCNICA VEHICULAR)</Label>
+		        <Picker  id="FechaVTV"
+		          top="2dp"
+		          right="15dp"
+		          type="Ti.UI.PICKER_TYPE_DATE"
+		          backgroundColor="#8EDCFE"
+		          value="2016-01-01"
+		          width="90dp"
+		          >
+		        </Picker> 
+	 		</View>
+	 	</TableViewRow> 
+	 	
+	 	<TableViewRow></TableViewRow>
+	 	
+	 	<TableViewRow>
+	 		<Label class="reportTextSelected" top="2dp" left="2dp" left="15dp">KM</Label>
+			<TextField class="textSimple" hintText="" id="KM" top="20dp" />
+		</TableViewRow>
+		
+		<TableViewRow></TableViewRow>
+		
+		<TableViewRow>
+			<Label class="reportTextSelected" top="2dp" left="2dp" left="15dp">DNI o PASAPORTE</Label>
+			<TextField class="textSimple" hintText="" id="DNI" top="20dp" />
+		</TableViewRow>	
+	</TableView>
   </View>
 </Alloy>
 
