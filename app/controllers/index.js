@@ -338,7 +338,6 @@ function removeCurrentOpenedView(){
 	};
 }
 
-
 loadDefaultValues();
 
 $.index.open();
