@@ -51,4 +51,7 @@
 	height: "60dp",
 	width: Ti.UI.FILL,
 	layout: 'horizontal'
+},
+"#lines":{
+	layout: 'horizontal'
 }
