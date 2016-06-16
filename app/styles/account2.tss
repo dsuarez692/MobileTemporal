@@ -45,13 +45,12 @@
 	backgroundSelectedColor: '#3f8fac',
 	zIndex: 2
 },
-".businessPick":{
-	top: "0dp",
-	left: "0dp",
-	height: "60dp",
-	width: Ti.UI.FILL,
-	layout: 'horizontal'
-},
 "#lines":{
-	layout: 'horizontal'
-}
+	layout: 'horizontal',
+	height: '70dp'
+},
+".rowIcon": {
+	"width": "60dp",
+	"height": "60dp",
+	"textAlign": Titanium.UI.TEXT_ALIGNMENT_CENTER
+},

@@ -16,16 +16,16 @@
                 <ScrollView id="form">
                     <Label class="labelField">SELECCIONE EL MODELO DE NEGOCIO AL QUE PERTENECE</Label>
                     <View id="lines">
-			            <View left="5%" width="25%">
+			            <View width="25%">
 			                <View class="rowIcon" id="lineFreshDairy"/>
 			            </View>
-			            <View left="30%" width="25%">
+			            <View width="25%">
 			                <View class="rowIcon" id="lineEarlyLife"/>
 			            </View>
-			            <View left="55%" width="25%">
+			            <View width="25%">
 			                <View class="rowIcon" id="lineWaters"/>
 			            </View>
-			            <View left="75%" width="25%">
+			            <View width="25%">
 			                <View class="rowIcon" id="lineMedical"/>
 			            </View>
 			        </View>
