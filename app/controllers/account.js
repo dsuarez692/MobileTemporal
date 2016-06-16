@@ -152,6 +152,13 @@ function loadDefaultValues(){
 		$.name.value = user.name;
 		$.last.value = user.last;
 		$.username.value = user.username;
+		$.password.visible = false;
+		$.passwordLabel.visible = false;
+		$.password2.visible = false;
+	}else{
+		$.password.visible = true;
+		$.passwordLabel.visible = true;
+		$.password2.visible = true;
 	}
 }
 

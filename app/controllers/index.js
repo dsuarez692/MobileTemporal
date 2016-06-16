@@ -83,11 +83,11 @@ menuView.menuTable.addEventListener('click',function(e){
 										"name" : accountView.name.value,
 										"last" : accountView.last.value,
 										"username" : accountView.username.value,
-										"password" : Ti.Utils.sha256(accountView.password.value),
+										"password" : userData.password,
 										"sector" : account2View.sector.value,
 										"bossname" : account2View.bossname.value,
 										"bosslast" : account2View.bosslast.value,
-										"Comercial" : ""
+										"Comercial" : account2View.getLineaComercial()
 									});
 									Ti.API.info(JSON.stringify(persistence.getUserData()));
 									$.drawermenu.drawermainview.remove(account2View.getView());
@@ -283,7 +283,7 @@ function openLogin(){
 										"sector" : account2View.sector.value,
 										"bossname" : account2View.bossname.value,
 										"bosslast" : account2View.bosslast.value,
-										"Comercial" : ""
+										"Comercial" : account2View.getLineaComercial()
 									});
 									Ti.API.info(JSON.stringify(persistence.getUserData()));
 									$.drawermenu.drawermainview.remove(account2View.getView());

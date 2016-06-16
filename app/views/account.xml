@@ -16,7 +16,7 @@
                     <TextField class="textSimple" hintText="  Apellido" id="last"/>
                     <Label class="labelField">NOMBRE DE USUARIO</Label>
                     <TextField class="textSimple" hintText="  Obligatorio" id="username"/>
-                    <Label class="labelField">CONTRASEÑA</Label>
+                    <Label class="labelField" id="passwordLabel">CONTRASEÑA</Label>
                     <TextField class="textSimple" hintText="  Entre 6 y 20 caracteres" id="password" passwordMask="true"/>
                     <TextField class="textSimple" hintText="  Repetir" id="password2" passwordMask="true"/>
                 </ScrollView>
