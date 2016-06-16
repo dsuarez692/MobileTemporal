@@ -219,7 +219,7 @@ exports.getUserPhotoPath = getUserPhotoPath;
 
 //Elimina la foto de perfil del usuario
 exports.deleteUserPhoto = function(){
-	var f = Ti.Filesystem.getFile(persistence.getUserPhotoPath());
+	var f = Ti.Filesystem.getFile(getUserPhotoPath());
 	if(f.exists()){
 		f.deleteFile();
 		f = null;

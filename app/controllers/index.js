@@ -240,6 +240,9 @@ function openLogin(){
 	if(loginView == null){
 		loginView = controls.getLoginView();
 		loginView.loginBtn.addEventListener('click', function(){
+			if(OS_ANDROID){
+				Ti.UI.Android.hideSoftKeyboard();
+			}
 			if(loginView.validateData()){
 				if(persistence.logIn({
 						"username" : loginView.username.value,
@@ -254,6 +257,9 @@ function openLogin(){
 			}
 		});
 		loginView.registerBtn.addEventListener('click', function(){
+			if(OS_ANDROID){
+				Ti.UI.Android.hideSoftKeyboard();
+			}
 			if(accountView == null){
 				accountView = controls.getAccountView();
 				
