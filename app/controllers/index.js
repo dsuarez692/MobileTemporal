@@ -87,7 +87,7 @@ menuView.menuTable.addEventListener('click',function(e){
 										"sector" : account2View.sector.value,
 										"bossname" : account2View.bossname.value,
 										"bosslast" : account2View.bosslast.value,
-										"lineaNegocio" : ""
+										"Comercial" : ""
 									});
 									Ti.API.info(JSON.stringify(persistence.getUserData()));
 									$.drawermenu.drawermainview.remove(account2View.getView());
@@ -277,7 +277,7 @@ function openLogin(){
 										"sector" : account2View.sector.value,
 										"bossname" : account2View.bossname.value,
 										"bosslast" : account2View.bosslast.value,
-										"lineaNegocio" : ""
+										"Comercial" : ""
 									});
 									Ti.API.info(JSON.stringify(persistence.getUserData()));
 									$.drawermenu.drawermainview.remove(account2View.getView());

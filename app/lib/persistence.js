@@ -65,7 +65,7 @@ exports.saveUserData = saveUserAndCache;
 // sector -> devuelve sector (no esta correctamente hecho en account2)
 // bossname -> nombre de la persona ante la que responde el usuario
 // bosslast -> apellido de la persona ante la que responde el usuario
-// lineaNegocio -> devuelve la linea de negocio (Falta desarrollar en account2)
+// Comercial -> devuelve la linea de negocio (Falta desarrollar en account2)
 // si es vacio o null, significa que no esta logueado
 exports.getUserData = function(){
 	if(userData == null){
@@ -151,7 +151,7 @@ exports.logIn = function(data){
 					"sector" : "",
 					"bossname" : "",
 					"bosslast" : "",
-					"lineaNegocio" : ""
+					"Comercial" : ""
 					});
 		return true;
 	}
