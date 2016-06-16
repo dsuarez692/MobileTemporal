@@ -4,14 +4,17 @@ var colaReportes = null;
 
 var cacheUsers = null;
 
+var userIndex = null;
+
 //Busco el usuario en la cache, devuelve -1 si no lo encuentra
 function getIndexOfUser(user){
+	if(userIndex != null){
+		return userIndex;
+	}
 	//Busco si ya esta cargado, si lo esta, actualizo los datos
-	Ti.API.info(JSON.stringify(user));
 	for(var i=0; i < cacheUsers.cache.length; i++){
 		if(cacheUsers.cache[i].username == user.username){
-			Ti.API.info(i);
-			Ti.API.info(JSON.stringify(cacheUsers));
+			userIndex = i;
 			return i;
 		}
 	}
@@ -67,7 +70,6 @@ exports.saveUserData = saveUserAndCache;
 exports.getUserData = function(){
 	if(userData == null){
 		userData = JSON.parse(Ti.App.Properties.getString('userData', "{}"));
-		Ti.API.info(JSON.stringify(userData));
 		initColaReportes();
 	}
 	return userData;
@@ -77,9 +79,7 @@ exports.getUserData = function(){
 function initColaReportes(){
 	//Obtengo todas las colas de reportes guardadas (cada usuario tiene una diferente)
 	var encontrado = false;
-	Ti.API.info('Buscar cola de reportes');
 	var aux = JSON.parse(Ti.App.Properties.getString('colasReportes', '{"colas":[]}'));
-	Ti.API.info(JSON.stringify(aux));
 	for(var i=0; i < aux.colas.length; i ++){
 		if(aux.colas[i].owner == userData.username){
 			colaReportes = aux.colas[i].cola;
@@ -128,12 +128,6 @@ exports.logIn = function(data){
 	}
 	//Busco indice en el cache del usuario
 	var index = getIndexOfUser(data);
-	
-	//Indice
-	Ti.API.info(index);
-	
-	//Cache de usuarios
-	Ti.API.info(JSON.stringify(cacheUsers));
 	
 	//Si encontro indice
 	if(index >= 0){
@@ -213,6 +207,7 @@ exports.logOut = function(){
 	Ti.App.Properties.removeProperty('userData');
 	//
 	userData = {};
+	userIndex = null;
 };
 
 //Devuelvo direccion de la imagen de perfil del usuario logueado
