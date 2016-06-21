@@ -3,6 +3,12 @@ var persistence = require('persistence');
 
 var user = persistence.getUserData();
 
+var _Sector = "";
+
+exports.getSector = function(){
+	return _Sector;
+};
+
 var _Comercial = "";
 
 exports.getLineaComercial = function(){
@@ -65,14 +71,22 @@ exports.resetView = function(){
 function loadDefaultValues(){
 	ResetProductLine();
 	if(user != null && user.name != undefined){
-		$.sector.value = user.sector;
+		$.sector.setSelectedRow(0, user.sector, false);
 		$.bossname.value = user.bossname;
 		$.bosslast.value = user.bosslast;
 		_Comercial = user.Comercial;
+		_Sector = user.sector;
 		Ti.API.info(user.Comercial);
 		ChangeProductLine(user.Comercial);
 	}
 }
+
+function changeSector(value){
+	Ti.API.info(value);
+	_Sector = value;
+}
+
+$.sector.addEventListener("change",function(e){ changeSector(e.rowIndex); });
 
 $.lineFreshDairy.addEventListener("click",function(e){ ChangeProductLine("lineFreshDairy"); });
 $.lineEarlyLife.addEventListener("click",function(e){ ChangeProductLine("lineEarlyLife"); });

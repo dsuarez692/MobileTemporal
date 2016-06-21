@@ -30,7 +30,11 @@
 			            </View>
 			        </View>
                     <Label class="labelField">SELECCIONE EL SECTOR AL QUE PERTENECE</Label>
-                    <TextField class="textSimple" hintText="  Sector" id="sector"/>
+                    <Picker id="sector" width="Ti.UI.FILL" height="60" selectionIndicator="true" useSpinner="true">
+			            <PickerRow title="Producción"/>
+			            <PickerRow title="Logística"/>
+			            <PickerRow title="Calidad"/>
+			        </Picker>
                     <Label class="labelField">NOMBRE DE PERSONA A LA QUE REPORTA</Label>
                     <TextField class="textSimple" hintText="  Nombre" id="bossname"/>
                     <TextField class="textSimple" hintText="  Apellido" id="bosslast"/>

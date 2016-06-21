@@ -56,7 +56,7 @@ function addFoto(event){
 	controls.removeAllViews($.userPhoto);
 	var image = event.media.imageAsResized(640, 480);
 	
-	fileName = $.username.value + '.jpg';
+	fileName = 'temp.jpg';
 	var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,fileName);
 	f.write(image);
 	var imageView = Ti.UI.createImageView({
@@ -105,21 +105,23 @@ function validateData(){
 		alert('Debe ingresar un nombre de usuario.');
 		return false;
 	}
-	if($.password.value == ''){
-		alert('Debe ingresar una contraseña.');
-		return false;
-	}
-	if($.password.value.length < 6 || $.password.value.length > 20){
-		alert('La contraseña debe contener entre 6 y 20 caracteres.');
-		return false;
-	}
-	if($.password2.value == ''){
-		alert('Debe repetir la contraseña.');
-		return false;
-	}
-	if($.password.value != $.password2.value){
-		alert('Las contraseñas no coinciden.');
-		return false;
+	if($.password.visible){
+		if($.password.value == ''){
+			alert('Debe ingresar una contraseña.');
+			return false;
+		}
+		if($.password.value.length < 6 || $.password.value.length > 20){
+			alert('La contraseña debe contener entre 6 y 20 caracteres.');
+			return false;
+		}
+		if($.password2.value == ''){
+			alert('Debe repetir la contraseña.');
+			return false;
+		}
+		if($.password.value != $.password2.value){
+			alert('Las contraseñas no coinciden.');
+			return false;
+		}
 	}
 	return true;
 };
@@ -129,6 +131,18 @@ exports.validateData = validateData;
 $.userPhoto.addEventListener('click', function(){
 	showPhotoMenu(true);
 });
+
+exports.savePhotoProfile = function(){
+	
+	var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,"temp.jpg");
+	if(f.exists()===true){
+		var photo = Titanium.FileSystem.getFile(Titanium.Filesystem.applicationDataDirectory, $.username.value + ".jpg");
+		photo.write(f.read());
+		photo = null;
+	}
+	f.deleteFile();
+	f = null;
+};
 
 exports.resetView = function(){
 	$.name.value = "";

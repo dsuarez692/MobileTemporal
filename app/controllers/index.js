@@ -79,12 +79,13 @@ menuView.menuTable.addEventListener('click',function(e){
 							});
 							account2View.continueBtn.addEventListener('click',function(){
 								if(account2View.validateData()){
+									accountView.savePhotoProfile();
 									persistence.saveUserData({
 										"name" : accountView.name.value,
 										"last" : accountView.last.value,
 										"username" : accountView.username.value,
-										"password" : userData.password,
-										"sector" : account2View.sector.value,
+										"password" : persistence.getUserData().password,
+										"sector" : account2View.getSector(),
 										"bossname" : account2View.bossname.value,
 										"bosslast" : account2View.bosslast.value,
 										"Comercial" : account2View.getLineaComercial()
@@ -203,6 +204,7 @@ function loadDefaultValues(){
 	var user = persistence.getUserData();
 	if(user != null && user.name != undefined){
 		loggedIn = true;
+		activeView = 1;
 		menuView.rowNombreUsuario.text = user.username;
 		var f = Ti.Filesystem.getFile(persistence.getUserPhotoPath());
 		if(f.exists() === true){
@@ -227,11 +229,14 @@ function loadDefaultValues(){
 			account2View = null;
 			passChangeView = null;
 			
+			activeView = 0;
+			
 			//Abro login
 			openLogin();
 		});
 		sessionControl = setTimeout(checkSession, 10000);
 	}else{
+		activeView = 0;
 		openLogin();
 	}
 }
@@ -257,6 +262,7 @@ function openLogin(){
 			}
 		});
 		loginView.registerBtn.addEventListener('click', function(){
+			activeView = 2;
 			if(OS_ANDROID){
 				Ti.UI.Android.hideSoftKeyboard();
 			}
@@ -266,6 +272,7 @@ function openLogin(){
 				accountView.continueBtn.addEventListener('click', function(){
 					if(accountView.validateData()){
 						if(account2View == null){
+							activeView = 2.1;
 							account2View = controls.getAccount2View();
 							
 							account2View.backBtn.addEventListener('click', function(){
@@ -280,7 +287,7 @@ function openLogin(){
 										"last" : accountView.last.value,
 										"username" : accountView.username.value,
 										"password" : Ti.Utils.sha256(accountView.password.value),
-										"sector" : account2View.sector.value,
+										"sector" : account2View.getSector(),
 										"bossname" : account2View.bossname.value,
 										"bosslast" : account2View.bosslast.value,
 										"Comercial" : account2View.getLineaComercial()
@@ -326,23 +333,30 @@ function removeCurrentOpenedView(){
 			$.drawermenu.drawermainview.remove(accountView.getView());
 			accountView.resetView();
 			accountView = null;
+			activeView = 1;
 			break;
 		case 2.1:
 			$.drawermenu.drawermainview.remove(account2View.getView());
 			$.drawermenu.drawermainview.remove(accountView.getView());
 			account2View.resetView();
 			account2View = null;
+			activeView = 2;
 			break;
 		case 3:
 			$.drawermenu.drawermainview.remove(passChangeView.getView());
 			passChangeView.resetView();
 			passChangeView = null;
+			activeView = 1;
 			break;
 		case 4:
 			$.drawermenu.drawermainview.remove(reportView.getView());
 			break;
 	};
 }
+
+$.index.addEventListener('androidback',function(){
+	removeCurrentOpenedView();
+});
 
 loadDefaultValues();
 
