@@ -29,6 +29,7 @@
 	          top="55dp"
 	          left="10dp"
 	          height="25dp"
+	          selectionIndicator="true"
 	          backgroundColor="#8EDCFE">
 	            <PickerColumn>
 	                <PickerRow title="Seleccione"></PickerRow>
@@ -40,7 +41,7 @@
                 	<PickerRow title="Riesgo de incendio (Elementos combustibles cerca de tableros, etc.)" />
                 	<PickerRow title="Riesgo de tránsito (Volcamientos, obstáculos, etc.)" />
 	            </PickerColumn>
-	            <!-- Picker shorthand notation -->
+	             <!--Picker shorthand notation-->
 	        </Picker>
         </TableViewRow>
                 

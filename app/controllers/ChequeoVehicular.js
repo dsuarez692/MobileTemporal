@@ -3,6 +3,7 @@ var args = $.args;
 var controls=require('controls');
 var models=require('models');
 var persistence = require("persistence");
+var moment = require('moment');
 
 var model = {};
 var user = {};
@@ -43,12 +44,14 @@ exports.LoadFromModel = function(modelo,view,Page){
 	changeTextColor("NeumaticoDD",model.NeumaticoDD);
 	changeTextColor("NeumaticoTI",model.NeumaticoTI);
 	changeTextColor("NeumaticoTD",model.NeumaticoTD);
-	
-	$.VencimientoMatafuego.value = model.VencimientoMatafuego;
+	if(OS_ANDROID){
+		$.VencimientoMatafuego.text = model.VencimientoMatafuego;	
+		$.UltimaRevisionTecnica.value = model.UltimaRevisionTecnica;
+		$.FechaVTV.value = model.FechaVTV;
+	}
+
 	$.txtObsEmergencia.value = model.ObsEmergencia;
 	$.txtObsEstado.value = model.ObsEstadoVehiculo;
-	$.UltimaRevisionTecnica.value = model.UltimaRevisionTecnica;
-	$.FechaVTV.value = model.FechaVTV;
 	$.KM.value = model.KM;
 	$.DNI.value = model.DNI;
 
@@ -64,6 +67,8 @@ exports.LoadFromModel = function(modelo,view,Page){
 	else{
 		ResetProductLine();
 	}
+	
+	
 	
 };
 
@@ -216,9 +221,9 @@ $.lineWaters.addEventListener("click",function(e){ ChangeProductLine("lineWaters
 $.lineMedical.addEventListener("click",function(e){ ChangeProductLine("lineMedical"); });	
 
 $.txtObsEmergencia.addEventListener("change",function(){model.ObsEmergencia = $.txtObsEmergencia.value;});
-$.VencimientoMatafuego.addEventListener("change",function(){model.VencimientoMatafuego = $.VencimientoMatafuego.value;});
+$.dpVencimientoMatafuego.addEventListener("change",function(){model.VencimientoMatafuego = $.dpVencimientoMatafuego.value;});
 $.txtObsEstado.addEventListener("change",function(){model.ObsEstadoVehiculo = $.txtObsEstado.value;});
-$.UltimaRevisionTecnica.addEventListener("change",function(){model.UltimaRevisionTecnica = $.UltimaRevisionTecnica.value;});
+$.UltimaRevisionTecnica.addEventListener("change",function(){model.UltimaRevisionTecnica = $.dpUltimaRevisionTecnica.value;});
 $.FechaVTV.addEventListener("change",function(){model.FechaVTV = $.FechaVTV.value;});
 
 $.KM.addEventListener('change', function(e) {
@@ -242,3 +247,49 @@ $.CheckNeumaticoDI.addEventListener("click",function(){changeTextColor("Neumatic
 $.CheckNeumaticoDD.addEventListener("click",function(){changeTextColor("NeumaticoDD",!model.NeumaticoDD); model.NeumaticoDD = !model.NeumaticoDD;});
 $.CheckNeumaticoTI.addEventListener("click",function(){changeTextColor("NeumaticoTI",!model.NeumaticoTI); model.NeumaticoTI = !model.NeumaticoTI;});
 $.CheckNeumaticoTD.addEventListener("click",function(){changeTextColor("NeumaticoTD",!model.NeumaticoTD); model.NeumaticoTD = !model.NeumaticoTD;});
+
+if(OS_ANDROID){
+	$.VencimientoMatafuegoRow.addEventListener("click",
+		function(){
+			//Si el sistema operativo es android se setean los eventos caracteristicos
+			$.dpVencimientoMatafuego.showDatePickerDialog({
+			  value: model.VencimientoMatafuego ? new Date(model.VencimientoMatafuego) : new Date(),
+			  callback: function(e) {
+			  		model.VencimientoMatafuego = moment(e.value).format('YYYY/MM/DD');
+			  		$.VencimientoMatafuego.text = model.VencimientoMatafuego;
+				}
+			});
+		}
+	);
+	
+	$.UltimaRevisionTecnicaRow.addEventListener("click",
+		function(){
+			//Si el sistema operativo es android se setean los eventos caracteristicos
+			$.dpUltimaRevisionTecnica.showDatePickerDialog({
+			  value: model.UltimaRevisionTecnica ? new Date(model.UltimaRevisionTecnica) : new Date(),
+			  callback: function(e) {
+			  		model.UltimaRevisionTecnica = moment(e.value).format('YYYY/MM/DD');
+			  		$.UltimaRevisionTecnica.text = model.UltimaRevisionTecnica;
+				}
+			});
+		}
+	);
+	
+	$.FechaVTVRow.addEventListener("click",
+		function(){
+			//Si el sistema operativo es android se setean los eventos caracteristicos
+			$.dpFechaVTV.showDatePickerDialog({
+			  value: model.FechaVTV ? new Date(model.FechaVTV) : new Date(),
+			  callback: function(e) {
+			  		model.FechaVTV = moment(e.value).format('YYYY/MM/DD');
+			  		$.FechaVTV.text = model.FechaVTV;
+				}
+			});
+		}
+	);
+}
+else{
+	$.dpVencimientoMatafuego.visible = true;
+	$.dpUltimaRevisionTecnica.visible = true;
+	$.dpFechaVTV = true;	
+}

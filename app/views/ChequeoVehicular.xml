@@ -1,6 +1,6 @@
 <Alloy>
 	<View id="Page1">
-		<View id="lineaDeNegocio" top="0dp">
+		<View id="lineaDeNegocio" top="2dp">
 	        <View top="2dp">
 	            <Label class="reportTextSelected">SELECCIONE LÍNEA DE NEGOCIO A AUDITAR</Label>
 	        </View>
@@ -19,7 +19,7 @@
 	            </View>
 	        </View>
     	</View>
-    	<View top="113dp" height="15dp">
+    	<View top="113dp" height="18dp">
         	<Label class="reportTextSelected">PULSE EN CASILLA O TEXTO PARA RESPONDER </Label>
  		</View>
  		
@@ -46,18 +46,19 @@
                     <Label id="lblMatafuegos" left="45dp">Matafuegos (carga verificada)</Label>
                 </View>
              </TableViewRow> 
-            <TableViewRow>
+            <TableViewRow id="VencimientoMatafuegoRow">
                 <View>
-            		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="70%">FECHA VENCIMIENTO DE LA CARGA</Label>
-			        <Picker  id="VencimientoMatafuego"
+            		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="65%">FECHA VENCIMIENTO DE LA CARGA</Label>
+			        <Label class="reportTextSelected" top="15dp" right="0dp" width="35%" id="VencimientoMatafuego"></Label>
+		        	<Picker  id="dpVencimientoMatafuego"
 			          top="2dp"
 			          right="15dp"
 			          type="Ti.UI.PICKER_TYPE_DATE"
 			          backgroundColor="#8EDCFE"
 			          value="2016-01-01"
 			          width="90dp"
-			          >
-			        </Picker> <!-- onChange="report" -->
+			          visible="false">
+			        </Picker> <!-- onChange="report" -->	
     	 		</View>
     	 	</TableViewRow> 
 		</TableView>
@@ -82,7 +83,8 @@
         </TableViewRow>
 	</TableView>
 	<View height="200dp" top="110dp">
-	    <TextArea id="txtObsEmergencia" hintText="Observaciones del kit de emergencia" cols="100" horizontalWrap="true" top="30dp" left="15dp" height="190dp"></TextArea>
+		<Label class="reportTextSelected" height="20dp" top="30dp">Observaciones del kit de emergencia</Label>
+	    <TextArea id="txtObsEmergencia" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="52dp" left="15dp" height="190dp"></TextArea>
 	</View>
   </View>
   
@@ -125,7 +127,7 @@
   <View id="Page4">
   	<Label class="reportTextSelected" height="20dp" top="0">Observaciones del estado del vehículo</Label>
 	<View top="2dp">
-	    <TextArea id="txtObsEstado" top="22dp" hintText="Escriba aquí" cols="100" horizontalWrap="true" left="15dp" width="Titanium.UI.SIZE" height="200dp" width="260dp" ></TextArea>
+	    <TextArea id="txtObsEstado" top="22dp" hintText="Escriba aquí" cols="100" horizontalWrap="true" left="15dp" width="Titanium.UI.SIZE" height="200dp" width="260dp"></TextArea>
 	</View>
 	<View top="275dp" height="40dp">
     	<Label class="reportTextSelectedHigh">Solo falta un paso más !</Label>
@@ -134,56 +136,46 @@
   
   <View id="Page5">
 	<TableView top="2dp">
-        <TableViewRow>
+        <TableViewRow id="UltimaRevisionTecnicaRow">
             <View>
-        		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="70%">ÚLTIMA REVISIÓN TÉCNICA</Label>
-		        <Picker  id="UltimaRevisionTecnica"
+        		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="65%">ÚLTIMA REVISIÓN TÉCNICA</Label>
+		        <Label class="reportTextSelected" top="15dp" right="0dp" width="35%" id="UltimaRevisionTecnica"></Label>
+		        <Picker  id="dpUltimaRevisionTecnica"
 		          top="2dp"
 		          right="15dp"
 		          type="Ti.UI.PICKER_TYPE_DATE"
 		          backgroundColor="#8EDCFE"
 		          value="2016-01-01"
 		          width="90dp"
+		          visible="false"
 		          >
-		        </Picker> <!-- onChange="report" -->
+		        </Picker>
 	 		</View>
 	 	</TableViewRow> 
 	 	
-	 	<TableViewRow>
+	 	<TableViewRow id="FechaVTVRow">
             <View>
         		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="70%">ÚLTIMA V.T.V. (VERIFICACIÓN TÉCNICA VEHICULAR)</Label>
-		        <Picker  id="FechaVTV"
+		        <Label class="reportTextSelected" top="15dp" right="0dp" width="35%" id="FechaVTV"></Label>
+		        <Picker  id="dpFechaVTV"
 		          top="2dp"
 		          right="15dp"
 		          type="Ti.UI.PICKER_TYPE_DATE"
 		          backgroundColor="#8EDCFE"
-		          value="2016-01-01"
 		          width="90dp"
-		          >
+		          visible="false">
 		        </Picker> 
 	 		</View>
 	 	</TableViewRow> 
-	 	
-	 	<TableViewRow></TableViewRow>
-	 	
-	 	<TableViewRow>
-	 		<Label class="reportTextSelected" top="2dp" left="2dp" left="15dp">KM</Label>
-			<TextField class="textSimple" hintText="" id="KM" top="20dp" />
-		</TableViewRow>
-		
-		<TableViewRow>
-			<Label class="reportTextSelected" top="2dp" left="2dp" left="15dp">DNI o PASAPORTE</Label>
-			<TextField class="textSimple" hintText="" id="DNI" top="20dp" />
-		</TableViewRow>	
-		
-		<TableViewRow id="linkObservaciones" top="10dp">
-    	 	<Label class="reportTextSelected">Toque aqui para agregar observaciones !</Label>
-    	</TableViewRow>	
-    	
-    	<TableViewRow>
-    		<Label class="reportTextSelectedHigh">Su auditoria a finalizado, muchas gracias !</Label>
-		</TableViewRow>	
 	</TableView>
+	<View>
+		<Label class="reportTextSelected" top="110dp" left="2dp" left="15dp">KM</Label>
+		<TextField class="textSimple" hintText="" id="KM" top="130dp" />	
+		<Label class="reportTextSelected" top="180dp" left="2dp" left="15dp">DNI o PASAPORTE</Label>
+		<TextField class="textSimple" hintText="" id="DNI" top="205dp" />
+		<Label class="reportTextSelected" id="linkObservaciones" top="260dp">Toque aqui para agregar observaciones !</Label>
+		<Label class="reportTextSelectedHigh" top="280dp">Su auditoria a finalizado, muchas gracias !</Label>
+	</View>
   </View>
 </Alloy>
 
