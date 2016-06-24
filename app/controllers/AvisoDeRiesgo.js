@@ -12,10 +12,18 @@ exports.LoadFromModel = function(modelo,view,Page){
 	model = modelo;
 	user = persistence.getUserData();
 	if(model.Balizas == undefined){
-		
+		model._Page = 1;
+		model.Factor = null;
+		model.Informacion = null;
+		model.Riesgo = null;
+		model.ObservacionesRiesgo = '';
+		model.Sector = null;
+		model.DNI = '';
+		model.Observaciones = '';
 		models.setWISEModel(model);
 	}
 	
+	alert($.TipoInformacion.id);
 
 	if(user != undefined && user != null){ //En teoria esta linea no va a ser necesaria
 		if(user.Comercial != undefined){
@@ -38,9 +46,12 @@ exports.GetPrimeraPagina = function(pageNumber){
 exports.GetSegundaPagina = function(pageNumber){
 	return $.Page2;		
 };
+exports.GetTerceraPagina = function(pageNumber){
+	return $.Page3;		
+};
 
 exports.GetPageCount = function(pageNumber){
-	return 2;		
+	return 3;		
 };
 
 exports.ValidateData = function(){
