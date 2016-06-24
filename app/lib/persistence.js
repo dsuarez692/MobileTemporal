@@ -215,13 +215,20 @@ function getUserPhotoPath(){
 	return Titanium.Filesystem.applicationDataDirectory + userData.username +  '.jpg';
 }
 
-exports.getUserPhotoPath = getUserPhotoPath;
-
-//Elimina la foto de perfil del usuario
-exports.deleteUserPhoto = function(){
-	var f = Ti.Filesystem.getFile(getUserPhotoPath());
+//Se le pasa el path del archivo a eliminar
+function deleteFile(path){
+	var f = Ti.Filesystem.getFile(path);
 	if(f.exists()){
 		f.deleteFile();
 		f = null;
 	}
+}
+
+exports.deleteFile = deleteFile;
+
+exports.getUserPhotoPath = getUserPhotoPath;
+
+//Elimina la foto de perfil del usuario
+exports.deleteUserPhoto = function(){
+	deleteFile(getUserPhotoPath());
 };

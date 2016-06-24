@@ -79,7 +79,6 @@ menuView.menuTable.addEventListener('click',function(e){
 							});
 							account2View.continueBtn.addEventListener('click',function(){
 								if(account2View.validateData()){
-									accountView.savePhotoProfile();
 									persistence.saveUserData({
 										"name" : accountView.name.value,
 										"last" : accountView.last.value,
@@ -90,7 +89,8 @@ menuView.menuTable.addEventListener('click',function(e){
 										"bosslast" : account2View.bosslast.value,
 										"Comercial" : account2View.getLineaComercial()
 									});
-									Ti.API.info(JSON.stringify(persistence.getUserData()));
+									accountView.savePhotoProfile();
+									Ti.API.info(persistence.getUserPhotoPath());
 									$.drawermenu.drawermainview.remove(account2View.getView());
 									loadDefaultValues();
 									activeView = 1;
@@ -209,6 +209,8 @@ function loadDefaultValues(){
 		var f = Ti.Filesystem.getFile(persistence.getUserPhotoPath());
 		if(f.exists() === true){
 			menuView.menuTopBar.backgroundImage = persistence.getUserPhotoPath();
+		}else{
+			menuView.menuTopBar.backgroundImage = "/media/image10.png";
 		}
 		menuView.menuTopBarLogOut.addEventListener('click', function(){
 			//Si presionan logout

@@ -4,6 +4,8 @@ var persistence = require("persistence");
 
 var durationPhotoMenu = 200;
 
+var deletePhoto = false;
+
 $.photoMenuTable.addEventListener('click',function(e){
 	showPhotoMenu(false);
 	Titanium.UI.Android.hideSoftKeyboard();
@@ -24,7 +26,7 @@ $.photoMenuTable.addEventListener('click',function(e){
 			break;
 		case "deletePhoto":
 			controls.removeAllViews($.userPhoto);
-			persistence.deleteUserPhoto();
+			deletePhoto = true;
 			loadDefaultPhotoImage();
 			break;
 	};
@@ -32,16 +34,19 @@ $.photoMenuTable.addEventListener('click',function(e){
 });
 
 function loadDefaultPhotoImage(){
-	if(user != null && user.name != undefined){
+	if(user != null && user.name != undefined && !deletePhoto){
 		var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,user.username + '.jpg');
-		if(f.exists()){
+		if(f.exists() === true){
+			var temp = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,'temp.jpg');
+			temp.write(f.read());
 			$.userPhoto.add(Ti.UI.createImageView({
 				width:"100%",
 				height:"auto",
-				image:f.read(),
+				image:temp.read(),
 				id: 'imagenPerfil'
 			}));
 			f = null;
+			temp = null;
 			return;
 		}
 	}
@@ -67,6 +72,7 @@ function addFoto(event){
 		id: 'imagenPerfil'
 	});
 	$.userPhoto.add(imageView);
+	deletePhoto = false;
 	f = null;
 }
 
@@ -133,15 +139,19 @@ $.userPhoto.addEventListener('click', function(){
 });
 
 exports.savePhotoProfile = function(){
-	
-	var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,"temp.jpg");
-	if(f.exists()===true){
-		var photo = Titanium.FileSystem.getFile(Titanium.Filesystem.applicationDataDirectory, $.username.value + ".jpg");
-		photo.write(f.read());
-		photo = null;
+	if(!deletePhoto){
+		var f = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory,"temp.jpg");
+		if(f.exists()===true){
+			var photo = Titanium.Filesystem.getFile(Titanium.Filesystem.applicationDataDirectory, $.username.value + ".jpg");
+			photo.write(f.read());
+			photo = null;
+		}
+		f.deleteFile();
+		f = null;
+	}else{
+		persistence.deleteFile(Titanium.Filesystem.applicationDataDirectory + "temp.jpg");
+		persistence.deleteFile(persistence.getUserPhotoPath());
 	}
-	f.deleteFile();
-	f = null;
 };
 
 exports.resetView = function(){

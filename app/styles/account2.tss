@@ -54,3 +54,7 @@
 	"height": "60dp",
 	"textAlign": Titanium.UI.TEXT_ALIGNMENT_CENTER
 },
+"#sector":{
+	"backgroundColor" : "#1f4e79",
+	"width" : "100%"
+}
