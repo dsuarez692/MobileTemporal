@@ -156,7 +156,7 @@ menuView.menuTable.addEventListener('click',function(e){
 				    		models.getWISEModel().ImageMax = 1;
 				    		models.getWISEModel().RequiredPic = true;
 				    		reportView.reportName.text = "Aviso de Riesgo";
-				    		reportView.form.add(avisoDeRiesgo.Page1);
+				    		reportView.form.add(avisoDeRiesgo.GetPrimeraPagina());
 				    		avisoDeRiesgo.LoadFromModel(models.getWISEModel());
 				    		$.drawermenu.drawermainview.add(reportView.getView());
     						activeView = 4;

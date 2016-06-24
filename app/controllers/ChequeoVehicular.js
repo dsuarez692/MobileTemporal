@@ -227,12 +227,12 @@ $.UltimaRevisionTecnica.addEventListener("change",function(){model.UltimaRevisio
 $.FechaVTV.addEventListener("change",function(){model.FechaVTV = $.FechaVTV.value;});
 
 $.KM.addEventListener('change', function(e) {
-      e.source.value = e.source.value.replace(/[^0-9]+/,""); 
+      //e.source.value = e.source.value.replace(/[^0-9]+/,""); 
       model.KM = $.KM.value;
 });
 
 $.DNI.addEventListener('change', function(e) {
-      e.source.value = e.source.value.replace(/[^0-9]+/,""); 
+      //e.source.value = e.source.value.replace(/[^0-9]+/,""); 
       model.DNI = $.DNI.value;
 });
     
@@ -255,8 +255,10 @@ if(OS_ANDROID){
 			$.dpVencimientoMatafuego.showDatePickerDialog({
 			  value: model.VencimientoMatafuego ? new Date(model.VencimientoMatafuego) : new Date(),
 			  callback: function(e) {
-			  		model.VencimientoMatafuego = moment(e.value).format('YYYY/MM/DD');
-			  		$.VencimientoMatafuego.text = model.VencimientoMatafuego;
+			  		if(!e.cancel){
+			  			model.VencimientoMatafuego = moment(e.value).format('YYYY/MM/DD');
+			  			$.VencimientoMatafuego.text = model.VencimientoMatafuego;	
+			  		}
 				}
 			});
 		}
@@ -268,8 +270,10 @@ if(OS_ANDROID){
 			$.dpUltimaRevisionTecnica.showDatePickerDialog({
 			  value: model.UltimaRevisionTecnica ? new Date(model.UltimaRevisionTecnica) : new Date(),
 			  callback: function(e) {
-			  		model.UltimaRevisionTecnica = moment(e.value).format('YYYY/MM/DD');
-			  		$.UltimaRevisionTecnica.text = model.UltimaRevisionTecnica;
+			  		if(!e.cancel){
+			  			model.UltimaRevisionTecnica = moment(e.value).format('YYYY/MM/DD');
+			  			$.UltimaRevisionTecnica.text = model.UltimaRevisionTecnica;
+			  		}
 				}
 			});
 		}
@@ -281,8 +285,10 @@ if(OS_ANDROID){
 			$.dpFechaVTV.showDatePickerDialog({
 			  value: model.FechaVTV ? new Date(model.FechaVTV) : new Date(),
 			  callback: function(e) {
-			  		model.FechaVTV = moment(e.value).format('YYYY/MM/DD');
-			  		$.FechaVTV.text = model.FechaVTV;
+			  		if(!e.cancel){
+			  			model.FechaVTV = moment(e.value).format('YYYY/MM/DD');
+			  			$.FechaVTV.text = model.FechaVTV;
+			  		}
 				}
 			});
 		}
@@ -291,5 +297,5 @@ if(OS_ANDROID){
 else{
 	$.dpVencimientoMatafuego.visible = true;
 	$.dpUltimaRevisionTecnica.visible = true;
-	$.dpFechaVTV = true;	
+	$.dpFechaVTV.visible = true;	
 }

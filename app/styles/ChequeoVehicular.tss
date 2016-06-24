@@ -14,6 +14,3 @@
 	"height": "60dp",
 	"textAlign": Titanium.UI.TEXT_ALIGNMENT_CENTER
 },
-".rowObservaciones":{
-	"height":"200dp"	
-}

@@ -145,18 +145,6 @@
 ".icon-Novedades":{
 	backgroundImage:"/media/image9.png",
 },
-".icon-Negocio1": {
-	"backgroundImage": "/media/image56.png"
-},
-".icon-Negocio2": {
-	"backgroundImage": "/media/image57.png"
-},
-".icon-Negocio3": {
-	"backgroundImage": "/media/image58.png"
-},
-".icon-Negocio4": {
-	"backgroundImage": "/media/image59.png"
-},
 ".icon-Check": {
 	"backgroundImage": "/media/image36.png"
 },

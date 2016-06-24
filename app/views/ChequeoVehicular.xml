@@ -55,7 +55,6 @@
 			          right="15dp"
 			          type="Ti.UI.PICKER_TYPE_DATE"
 			          backgroundColor="#8EDCFE"
-			          value="2016-01-01"
 			          width="90dp"
 			          visible="false">
 			        </Picker> <!-- onChange="report" -->	
@@ -84,7 +83,7 @@
 	</TableView>
 	<View height="200dp" top="110dp">
 		<Label class="reportTextSelected" height="20dp" top="30dp">Observaciones del kit de emergencia</Label>
-	    <TextArea id="txtObsEmergencia" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="52dp" left="15dp" height="190dp"></TextArea>
+	    <TextArea id="txtObsEmergencia" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="52dp" left="15dp" height="190dp" width="280dp"></TextArea>
 	</View>
   </View>
   
@@ -127,7 +126,7 @@
   <View id="Page4">
   	<Label class="reportTextSelected" height="20dp" top="0">Observaciones del estado del vehículo</Label>
 	<View top="2dp">
-	    <TextArea id="txtObsEstado" top="22dp" hintText="Escriba aquí" cols="100" horizontalWrap="true" left="15dp" width="Titanium.UI.SIZE" height="200dp" width="260dp"></TextArea>
+	    <TextArea id="txtObsEstado" top="22dp" hintText="Escriba aquí" cols="100" horizontalWrap="true" left="15dp" width="Titanium.UI.SIZE" height="200dp" width="280dp"></TextArea>
 	</View>
 	<View top="275dp" height="40dp">
     	<Label class="reportTextSelectedHigh">Solo falta un paso más !</Label>
@@ -145,7 +144,6 @@
 		          right="15dp"
 		          type="Ti.UI.PICKER_TYPE_DATE"
 		          backgroundColor="#8EDCFE"
-		          value="2016-01-01"
 		          width="90dp"
 		          visible="false"
 		          >
