@@ -358,6 +358,22 @@ function removeCurrentOpenedView(){
 
 $.index.addEventListener('androidback',function(){
 	removeCurrentOpenedView();
+	switch(activeView){
+		case 0: case 1:
+			var dialog = Ti.UI.createAlertDialog({
+				cancel : 1,
+				buttonNames : ['Aceptar', 'Cancelar'],
+				message: '¿Realmente desea salir?',
+				title: 'Salir'	
+			});
+			dialog.addEventListener('click',function(e){
+				if(e.index == 0){
+					$.index.close();
+				}
+			});
+			dialog.show();
+			break;
+	}
 });
 
 loadDefaultValues();
