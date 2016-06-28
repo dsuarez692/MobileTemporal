@@ -22,42 +22,41 @@
     	<View top="110dp" height="18dp">
         	<Label class="reportTextSelected">SELECCIONE LA OPCIÓN CORRESPONDIENTE </Label>
  		</View>
- 		<TableView top="143dp">
+ 		 <TableView top="143dp">
 		   <TableViewRow> 
             <Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="100%">¿Qué factor de Seguridad, Higiene o Calidad está involucrado?</Label>
-	        <Picker  id="TipoInformacion"
+	        <Picker  id="Factor"
 	          top="55dp"
 	          left="10dp"
 	          height="40dp"
 	          selectionIndicator="true" 
+	          useSpinner="false"
 	          backgroundColor="#8EDCFE">
-                <PickerRow title="Seleccione"></PickerRow>
-                <PickerRow title="Riesgo ambiental (Derrames, etc)" ></PickerRow>
-            	<PickerRow title="Riesgos químicos (Gases, líquidos, etc.)" />
-            	<PickerRow title="Riesgos eléctricos (Puesta a tierra, cables, etc.)" />
-            	<PickerRow title="Riesgos locativos (Pisos, techos, almacenamiento, etc.)" />
-            	<PickerRow title="Riesgos potenciales (Caída de altura, pérdidas en cañerías,etc.)" />
-            	<PickerRow title="Riesgo de incendio (Elementos combustibles cerca de tableros, etc.)" />
-            	<PickerRow title="Riesgo de tránsito (Volcamientos, obstáculos, etc.)" />
-	        </Picker>  
+                <PickerRow title="Seleccione" id="Seleccione" />
+                <PickerRow title="Riesgo ambiental (Derrames, etc)" id="RiesgoAmbiental" ></PickerRow>
+            	<PickerRow title="Riesgos químicos (Gases, líquidos, etc.)" id="RiesgoQuimico" />
+            	<PickerRow title="Riesgos eléctricos (Puesta a tierra, cables, etc.)" id="RiesgoElectrico" />
+            	<PickerRow title="Riesgos locativos (Pisos, techos, almacenamiento, etc.)" id="RiesgoLocativos" />
+            	<PickerRow title="Riesgos potenciales (Caída de altura, pérdidas en cañerías,etc.)" id="RiesgoPotenciales" />
+            	<PickerRow title="Riesgo de incendio (Elementos combustibles cerca de tableros, etc.)" id="RiesgoIncendio" />
+            	<PickerRow title="Riesgo de tránsito (Volcamientos, obstáculos, etc.)" id="RiesgoTransito" />
+	        </Picker>   
         	</TableViewRow>
                 
-       	<TableViewRow>
-            <View>
-                 <Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="100%">¿Qué tipo de información vinculada a la Seguridad e Higiene desea comunicar?</Label>
-		         <Picker  id="TipoInformacion"
-		          top="55dp"
-		          left="10dp"
-		          height="40dp"
-		          backgroundColor="#8EDCFE">
-		          	<PickerRow title="Seleccione"></PickerRow>
-                	<PickerRow title="Riesgo a las personas" id="RiesgoPersonas"></PickerRow>
-                	<PickerRow title="Riesgo al medio ambiente" id="RiesgoMA"/>
-                	<PickerRow title="Riesgo a los elementos de trabajo" id="RiesgoETrabajo"/>
-		        </Picker> 
-            </View>
-        </TableViewRow>
-	</TableView> 
+       		<TableViewRow>
+             <Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="100%">¿Qué tipo de información vinculada a la Seguridad e Higiene desea comunicar?</Label>
+	          <Picker  id="TipoInformacion"
+	          top="55dp"
+	          left="10dp"
+	          height="40dp"
+	          backgroundColor="#8EDCFE">
+	          	<PickerRow title="Seleccione" id="Seleccione"/>
+            	<PickerRow title="Riesgo a las personas" id="RiesgoPersonas"></PickerRow>
+            	<PickerRow title="Riesgo al medio ambiente" id="RiesgoMA"/>
+            	<PickerRow title="Riesgo a los elementos de trabajo" id="RiesgoETrabajo"/>
+	        </Picker> 
+        	</TableViewRow>
+		</TableView>  
 	</View>
 	
 	<View id="Page2">
@@ -66,19 +65,17 @@
 		</View>
 		<TableView top="50dp"> 
 			<TableViewRow>
-	            <View>
-	                 <Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="100%">¿Cómo considerás el riesgo?</Label>
-			         <Picker  id="Riesgo"
-			          top="55dp"
-			          left="10dp"
-			          height="40dp"
-			          backgroundColor="#8EDCFE">
-			          	<PickerRow title="Seleccione"></PickerRow>
-	                	<PickerRow title="Grave" id="Grave"></PickerRow>
-	                	<PickerRow title="Medio" id="Medio"/>
-	                	<PickerRow title="Bajo" id="Bajo"/>
-			        </Picker> 
-	            </View>
+                 <Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="100%">¿Cómo considerás el riesgo?</Label>
+		         <Picker  id="Riesgo"
+		          top="55dp"
+		          left="10dp"
+		          height="40dp"
+		          backgroundColor="#8EDCFE">
+		          	<PickerRow title="Seleccione" id="Seleccione"/>
+                	<PickerRow title="Grave" id="Grave" />
+                	<PickerRow title="Medio" id="Medio"/>
+                	<PickerRow title="Bajo" id="Bajo"/>
+		        </Picker>
 	         </TableViewRow> 
          </TableView> 
          <View height="150dp" top="125dp">
@@ -93,34 +90,31 @@
 		</View>
 		<TableView top="20dp"> 
 			<TableViewRow>
-	            <View>
-	                 <Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="100%">Sector</Label>
-			         <Picker  id="Sector"
-			          top="55dp"
-			          left="10dp"
-			          height="40dp"
-			          backgroundColor="#8EDCFE">
-			          	<PickerRow title="Seleccione"></PickerRow>
-	                	<PickerRow title="Calidad" id="Calidad"></PickerRow>
-	                	<PickerRow title="Comercial" id="Comercial"/>
-	                	<PickerRow title="Compras - SSD" id="Compras"/>
-	                	<PickerRow title="CODI" id="CODI"/>
-	                	<PickerRow title="Finanzas" id="Finanzas"/>
-	                	<PickerRow title="Industrial" id="Industrial"/>
-	                	
-	                	<PickerRow title="Marketing" id="Marketing"/>
-	                	<PickerRow title="Medical" id="Medical"/>
-	                	<PickerRow title="New country" id="Country"/>
-	                	<PickerRow title="Recursos Humanos" id="RecursosHumanos"/>
-	                	<PickerRow title="R&D - SRA" id="SRA"/>
-	                	<PickerRow title="Supply Chain" id="Supply"/>
-			        </Picker> 
-	            </View>
+                 <Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="100%">Sector</Label>
+		         <Picker  id="Sector"
+		          top="55dp"
+		          left="10dp"
+		          height="40dp"
+		          backgroundColor="#8EDCFE">
+		          	<PickerRow title="Seleccione" id="Seleccione" />
+                	<PickerRow title="Calidad" id="Calidad" />
+                	<PickerRow title="Comercial" id="Comercial"/>
+                	<PickerRow title="Compras - SSD" id="Compras"/>
+                	<PickerRow title="CODI" id="CODI"/>
+                	<PickerRow title="Finanzas" id="Finanzas"/>
+                	<PickerRow title="Industrial" id="Industrial"/>
+                	<PickerRow title="Marketing" id="Marketing"/>
+                	<PickerRow title="Medical" id="Medical"/>
+                	<PickerRow title="New country" id="Country"/>
+                	<PickerRow title="Recursos Humanos" id="RecursosHumanos"/>
+                	<PickerRow title="R&D - SRA" id="SRA"/>
+                	<PickerRow title="Supply Chain" id="Supply"/>
+		        </Picker>
 	         </TableViewRow> 
          </TableView>
          <Label class="reportTextSelected" top="140dp" left="2dp" left="15dp">DNI o PASAPORTE del auditor</Label>
 		 <TextField class="textSimple" hintText="" id="DNI" top="165dp" />
          <Label class="reportTextSelected" id="linkObservaciones" top="245dp">Toque aqui para agregar observaciones !</Label>
 		 <Label class="reportTextSelectedHigh" top="275dp">Su auditoria a finalizado, muchas gracias !</Label> 	
-	</View>
+	</View> 
 </Alloy>

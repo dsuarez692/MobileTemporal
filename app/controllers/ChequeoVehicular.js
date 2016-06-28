@@ -228,12 +228,12 @@ $.FechaVTV.addEventListener("change",function(){model.FechaVTV = $.FechaVTV.valu
 
 $.KM.addEventListener('change', function(e) {
       //e.source.value = e.source.value.replace(/[^0-9]+/,""); 
-      model.KM = $.KM.value;
+      model.KM = e.source.value;
 });
 
 $.DNI.addEventListener('change', function(e) {
       //e.source.value = e.source.value.replace(/[^0-9]+/,""); 
-      model.DNI = $.DNI.value;
+      model.DNI = e.source.value;
 });
     
 
