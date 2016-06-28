@@ -34,6 +34,7 @@ var reportView=null;
 var auditoria = controls.getWISEPaso1();
 var chequeoVehicular = controls.getChequeoVehicular();
 var avisoDeRiesgo = controls.getAvisoDeRiesgo();
+var accidenteIncidente = controls.getAccidenteIncidente();
 
 //Menu collapsable wise
 var wiseMenuView = null;
@@ -137,7 +138,7 @@ menuView.menuTable.addEventListener('click',function(e){
 				    		models.getWISEModel().ImageMax = 1;
 				    		models.getWISEModel().RequiredPic = true;
 				    		reportView.reportName.text = "Auditoría de manejo";
-				    		reportView.form.add(auditoria.Page1);
+				    		reportView.form.add(auditoria.GetPrimeraPagina());
 				    		auditoria.LoadFromModel(models.getWISEModel());
 				    		$.drawermenu.drawermainview.add(reportView.getView());
     						activeView = 4;
@@ -151,7 +152,7 @@ menuView.menuTable.addEventListener('click',function(e){
 				    		models.getWISEModel().ImageMax = 1;
 				    		models.getWISEModel().RequiredPic = true;
 				    		reportView.reportName.text = "Chequeo vehicular";
-				    		reportView.form.add(chequeoVehicular.Page1);
+				    		reportView.form.add(chequeoVehicular.GetPrimeraPagina());
 				    		chequeoVehicular.LoadFromModel(models.getWISEModel());
 				    		$.drawermenu.drawermainview.add(reportView.getView());
     						activeView = 4;
@@ -170,6 +171,21 @@ menuView.menuTable.addEventListener('click',function(e){
 				    		$.drawermenu.drawermainview.add(reportView.getView());
     						activeView = 4;
     						break;
+    					case 'acci_inci':
+    						removeCurrentOpenedView();
+				    		models.resetWISEModel();
+				    		GenerateReport(accidenteIncidente);
+				    		reportView.volverBtn.visible = false;
+			    			models.getWISEModel().Type = e.rowData.id;
+				    		models.getWISEModel().ImageMax = 1;
+				    		models.getWISEModel().RequiredPic = true;
+				    		reportView.reportName.text = "Incidente o Accidente";
+				    		reportView.form.add(accidenteIncidente.GetPrimeraPagina());
+				    		accidenteIncidente.LoadFromModel(models.getWISEModel());
+				    		$.drawermenu.drawermainview.add(reportView.getView());
+    						activeView = 4;
+    						break;	
+    						
     				};
     			});
     		}
