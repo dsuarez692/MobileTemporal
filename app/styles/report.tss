@@ -33,7 +33,7 @@
 "#form": {
 	"top": "135dp",
 	"left": "0dp",
-	"height": "345dp",
+	"height": "350dp",
 	"layout": "vertical",
 	"scrollType": "vertical",
 },

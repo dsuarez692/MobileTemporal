@@ -32,7 +32,8 @@ var passChangeView = null;
 var reportView=null;
 //Wise
 var auditoria = controls.getWISEPaso1();
-
+var chequeoVehicular = controls.getChequeoVehicular();
+var avisoDeRiesgo = controls.getAvisoDeRiesgo();
 
 //Menu collapsable wise
 var wiseMenuView = null;
@@ -141,6 +142,34 @@ menuView.menuTable.addEventListener('click',function(e){
 				    		$.drawermenu.drawermainview.add(reportView.getView());
     						activeView = 4;
     						break;
+    					case 'chequeo_vehicular':
+    						removeCurrentOpenedView();
+				    		models.resetWISEModel();
+				    		GenerateReport(chequeoVehicular);
+				    		reportView.volverBtn.visible = false;
+			    			models.getWISEModel().Type = e.rowData.id;
+				    		models.getWISEModel().ImageMax = 1;
+				    		models.getWISEModel().RequiredPic = true;
+				    		reportView.reportName.text = "Chequeo vehicular";
+				    		reportView.form.add(chequeoVehicular.Page1);
+				    		chequeoVehicular.LoadFromModel(models.getWISEModel());
+				    		$.drawermenu.drawermainview.add(reportView.getView());
+    						activeView = 4;
+    						break;
+    					case 'aviso_riesgo':
+    						removeCurrentOpenedView();
+				    		models.resetWISEModel();
+				    		GenerateReport(avisoDeRiesgo);
+				    		reportView.volverBtn.visible = false;
+			    			models.getWISEModel().Type = e.rowData.id;
+				    		models.getWISEModel().ImageMax = 1;
+				    		models.getWISEModel().RequiredPic = true;
+				    		reportView.reportName.text = "Aviso de Riesgo";
+				    		reportView.form.add(avisoDeRiesgo.GetPrimeraPagina());
+				    		avisoDeRiesgo.LoadFromModel(models.getWISEModel());
+				    		$.drawermenu.drawermainview.add(reportView.getView());
+    						activeView = 4;
+    						break;
     				};
     			});
     		}
@@ -170,6 +199,8 @@ function GenerateReport(view){
 	controls.addMenuIcons(reportView, hideSideMenu);
 	controls.removeAllViews(reportView.form);
 	
+	controls.initWise(reportView, wiseMenuView);
+	
 	reportView.enviarBtn.addEventListener("click",
 		function(){
 			if(view.ValidateData()){
@@ -188,7 +219,8 @@ function GenerateReport(view){
 			    if(controls.isCollapsibleMenuOpen){
 			    	controls.showHideCollapsibleMenu(mainView);
 			    	controls.setCollapsibleMenuOpen(false);
-			    }	
+			    }
+			    controls.removeAllViews(reportView.collapsibleMenu);
 			}
 		}); 	
 }
@@ -352,6 +384,7 @@ function removeCurrentOpenedView(){
 			break;
 		case 4:
 			$.drawermenu.drawermainview.remove(reportView.getView());
+			controls.removeAllViews(reportView.collapsibleMenu);
 			break;
 	};
 }

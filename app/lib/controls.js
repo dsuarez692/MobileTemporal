@@ -21,8 +21,15 @@ exports.getReportView=function(parms){
 	return Alloy.createController('report', parms);
 };
 exports.getWISEPaso1=function(){
-	return Alloy.createController('WISEPaso1');;
+	return Alloy.createController('WISEPaso1');
 };
+exports.getChequeoVehicular=function(){
+	return Alloy.createController('ChequeoVehicular');
+};
+exports.getAvisoDeRiesgo=function(){
+	return Alloy.createController('AvisoDeRiesgo');
+};
+
 
 exports.getAccount2View=function(){
 	return Alloy.createController('account2');
@@ -99,6 +106,7 @@ exports.createCheckbox = function(specs) {
 
 function removeAllViews(view){
 	var removeData = [];
+	
     for (i = view.children.length; i > 0; i--){
         removeData.push(view.children[i - 1]);  
     };
@@ -162,12 +170,16 @@ function showHideCollapsibleMenu(view){
 exports.showHideCollapsibleMenu= showHideCollapsibleMenu;
 
 exports.initWise = function(view, wiseMenuView){
-	if(view.appTitleLabel.text != 'WISE'){
-		view.appTitleLabel.text = 'WISE';
-		removeAllViews(view.collapsibleMenu);
-		view.collapsibleMenu.add(wiseMenuView.getView());
-		view.collapsibleButton.addEventListener('click', function(e){
-			showHideCollapsibleMenu(view);
-		});
-	}
+	view.appTitleLabel.text = 'WISE';
+	removeAllViews(view.collapsibleMenu);
+	/*
+	var funcVacia = function(){};
+	view.collapsibleButton.removeEventListener('click', funcVacia);
+	*/
+	view.collapsibleMenu.add(wiseMenuView.getView());
+	view.collapsibleButton.addEventListener('click', function(e){
+		Ti.API.info('wep');
+		if(view.appTitleLabel.text == 'WISE')
+		showHideCollapsibleMenu(view);
+	});
 };

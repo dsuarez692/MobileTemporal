@@ -11,7 +11,7 @@
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>false</analytics>
-    <guid>186f1f90-5b07-4cc5-9555-0db22b493e37</guid>
+    <guid>20c91301-adbb-4ea4-9000-17f174f0e7be</guid>
     <property name="ti.ui.defaultunit" type="string">dp</property>
     <ios>
         <enable-launch-screen-storyboard>true</enable-launch-screen-storyboard>
@@ -93,4 +93,5 @@
     <property name="acs-password-production" type="string">DjfBWoe2ZF80Gr4wld</property>
     <property name="appc-org-id" type="string">100112719</property>
     <property name="appc-creator-user-id" type="string">32b584fc-30ec-42d6-a0a4-40da215b6240</property>
+    <property name="ti.android.useLegacyWindow" type="bool">true</property>
 </ti:app>
