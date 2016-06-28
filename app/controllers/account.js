@@ -111,7 +111,7 @@ function validateData(){
 		alert('Debe ingresar un nombre de usuario.');
 		return false;
 	}
-	if(persistence.userExistsInCache({ "username" : $.username.value})){
+	if(persistence.userExistsInCache($.username.value)){
 		alert('Ya se encuentra cargado un usuario con el nombre de usuario elegido.');
 		return false;
 	}

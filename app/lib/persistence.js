@@ -22,9 +22,18 @@ function getIndexOfUser(user){
 }
 
 //Chequea si ya existe un usuario con el nombre elegido (en la cache de usuarios)
-exports.userExistsInCache = function(user){
+exports.userExistsInCache = function(username){
+	if(userData != null && userData.username != undefined){
+		if(userData.username == username){
+			return false;
+		}
+	}
+	if(cacheUsers == null){
+		cacheUsers = JSON.parse(Ti.App.Properties.getString('cacheUsers', '{"cache":[]}'));
+	}
+	
 	for(var i=0; i < cacheUsers.cache.length; i++){
-		if(cacheUsers.cache[i].username == user.username){
+		if(cacheUsers.cache[i].username == username){
 			return true;
 		}
 	}
