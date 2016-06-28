@@ -21,6 +21,16 @@ function getIndexOfUser(user){
 	return -1;
 }
 
+//Chequea si ya existe un usuario con el nombre elegido (en la cache de usuarios)
+exports.userExistsInCache = function(user){
+	for(var i=0; i < cacheUsers.cache.length; i++){
+		if(cacheUsers.cache[i].username == user.username){
+			return true;
+		}
+	}
+	return false;
+};
+
 //Actualiza cache de usuarios
 function addUserToCache(user){
 	//Si esta el cache sin inicializar, lo obtengo
