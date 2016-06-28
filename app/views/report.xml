@@ -52,6 +52,7 @@
 		        </TableViewRow>
 		    </TableView>
 		</View>
+		<View class="collapsibleMenu" id="collapsibleMenu"/>
     </View>
     
     <View id="viewObservaciones">
@@ -65,5 +66,4 @@
 		<ScrollView layout="vertical" id="imageContainer" width="100%" height="100%" top="25dp" >
 		</ScrollView>
     </View>
-
 </Alloy>

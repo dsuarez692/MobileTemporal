@@ -26,7 +26,10 @@ function getPage(page){
 			break;
 		case 4 : 
 			return report.GetCuartaPagina();
-			break;	
+			break;
+		case 5 : 
+			return report.GetQuintaPagina();
+			break;		
 	}
 }
 

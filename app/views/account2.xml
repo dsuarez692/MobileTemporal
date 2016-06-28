@@ -31,7 +31,7 @@
 			        </View>
                     <Label class="labelField">SELECCIONE EL SECTOR AL QUE PERTENECE</Label>
                     <Picker id="sector" height="60" selectionIndicator="true">
-                    	<pickerRow title="Seleccione"/>
+                    	<PickerRow title="Seleccione"/>
 			            <PickerRow title="Producción"/>
 			            <PickerRow title="Logística"/>
 			            <PickerRow title="Calidad"/>
