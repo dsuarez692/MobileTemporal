@@ -56,5 +56,5 @@
 },
 "#sector":{
 	"backgroundColor" : "#1f4e79",
-	"width" : "100%"
+	"width" : "80%"
 }

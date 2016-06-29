@@ -258,10 +258,15 @@ function loadDefaultValues(){
 			//Seteo imagen default de perfil
 			menuView.menuTopBar.backgroundImage = "/media/image10.png";
 			
+			//Quito la vista actual para dejar el home de fondo
+			removeCurrentOpenedView();
+			
 			//Seteo a null todos los controllers
 			accountView = null;
 			account2View = null;
 			passChangeView = null;
+			reportView = null;
+			
 			
 			activeView = 0;
 			
@@ -314,7 +319,7 @@ function openLogin(){
 								$.drawermenu.drawermainview.add(accountView.getView());
 								$.drawermenu.drawermainview.remove(account2View.getView());
 							});
-							account2View.continueBtn.addEventListener('click',function(){
+							account2View.continueBtn.addEventListener('click',function(e){
 								if(account2View.validateData()){
 									persistence.saveUserData({
 										"name" : accountView.name.value,
@@ -332,10 +337,6 @@ function openLogin(){
 									activeView = 1;
 									
 									//Hacer control de sesion web
-									
-									funcVacia = function(){};
-									accountView.continueBtn.removeEventListener('click', funcVacia);
-									account2View.continueBtn.removeEventListener('click', funcVacia);
 									accountView = null;
 									account2View = null;
 									$.drawermenu.drawermainview.remove(loginView.getView());
@@ -385,12 +386,13 @@ function removeCurrentOpenedView(){
 		case 4:
 			$.drawermenu.drawermainview.remove(reportView.getView());
 			controls.removeAllViews(reportView.collapsibleMenu);
+			reportView = null;
+			activeView = 1;
 			break;
 	};
 }
 
 $.index.addEventListener('androidback',function(){
-	removeCurrentOpenedView();
 	switch(activeView){
 		case 0: case 1:
 			var dialog = Ti.UI.createAlertDialog({
@@ -405,6 +407,9 @@ $.index.addEventListener('androidback',function(){
 				}
 			});
 			dialog.show();
+			break;
+		default:
+			removeCurrentOpenedView();
 			break;
 	}
 });

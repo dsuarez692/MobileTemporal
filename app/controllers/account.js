@@ -169,8 +169,6 @@ exports.resetView = function(){
 	$.collapsibleMenu.top = -600;
 	controls.removeAllViews($.collapsibleMenu);
 	controls.removeAllViews($.userPhoto);
-	var funcVacia = function(){};
-	$.collapsibleMenu.removeEventListener('click', funcVacia);
 	loadDefaultPhotoImage();
 	loadDefaultValues();
 	Ti.API.info('Reseteo account');

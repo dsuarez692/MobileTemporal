@@ -30,7 +30,6 @@ exports.getAvisoDeRiesgo=function(){
 	return Alloy.createController('AvisoDeRiesgo');
 };
 
-
 exports.getAccount2View=function(){
 	return Alloy.createController('account2');
 };
@@ -172,14 +171,10 @@ exports.showHideCollapsibleMenu= showHideCollapsibleMenu;
 exports.initWise = function(view, wiseMenuView){
 	view.appTitleLabel.text = 'WISE';
 	removeAllViews(view.collapsibleMenu);
-	/*
-	var funcVacia = function(){};
-	view.collapsibleButton.removeEventListener('click', funcVacia);
-	*/
-	view.collapsibleMenu.add(wiseMenuView.getView());
-	view.collapsibleButton.addEventListener('click', function(e){
-		Ti.API.info('wep');
-		if(view.appTitleLabel.text == 'WISE')
+	var showHide = function(e){
 		showHideCollapsibleMenu(view);
-	});
+	};
+	view.collapsibleMenu.add(wiseMenuView.getView());
+	view.collapsibleButton.removeEventListener('click', showHide);
+	view.collapsibleButton.addEventListener('click', showHide);
 };

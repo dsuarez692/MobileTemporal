@@ -12,8 +12,6 @@ exports.resetView = function(){
 	$.appTitleLabel.text = 'Mi cuenta';
 	$.collapsibleMenu.top = -600;
 	controls.removeAllViews($.collapsibleMenu);
-	var funcVacia = function(){};
-	$.collapsibleMenu.removeEventListener('click', funcVacia);
 	loadDefaultValues();
 };
 
