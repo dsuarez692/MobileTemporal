@@ -47,9 +47,24 @@ exports.GetCuartaPagina = function(pageNumber){
 exports.GetQuintaPagina = function(pageNumber){
 	return $.Page5;		
 };
+exports.GetSextaPagina = function(pageNumber){
+	return $.Page6;		
+};
+exports.GetSeptimaPagina = function(pageNumber){
+	return $.Page7;		
+};
+exports.GetOctavaPagina = function(pageNumber){
+	return $.Page8;		
+};
+exports.GetNovenaPagina = function(pageNumber){
+	return $.Page9;		
+};
+exports.GetDecimaPagina = function(pageNumber){
+	return $.Page10;		
+};
 
 exports.GetPageCount = function(pageNumber){
-	return 5;		//5 por ahora, van a ser como 20
+	return 10;		//5 por ahora, van a ser como 20
 };
 
 exports.ValidateData = function(){
