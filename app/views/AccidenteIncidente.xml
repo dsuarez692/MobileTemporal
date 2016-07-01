@@ -526,7 +526,7 @@
     	<Label class="reportTextSelected">Resumen de lo Sucedido </Label>
 	 </View>
   	<TableView top="45dp">	
-  		<TableViewRow id="CheckPie">
+  		<TableViewRow>
 	        <Label class="reportTextSelected" top="0dp" left="15dp">Emisferio</Label>
 	         <Picker  id="Emisferio"
 	          top="25dp"
@@ -539,7 +539,7 @@
 	        	<PickerRow title="Ambos" id="Ambos" />
 	        </Picker>
 	    </TableViewRow>
-	    <TableViewRow id="CheckPie">
+	    <TableViewRow>
 	        <Label class="reportTextSelected" top="0dp" left="15dp">Tipo de Lesión</Label>
 	         <Picker  id="Emisferio"
 	          top="25dp"
