@@ -1,6 +1,9 @@
 "TableViewRow": {
 	"height": "100dp"
 },
+".TableViewRowReduced": {
+	"height": "50dp"
+},
 "Label": {
 	"color": "#057699",
 	"top": "6dp",

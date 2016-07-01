@@ -62,9 +62,38 @@ exports.GetNovenaPagina = function(pageNumber){
 exports.GetDecimaPagina = function(pageNumber){
 	return $.Page10;		
 };
-
+exports.GetDecimoPrimeraPagina = function(pageNumber){
+	return $.Page11;		
+};
+exports.GetDecimoSegundaPagina = function(pageNumber){
+	return $.Page12;		
+};
+exports.GetDecimoTerceraPagina = function(pageNumber){
+	return $.Page13;		
+};
+exports.GetDecimoCuartaPagina = function(pageNumber){
+	return $.Page14;		
+};
+exports.GetDecimoQuintaPagina = function(pageNumber){
+	return $.Page15;		
+};
+exports.GetDecimoSextaPagina = function(pageNumber){
+	return $.Page16;		
+};
+exports.GetDecimoSeptimaPagina = function(pageNumber){
+	return $.Page17;		
+};
+exports.GetDecimoOctavaPagina = function(pageNumber){
+	return $.Page18;		
+};
+exports.GetDecimoNovenaPagina = function(pageNumber){
+	return $.Page19;		
+};
+exports.GetVigesimaPagina = function(pageNumber){
+	return $.Page20;		
+};
 exports.GetPageCount = function(pageNumber){
-	return 10;		//5 por ahora, van a ser como 20
+	return 20;		//5 por ahora, van a ser como 20
 };
 
 exports.ValidateData = function(){

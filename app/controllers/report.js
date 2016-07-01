@@ -13,6 +13,7 @@ function MostraOcultarBotones(siguiente,volver,enviar, ok){
 	$.okBtn.visible = ok;
 }
 
+//Hay que hacer un único método 
 function getPage(page){
 	switch(page){
 		case 1 : 
@@ -32,7 +33,49 @@ function getPage(page){
 			break;	
 		case 6 : 
 			return report.GetSextaPagina();
+			break;
+		case 7 : 
+			return report.GetSeptimaPagina();
+			break;
+		case 8 : 
+			return report.GetOctavaPagina();
+			break;
+		case 9 : 
+			return report.GetNovenaPagina();
+			break;
+		case 10 : 
+			return report.GetDecimaPagina();
+			break;
+		case 11 : 
+			return report.GetDecimoPrimeraPagina();
+			break;
+		case 12 : 
+			return report.GetDecimoSegundaPagina();
+			break;
+		case 13 : 
+			return report.GetDecimoTerceraPagina();
 			break;	
+		case 14 : 
+			return report.GetDecimoCuartaPagina();
+			break;
+		case 15 : 
+			return report.GetDecimoQuintaPagina();
+			break;	
+		case 16 : 
+			return report.GetDecimoSextaPagina();
+			break;	
+		case 17 : 
+			return report.GetDecimoSeptimaPagina();
+			break;	
+		case 18 : 
+			return report.GetDecimoOctavaPagina();
+			break;
+		case 19 : 
+			return report.GetDecimoNovenaPagina();
+			break;
+		case 20 : 
+			return report.GetVigesimaPagina();
+			break;
 	}
 }
 
@@ -41,6 +84,7 @@ function changePage(page){
 		Titanium.UI.Android.hideSoftKeyboard();
 	}
 	controls.removeAllViews($.form);
+	
 	MostraOcultarBotones(true,true,false,false);
 	
 	if(page == 1){
