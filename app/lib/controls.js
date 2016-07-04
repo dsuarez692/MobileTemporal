@@ -29,7 +29,9 @@ exports.getChequeoVehicular=function(){
 exports.getAvisoDeRiesgo=function(){
 	return Alloy.createController('AvisoDeRiesgo');
 };
-
+exports.getAccidenteIncidente=function(){
+	return Alloy.createController('AccidenteIncidente');
+};
 exports.getAccount2View=function(){
 	return Alloy.createController('account2');
 };
