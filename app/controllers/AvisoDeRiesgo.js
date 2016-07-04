@@ -37,6 +37,9 @@ exports.LoadFromModel = function(modelo,view,Page){
 	else{
 		ResetProductLine();
 	}
+	
+	$.txtObsRiesgo.value = model.ObservacionesRiesgo;
+	$.DNI.value = model.DNI;
 };
 
 exports.GetPrimeraPagina = function(pageNumber){
@@ -132,6 +135,9 @@ $.Factor.addEventListener('change', function(e) { model.Factor = $.Factor.getSel
 $.TipoInformacion.addEventListener('change', function(e) { model.Informacion = $.TipoInformacion.getSelectedRow(0).id; model.InformacionIndex = e.rowIndex;});	
 $.Riesgo.addEventListener('change', function(e) { model.Riesgo = $.Riesgo.getSelectedRow(0).id; model.RiesgoIndex = e.rowIndex;});	
 $.Sector.addEventListener('change', function(e) { model.Sector = $.Sector.getSelectedRow(0).id; model.SectorIndex = e.rowIndex;});
+
+$.txtObsRiesgo.addEventListener("change",function(){model.ObservacionesRiesgo = $.txtObsRiesgo.value;});
+$.DNI.addEventListener("change",function(){model.DNI = $.DNI.value;});
 
 $.lineFreshDairy.addEventListener("click",function(e){ ChangeProductLine("lineFreshDairy"); });
 $.lineEarlyLife.addEventListener("click",function(e){ ChangeProductLine("lineEarlyLife"); });

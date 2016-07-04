@@ -24,10 +24,10 @@
                 <Label class="wiseMenuLabel">Accidente o incidente</Label>
             </View>
         </TableViewRow>
-        <TableViewRow class="wiseMenuRow" id="chequeo_vehicular2">
+        <TableViewRow class="wiseMenuRow" id="auditoria_remis">
             <View class="wiseMenuRowView">
                 <ImageView class="wiseMenuIcon" image="/media/image30.png"/>
-                <Label class="wiseMenuLabel">Chequeo vehicular</Label>
+                <Label class="wiseMenuLabel">Auditoría de manejo Remís o Taxi</Label>
             </View>
         </TableViewRow>
     </TableView>

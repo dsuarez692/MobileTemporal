@@ -1,0 +1,633 @@
+<Alloy>
+	<View id="Page1">
+		<View id="lineaDeNegocio" top="2dp">
+	        <View top="2dp">
+	            <Label class="reportTextSelected">SELECCIONE LÍNEA DE NEGOCIO A AUDITAR</Label>
+	        </View>
+	        <View top="20dp" id="lines">
+	            <View left="5%" width="25%">
+	                <View class="rowIcon" id="lineFreshDairy"/>
+	            </View>
+	            <View left="30%" width="25%">
+	                <View class="rowIcon" id="lineEarlyLife"/>
+	            </View>
+	            <View left="55%" width="25%">
+	                <View class="rowIcon" id="lineWaters"/>
+	            </View>
+	            <View left="75%" width="25%">
+	                <View class="rowIcon" id="lineMedical"/>
+	            </View>
+	        </View>
+    	</View>
+    	<View top="113dp" height="18dp">
+        	<Label class="reportTextSelected">PULSE EN CASILLA O TEXTO PARA RESPONDER </Label>
+ 		</View>
+
+        <TableView top="143dp">
+            <TableViewRow id="TipoRow">
+                <View>
+            		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="100%">Tipo</Label>
+			        <Picker  id="Tipo"
+			          top="55dp"
+			          left="10dp"
+			          height="40dp"
+			          selectionIndicator="true" 
+			          useSpinner="false"
+			          backgroundColor="#8EDCFE">
+		                <PickerRow title="Seleccione" id="Seleccione" />
+		                <PickerRow title="Incidente" id="Incidente" ></PickerRow>
+		            	<PickerRow title="Accidente" id="Accidente" />
+			        </Picker>   
+    	 		</View>
+    	 	</TableViewRow> 
+		</TableView>
+  </View>
+  
+  <View id="Page2">
+		<View top="2dp" height="20dp">
+	    	<Label class="reportTextSelected">Datos personales del auditor - denunciante </Label>
+		</View>
+		<View>
+			<Label class="reportTextSelected" top="35dp" left="2dp" left="15dp">NOMBRE COMPLETO DEL AUDITOR</Label>
+		    <TextField class="textSimple" hintText="  Nombre" id="NombreAuditor" top="70dp"/>
+		    <TextField class="textSimple" hintText="  Apellido" id="ApellidoAuditor" top="120dp"/>	
+			<Label class="reportTextSelected" top="180dp" left="2dp" left="15dp">DNI o PASAPORTE</Label>
+			<TextField class="textSimple" hintText="" id="DNIAuditor" top="205dp" />
+		</View>
+  </View>
+	
+  <View id="Page3">
+		<View top="0dp" height="20dp">
+	    	<Label class="reportTextSelected">Datos personales del accidentado </Label>
+		</View>
+		<View>
+			<Label class="reportTextSelected" top="25dp" left="2dp" left="15dp">NOMBRE COMPLETO DEL ACCIDENTADO</Label>
+		    <TextField class="textSimple" hintText="  Nombre" id="NombreAccidentado" top="50dp"/>
+		    <TextField class="textSimple" hintText="  Apellido" id="ApellidoAccidentado" top="100dp"/>	
+			<Label class="reportTextSelected" top="160dp" left="2dp" left="15dp">DNI o PASAPORTE</Label>
+			<TextField class="textSimple" hintText="" id="DNIAccidentado" top="185dp" />
+			<Label class="reportTextSelected" top="240dp" left="2dp" left="15dp">LEGAJO</Label>
+			<TextField class="textSimple" hintText=" Legajo" id="Legajo" top="265dp" />
+		</View>
+  </View>
+  
+  <View id="Page4">
+	<View top="2dp" height="20dp">
+    	<Label class="reportTextSelected">Datos personales del accidentado </Label>
+	</View>
+	<View>
+		<Label class="reportTextSelected" top="25dp" left="2dp" left="15dp">EDAD</Label>
+		<TextField class="textSimple" hintText=" Edad" id="Edad" top="50dp" />
+	</View>
+	 <TableView top="90dp"> 
+		<TableViewRow>
+             <Label class="reportTextSelected" top="15dp" left="15dp" left="10dp" width="100%">Tipo tareas</Label>
+	         <Picker  id="TipoTareas"
+	          top="40dp"
+	          left="15dp"
+	          height="40dp"
+	          backgroundColor="#8EDCFE">
+	          	<PickerRow title="Seleccione" id="Seleccione" />
+            	<PickerRow title="Administrativo" id="Administrativo" />
+            	<PickerRow title="Operario" id="Operario"/>
+	        </Picker>
+         </TableViewRow> 
+    </TableView>
+	
+	<Label class="reportTextSelected" top="175dp" left="2dp" left="15dp">ANTIGÜEDAD (cantidad de años)</Label>
+    <TextField class="textSimple" hintText="  Antiguedad" id="Antiguedad" top="195dp"/>
+	
+	<TableView top="235dp"> 
+		<TableViewRow>
+             <Label class="reportTextSelected" top="15dp" left="15dp" width="100%">Sección de Trabajo</Label>
+	         <Picker  id="Seccion"
+	          top="40dp"
+	          left="15dp"
+	          height="40dp"
+	          backgroundColor="#8EDCFE">
+	          	<PickerRow title="Seleccione" id="Seleccione" />
+            	<PickerRow title="Finanzas" id="Finanzas" />
+            	<PickerRow title="Industrial" id="Industrial"/>
+            	<PickerRow title="Marketing" id="Marketing"/>
+            	<PickerRow title="Medical Sales" id="MedicalSales"/>
+            	<PickerRow title="R&D" id="RD"/>
+            	<PickerRow title="RRHH" id="RRHH"/>
+            	<PickerRow title="Sales" id="Sales"/>
+            	<PickerRow title="SSD" id="SSD"/>
+            	<PickerRow title="Supply Chain" id="SupplyChain"/>
+	        </Picker>
+         </TableViewRow> 
+    </TableView>
+  </View>
+  
+  <View id="Page5">
+  	<View top="0dp" height="20dp">
+    	<Label class="reportTextSelected">Datos personales del accidentado </Label>
+	</View>
+	<Label class="reportTextSelected" top="25dp" left="15dp">Puesto que ocupa</Label>
+	<TextField class="textSimple" hintText=" Puesto" id="Puesto" top="50dp"/>
+	
+	<Label class="reportTextSelectedHigh" top="275dp">A continuación se registra los datos del accidente/incidente</Label> 	
+  </View>
+  
+  <View id="Page6">
+  	<View top="2dp" height="20dp">
+    	<Label class="reportTextSelected">Lugar del Hecho </Label>
+	</View>
+	<TableView top="20dp"> 
+		<TableViewRow>
+             <Label class="reportTextSelected" top="10dp" left="15dp">Sitio </Label>
+	         <Picker  id="Sitio"
+	          top="40dp"
+	          left="15dp"
+	          height="40dp"
+	          backgroundColor="#8EDCFE">
+	          	<PickerRow title="Seleccione" id="Seleccione" />
+            	<PickerRow title="En establecimiento" id="Establecimiento" />
+            	<PickerRow title="In itinere" id="Itinere"/>
+	        </Picker>
+         </TableViewRow> 
+         <TableViewRow>
+             <Label class="reportTextSelected" top="0dp" left="15dp">Lugar del Hecho </Label>
+	         <Picker  id="Lugar"
+	          top="25dp"
+	          left="15dp"
+	          height="40dp"
+	          backgroundColor="#8EDCFE">
+	          	<PickerRow title="Seleccione" id="Seleccione" />
+            	<PickerRow title="Oficina" id="Oficina" />
+            	<PickerRow title="Planta" id="Planta"/>
+            	<PickerRow title="Calle" id="Calle"/>
+            	<PickerRow title="Ruta" id="Ruta"/>
+	        </Picker>
+         </TableViewRow>
+    </TableView>
+    <Label class="reportTextSelected" top="210dp" left="15dp">Descripción del hecho</Label>
+	<TextArea id="DescripcionHecho" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="225dp" left="15dp" height="100dp" width="300dp"></TextArea>
+  </View>
+  
+  <View id="Page7">
+  	<View top="2dp" height="20dp">
+    	<Label class="reportTextSelected">Lugar del Hecho </Label>
+	</View>
+  	<TableView top="30dp">
+	  	<TableViewRow class="TableViewRowReduced" id="FechaRow">
+	        <View>
+	    		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="70%">Fecha</Label>
+		        <Label class="reportTextSelected" top="15dp" right="0dp" width="35%" id="Fecha"></Label>
+		        <Picker  id="dpFecha"
+		          top="2dp"
+		          right="15dp"
+		          type="Titanium.UI.PICKER_TYPE_DATE"
+		          backgroundColor="#8EDCFE"
+		          width="90dp"
+		          visible="false">
+		        </Picker> 
+	 		</View>
+	 	</TableViewRow> 
+	 	<TableViewRow height="75dp">
+             <Label class="reportTextSelected" top="0dp" left="15dp">¿Cumplía Horas extras?  </Label>
+	         <Picker  id="HorasExtras"
+	          top="25dp"
+	          left="15dp"
+	          height="40dp"
+	          backgroundColor="#8EDCFE">
+	          	<PickerRow title="Seleccione" id="Seleccione" />
+            	<PickerRow title="Si" id="Si" />
+            	<PickerRow title="No" id="No"/>
+            	<PickerRow title="Gira, viaje" id="Gira"/>
+	        </Picker>
+         </TableViewRow>
+	 	<TableViewRow id="CheckConsecuenciasHumanas" class="TableViewRowReduced">
+            <View>
+                <View class="icon-Check" id="iconConsecuenciasHumanas" left="5dp" top="5dp" width="30dp" height="30dp"></View>
+                <Label id="lblConsecuenciasHumanas" left="45dp">¿Hubo consecuencias humanas?</Label>
+            </View>
+        </TableViewRow>
+        <TableViewRow id="CheckDaniosMateriales" class="TableViewRowReduced">
+            <View>
+                <View class="icon-Check" id="iconDaniosMateriales" left="5dp" top="5dp" width="30dp" height="30dp"/>
+                <Label id="lblDaniosMateriales" left="45dp">¿Hubo daños materiales?</Label>
+            </View>
+        </TableViewRow> 
+        <TableViewRow>
+	       <Label class="reportTextSelected" top="0dp" left="15dp">¿Utilizaba E.P.P. ?  </Label>
+	         <Picker  id="EPP"
+	          top="25dp"
+	          left="15dp"
+	          height="40dp"
+	          backgroundColor="#8EDCFE">
+	          	<PickerRow title="NS, NC" id="NS"/>
+	        	<PickerRow title="Si" id="Si" />
+	        	<PickerRow title="No" id="No"/>
+	        </Picker>
+	 	</TableViewRow> 
+ 	 </TableView>
+  </View>
+  
+   <View id="Page8">
+   	<View top="2dp" height="20dp">
+    	<Label class="reportTextSelected">Información Adicional </Label>
+	</View>
+  	  <TableView top="40">
+	 	<TableViewRow id="CheckNormas" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconNormas" left="5dp" top="5dp" width="30dp" height="30dp"></View>
+	            <Label id="lblNormas" left="45dp">¿Conocia las normas de seguridad?</Label>
+	        </View>
+	    </TableViewRow>
+ 	 </TableView>
+ 	 <Label class="reportTextSelected" top="105dp" left="15dp">Tarea que efectuaba al momento del hecho</Label>
+	 <TextArea id="Tarea" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="115dp" left="15dp" height="230dp" width="300dp"></TextArea>
+  </View>
+  
+  <View id="Page9">
+  	<View top="2dp" height="20dp">
+    	<Label class="reportTextSelected">Información Adicional </Label>
+	</View>
+  	<TableView top="40dp">
+	 	<TableViewRow id="CheckExperiencia" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconExperiencia" left="5dp" top="5dp" width="30dp" height="30dp"></View>
+	            <Label id="lblExperiencia" left="45dp">¿Tiene experiencia en esa tarea? </Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckAprendizaje" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconAprendizaje" left="5dp" top="5dp" width="30dp" height="30dp"></View>
+	            <Label id="lblAprendizaje" left="45dp">¿Estaba en aprendizaje?</Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckEventual" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconEventual" left="5dp" top="5dp" width="30dp" height="30dp"></View>
+	            <Label id="lblEventual" left="45dp">¿Realizaba tarea eventual?</Label>
+	        </View>
+	    </TableViewRow>
+ 	 </TableView>
+     <Label class="reportTextSelected" top="190dp" left="15dp">Breve descripción de los hechos</Label>
+	 <TextArea id="DescripcionHechoBreve" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="205dp" left="15dp" height="135dp" width="300dp"></TextArea>			
+  </View>
+  
+  <View id="Page10">
+  	 <View top="2dp" height="20dp" left="15dp">
+    	<Label class="reportTextSelected">Resumen de lo Sucedido </Label>
+	 </View>	
+	 <TableView top="35dp">
+	 	<TableViewRow>
+	       <Label class="reportTextSelected" top="0dp" left="15dp">¿Cómo le consta el hecho? </Label>
+	         <Picker  id="Consta"
+	          top="25dp"
+	          left="15dp"
+	          height="40dp"
+	          backgroundColor="#8EDCFE">
+	          	<PickerRow title="Seleccione" id="Seleccione" />
+	          	<PickerRow title="por relato de testigos" id="Testigo"/>
+	        	<PickerRow title="por relato del accidentado" id="Accidentado" />
+	        	<PickerRow title="por haberlo comprobado personalmente" id="Personalmente"/>
+	        </Picker>
+	 	</TableViewRow> 
+	 	<TableViewRow>
+	       <Label class="reportTextSelected" top="0dp" left="15dp">¿Hubo testigos? </Label>
+	         <Picker  id="Testigos"
+	          top="25dp"
+	          left="15dp"
+	          height="40dp"
+	          backgroundColor="#8EDCFE">
+	          	<PickerRow title="Seleccione" id="Seleccione" />
+	          	<PickerRow title="Si" id="Si"/>
+	        	<PickerRow title="No" id="No" />
+	        </Picker>
+	 	</TableViewRow> 
+ 	 </TableView>
+  </View>
+  
+  <View id="Page11">
+  	 <View top="2dp" height="20dp" left="15dp">
+    	<Label class="reportTextSelected">Resumen de lo Sucedido </Label>
+	 </View>
+ 	 <Label class="reportTextSelected" top="32dp" left="2dp" left="15dp">TESTIGO 1</Label>
+     <TextField class="textSimple" hintText="  Nombre" id="nameTestigo1" top="65dp"/>
+     <TextField class="textSimple" hintText="  Apellido" id="lastTestigo1" top="115dp"/>
+     
+     <Label class="reportTextSelected" top="180dp" left="2dp" left="15dp">TESTIGO 2</Label>
+     <TextField class="textSimple" hintText="  Nombre" id="nameTestigo2" top="215dp"/>
+     <TextField class="textSimple" hintText="  Apellido" id="lastTestigo2" top="265dp"/>		
+  </View>
+  
+  <View id="Page12">
+  	 <View top="2dp" height="20dp" left="15dp">
+    	<Label class="reportTextSelected">Resumen de lo Sucedido </Label>
+	 </View>
+     <Label class="reportTextSelected" top="32dp" left="2dp" left="15dp">TESTIGO 3</Label>
+     <TextField class="textSimple" hintText="  Nombre" id="nameTestigo3" top="60dp"/>
+     <TextField class="textSimple" hintText="  Apellido" id="lastTestigo3" top="110dp"/>
+     
+     <TableView top="170dp">
+	 	<TableViewRow>
+	       <Label class="reportTextSelected" top="0dp" left="15dp">Factor contribuyente al hecho</Label>
+	         <Picker  id="Factor"
+	          top="25dp"
+	          left="15dp"
+	          height="40dp"
+	          backgroundColor="#8EDCFE">
+	          	<PickerRow title="Seleccione" id="Seleccione" />
+	          	<PickerRow title="Acto Inseguro" id="ActoInseguro"/>
+	        	<PickerRow title="Condición Insegura" id="CondicionInsegura" />
+	        </Picker>
+	 	</TableViewRow> 
+ 	</TableView>
+ 	
+ 	<Label class="reportTextSelected" top="250dp" left="15dp">¿Las medidas de prevención eran las adecuadas? </Label>
+	<TextArea id="DescripcionMedidas" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="265dp" left="15dp" height="80dp" width="300dp"></TextArea>	
+  </View>
+  
+  <View id="Page13">
+  	<View top="2dp" height="20dp" left="15dp">
+    	<Label class="reportTextSelected">Resumen de lo Sucedido </Label>
+	 </View>
+	<TableView top="32dp">
+	 	<TableViewRow id="CheckUtilizabanElementos" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconUtilizabanElementos" left="5dp" top="5dp" width="30dp" height="30dp"></View>
+	            <Label id="lblUtilizabanElementos" left="45dp">¿Se utilizaban los elementos de proteccion y seguridad para el caso? </Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckLesiones" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconLesiones" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblLesiones" left="45dp">¿Hubo lesiones?</Label>
+	        </View>
+	    </TableViewRow>
+ 	</TableView>
+ 	<Label class="reportTextSelected" top="140dp" left="15dp">Ubicación de la lesión - Cabeza</Label>
+ 	<TableView top="185dp">
+	 	<TableViewRow id="CheckCraneo" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconCraneo" left="5dp" top="5dp" width="30dp" height="30dp"></View>
+	            <Label id="lblCraneo" left="45dp">Craneo</Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckBoca" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconBoca" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblBoca" left="45dp">Boca / dientes / labios</Label>
+	        </View>
+	    </TableViewRow>
+ 	</TableView>	
+ </View>
+
+  <View id="Page14">
+  	 <View top="2dp" height="20dp" left="15dp">
+    	<Label class="reportTextSelected">Resumen de lo Sucedido </Label>
+	 </View>
+  	<Label class="reportTextSelected" top="40dp" left="15dp">Ubicación de la lesión - Cabeza</Label>
+  	<TableView top="70dp">	
+  		<TableViewRow id="CheckCuello" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconCuello" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblCuello" left="45dp">Cuello</Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckNariz" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconNariz" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblNariz" left="45dp">Nariz</Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckOjo" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconOjo" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblOjo" left="45dp">Ojo</Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckOreja" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconOreja" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblOreja" left="45dp">Oreja</Label>
+	        </View>
+	    </TableViewRow>	
+  	</TableView>	
+  </View>
+  
+  <View id="Page15">
+  	 <View top="2dp" height="20dp" left="15dp">
+    	<Label class="reportTextSelected">Resumen de lo Sucedido </Label>
+	 </View>
+  	<Label class="reportTextSelected" top="30dp" left="15dp">Ubicación de la lesión - Torso</Label>
+  	<TableView top="55dp">	
+  		<TableViewRow id="CheckAbdomen" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconAbdomen" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblAbdomen" left="45dp">Abdomen / Órganos Internos</Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckCintura" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconCintura" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblCintura" left="45dp">Cintura</Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckEspalda" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconEspalda" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblEspalda" left="45dp">Espalda</Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckHombro" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconHombro" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblHombro" left="45dp">Hombro</Label>
+	        </View>
+	    </TableViewRow>	
+	    <TableViewRow id="CheckPellvis" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconPellvis" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblPellvis" left="45dp">Pellvis</Label>
+	        </View>
+	    </TableViewRow>	
+	    <TableViewRow id="CheckTorax" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconTorax" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblTorax" left="45dp">Torax</Label>
+	        </View>
+	    </TableViewRow>	
+  	</TableView>		
+  </View>
+  
+  <View id="Page16">
+  	 <View top="2dp" height="20dp" left="15dp">
+    	<Label class="reportTextSelected">Resumen de lo Sucedido </Label>
+	 </View>
+  	<Label class="reportTextSelected" top="40dp" left="15dp">Ubicación de la lesión - Extremidades</Label>
+  	<TableView top="65dp">	
+  		<TableViewRow id="CheckBrazo" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconBrazo" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblBrazo" left="45dp">Brazo</Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckMuñeca" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconMuñeca" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblMuñeca" left="45dp">Muñeca</Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckMano" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconMano" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblMano" left="45dp">Mano</Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckDesdos" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconDesdos" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblDesdos" left="45dp">Desdos de la Mano</Label>
+	        </View>
+	    </TableViewRow>	
+	    <TableViewRow id="CheckPierna" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconPierna" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblPierna" left="45dp">Pierna</Label>
+	        </View>
+	    </TableViewRow>	
+  	</TableView>	
+  </View>
+  
+  <View id="Page17">
+  	<View top="2dp" height="20dp" left="15dp">
+    	<Label class="reportTextSelected">Resumen de lo Sucedido </Label>
+	 </View>
+  	<Label class="reportTextSelected" top="40dp" left="15dp">Ubicación de la lesión - Extremidades</Label>
+  	<TableView top="70dp">	
+  		<TableViewRow id="CheckPie" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconPie" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblPie" left="45dp">Pie</Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckDedosPie" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconDedosPie" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblDedosPie" left="45dp">Dedos del Pie</Label>
+	        </View>
+	    </TableViewRow>
+	    <TableViewRow id="CheckOtros" class="TableViewRowReduced">
+	        <View>
+	            <View class="icon-Check" id="iconOtros" left="5dp" top="5dp" width="30dp" height="30dp"/>
+	            <Label id="lblOtros" left="45dp">Otros</Label>
+	        </View>
+	    </TableViewRow>
+  	</TableView>	
+  </View>
+  
+  <View id="Page18">
+  	<View top="2dp" height="20dp" left="15dp">
+    	<Label class="reportTextSelected">Resumen de lo Sucedido </Label>
+	 </View>
+  	<TableView top="45dp">	
+  		<TableViewRow>
+	        <Label class="reportTextSelected" top="0dp" left="15dp">Emisferio</Label>
+	         <Picker  id="Emisferio"
+	          top="25dp"
+	          left="15dp"
+	          height="40dp"
+	          backgroundColor="#8EDCFE">
+	          	<PickerRow title="Seleccione" id="Seleccione" />
+	          	<PickerRow title="Izquierdo" id="Izquierdo"/>
+	        	<PickerRow title="Derecho" id="Derecho" />
+	        	<PickerRow title="Ambos" id="Ambos" />
+	        </Picker>
+	    </TableViewRow>
+	    <TableViewRow>
+	        <Label class="reportTextSelected" top="0dp" left="15dp">Tipo de Lesión</Label>
+	         <Picker  id="TipoLesion"
+	          top="25dp"
+	          left="15dp"
+	          height="40dp"
+	          backgroundColor="#8EDCFE">
+	          	<PickerRow title="Seleccione" id="Seleccione" />
+	          	<PickerRow title="ACV" id="ACV"/>
+	        	<PickerRow title="Afección Ocular" id="Ocular" />
+	        	<PickerRow title="Amputación" id="Amputacion" />
+	        	<PickerRow title="Asfixia" id="Asfixia" />
+	        	<PickerRow title="Cortante / Punzante" id="Cortante" />
+	        	<PickerRow title="Distención Muscular" id="Distencion" />
+	        	<PickerRow title="Fractura" id="Fractura" />
+	        	<PickerRow title="Intoxicación" id="Intoxicacion" />
+	        	<PickerRow title="Luxación" id="Luxacion" />
+	        	<PickerRow title="Quemadura" id="Quemadura" />
+	        	<PickerRow title="Torcedura / Esguince" id="Torcedura" />
+	        	<PickerRow title="Traumatismo Interno" id="TraumatismoInterno" />
+	        	<PickerRow title="Traumatismo Superficial" id="TraumatismoSuperficial" />
+	        	<PickerRow title="Otros" id="Otros" />
+	        </Picker>
+	    </TableViewRow>
+	</TableView>
+	<Label class="reportTextSelectedHigh" top="265dp">A continuación se registra los datos sobre la atención médica</Label> 	
+  </View>
+  
+  <View id="Page19">
+  	<Label class="reportTextSelected" top="10dp">Información sobre atención médica</Label>
+  	<TableView top="40dp">
+	  	<TableViewRow class="TableViewRowReduced" id="FechaAtencionRow">
+	        <View>
+	    		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="70%">Fecha de atención</Label>
+		        <Label class="reportTextSelected" top="15dp" right="0dp" width="35%" id="FechaAtencion"></Label>
+		        <Picker  id="dpFechaAtencion"
+		          top="2dp"
+		          right="15dp"
+		          type="Titanium.UI.PICKER_TYPE_DATE"
+		          backgroundColor="#8EDCFE"
+		          width="90dp"
+		          visible="false">
+		        </Picker> 
+	 		</View>
+	 	</TableViewRow> 
+ 	 </TableView>
+ 	 <Label class="reportTextSelected" top="95dp" left="15dp">Atendido por</Label>
+	 <TextField class="textSimple" hintText=" Nombre del Médico" id="NombreMedico" top="120dp"/>
+     <TextField class="textSimple" hintText="  Apellido del Médico" id="ApellidoMedico" top="180dp"/>
+     	
+	 <Label class="reportTextSelected" top="235dp" left="15dp">Observaciones</Label>
+	 <TextArea id="DescripcionAtencion" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="250dp" left="15dp" height="90dp" width="300dp"></TextArea>	
+  </View>
+  
+  <View id="Page20">
+  	<Label class="reportTextSelected" top="2dp">Información sobre atención médica</Label>
+  	<TableView top="40dp">
+  		<TableViewRow height="75dp">
+             <Label class="reportTextSelected" top="0dp" left="15dp">Continúa Trabajando</Label>
+	         <Picker  id="ContinuaTrabajando"
+	          top="25dp"
+	          left="15dp"
+	          height="40dp"
+	          backgroundColor="#8EDCFE">
+	          	<PickerRow title="Seleccione" id="Seleccione" />
+            	<PickerRow title="Si" id="Si" />
+            	<PickerRow title="No" id="No"/>
+	        </Picker>
+        </TableViewRow>
+	  	<TableViewRow id="FechaAltaRow">
+	        <View>
+	    		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="70%">Alta Probable</Label>
+		        <Label class="reportTextSelected" top="15dp" right="0dp" width="35%" id="FechaAlta"></Label>
+		        <Picker  id="dpFechaAlta"
+		          top="2dp"
+		          right="15dp"
+		          type="Titanium.UI.PICKER_TYPE_DATE"
+		          backgroundColor="#8EDCFE"
+		          width="90dp"
+		          visible="false">
+		        </Picker> 
+	 		</View>
+	 	</TableViewRow> 
+ 	 </TableView>	
+ 	 <View top="225dp" height="20dp" id="linkObservaciones">
+    	<Label class="reportTextSelected">Toque aqui para agregar observaciones !</Label>
+	 </View>
+	 <View top="251dp" height="50dp">
+    	<Label class="reportTextSelectedHigh">Su auditoria a finalizado, muchas gracias !</Label>
+	 </View>
+  </View>
+</Alloy>
