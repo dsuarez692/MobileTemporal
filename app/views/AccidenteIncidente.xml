@@ -137,7 +137,7 @@
 	<TableView top="20dp"> 
 		<TableViewRow>
              <Label class="reportTextSelected" top="10dp" left="15dp">Sitio </Label>
-	         <Picker  id="Seccion"
+	         <Picker  id="Sitio"
 	          top="40dp"
 	          left="15dp"
 	          height="40dp"
@@ -149,7 +149,7 @@
          </TableViewRow> 
          <TableViewRow>
              <Label class="reportTextSelected" top="0dp" left="15dp">Lugar del Hecho </Label>
-	         <Picker  id="Seccion"
+	         <Picker  id="Lugar"
 	          top="25dp"
 	          left="15dp"
 	          height="40dp"
@@ -541,7 +541,7 @@
 	    </TableViewRow>
 	    <TableViewRow>
 	        <Label class="reportTextSelected" top="0dp" left="15dp">Tipo de Lesión</Label>
-	         <Picker  id="Emisferio"
+	         <Picker  id="TipoLesion"
 	          top="25dp"
 	          left="15dp"
 	          height="40dp"

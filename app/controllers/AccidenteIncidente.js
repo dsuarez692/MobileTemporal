@@ -43,6 +43,34 @@ exports.LoadFromModel = function(modelo,view,Page){
 		model.Pie = false;
 		model.DedosPie = false;
 		model.Otros = false;
+		
+		model.Tipo = 'Seleccione';
+		model.TipoIndex = 0;
+		model.TipoTareas = 'Seleccione';
+		model.TipoTareasIndex = 0;
+		model.Seccion = 'Seleccione';
+		model.SeccionIndex = 0;
+		model.Sitio = 'Seleccione';
+		model.SitioIndex = 0;
+		model.Lugar = 'Seleccione';
+		model.LugarIndex = 0;
+		model.HorasExtras = 'Seleccione';
+		model.HorasExtrasIndex = 0;
+		model.EPP = 'Seleccione';
+		model.EPPIndex = 0;
+		model.Consta = 'Seleccione';
+		model.ConstaIndex = 0;
+		model.Testigos = 'Seleccione';
+		model.TestigosIndex = 0;
+		model.Factor = 'Seleccione';
+		model.FactorIndex = 0;
+		model.Emisferio = 'Seleccione';
+		model.EmisferioIndex = 0;
+		model.TipoLesion = 'Seleccione';
+		model.TipoLesionIndex = 0;
+		model.ContinuaTrabajando = 'Seleccione';
+		model.ContinuaTrabajandoIndex = 0;
+		
 		models.setWISEModel(model);
 	}
 	changeTextColor("ConsecuenciasHumanas",model.ConsecuenciasHumanas);
@@ -90,6 +118,7 @@ exports.LoadFromModel = function(modelo,view,Page){
 
 
 exports.GetPrimeraPagina = function(pageNumber){
+	$.Tipo.setSelectedRow(0,model.TipoIndex);
 	return $.Page1;		
 };
 exports.GetSegundaPagina = function(pageNumber){
@@ -99,15 +128,21 @@ exports.GetTerceraPagina = function(pageNumber){
 	return $.Page3;		
 };
 exports.GetCuartaPagina = function(pageNumber){
+	$.TipoTareas.setSelectedRow(0,model.TipoTareasIndex);
+	$.Seccion.setSelectedRow(0,model.SeccionIndex);
 	return $.Page4;		
 };
 exports.GetQuintaPagina = function(pageNumber){
 	return $.Page5;		
 };
 exports.GetSextaPagina = function(pageNumber){
+	$.Sitio.setSelectedRow(0,model.SitioIndex);
+	$.Lugar.setSelectedRow(0,model.LugarIndex);
 	return $.Page6;		
 };
 exports.GetSeptimaPagina = function(pageNumber){
+	$.HorasExtras.setSelectedRow(0,model.HorasExtrasIndex);
+	$.EPP.setSelectedRow(0,model.EPPIndex);
 	return $.Page7;		
 };
 exports.GetOctavaPagina = function(pageNumber){
@@ -117,12 +152,15 @@ exports.GetNovenaPagina = function(pageNumber){
 	return $.Page9;		
 };
 exports.GetDecimaPagina = function(pageNumber){
+	$.Consta.setSelectedRow(0,model.ConstaIndex);
+	$.Testigos.setSelectedRow(0,model.TestigosIndex);	
 	return $.Page10;		
 };
 exports.GetDecimoPrimeraPagina = function(pageNumber){
 	return $.Page11;		
 };
 exports.GetDecimoSegundaPagina = function(pageNumber){
+	$.Factor.setSelectedRow(0,model.FactorIndex);	
 	return $.Page12;		
 };
 exports.GetDecimoTerceraPagina = function(pageNumber){
@@ -141,16 +179,19 @@ exports.GetDecimoSeptimaPagina = function(pageNumber){
 	return $.Page17;		
 };
 exports.GetDecimoOctavaPagina = function(pageNumber){
+	$.Emisferio.setSelectedRow(0,model.EmisferioIndex);	
+	$.TipoLesion.setSelectedRow(0,model.TipoLesionIndex);	
 	return $.Page18;		
 };
 exports.GetDecimoNovenaPagina = function(pageNumber){
 	return $.Page19;		
 };
 exports.GetVigesimaPagina = function(pageNumber){
+	$.ContinuaTrabajando.setSelectedRow(0,model.ContinuaTrabajandoIndex);	
 	return $.Page20;		
 };
 exports.GetPageCount = function(pageNumber){
-	return 20;		//5 por ahora, van a ser como 20
+	return 20;
 };
 
 exports.ValidateData = function(){
@@ -302,7 +343,7 @@ function changeTextColor(campo,value){
 		}
 		case "Espalda":{
 			$.lblEspalda.color = color;
-			$.Hombro.backgroundImage = image;
+			$.iconEspalda.backgroundImage = image;
 			break;
 		}
 		case "Hombro":{
@@ -396,3 +437,20 @@ $.CheckPierna.addEventListener("click",function(){changeTextColor("Pierna",!mode
 $.CheckPie.addEventListener("click",function(){changeTextColor("Pie",!model.Pie); model.Pie = !model.Pie;});
 $.CheckDedosPie.addEventListener("click",function(){changeTextColor("DedosPie",!model.DedosPie); model.DedosPie = !model.DedosPie;});
 $.CheckDedosPie.addEventListener("click",function(){changeTextColor("Otros",!model.Otros); model.Otros = !model.Otros;});
+
+
+$.Tipo.addEventListener('change', function(e) { model.Tipo = $.Tipo.getSelectedRow(0).id; model.TipoIndex = e.rowIndex; });
+$.TipoTareas.addEventListener('change', function(e) { model.TipoTareas = $.TipoTareas.getSelectedRow(0).id; model.TipoTareasIndex = e.rowIndex; });
+$.Seccion.addEventListener('change', function(e) { model.Seccion = $.Seccion.getSelectedRow(0).id; model.SeccionIndex = e.rowIndex; });
+$.Sitio.addEventListener('change', function(e) { model.Sitio = $.Sitio.getSelectedRow(0).id; model.SitioIndex = e.rowIndex; });
+$.Lugar.addEventListener('change', function(e) { model.Lugar = $.Lugar.getSelectedRow(0).id; model.LugarIndex = e.rowIndex; });
+$.HorasExtras.addEventListener('change', function(e) { model.HorasExtras = $.HorasExtras.getSelectedRow(0).id; model.HorasExtrasIndex = e.rowIndex; });
+$.EPP.addEventListener('change', function(e) { model.EPP = $.EPP.getSelectedRow(0).id; model.EPPIndex = e.rowIndex; });
+$.Consta.addEventListener('change', function(e) { model.Consta = $.Consta.getSelectedRow(0).id; model.ConstaIndex = e.rowIndex; });
+$.Testigos.addEventListener('change', function(e) { model.Testigos = $.Testigos.getSelectedRow(0).id; model.TestigosIndex = e.rowIndex; });
+$.Factor.addEventListener('change', function(e) { model.Factor = $.Factor.getSelectedRow(0).id; model.FactorIndex = e.rowIndex; });
+$.Emisferio.addEventListener('change', function(e) { model.Emisferio = $.Emisferio.getSelectedRow(0).id; model.EmisferioIndex = e.rowIndex; });
+$.TipoLesion.addEventListener('change', function(e) { model.TipoLesion = $.TipoLesion.getSelectedRow(0).id; model.TipoLesionIndex = e.rowIndex; });
+$.ContinuaTrabajando.addEventListener('change', function(e) { model.ContinuaTrabajando = $.ContinuaTrabajando.getSelectedRow(0).id; model.ContinuaTrabajandoIndex = e.rowIndex; });
+
+
