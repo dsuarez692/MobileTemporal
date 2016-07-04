@@ -171,7 +171,7 @@
     	<Label class="reportTextSelected">Lugar del Hecho </Label>
 	</View>
   	<TableView top="30dp">
-	  	<TableViewRow class="TableViewRowReduced">
+	  	<TableViewRow class="TableViewRowReduced" id="FechaRow">
 	        <View>
 	    		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="70%">Fecha</Label>
 		        <Label class="reportTextSelected" top="15dp" right="0dp" width="35%" id="Fecha"></Label>
@@ -570,7 +570,7 @@
   <View id="Page19">
   	<Label class="reportTextSelected" top="10dp">Información sobre atención médica</Label>
   	<TableView top="40dp">
-	  	<TableViewRow class="TableViewRowReduced">
+	  	<TableViewRow class="TableViewRowReduced" id="FechaAtencionRow">
 	        <View>
 	    		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="70%">Fecha de atención</Label>
 		        <Label class="reportTextSelected" top="15dp" right="0dp" width="35%" id="FechaAtencion"></Label>
@@ -608,7 +608,7 @@
             	<PickerRow title="No" id="No"/>
 	        </Picker>
         </TableViewRow>
-	  	<TableViewRow>
+	  	<TableViewRow id="FechaAltaRow">
 	        <View>
 	    		<Label class="reportTextSelected" top="15dp" left="2dp" left="10dp" width="70%">Alta Probable</Label>
 		        <Label class="reportTextSelected" top="15dp" right="0dp" width="35%" id="FechaAlta"></Label>

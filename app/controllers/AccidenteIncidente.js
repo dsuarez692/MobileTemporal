@@ -3,6 +3,7 @@ var args = $.args;
 var controls=require('controls');
 var models=require('models');
 var persistence = require("persistence");
+var moment = require('moment');
 
 var model = {};
 var user = {};
@@ -13,8 +14,7 @@ exports.LoadFromModel = function(modelo,view,Page){
 	user = persistence.getUserData();
 	if(model.Balizas == undefined){
 		model._Page = 1;
-		model.DNI = '';
-		model.Observaciones = '';
+		
 		model.ConsecuenciasHumanas = false;
 		model.DaniosMateriales = false;
 		model.Normas = false;
@@ -96,6 +96,10 @@ exports.LoadFromModel = function(modelo,view,Page){
 		model.DescripcionAtencion = '';
 		model.Observaciones = '';
 		
+		model.Fecha = null;
+		model.FechaAtencion = null;
+		model.FechaAlta = null;
+		
 		models.setWISEModel(model);
 	}
 	changeTextColor("ConsecuenciasHumanas",model.ConsecuenciasHumanas);
@@ -151,6 +155,10 @@ exports.LoadFromModel = function(modelo,view,Page){
 	$.ApellidoMedico.value = model.ApellidoMedico;
 	$.DescripcionAtencion.value = model.DescripcionAtencion;
 
+	$.Fecha.text = model.Fecha;
+	$.FechaAtencion.text = model.FechaAtencion;
+	$.FechaAlta.text = model.FechaAlta;
+	
 
 	if(user != undefined && user != null){ //En teoria esta linea no va a ser necesaria
 		if(user.Comercial != undefined){
@@ -251,15 +259,115 @@ exports.ValidateData = function(){
 	    ok: 'Okay',
 	    title: 'Error de Validación'
 	  });
-	  
+		
 	switch(true){
 		case (!model.Comercial || model.Comercial == ""):
 			valid = false;	
 			break;
-		case (!model.DNI || model.DNI == ""):
-			dialog.message = 'El DNI es requerido';
+		case (model.Tipo == "Seleccione"):
+			dialog.message = 'El Tipo accidente o incidente es requerido';
 			valid = false;	
 			break;
+		case (!model.NombreAuditor || model.NombreAuditor == ""):
+			dialog.message = 'El Nombre del Auditor es requerido';
+			valid = false;	
+			break;
+		case (!model.ApellidoAuditor || model.ApellidoAuditor == ""):
+			dialog.message = 'El Apellido del Auditor es requerido';
+			valid = false;	
+			break;
+		case (!model.DNIAuditor || model.DNIAuditor == ""):
+			dialog.message = 'El Número de DNI del Auditor es requerido';
+			valid = false;	
+			break;	
+		case (!model.NombreAccidentado || model.NombreAccidentado == ""):
+			dialog.message = 'El Nombre del Accidentado es requerido';
+			valid = false;	
+			break;
+		case (!model.ApellidoAccidentado || model.ApellidoAccidentado == ""):
+			dialog.message = 'El Apellido del Accidentado es requerido';
+			valid = false;	
+			break;
+		case (!model.DNIAccidentado || model.DNIAccidentado == ""):
+			dialog.message = 'El Número de DNI del Accidentado es requerido';
+			valid = false;	
+			break;	
+		case (!model.Legajo || model.Legajo == ""):
+			dialog.message = 'El Número de Legajo del Accidentado es requerido';
+			valid = false;	
+			break;
+		case (!model.Edad || model.Edad == ""):
+			dialog.message = 'La Edad del Accidentado es requerido';
+			valid = false;	
+			break;	
+		case (!model.Antiguedad || model.Antiguedad == ""):
+			dialog.message = 'La Antiguedad en el puesto del Accidentado es requerido';
+			valid = false;	
+			break;	
+		case (model.TipoTareas == "Seleccione"):
+			dialog.message = 'El Tipo de Tareas que realiza el Accidentado es requerido';
+			valid = false;	
+			break;
+		case (model.Seccion == "Seleccione"):
+			dialog.message = 'El Sector donde trabaja el Accidentado es requerido';
+			valid = false;	
+			break;	
+		case (!model.Puesto || model.Puesto == ""):
+			dialog.message = 'El Puesto que ocupa el Accidentado es requerido';
+			valid = false;	
+			break;	
+		case (model.Sitio == "Seleccione"):
+			dialog.message = 'El Sitio donde se prodijo el siniestro es requerido';
+			valid = false;	
+			break;		
+		case (model.Lugar == "Seleccione"):
+			dialog.message = 'El Lugar donde se prodijo el siniestro es requerido';
+			valid = false;	
+			break;	
+		case (model.Lugar == "Seleccione"):
+			dialog.message = 'El Lugar donde se prodijo el siniestro es requerido';
+			valid = false;	
+			break;
+		case (model.Fecha == null):
+			dialog.message = 'La Fecha del siniestro es requerida';
+			valid = false;	
+			break;	
+		case (model.HorasExtras == "Seleccione"):
+			dialog.message = 'Debe indicar si el usuario cumplia horas extars o no';
+			valid = false;	
+			break;
+		case (model.EPP == "Seleccione"):
+			dialog.message = 'Debe indicar si se utilizaba E.P.P.';
+			valid = false;	
+			break;	
+		case (!model.Tarea || model.Tarea == ""):
+			dialog.message = 'Tarea que efectuaba al momento del hecho es requerida';
+			valid = false;	
+			break;		
+		case (!model.Tarea || model.Tarea == ""):
+			dialog.message = 'Tarea que efectuaba al momento del hecho es requerida';
+			valid = false;	
+			break;	
+		case (!model.DescripcionHechoBreve || model.DescripcionHechoBreve == ""):
+			dialog.message = 'Debe indicar una breve descripción de los hechos';
+			valid = false;	
+			break;
+		case (model.Consta == "Seleccione"):
+			dialog.message = 'Debe indicar como les consta el hecho';
+			valid = false;	
+			break;
+		case (model.Testigos == "Seleccione"):
+			dialog.message = 'Debe indicar si hubo testigos';
+			valid = false;	
+			break;	
+		case (model.Factor == "Seleccione"):
+			dialog.message = 'Debe el factor contribuyente al hecho.';
+			valid = false;	
+			break;	
+		case (!model.DescripcionMedidas || model.DescripcionMedidas == ""):
+			dialog.message = 'Debe indicar si las medidas de prevención eran las adecuadas';
+			valid = false;	
+			break;	
 	}
 	
 	if(!valid){
@@ -526,4 +634,56 @@ $.NombreMedico.addEventListener("change",function(){model.NombreMedico = $.Nombr
 $.ApellidoMedico.addEventListener("change",function(){model.ApellidoMedico = $.ApellidoMedico.value;});
 $.DescripcionAtencion.addEventListener("change",function(){model.DescripcionAtencion = $.DescripcionAtencion.value;});
 
+if(OS_ANDROID){
+	$.FechaRow.addEventListener("click",
+		function(){
+			//Si el sistema operativo es android se setean los eventos caracteristicos
+			$.dpFecha.showDatePickerDialog({
+			  value: model.Fecha ? new Date(model.Fecha) : new Date(),
+			  callback: function(e) {
+			  		if(!e.cancel){
+			  			model.Fecha = moment(e.value).format('YYYY/MM/DD');
+			  			$.Fecha.text = model.Fecha;
+			  		}
+				}
+			});
+		}
+	);
+	
+	$.FechaAtencionRow.addEventListener("click",
+		function(){
+			//Si el sistema operativo es android se setean los eventos caracteristicos
+			$.dpFechaAtencion.showDatePickerDialog({
+			  value: model.FechaAtencion ? new Date(model.FechaAtencion) : new Date(),
+			  callback: function(e) {
+			  		if(!e.cancel){
+			  			model.FechaAtencion = moment(e.value).format('YYYY/MM/DD');
+			  			$.FechaAtencion.text = model.FechaAtencion;
+			  		}
+				}
+			});
+		}
+	);
+	
+	$.FechaAltaRow.addEventListener("click",
+		function(){
+			//Si el sistema operativo es android se setean los eventos caracteristicos
+			$.dpFechaAlta.showDatePickerDialog({
+			  value: model.FechaAlta ? new Date(model.FechaAlta) : new Date(),
+			  callback: function(e) {
+			  		if(!e.cancel){
+			  			model.FechaAlta = moment(e.value).format('YYYY/MM/DD');
+			  			$.FechaAlta.text = model.FechaAlta;
+			  		}
+				}
+			});
+		}
+	);
+	
+}
+else{
+	$.dpFecha.visible = true;	
+	$.dpFechaAtencion.visible = true;
+	$.dpFechaAlta.visible = true;
+}
 
