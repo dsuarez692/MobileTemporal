@@ -71,6 +71,31 @@ exports.LoadFromModel = function(modelo,view,Page){
 		model.ContinuaTrabajando = 'Seleccione';
 		model.ContinuaTrabajandoIndex = 0;
 		
+		model.NombreAuditor = '';
+		model.ApellidoAuditor = '';
+		model.DNIAuditor = '';
+		model.NombreAccidentado = '';
+		model.ApellidoAccidentado = '';
+		model.DNIAccidentado = '';
+		model.Legajo = '';
+		model.Edad = '';
+		model.Antiguedad = '';
+		model.Puesto = '';
+		model.DescripcionHecho = '';
+		model.Tarea = '';
+		model.DescripcionHechoBreve = '';
+		model.nameTestigo1 = '';
+		model.lastTestigo1 = '';
+		model.nameTestigo2 = '';
+		model.lastTestigo2 = '';
+		model.nameTestigo3 = '';
+		model.lastTestigo3 = '';
+		model.DescripcionMedidas = '';
+		model.NombreMedico = '';
+		model.ApellidoMedico = '';
+		model.DescripcionAtencion = '';
+		model.Observaciones = '';
+		
 		models.setWISEModel(model);
 	}
 	changeTextColor("ConsecuenciasHumanas",model.ConsecuenciasHumanas);
@@ -101,6 +126,31 @@ exports.LoadFromModel = function(modelo,view,Page){
 	changeTextColor("Pie",model.Pie); 
 	changeTextColor("DedosPie",model.DedosPie); 
 	changeTextColor("Otros",model.Otros);
+
+	$.NombreAuditor.value = model.NombreAuditor;
+	$.ApellidoAuditor.value = model.ApellidoAuditor;
+	$.DNIAuditor.value = model.DNIAuditor = '';
+	$.NombreAccidentado.value = model.NombreAccidentado;
+	$.ApellidoAccidentado.value = model.ApellidoAccidentado;
+	$.DNIAccidentado.value = model.DNIAccidentado;
+	$.Legajo.value = model.Legajo;
+	$.Edad.value = model.Edad;
+	$.Antiguedad.value = model.Antiguedad;
+	$.Puesto.value = model.Puesto;
+	$.DescripcionHecho.value = model.DescripcionHecho;
+	$.Tarea.value = model.Tarea;
+	$.DescripcionHechoBreve.value = model.DescripcionHechoBreve;
+	$.nameTestigo1.value = model.nameTestigo1;
+	$.lastTestigo1.value = model.lastTestigo1;
+	$.nameTestigo2.value = model.nameTestigo2;
+	$.lastTestigo2.value = model.lastTestigo2;
+	$.nameTestigo3.value = model.nameTestigo3;
+	$.lastTestigo3.value = model.lastTestigo3;
+	$.DescripcionMedidas.value = model.DescripcionMedidas;
+	$.NombreMedico.value = model.NombreMedico;
+	$.ApellidoMedico.value = model.ApellidoMedico;
+	$.DescripcionAtencion.value = model.DescripcionAtencion;
+
 
 	if(user != undefined && user != null){ //En teoria esta linea no va a ser necesaria
 		if(user.Comercial != undefined){
@@ -436,8 +486,7 @@ $.CheckDesdos.addEventListener("click",function(){changeTextColor("Desdos",!mode
 $.CheckPierna.addEventListener("click",function(){changeTextColor("Pierna",!model.Pierna); model.Pierna = !model.Pierna;});
 $.CheckPie.addEventListener("click",function(){changeTextColor("Pie",!model.Pie); model.Pie = !model.Pie;});
 $.CheckDedosPie.addEventListener("click",function(){changeTextColor("DedosPie",!model.DedosPie); model.DedosPie = !model.DedosPie;});
-$.CheckDedosPie.addEventListener("click",function(){changeTextColor("Otros",!model.Otros); model.Otros = !model.Otros;});
-
+$.CheckOtros.addEventListener("click",function(){changeTextColor("Otros",!model.Otros); model.Otros = !model.Otros;});
 
 $.Tipo.addEventListener('change', function(e) { model.Tipo = $.Tipo.getSelectedRow(0).id; model.TipoIndex = e.rowIndex; });
 $.TipoTareas.addEventListener('change', function(e) { model.TipoTareas = $.TipoTareas.getSelectedRow(0).id; model.TipoTareasIndex = e.rowIndex; });
@@ -452,5 +501,29 @@ $.Factor.addEventListener('change', function(e) { model.Factor = $.Factor.getSel
 $.Emisferio.addEventListener('change', function(e) { model.Emisferio = $.Emisferio.getSelectedRow(0).id; model.EmisferioIndex = e.rowIndex; });
 $.TipoLesion.addEventListener('change', function(e) { model.TipoLesion = $.TipoLesion.getSelectedRow(0).id; model.TipoLesionIndex = e.rowIndex; });
 $.ContinuaTrabajando.addEventListener('change', function(e) { model.ContinuaTrabajando = $.ContinuaTrabajando.getSelectedRow(0).id; model.ContinuaTrabajandoIndex = e.rowIndex; });
+
+$.NombreAuditor.addEventListener("change",function(){model.NombreAuditor = $.NombreAuditor.value;});
+$.ApellidoAuditor.addEventListener("change",function(){model.ApellidoAuditor = $.ApellidoAuditor.value;});
+$.DNIAuditor.addEventListener("change",function(){model.DNIAuditor = $.DNIAuditor.value;});
+$.NombreAccidentado.addEventListener("change",function(){model.NombreAccidentado = $.NombreAccidentado.value;});
+$.ApellidoAccidentado.addEventListener("change",function(){model.ApellidoAccidentado = $.ApellidoAccidentado.value;});
+$.DNIAccidentado.addEventListener("change",function(){model.DNIAccidentado = $.DNIAccidentado.value;});
+$.Legajo.addEventListener("change",function(){model.Legajo = $.Legajo.value;});
+$.Edad.addEventListener("change",function(){model.Edad = $.Edad.value;});
+$.Antiguedad.addEventListener("change",function(){model.Antiguedad = $.Antiguedad.value;});
+$.Puesto.addEventListener("change",function(){model.Puesto = $.Puesto.value;});
+$.DescripcionHecho.addEventListener("change",function(){model.DescripcionHecho = $.DescripcionHecho.value;});
+$.Tarea.addEventListener("change",function(){model.Tarea = $.Tarea.value;});
+$.DescripcionHechoBreve.addEventListener("change",function(){model.DescripcionHechoBreve = $.DescripcionHechoBreve.value;});
+$.nameTestigo1.addEventListener("change",function(){model.nameTestigo1 = $.nameTestigo1.value;});
+$.lastTestigo1.addEventListener("change",function(){model.lastTestigo1 = $.lastTestigo1.value;});
+$.nameTestigo2.addEventListener("change",function(){model.nameTestigo2 = $.nameTestigo2.value;});
+$.lastTestigo2.addEventListener("change",function(){model.lastTestigo2 = $.lastTestigo2.value;});
+$.nameTestigo3.addEventListener("change",function(){model.nameTestigo3 = $.nameTestigo3.value;});
+$.lastTestigo3.addEventListener("change",function(){model.lastTestigo3 = $.lastTestigo3.value;});
+$.DescripcionMedidas.addEventListener("change",function(){model.DescripcionMedidas = $.DescripcionMedidas.value;});
+$.NombreMedico.addEventListener("change",function(){model.NombreMedico = $.NombreMedico.value;});
+$.ApellidoMedico.addEventListener("change",function(){model.ApellidoMedico = $.ApellidoMedico.value;});
+$.DescripcionAtencion.addEventListener("change",function(){model.DescripcionAtencion = $.DescripcionAtencion.value;});
 
 

@@ -49,10 +49,10 @@
 		</View>
 		<View>
 			<Label class="reportTextSelected" top="35dp" left="2dp" left="15dp">NOMBRE COMPLETO DEL AUDITOR</Label>
-		    <TextField class="textSimple" hintText="  Nombre" id="name" top="70dp"/>
-		    <TextField class="textSimple" hintText="  Apellido" id="last" top="120dp"/>	
+		    <TextField class="textSimple" hintText="  Nombre" id="NombreAuditor" top="70dp"/>
+		    <TextField class="textSimple" hintText="  Apellido" id="ApellidoAuditor" top="120dp"/>	
 			<Label class="reportTextSelected" top="180dp" left="2dp" left="15dp">DNI o PASAPORTE</Label>
-			<TextField class="textSimple" hintText="" id="DNI" top="205dp" />
+			<TextField class="textSimple" hintText="" id="DNIAuditor" top="205dp" />
 		</View>
   </View>
 	
@@ -62,12 +62,12 @@
 		</View>
 		<View>
 			<Label class="reportTextSelected" top="25dp" left="2dp" left="15dp">NOMBRE COMPLETO DEL ACCIDENTADO</Label>
-		    <TextField class="textSimple" hintText="  Nombre" id="name" top="50dp"/>
-		    <TextField class="textSimple" hintText="  Apellido" id="last" top="100dp"/>	
+		    <TextField class="textSimple" hintText="  Nombre" id="NombreAccidentado" top="50dp"/>
+		    <TextField class="textSimple" hintText="  Apellido" id="ApellidoAccidentado" top="100dp"/>	
 			<Label class="reportTextSelected" top="160dp" left="2dp" left="15dp">DNI o PASAPORTE</Label>
-			<TextField class="textSimple" hintText="" id="DNI" top="185dp" />
+			<TextField class="textSimple" hintText="" id="DNIAccidentado" top="185dp" />
 			<Label class="reportTextSelected" top="240dp" left="2dp" left="15dp">LEGAJO</Label>
-			<TextField class="textSimple" hintText=" Legajo" id="LEGAJO" top="265dp" />
+			<TextField class="textSimple" hintText=" Legajo" id="Legajo" top="265dp" />
 		</View>
   </View>
   
@@ -77,7 +77,7 @@
 	</View>
 	<View>
 		<Label class="reportTextSelected" top="25dp" left="2dp" left="15dp">EDAD</Label>
-		<TextField class="textSimple" hintText=" Edad" id="EDAD" top="50dp" />
+		<TextField class="textSimple" hintText=" Edad" id="Edad" top="50dp" />
 	</View>
 	 <TableView top="90dp"> 
 		<TableViewRow>
@@ -95,7 +95,7 @@
     </TableView>
 	
 	<Label class="reportTextSelected" top="175dp" left="2dp" left="15dp">ANTIGÜEDAD (cantidad de años)</Label>
-    <TextField class="textSimple" hintText="  Antiguedad" id="antiguedad" top="195dp"/>
+    <TextField class="textSimple" hintText="  Antiguedad" id="Antiguedad" top="195dp"/>
 	
 	<TableView top="235dp"> 
 		<TableViewRow>
@@ -125,7 +125,7 @@
     	<Label class="reportTextSelected">Datos personales del accidentado </Label>
 	</View>
 	<Label class="reportTextSelected" top="25dp" left="15dp">Puesto que ocupa</Label>
-	<TextField class="textSimple" hintText=" Puesto" id="puesto" top="50dp"/>
+	<TextField class="textSimple" hintText=" Puesto" id="Puesto" top="50dp"/>
 	
 	<Label class="reportTextSelectedHigh" top="275dp">A continuación se registra los datos del accidente/incidente</Label> 	
   </View>
@@ -163,7 +163,7 @@
          </TableViewRow>
     </TableView>
     <Label class="reportTextSelected" top="210dp" left="15dp">Descripción del hecho</Label>
-	<TextArea id="txtDescripcion" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="225dp" left="15dp" height="100dp" width="300dp"></TextArea>
+	<TextArea id="DescripcionHecho" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="225dp" left="15dp" height="100dp" width="300dp"></TextArea>
   </View>
   
   <View id="Page7">
@@ -238,7 +238,7 @@
 	    </TableViewRow>
  	 </TableView>
  	 <Label class="reportTextSelected" top="105dp" left="15dp">Tarea que efectuaba al momento del hecho</Label>
-	 <TextArea id="txtTarea" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="115dp" left="15dp" height="230dp" width="300dp"></TextArea>
+	 <TextArea id="Tarea" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="115dp" left="15dp" height="230dp" width="300dp"></TextArea>
   </View>
   
   <View id="Page9">
@@ -266,7 +266,7 @@
 	    </TableViewRow>
  	 </TableView>
      <Label class="reportTextSelected" top="190dp" left="15dp">Breve descripción de los hechos</Label>
-	 <TextArea id="txtDescripcionHecho" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="205dp" left="15dp" height="135dp" width="300dp"></TextArea>			
+	 <TextArea id="DescripcionHechoBreve" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="205dp" left="15dp" height="135dp" width="300dp"></TextArea>			
   </View>
   
   <View id="Page10">
@@ -311,8 +311,8 @@
      <TextField class="textSimple" hintText="  Apellido" id="lastTestigo1" top="115dp"/>
      
      <Label class="reportTextSelected" top="180dp" left="2dp" left="15dp">TESTIGO 2</Label>
-     <TextField class="textSimple" hintText="  Nombre" id="nameTestigo1" top="215dp"/>
-     <TextField class="textSimple" hintText="  Apellido" id="lastTestigo1" top="265dp"/>		
+     <TextField class="textSimple" hintText="  Nombre" id="nameTestigo2" top="215dp"/>
+     <TextField class="textSimple" hintText="  Apellido" id="lastTestigo2" top="265dp"/>		
   </View>
   
   <View id="Page12">
@@ -320,8 +320,8 @@
     	<Label class="reportTextSelected">Resumen de lo Sucedido </Label>
 	 </View>
      <Label class="reportTextSelected" top="32dp" left="2dp" left="15dp">TESTIGO 3</Label>
-     <TextField class="textSimple" hintText="  Nombre" id="nameTestigo1" top="60dp"/>
-     <TextField class="textSimple" hintText="  Apellido" id="lastTestigo1" top="110dp"/>
+     <TextField class="textSimple" hintText="  Nombre" id="nameTestigo3" top="60dp"/>
+     <TextField class="textSimple" hintText="  Apellido" id="lastTestigo3" top="110dp"/>
      
      <TableView top="170dp">
 	 	<TableViewRow>
@@ -339,7 +339,7 @@
  	</TableView>
  	
  	<Label class="reportTextSelected" top="250dp" left="15dp">¿Las medidas de prevención eran las adecuadas? </Label>
-	<TextArea id="txtDescripcionMedidas" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="265dp" left="15dp" height="80dp" width="300dp"></TextArea>	
+	<TextArea id="DescripcionMedidas" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="265dp" left="15dp" height="80dp" width="300dp"></TextArea>	
   </View>
   
   <View id="Page13">
@@ -586,11 +586,11 @@
 	 	</TableViewRow> 
  	 </TableView>
  	 <Label class="reportTextSelected" top="95dp" left="15dp">Atendido por</Label>
-	 <TextField class="textSimple" hintText=" Nombre del Médico" id="nombreMedico" top="120dp"/>
-     <TextField class="textSimple" hintText="  Apellido del Médico" id="apellidoMedico" top="180dp"/>
+	 <TextField class="textSimple" hintText=" Nombre del Médico" id="NombreMedico" top="120dp"/>
+     <TextField class="textSimple" hintText="  Apellido del Médico" id="ApellidoMedico" top="180dp"/>
      	
 	 <Label class="reportTextSelected" top="235dp" left="15dp">Observaciones</Label>
-	 <TextArea id="txtDescripcionAtencion" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="250dp" left="15dp" height="90dp" width="300dp"></TextArea>	
+	 <TextArea id="DescripcionAtencion" hintText="Escriba aquí" cols="100" horizontalWrap="true" top="250dp" left="15dp" height="90dp" width="300dp"></TextArea>	
   </View>
   
   <View id="Page20">
